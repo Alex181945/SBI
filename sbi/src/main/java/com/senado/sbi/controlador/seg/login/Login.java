@@ -22,12 +22,12 @@ public class Login {
 	
 	@GetMapping("/login")
 	public String login() {
-		return "index2";
+		return "index";
 	}
 	
 	@GetMapping("/inicio")
 	public String inicio() {
-		return "/plantilla/base";
+		return "";
 	}
 
 }

@@ -18,7 +18,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 	 * application in some later article
 	 */
 	private static final Log LOG = LogFactory.getLog(RequestInterceptor.class);
-	private static final String DEFAULT_LAYOUT = "plantilla/base";
+	private static final String DEFAULT_LAYOUT = "/plantilla/base";
 	private static final String DEFAULT_VIEW_ATTRIBUTE_NAME = "view";
 
 	@Override
@@ -39,7 +39,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 		 * response.sendRedirect("/"); return true; } else { return true; }
 		 */
 
-		response.sendRedirect("/");
+		//response.sendRedirect("/");
 
 		return true;
 
