@@ -1,0 +1,25 @@
+body{
+	background: url("/assets/img/fondo/wallpaper_3_LXIII.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-size: cover;
+    min-height: 100%; 
+    min-height: 100vh;
+}
+
+/*Menu*/
+.bg-light{
+	background-color: #646569 !important;
+}
+
+a.nav-link{
+	color: #F7F6F2 !important;
+}
+/*Fin Menu*/
+
+/*Inicio de Sesion*/
+h5.lead{
+	color: #F7F6F2 !important;
+}
+/*Fin Inicio de Sesion*/
