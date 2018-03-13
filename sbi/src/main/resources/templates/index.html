@@ -2,19 +2,19 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 	<div class="container">
 
-		<form id="formLogin" th:action="@{/segValidaSesionP}" method="POST">
-			<div id="usuario" class="form-group row align-items-center">
+		<form id="formLogin" th:action="@{/validausuario}" method="POST">
+			<div id="usuarioD" class="form-group row align-items-center">
 				<label for="usuario"
 					class="col-md-3 offset-md-3 text-center col-form-label">
 					<h5 class="lead">Usuario:</h5></label>
 				<div class="col-md-6">
 					<input type="text" class="form-control form-control-lg"
 						id="usuario" name="usuario" placeholder="Usuario" />
-					<div id="errorU" class="form-control-feedback"></div>
+					<div id="errorU" class=""></div>
 				</div>
 			</div>
 
-			<div id="password" class="form-group row align-items-center">
+			<div id="passwordP" class="form-group row align-items-center">
 				<label for="password"
 					class="col-md-3 offset-md-3 text-center col-form-label">
 					<h5 class="lead">Contrase&ntilde;a:</h5></label>
@@ -22,15 +22,17 @@
 					<input type="password" class="form-control form-control-lg"
 						id="password" name="password" placeholder="Contrase&ntilde;a"
 						onkeypress="return validarUsuario(event)" />
-					<div id="errorP" class="form-control-feedback"></div>
+					<div id="errorP" class=""></div>
 				</div>
 			</div>
 
 			<div>
 				<button type="button" class="btn btn-primary btn-lg btn-block"
-					onclick="segValidaForm();">Ingresar</button>
+					onclick="enviaInfo();">Ingresar</button>
 			</div>
 		</form>
+		
+		<div class="col-12" style="display:none;"><span id="message" th:text="${error}"></span></div>
 
 	</div>
 </div>
