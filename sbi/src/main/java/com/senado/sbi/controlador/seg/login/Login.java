@@ -1,10 +1,13 @@
 package com.senado.sbi.controlador.seg.login;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.senado.sbi.rest.seg.login.LoginRest;
 
 /**
  * 
@@ -20,6 +23,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class Login {
+	
+	@Autowired
+	private LoginRest loginRest;
 	
 	@GetMapping("/")
 	public String redirectLogin() {
@@ -37,6 +43,10 @@ public class Login {
 		
 		System.out.println(cUsuario);
 		System.out.println(cPassword);
+		
+		loginRest.validaUsuario(cUsuario, cPassword);
+		
+		
 		
 		return "";
 	}
