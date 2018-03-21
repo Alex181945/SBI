@@ -1,8 +1,7 @@
 package com.senado.sbi.rest.seg.login.imp;
 
-import java.util.Arrays;
-
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.senado.sbi.configuracion.VariablesEntorno;
@@ -23,6 +22,7 @@ import com.senado.sbi.rest.seg.login.LoginRest;
  * 
  */
 
+@Component
 public class ImpLoginRest implements LoginRest {
 
 	@SuppressWarnings("static-access")
@@ -32,15 +32,17 @@ public class ImpLoginRest implements LoginRest {
 		RestTemplate restTemplate = new RestTemplate();
 		VariablesEntorno variables = new VariablesEntorno();
 		
-		ResponseEntity<Usuario[]> response =
-	            restTemplate.getForEntity(variables.getURLWSD(), Usuario[].class);
+		/*ResponseEntity<Usuario[]> response =
+	            restTemplate.getForEntity(variables.getURLWSD() + "?cUsuario="+ cUsuario +"&cContrasena="+ cContrasena, Usuario[].class);*/
+		
+		ResponseEntity<Usuario[]> response = restTemplate.postForEntity(variables.getURLWSD()+"validausuario", cUsuario, Usuario[].class);
 		
 		System.out.println();
 		System.out.println("GET All StatusCode = " + response.getStatusCode());
 		System.out.println("GET All Headers = " + response.getHeaders());
 		System.out.println("GET Body (object list): ");
-		Arrays.asList(response.getBody())
-		            .forEach(book -> System.out.println("--> " + book));
+		System.out.println(response.hasBody());
+		System.out.println(response.getBody().toString());
 		
 	}
 

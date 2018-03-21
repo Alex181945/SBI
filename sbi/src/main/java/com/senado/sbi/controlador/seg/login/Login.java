@@ -21,6 +21,7 @@ import com.senado.sbi.rest.seg.login.LoginRest;
  * 
  */
 
+
 @Controller
 public class Login {
 	
@@ -46,7 +47,7 @@ public class Login {
 		
 		loginRest.validaUsuario(cUsuario, cPassword);
 		
-		return "";
+		return "index2";
 	}
 
 }
