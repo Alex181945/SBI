@@ -1,5 +1,8 @@
 package com.senado.sbi.modelo.seg.login;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Usuario {
 
 	private String cUsuario;
@@ -109,6 +112,10 @@ public class Usuario {
 				+ ", cCorreo=" + cCorreo + ", lHonorarios=" + lHonorarios + ", iPerfil=" + iPerfil + ", lActivo="
 				+ lActivo + ", dtCreado=" + dtCreado + ", dtModificado=" + dtModificado + ", cUsuarioR=" + cUsuarioR
 				+ "]";
+	}
+	
+	public String toJson() {
+		return "";
 	}
 
 }
