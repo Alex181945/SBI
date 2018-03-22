@@ -45,7 +45,7 @@ public class Login {
 		System.out.println(cUsuario);
 		System.out.println(cPassword);
 		
-		loginRest.validaUsuario(cUsuario, cPassword);
+		loginRest.validaUsuario(cUsuario, cPassword, model);
 		
 		return "index2";
 	}
