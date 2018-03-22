@@ -1,0 +1,142 @@
+<div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<div class="container">
+		
+		<form id="form1" th:action="@{/segValidaSesionP}" method="POST">
+			<div id="frmSolicitud" class="form-group row align-items-center">
+				<label for="frmSolicitud"
+					class="col-md-3 offset-md-3 text-center col-form-label">
+					<h5 class="lead">Tipo de Solicitud:</h5></label>
+				<div class="col-md-6">
+					<select class="form-control form-control-lg" id="frmSolicitud" name="frmSolicitud">
+					  <option value="Telefonico">Telefónico</option>
+					  	<option value="Correo">Correo</option>
+						<option value="Oficio">Oficio</option>
+						<option value="Tarjeta">Tarjeta</option>
+						<option value="Correo Electronico">Correo Electrónico</option>
+					</select>
+					<div id="errorU" class="form-control-feedback"></div>
+				</div>
+			</div>
+
+			<div id="solicitud" class="form-group row align-items-center">
+				<label for="solicitud"
+					class="col-md-3 offset-md-3 text-center col-form-label">
+					<h5 class="lead">Tipo de Servicio:</h5></label>
+				<div class="col-md-6">
+					<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud">
+						<option value="Red">Red</option>
+						<option value="Directorio Activo">Directorio Activo</option>
+						<option value="Correo Electrónico ">Correo Electrónico </option>
+						<option value="Software">Software</option>
+						<option value="Telefonía">Telefonía</option>
+						<option value="Seguridad">Seguridad</option>
+						<option value="Servicio a Bienes Informáticos">Servicio a Bienes Informáticos</option>
+					</select>
+				</div>
+			</div>
+
+			<div id="Servc" class="form-group row align-items-center">
+				<label for="Servc" class="col-md-3 offset-md-3 text-center col-form-label">
+					<h5 class="lead">Servicio solicitado:</h5></label>
+				<div class="col-md-6">
+					<select class="form-control form-control-lg" id="Servc" name="Servc">
+						<option value="Red">Red</option>
+					</select>
+				</div>
+			</div>
+
+			
+			<div id="inventario" class="form-group row align-items-center">
+					<label for="inventario" class="col-md-3 offset-md-3 text-center col-form-label">
+						<h5 class="lead">Numero de Inventario:</h5></label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="inventario" name="inventario" placeholder="N° Inventario" />
+					</div>
+			</div>
+			
+
+			<div id="usuario" class="form-group row align-items-center">
+					<label for="usuario" class="col-md-3 offset-md-3 text-center col-form-label">
+						<h5 class="lead">Usuario:</h5></label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="usuario" name="usuario" placeholder="Usuario" />
+					</div>
+			</div>
+
+			<div id="edificio" class="form-group row align-items-center">
+					<label for="edificio" class="col-md-3 offset-md-3 text-center col-form-label">
+						<h5 class="lead">Edificio:</h5></label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="edificio" name="edificio" placeholder="Edificio" />
+					</div>
+			</div>
+
+			<div id="piso" class="form-group row align-items-center">
+					<label for="piso" class="col-md-3 offset-md-3 text-center col-form-label">
+						<h5 class="lead">Piso:</h5></label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="piso" name="piso" placeholder="Piso" />
+					</div>
+			</div>
+
+			<div id="oficina" class="form-group row align-items-center">
+					<label for="oficina" class="col-md-3 offset-md-3 text-center col-form-label">
+						<h5 class="lead">Oficina:</h5></label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="oficina" name="oficina" placeholder="Oficina" />
+					</div>
+			</div>
+			
+			<div id="resguardante" class="form-group row align-items-center">
+					<label for="resguardante" class="col-md-3 offset-md-3 text-center col-form-label">
+						<h5 class="lead">Resguardante:</h5></label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="resguardante" name="resguardante" placeholder="Resguardante" />
+					</div>
+			</div>
+
+			<div id="solicitante" class="form-group row align-items-center">
+					<label for="solicitante" class="col-md-3 offset-md-3 text-center col-form-label">
+						<h5 class="lead">Solicitante:</h5></label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="solicitante" name="solicitante" placeholder="" />
+					</div>
+			</div>
+
+			<div id="Nvlcriticidad" class="form-group row align-items-center">
+					<label for="Nvlcriticidad" class="col-md-3 offset-md-3 text-center col-form-label">
+						<h5 class="lead">Nivel de criticidad:</h5></label>
+					<div class="col-md-6">
+						<select class="form-control form-control-lg" id="Nvlcriticidad" name="Nvlcriticidad">
+							<option value="Red">Alto</option>
+							<option value="Red">Medio</option>
+							<option value="Red">Bajo</option>
+						</select>
+					</div>
+			</div>
+
+			<div id="observns" class="form-group row align-items-center">
+					<label for="observns" class="col-md-3 offset-md-3 text-center col-form-label">
+						<h5 class="lead">Observaciones:</h5></label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="observns" name="observns" placeholder="" />
+					</div>
+			</div>
+			
+			<div>
+				<button type="button" class="btn btn-primary btn-lg btn-block"
+					onclick="segValidaForm();">Ingresar</button>
+			</div>
+		</form>
+
+	</div>
+</div>

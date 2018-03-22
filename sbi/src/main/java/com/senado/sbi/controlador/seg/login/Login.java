@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.senado.sbi.rest.seg.login.LoginRest;
+
 
 /**
  * 
@@ -26,7 +26,7 @@ import com.senado.sbi.rest.seg.login.LoginRest;
 public class Login {
 	
 	@Autowired
-	private LoginRest loginRest;
+	private Login loginRest;
 	
 	@GetMapping("/")
 	public String redirectLogin() {
