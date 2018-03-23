@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 
@@ -28,6 +29,9 @@ public class Login {
 	@Autowired
 	private Login loginRest;
 	
+	private final String INDEX = "index";
+	private final String INICIO = "ticket/incidencia";
+	
 	@GetMapping("/")
 	public String redirectLogin() {
 		return "redirect:/login";
@@ -39,15 +43,24 @@ public class Login {
 	}
 	
 	@PostMapping("/validausuario")
-	public String validaUsuario(@ModelAttribute("usuario") String cUsuario,
+	public ModelAndView validaUsuario(@ModelAttribute("usuario") String cUsuario,
 			@ModelAttribute("password") String cPassword, Model model) {
 		
 		System.out.println(cUsuario);
 		System.out.println(cPassword);
 		
-		loginRest.validaUsuario(cUsuario, cPassword, model);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(INDEX);
+		mav.addObject("MENU", false);
 		
-		return "index2";
+		if(cUsuario == "qqq" && cPassword == "qqq") {
+			mav.setViewName(INICIO);
+			mav.addObject("MENU", true);
+			return mav;
+		}
+		/*loginRest.validaUsuario(cUsuario, cPassword, model);*/
+		
+		return mav;
 	}
 
 }
