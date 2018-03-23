@@ -53,7 +53,8 @@ public class Login {
 		mav.setViewName(INDEX);
 		mav.addObject("MENU", false);
 		
-		if(cUsuario == "qqq" && cPassword == "qqq") {
+		if(cUsuario.equals("qqq") && cPassword.equals("qqq")) {
+			System.out.println("Entro en la sesion");
 			mav.setViewName(INICIO);
 			mav.addObject("MENU", true);
 			return mav;
