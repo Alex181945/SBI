@@ -49,10 +49,7 @@ public class Login {
 	
 	@PostMapping("/validausuario")
 	public String validaUsuario(@ModelAttribute("usuario") ULogin objUsuario, Model model) {
-		
-		System.out.println(objUsuario.getcUsuario());
-		System.out.println(objUsuario.getcContrasena());
-		
+
 		loginRest.validaUsuario(objUsuario);
 		
 		if(loginRest.islResultado()) {

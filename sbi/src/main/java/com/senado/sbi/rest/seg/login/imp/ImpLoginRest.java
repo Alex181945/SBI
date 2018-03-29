@@ -70,7 +70,7 @@ public class ImpLoginRest implements LoginRest {
 		
 		if(validacion[0].getlError() == 1) {
 			this.setResultadoLocal(true);
-			this.setMensajeLocal(validacion[0].getcSqlState()+","+validacion[0].getcError());
+			this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 		} else {
 			uLogin = mapper.convertValue(datos, ULogin[].class);
 			this.setResultadoLocal(false);
