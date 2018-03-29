@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.VariablesEntorno;
+import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.seg.login.LoginRest;
 
@@ -40,24 +41,18 @@ public class ImpLoginRest implements LoginRest {
 		/*JSON obtenido de forma plana*/
 		ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getURLWSD()+"validausuario", objUsuario, String.class);
 		
-		System.out.println("---Inicio---Resultados de la peticion---Inicio---");
-		System.out.println("GET All StatusCode = " + response.getStatusCode());
-		System.out.println("GET All Headers = " + response.getHeaders());
-		System.out.println("GET Body (object list): ");
-		System.out.println(response.hasBody());
-		System.out.println(response.getBody().toString());
-		System.out.println("---Fin---Resultados de la peticion---Fin---");
-		
 		ULogin[] uLogin = null;
+		Validacion[] validacion = null;
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode root = null;
 		try {
 			
 			root = mapper.readTree(response.getBody());
-			JsonNode validacion = root.path("validacion");
+			JsonNode validacionJs = root.path("validacion");
 			JsonNode datos = root.path("datos");
 			JsonNode token = root.path("token");
 			
+			validacion = mapper.convertValue(validacionJs, Validacion[].class);
 			uLogin = mapper.convertValue(datos, ULogin[].class);
 			
 		} catch (JsonProcessingException e) {
@@ -68,7 +63,10 @@ public class ImpLoginRest implements LoginRest {
 			e.printStackTrace();
 		}
 		
-		//System.out.println(uLogin.getClass().newInstance());
+		for (int i = 0; i < validacion.length; i++) {
+			validacion[i].getlError();
+		}
+		
 		for (int i = 0; i < uLogin.length; i++) {
 			System.out.println(uLogin[i].getcUsuario());
 		}
