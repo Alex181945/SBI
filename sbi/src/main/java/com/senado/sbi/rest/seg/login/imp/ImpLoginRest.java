@@ -26,14 +26,14 @@ import com.senado.sbi.rest.seg.login.LoginRest;
 public class ImpLoginRest implements LoginRest {
 
 	@Override
-	public void validaUsuario(String cUsuario, String cContrasena) {
+	public void validaUsuario(Usuario objUsuario) {
 		
 		RestTemplate restTemplate = new RestTemplate();
 		
 		/*ResponseEntity<Usuario[]> response =
 	            restTemplate.getForEntity(variables.getURLWSD() + "?cUsuario="+ cUsuario +"&cContrasena="+ cContrasena, Usuario[].class);*/
 		
-		ResponseEntity<Usuario[]> response = restTemplate.postForEntity(VariablesEntorno.getURLWSD()+"validausuario", cUsuario, Usuario[].class);
+		ResponseEntity<Usuario[]> response = restTemplate.postForEntity(VariablesEntorno.getURLWSD()+"validausuario", objUsuario, Usuario[].class);
 		
 		System.out.println();
 		System.out.println("GET All StatusCode = " + response.getStatusCode());

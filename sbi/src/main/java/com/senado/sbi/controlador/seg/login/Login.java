@@ -2,13 +2,13 @@ package com.senado.sbi.controlador.seg.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.senado.sbi.configuracion.Vistas;
+import com.senado.sbi.modelo.seg.login.Usuario;
 import com.senado.sbi.rest.seg.login.LoginRest;
 
 /**
@@ -36,20 +36,21 @@ public class Login {
 	}
 	
 	@GetMapping("/login")
-	public String login() {
+	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView();
-		
-		return Vistas.getLogin();
+		Usuario usuario = new Usuario();
+		mav.addObject("Usuario", usuario);
+		mav.setViewName(Vistas.getLogin());
+		return mav;
 	}
 	
 	@PostMapping("/validausuario")
-	public String validaUsuario(@ModelAttribute("usuario") String cUsuario,
-			@ModelAttribute("password") String cPassword, Model model) {
+	public String validaUsuario(@ModelAttribute("usuario") Usuario objUsuario) {
 		
-		System.out.println(cUsuario);
-		System.out.println(cPassword);
+		System.out.println(objUsuario.getcUsuario());
+		System.out.println(objUsuario.getcContrasena());
 		
-		loginRest.validaUsuario(cUsuario, cPassword);
+		loginRest.validaUsuario(objUsuario);
 		
 		return "index2";
 	}

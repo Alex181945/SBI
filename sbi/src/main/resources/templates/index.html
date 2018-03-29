@@ -2,14 +2,15 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 	<div class="container">
 
-		<form id="formLogin" th:action="@{/validausuario}" method="POST">
+		<form id="formLogin" th:action="@{/validausuario}" th:object="${cliente}" method="POST">
 			<div id="usuarioD" class="form-group row align-items-center">
 				<label for="usuario"
 					class="col-md-3 offset-md-3 text-center col-form-label">
 					<h5 class="lead">Usuario:</h5></label>
 				<div class="col-md-6">
 					<input type="text" class="form-control form-control-lg"
-						id="usuario" name="usuario" placeholder="Usuario" />
+						id="usuario" name="usuario" th:field="*{cUsuario}" th:value="${cUsuario}" 
+						placeholder="Usuario" />
 					<div id="errorU" class=""></div>
 				</div>
 			</div>
@@ -20,8 +21,8 @@
 					<h5 class="lead">Contrase&ntilde;a:</h5></label>
 				<div class="col-md-6">
 					<input type="password" class="form-control form-control-lg"
-						id="password" name="password" placeholder="Contrase&ntilde;a"
-						onkeypress="return validarUsuario(event)" />
+						id="password" name="password" th:field="*{cContrasena}" th:value="${cContrasena}" 
+						placeholder="Contrase&ntilde;a" onkeypress="return validarUsuario(event)" />
 					<div id="errorP" class=""></div>
 				</div>
 			</div>

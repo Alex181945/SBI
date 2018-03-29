@@ -1,5 +1,6 @@
 package com.senado.sbi.rest.seg.login;
 
+import com.senado.sbi.modelo.seg.login.Usuario;
 
 /**
  * 
@@ -17,7 +18,7 @@ package com.senado.sbi.rest.seg.login;
 
 public interface LoginRest {
 	
-	public void validaUsuario(String cUsuario, String cContrasena);
+	public void validaUsuario(Usuario objUsuario);
 	public Boolean getResult();
 	public String getMessage();
 
