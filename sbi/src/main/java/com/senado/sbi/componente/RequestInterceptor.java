@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.senado.sbi.configuracion.Vistas;
+import com.senado.sbi.modelo.seg.login.ULogin;
 
 @Component
 public class RequestInterceptor extends HandlerInterceptorAdapter {
@@ -31,17 +32,17 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 			return true;
 		}
 
-		// SessionUsu user = (SessionUsu) request.getSession().getAttribute("Usuario");
-
-		/*
-		 * if (user == null) {
-		 * 
-		 * response.sendRedirect("/"); return true; } else { return true; }
-		 */
-
-		//response.sendRedirect("/");
-
-		return true;
+		ULogin user = (ULogin) request.getSession().getAttribute("Usuario");
+		
+		if (user == null) {
+			response.sendRedirect("/"); 
+			return true;
+		} else { 
+			return true; 
+		}
+		
+		/*response.sendRedirect("/");
+		return true;*/
 
 	}
 
