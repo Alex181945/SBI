@@ -19,7 +19,11 @@ public class Vistas {
 	private static final String DEFAULT_LAYOUT = "plantilla/base";
 	private static final String DEFAULT_VIEW_ATTRIBUTE_NAME = "view";
 	private static final String LOGIN = "index";
+	private static final String REDIRECT_LOGIN = "redirect:/menu/inicio";
 	
+	public static String getRedirectLogin() {
+		return REDIRECT_LOGIN;
+	}
 	public static String getDefaultLayout() {
 		return DEFAULT_LAYOUT;
 	}

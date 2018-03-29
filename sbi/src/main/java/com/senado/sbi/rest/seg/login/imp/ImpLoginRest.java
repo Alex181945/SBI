@@ -1,8 +1,6 @@
 package com.senado.sbi.rest.seg.login.imp;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -32,6 +30,10 @@ import com.senado.sbi.rest.seg.login.LoginRest;
 
 @Component
 public class ImpLoginRest implements LoginRest {
+	
+	private Boolean resultadoLocal;
+	private String  mensajeLocal;
+	private ULogin  uLogin;
 
 	@Override
 	public void validaUsuario(ULogin objUsuario) {
@@ -63,26 +65,76 @@ public class ImpLoginRest implements LoginRest {
 			e.printStackTrace();
 		}
 		
-		for (int i = 0; i < validacion.length; i++) {
-			validacion[i].getlError();
+		if(validacion[0].getlError() == 1) {
+			this.setResultadoLocal(true);
+			this.setMensajeLocal(validacion[0].getcSqlState()+","+validacion[0].getcError());
+		} else {
+			this.setuLogin(uLogin);
 		}
 		
-		for (int i = 0; i < uLogin.length; i++) {
-			System.out.println(uLogin[i].getcUsuario());
-		}
-		
+	}
+	
+	@Override
+	public boolean islResultado() {
+		// TODO Auto-generated method stub
+		return this.getResultadoLocal();
 	}
 
 	@Override
-	public Boolean getResult() {
+	public String getMensaje() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.getMensajeLocal();
 	}
 
 	@Override
-	public String getMessage() {
+	public ULogin getUsuario() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.getuLogin();
 	}
 
+	
+	public Boolean getResultadoLocal() {
+		return resultadoLocal;
+	}
+
+	
+	public void setResultadoLocal(Boolean resultado) {
+		resultadoLocal = resultado;
+	}
+
+	
+	public String getMensajeLocal() {
+		return mensajeLocal;
+	}
+
+	
+	public void setMensajeLocal(String mensaje) {
+		mensajeLocal = mensaje;
+	}
+
+	public ULogin getuLogin() {
+		return uLogin;
+	}
+
+	public void setuLogin(ULogin[] uLoginArray) {
+		
+		ULogin uLogin = new ULogin();
+		uLogin.setcUsuario(uLoginArray[0].getcUsuario());
+		uLogin.setcContrasena(uLoginArray[0].getcContrasena());
+		uLogin.setcNombre(uLoginArray[0].getcNombre());
+		uLogin.setcPaterno(uLoginArray[0].getcPaterno());
+		uLogin.setcMaterno(uLoginArray[0].getcMaterno());
+		uLogin.setcPuesto(uLoginArray[0].getcPuesto());
+		uLogin.setcExtension(uLoginArray[0].getcExtension());
+		uLogin.setcCorreo(uLoginArray[0].getcCorreo());
+		uLogin.setlHonorarios(uLoginArray[0].getlHonorarios());
+		uLogin.setiPerfil(uLoginArray[0].getiPerfil());
+		uLogin.setlActivo(uLoginArray[0].getlActivo());
+		uLogin.setDtCreado(uLoginArray[0].getDtCreado());
+		uLogin.setDtModificado(uLoginArray[0].getDtModificado());
+		uLogin.setcUsuarioR(uLoginArray[0].getcUsuarioR());
+		
+		this.uLogin = uLogin;
+	}
+	
 }

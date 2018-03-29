@@ -19,7 +19,8 @@ import com.senado.sbi.modelo.seg.login.ULogin;
 public interface LoginRest {
 	
 	public void validaUsuario(ULogin objUsuario);
-	public Boolean getResult();
-	public String getMessage();
+	public boolean islResultado();
+	public String getMensaje();
+	public ULogin getUsuario();
 
 }
