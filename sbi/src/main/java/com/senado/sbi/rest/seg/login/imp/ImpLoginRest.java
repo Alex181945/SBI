@@ -47,15 +47,18 @@ public class ImpLoginRest implements LoginRest {
 		Validacion[] validacion = null;
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode root = null;
+		JsonNode validacionJs = null;
+		JsonNode datos = null;
+		JsonNode token = null;
+		
 		try {
 			
 			root = mapper.readTree(response.getBody());
-			JsonNode validacionJs = root.path("validacion");
-			JsonNode datos = root.path("datos");
-			JsonNode token = root.path("token");
+			validacionJs = root.path("validacion");
+			datos = root.path("datos");
+			token = root.path("token");
 			
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
-			uLogin = mapper.convertValue(datos, ULogin[].class);
 			
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
@@ -69,6 +72,7 @@ public class ImpLoginRest implements LoginRest {
 			this.setResultadoLocal(true);
 			this.setMensajeLocal(validacion[0].getcSqlState()+","+validacion[0].getcError());
 		} else {
+			uLogin = mapper.convertValue(datos, ULogin[].class);
 			this.setResultadoLocal(false);
 			this.setMensajeLocal("");
 			this.setuLogin(uLogin);
