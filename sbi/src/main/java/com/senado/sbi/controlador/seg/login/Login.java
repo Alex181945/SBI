@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.senado.sbi.configuracion.Vistas;
-import com.senado.sbi.modelo.seg.login.Usuario;
+import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.seg.login.LoginRest;
 
 /**
@@ -38,14 +38,14 @@ public class Login {
 	@GetMapping("/login")
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView();
-		Usuario usuario = new Usuario();
+		ULogin usuario = new ULogin();
 		mav.addObject("Usuario", usuario);
 		mav.setViewName(Vistas.getLogin());
 		return mav;
 	}
 	
 	@PostMapping("/validausuario")
-	public String validaUsuario(@ModelAttribute("usuario") Usuario objUsuario) {
+	public String validaUsuario(@ModelAttribute("usuario") ULogin objUsuario) {
 		
 		System.out.println(objUsuario.getcUsuario());
 		System.out.println(objUsuario.getcContrasena());

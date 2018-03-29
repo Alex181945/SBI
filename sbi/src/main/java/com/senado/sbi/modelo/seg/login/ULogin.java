@@ -3,7 +3,7 @@ package com.senado.sbi.modelo.seg.login;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Usuario {
+public class ULogin {
 
 	private String cUsuario;
 	private String cContrasena;

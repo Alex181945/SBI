@@ -10,7 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.VariablesEntorno;
-import com.senado.sbi.modelo.seg.login.Usuario;
+import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.seg.login.LoginRest;
 
 /**
@@ -31,7 +31,7 @@ import com.senado.sbi.rest.seg.login.LoginRest;
 public class ImpLoginRest implements LoginRest {
 
 	@Override
-	public void validaUsuario(Usuario objUsuario) {
+	public void validaUsuario(ULogin objUsuario) {
 		
 		RestTemplate restTemplate = new RestTemplate();
 		
@@ -61,6 +61,7 @@ public class ImpLoginRest implements LoginRest {
 		JsonNode datos = root.path("datos");
 		JsonNode token = root.path("token");
 		System.out.println(datos.toString());
+		
 		
 		
 	}
