@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.rest.seg.login.LoginRest;
 
 /**
@@ -35,7 +36,7 @@ public class Login {
 	
 	@GetMapping("/login")
 	public String login() {
-		return "index";
+		return Vistas.getLogin();
 	}
 	
 	@PostMapping("/validausuario")

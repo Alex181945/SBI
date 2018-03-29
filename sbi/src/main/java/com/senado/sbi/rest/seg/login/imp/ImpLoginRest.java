@@ -25,17 +25,15 @@ import com.senado.sbi.rest.seg.login.LoginRest;
 @Component
 public class ImpLoginRest implements LoginRest {
 
-	@SuppressWarnings("static-access")
 	@Override
 	public void validaUsuario(String cUsuario, String cContrasena) {
 		
 		RestTemplate restTemplate = new RestTemplate();
-		VariablesEntorno variables = new VariablesEntorno();
 		
 		/*ResponseEntity<Usuario[]> response =
 	            restTemplate.getForEntity(variables.getURLWSD() + "?cUsuario="+ cUsuario +"&cContrasena="+ cContrasena, Usuario[].class);*/
 		
-		ResponseEntity<Usuario[]> response = restTemplate.postForEntity(variables.getURLWSD()+"validausuario", cUsuario, Usuario[].class);
+		ResponseEntity<Usuario[]> response = restTemplate.postForEntity(VariablesEntorno.getURLWSD()+"validausuario", cUsuario, Usuario[].class);
 		
 		System.out.println();
 		System.out.println("GET All StatusCode = " + response.getStatusCode());

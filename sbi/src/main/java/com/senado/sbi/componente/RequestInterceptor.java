@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.senado.sbi.configuracion.Vistas;
+
 @Component
 public class RequestInterceptor extends HandlerInterceptorAdapter {
 
@@ -18,8 +20,6 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 	 * application in some later article
 	 */
 	private static final Log LOG = LogFactory.getLog(RequestInterceptor.class);
-	private static final String DEFAULT_LAYOUT = "/plantilla/base";
-	private static final String DEFAULT_VIEW_ATTRIBUTE_NAME = "view";
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
@@ -55,8 +55,8 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 		if (isRedirectOrForward(originalViewName)) {
 			return;
 		}
-		modelAndView.setViewName(DEFAULT_LAYOUT);
-		modelAndView.addObject(DEFAULT_VIEW_ATTRIBUTE_NAME, originalViewName);
+		modelAndView.setViewName(Vistas.getDefaultLayout());
+		modelAndView.addObject(Vistas.getDefaultViewAttributeName(), originalViewName);
 	}
 
 	private boolean isRedirectOrForward(String viewName) {
