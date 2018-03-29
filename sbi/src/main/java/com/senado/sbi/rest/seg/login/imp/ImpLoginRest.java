@@ -30,17 +30,16 @@ public class ImpLoginRest implements LoginRest {
 		
 		RestTemplate restTemplate = new RestTemplate();
 		
-		/*ResponseEntity<Usuario[]> response =
-	            restTemplate.getForEntity(variables.getURLWSD() + "?cUsuario="+ cUsuario +"&cContrasena="+ cContrasena, Usuario[].class);*/
+		/*JSON obtenido de forma plana*/
+		ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getURLWSD()+"validausuario", objUsuario, String.class);
 		
-		ResponseEntity<Usuario[]> response = restTemplate.postForEntity(VariablesEntorno.getURLWSD()+"validausuario", objUsuario, Usuario[].class);
-		
-		System.out.println();
+		System.out.println("---Inicio---Resultados de la peticion---Inicio---");
 		System.out.println("GET All StatusCode = " + response.getStatusCode());
 		System.out.println("GET All Headers = " + response.getHeaders());
 		System.out.println("GET Body (object list): ");
 		System.out.println(response.hasBody());
 		System.out.println(response.getBody().toString());
+		System.out.println("---Fin---Resultados de la peticion---Fin---");
 		
 	}
 
