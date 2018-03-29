@@ -53,11 +53,12 @@ public class Login {
 		System.out.println(objUsuario.getcUsuario());
 		System.out.println(objUsuario.getcContrasena());
 		
+		loginRest.validaUsuario(objUsuario);
+		
 		if(loginRest.islResultado()) {
 			model.addAttribute("error", loginRest.getMensaje());
 			return Vistas.getLogin();
 		}else {
-			loginRest.validaUsuario(objUsuario);
 			model.addAttribute("Usuario", loginRest.getUsuario());
 		}
 		
