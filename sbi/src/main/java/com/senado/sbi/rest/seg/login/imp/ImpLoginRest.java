@@ -1,9 +1,14 @@
 package com.senado.sbi.rest.seg.login.imp;
 
+import java.io.IOException;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.seg.login.Usuario;
 import com.senado.sbi.rest.seg.login.LoginRest;
@@ -40,6 +45,23 @@ public class ImpLoginRest implements LoginRest {
 		System.out.println(response.hasBody());
 		System.out.println(response.getBody().toString());
 		System.out.println("---Fin---Resultados de la peticion---Fin---");
+		
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode root = null;
+		try {
+			root = mapper.readTree(response.getBody());
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		JsonNode validacion = root.path("validacion");
+		JsonNode datos = root.path("datos");
+		JsonNode token = root.path("token");
+		System.out.println(datos.toString());
+		
 		
 	}
 
