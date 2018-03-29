@@ -40,9 +40,6 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 		} else { 
 			return true; 
 		}
-		
-		/*response.sendRedirect("/");
-		return true;*/
 
 	}
 
