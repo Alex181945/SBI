@@ -69,6 +69,8 @@ public class ImpLoginRest implements LoginRest {
 			this.setResultadoLocal(true);
 			this.setMensajeLocal(validacion[0].getcSqlState()+","+validacion[0].getcError());
 		} else {
+			this.setResultadoLocal(false);
+			this.setMensajeLocal("");
 			this.setuLogin(uLogin);
 		}
 		
