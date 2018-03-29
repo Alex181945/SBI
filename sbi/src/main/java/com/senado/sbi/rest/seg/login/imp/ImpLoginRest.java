@@ -1,6 +1,8 @@
 package com.senado.sbi.rest.seg.login.imp;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -46,10 +48,18 @@ public class ImpLoginRest implements LoginRest {
 		System.out.println(response.getBody().toString());
 		System.out.println("---Fin---Resultados de la peticion---Fin---");
 		
+		ULogin[] uLogin = null;
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode root = null;
 		try {
+			
 			root = mapper.readTree(response.getBody());
+			JsonNode validacion = root.path("validacion");
+			JsonNode datos = root.path("datos");
+			JsonNode token = root.path("token");
+			
+			uLogin = mapper.convertValue(datos, ULogin[].class);
+			
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,12 +67,11 @@ public class ImpLoginRest implements LoginRest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JsonNode validacion = root.path("validacion");
-		JsonNode datos = root.path("datos");
-		JsonNode token = root.path("token");
-		System.out.println(datos.toString());
 		
-		
+		//System.out.println(uLogin.getClass().newInstance());
+		for (int i = 0; i < uLogin.length; i++) {
+			System.out.println(uLogin[i].getcUsuario());
+		}
 		
 	}
 
