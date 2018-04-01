@@ -35,7 +35,7 @@ public class Login {
 	
 	@GetMapping("/")
 	public String redirectLogin() {
-		return "redirect:/login";
+		return Vistas.getRedirectLogin();
 	}
 	
 	@GetMapping("/login")
@@ -59,7 +59,7 @@ public class Login {
 			model.addAttribute("Usuario", loginRest.getUsuario());
 		}
 		
-		return Vistas.getRedirectLogin();
+		return Vistas.getRedirectMenu();
 	}
 
 }

@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="#" th:href="@{/sweetalert/css/sweetalert.css}"/>
     <link rel="stylesheet" href="#" th:href="@{/assets/css/tema.css}"/>
 
-    <title>SBI</title>
+    <title th:if="${titulo != null}" th:text="${titulo}"></title>
+    <title th:unless="${titulo != null}" th:text="SBI"></title>
   </head>
   <body>
   

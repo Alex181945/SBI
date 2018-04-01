@@ -63,9 +63,13 @@ public class ImpLoginRest implements LoginRest {
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: JsonProcessingException en " + this.getClass().getEnclosingMethod().getName());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: IOException en " + this.getClass().getEnclosingMethod().getName());
 		}
 		
 		if(validacion[0].getlError() == 1) {
@@ -75,7 +79,7 @@ public class ImpLoginRest implements LoginRest {
 			uLogin = mapper.convertValue(datos, ULogin[].class);
 			this.setResultadoLocal(false);
 			this.setMensajeLocal("");
-			this.setuLogin(uLogin);
+			this.setuLogin(uLogin, token.asText());
 		}
 		
 	}
@@ -122,11 +126,12 @@ public class ImpLoginRest implements LoginRest {
 		return uLogin;
 	}
 
-	public void setuLogin(ULogin[] uLoginArray) {
+	public void setuLogin(ULogin[] uLoginArray, String cToken) {
 		
 		ULogin uLogin = new ULogin();
 		uLogin.setcUsuario(uLoginArray[0].getcUsuario());
 		uLogin.setcContrasena(uLoginArray[0].getcContrasena());
+		uLogin.setcToken(cToken);
 		uLogin.setcNombre(uLoginArray[0].getcNombre());
 		uLogin.setcPaterno(uLoginArray[0].getcPaterno());
 		uLogin.setcMaterno(uLoginArray[0].getcMaterno());
