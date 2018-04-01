@@ -41,7 +41,7 @@ public class ImpLoginRest implements LoginRest {
 		RestTemplate restTemplate = new RestTemplate();
 		
 		/*JSON obtenido de forma plana*/
-		ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getURLWSP()+"validausuario", objUsuario, String.class);
+		ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getURLWSD()+"validausuario", objUsuario, String.class);
 		
 		ULogin[] uLogin = null;
 		Validacion[] validacion = null;
