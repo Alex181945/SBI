@@ -1,6 +1,7 @@
 package com.senado.sbi.rest.seg.login;
 
 import com.senado.sbi.modelo.seg.login.ULogin;
+import com.senado.sbi.modelo.seg.login.UsuarioTemp;
 
 /**
  * 
@@ -18,7 +19,7 @@ import com.senado.sbi.modelo.seg.login.ULogin;
 
 public interface LoginRest {
 	
-	public void validaUsuario(ULogin objUsuario);
+	public void validaUsuario(UsuarioTemp objUsuario);
 	public boolean islResultado();
 	public String getMensaje();
 	public ULogin getUsuario();

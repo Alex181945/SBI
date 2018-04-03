@@ -34,7 +34,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 
 		ULogin user = (ULogin) request.getSession().getAttribute("Usuario");
 		
-		if (user == null) {
+		if(user == null) {
 			response.sendRedirect("/"); 
 			return true;
 		} else { 

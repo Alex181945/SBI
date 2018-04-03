@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.modelo.seg.login.ULogin;
+import com.senado.sbi.modelo.seg.login.UsuarioTemp;
 import com.senado.sbi.rest.seg.login.LoginRest;
 
 /**
@@ -36,7 +37,7 @@ public class ImpLoginRest implements LoginRest {
 	private ULogin  uLogin;
 
 	@Override
-	public void validaUsuario(ULogin objUsuario) {
+	public void validaUsuario(UsuarioTemp objUsuario) {
 		
 		RestTemplate restTemplate = new RestTemplate();
 		
