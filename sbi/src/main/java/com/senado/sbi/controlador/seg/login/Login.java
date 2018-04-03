@@ -6,9 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.senado.sbi.configuracion.Vistas;
+import com.senado.sbi.modelo.seg.login.ULogin;
+import com.senado.sbi.rest.seg.login.LoginRest;
 
 /**
  * 
@@ -24,44 +27,39 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
+@SessionAttributes("Usuario")
 public class Login {
 	
 	@Autowired
-	private Login loginRest;
-	
-	private final String INDEX = "index";
-	private final String INICIO = "ticket/incidencia";
+	private LoginRest loginRest;
 	
 	@GetMapping("/")
 	public String redirectLogin() {
-		return "redirect:/login";
+		return Vistas.getRedirectLogin();
 	}
 	
 	@GetMapping("/login")
-	public String login() {
-		return "index";
+	public ModelAndView login() {
+		ModelAndView mav = new ModelAndView();
+		ULogin usuario = new ULogin();
+		mav.addObject("Usuario", usuario);
+		mav.setViewName(Vistas.getLogin());
+		return mav;
 	}
 	
 	@PostMapping("/validausuario")
-	public ModelAndView validaUsuario(@ModelAttribute("usuario") String cUsuario,
-			@ModelAttribute("password") String cPassword, Model model) {
+	public String validaUsuario(@ModelAttribute("usuario") ULogin objUsuario, Model model) {
+
+		loginRest.validaUsuario(objUsuario);
 		
-		System.out.println(cUsuario);
-		System.out.println(cPassword);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(INDEX);
-		mav.addObject("MENU", false);
-		
-		if(cUsuario.equals("qqq") && cPassword.equals("qqq")) {
-			System.out.println("Entro en la sesion");
-			mav.setViewName(INICIO);
-			mav.addObject("MENU", true);
-			return mav;
+		if(loginRest.islResultado()) {
+			model.addAttribute("error", loginRest.getMensaje());
+			return Vistas.getLogin();
+		}else {
+			model.addAttribute("Usuario", loginRest.getUsuario());
 		}
-		/*loginRest.validaUsuario(cUsuario, cPassword, model);*/
 		
-		return mav;
+		return Vistas.getRedirectMenu();
 	}
 
 }
