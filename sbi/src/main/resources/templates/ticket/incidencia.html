@@ -1,21 +1,22 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<div class="container">
+
+		<h3>Registro</h3>
 		
 		<form id="form1" th:action="@{/segValidaSesionP}" method="POST">
-			<div id="frmSolicitud" class="form-group row align-items-center">
-				<label for="frmSolicitud"
-					class="col-md-3 offset-md-3 text-center col-form-label">
-					<h5 class="lead">Tipo de Solicitud:</h5></label>
+			<div id="prue" class="form-group row align-items-center">
+				<label id="Uno" for="frmSolicitud" class="col-md-3 offset-md-3 text-center col-form-label">
+					<h5  class="lead" >Tipo de Solicitud:</h5></label>
 				<div class="col-md-6">
-					<select class="form-control form-control-lg" id="frmSolicitud" name="frmSolicitud">
+					<select  id ="Dos" class="form-control form-control-lg" name="frmSolicitud">
 					  <option value="Telefonico">Telefónico</option>
 					  	<option value="Correo">Correo</option>
 						<option value="Oficio">Oficio</option>
 						<option value="Tarjeta">Tarjeta</option>
 						<option value="Correo Electronico">Correo Electrónico</option>
 					</select>
-					<div id="errorU" class="form-control-feedback"></div>
+					<div class="form-control-feedback"></div>
 				</div>
 			</div>
 
@@ -137,6 +138,7 @@
 					onclick="segValidaForm();">Ingresar</button>
 			</div>
 		</form>
+		
 
 	</div>
 </div>
