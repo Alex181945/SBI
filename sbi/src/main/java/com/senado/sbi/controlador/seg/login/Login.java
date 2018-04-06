@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.senado.sbi.configuracion.Vistas;
-import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.modelo.seg.login.UsuarioTemp;
 import com.senado.sbi.rest.seg.login.LoginRest;
 
@@ -41,11 +39,8 @@ public class Login {
 	}
 	
 	@GetMapping("/login")
-	public ModelAndView login() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(Vistas.getLogin());
-		mav.addObject("Usuario", new ULogin());
-		return mav;
+	public String login() {
+		return Vistas.getLogin();
 	}
 	
 	@PostMapping("/validausuario")
@@ -57,11 +52,12 @@ public class Login {
 		objUsuario.setcContrasena(cPassword);
 		
 		loginRest.validaUsuario(objUsuario);
-		model.addAttribute("Usuario", loginRest.getUsuario());
 		
 		if(loginRest.islResultado()) {
 			model.addAttribute("error", loginRest.getMensaje());
-			return Vistas.getLogin();
+			return Vistas.getRedirectLogin();
+		}else {
+			model.addAttribute("Usuario", loginRest.getUsuario());
 		}
 		
 		return Vistas.getRedirectMenu();

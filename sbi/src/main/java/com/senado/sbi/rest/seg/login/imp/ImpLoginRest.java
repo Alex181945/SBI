@@ -129,6 +129,10 @@ public class ImpLoginRest implements LoginRest {
 
 	public void setuLogin(ULogin[] uLoginArray, String cToken) {
 		
+		/*if(cToken) {
+			
+		}*/
+		
 		ULogin uLogin = new ULogin();
 		uLogin.setcUsuario(uLoginArray[0].getcUsuario());
 		uLogin.setcContrasena(uLoginArray[0].getcContrasena());
