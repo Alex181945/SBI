@@ -1,12 +1,13 @@
 package com.senado.sbi.controlador.seg.login;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.senado.sbi.configuracion.Vistas;
@@ -27,7 +28,6 @@ import com.senado.sbi.rest.seg.login.LoginRest;
 
 
 @Controller
-@SessionAttributes("Usuario")
 public class Login {
 	
 	@Autowired
@@ -45,7 +45,7 @@ public class Login {
 	
 	@PostMapping("/validausuario")
 	public String validaUsuario(@ModelAttribute("usuario") String cUsuario,
-			@ModelAttribute("password") String cPassword, Model model) {
+			@ModelAttribute("password") String cPassword, Model model, HttpServletRequest request) {
 		
 		UsuarioTemp objUsuario = new UsuarioTemp();
 		objUsuario.setcUsuario(cUsuario);
@@ -55,9 +55,9 @@ public class Login {
 		
 		if(loginRest.islResultado()) {
 			model.addAttribute("error", loginRest.getMensaje());
-			return Vistas.getRedirectLogin();
+			return Vistas.getLogin();
 		}else {
-			model.addAttribute("Usuario", loginRest.getUsuario());
+			request.getSession().setAttribute("Usuario", loginRest.getUsuario());
 		}
 		
 		return Vistas.getRedirectMenu();

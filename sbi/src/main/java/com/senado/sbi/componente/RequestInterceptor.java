@@ -28,7 +28,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 		String cURL = request.getRequestURI();
 		request.setAttribute("iniTiempo", System.currentTimeMillis());
 
-		if (!cURL.equals("/") && !cURL.equals("/login")) {
+		if (!cURL.equals("/") && !cURL.equals("/login") && !cURL.equals("/validausuario")) {
 			
 			ULogin user = (ULogin) request.getSession().getAttribute("Usuario");
 			
