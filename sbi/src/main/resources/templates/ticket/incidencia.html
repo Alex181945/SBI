@@ -6,7 +6,9 @@
 		
 		<form id="form1" th:action="@{/segValidaSesionP}" method="POST">
 			<div id="prue" class="form-group row align-items-center">
-				<label id="Uno" for="frmSolicitud" class="col-md-3 offset-md-3 text-center col-form-label">
+
+		<div class="row">
+				<label id="Uno" for="frmSolicitud" class="col-md-6">
 					<h5  class="lead" >Tipo de Solicitud:</h5></label>
 				<div class="col-md-6">
 					<select  id ="Dos" class="form-control form-control-lg" name="frmSolicitud">
@@ -16,9 +18,10 @@
 						<option value="Tarjeta">Tarjeta</option>
 						<option value="Correo Electronico">Correo Electrónico</option>
 					</select>
-					<div class="form-control-feedback"></div>
 				</div>
 			</div>
+
+		</div>
 
 			<div id="solicitud" class="form-group row align-items-center">
 				<label for="solicitud"
