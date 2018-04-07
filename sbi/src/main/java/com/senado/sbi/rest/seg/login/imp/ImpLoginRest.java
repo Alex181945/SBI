@@ -65,15 +65,21 @@ public class ImpLoginRest implements LoginRest {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 			this.setResultadoLocal(true);
-			this.setMensajeLocal("Error: JsonProcessingException en " + this.getClass().getEnclosingMethod().getName());
+			this.setMensajeLocal("Error: JsonProcessingException en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+			return;
 		} catch (IOException e) {
 			e.printStackTrace();
 			this.setResultadoLocal(true);
-			this.setMensajeLocal("Error: IOException en " + this.getClass().getEnclosingMethod().getName());
+			this.setMensajeLocal("Error: IOException en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+			return;
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.setResultadoLocal(true);
-			this.setMensajeLocal("Error: Exception en " + this.getClass().getEnclosingMethod().getName());
+			this.setMensajeLocal("Error: Exception en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+			return;
 		}
 		
 		if(validacion[0].getlError() == 1) {
