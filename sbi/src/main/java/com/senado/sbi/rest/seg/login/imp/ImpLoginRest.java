@@ -39,10 +39,7 @@ public class ImpLoginRest implements LoginRest {
 	@Override
 	public void validaUsuario(UsuarioTemp objUsuario) {
 		
-		RestTemplate restTemplate = new RestTemplate();
-		
-		/*JSON obtenido de forma plana*/
-		ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getURLWSD()+"validausuario", objUsuario, String.class);
+		RestTemplate restTemplate = new RestTemplate();		
 		
 		ULogin[] uLogin = null;
 		Validacion[] validacion = null;
@@ -54,6 +51,10 @@ public class ImpLoginRest implements LoginRest {
 		
 		try {
 			
+			/*JSON obtenido de forma plana*/
+			ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getURLWSD() + "validausuario",
+					objUsuario, String.class);
+			
 			root = mapper.readTree(response.getBody());
 			validacionJs = root.path("validacion");
 			datos = root.path("datos");
@@ -62,15 +63,17 @@ public class ImpLoginRest implements LoginRest {
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
 			
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			this.setResultadoLocal(true);
 			this.setMensajeLocal("Error: JsonProcessingException en " + this.getClass().getEnclosingMethod().getName());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			this.setResultadoLocal(true);
 			this.setMensajeLocal("Error: IOException en " + this.getClass().getEnclosingMethod().getName());
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: Exception en " + this.getClass().getEnclosingMethod().getName());
 		}
 		
 		if(validacion[0].getlError() == 1) {
