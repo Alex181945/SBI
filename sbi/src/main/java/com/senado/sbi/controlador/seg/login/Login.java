@@ -60,7 +60,7 @@ public class Login {
 			request.getSession().setAttribute("Usuario", loginRest.getUsuario());
 		}
 		
-		return Vistas.getRedirectMenu();
+		return Vistas.getRedirectModulo();
 	}
 	
 	@GetMapping("/logout")
