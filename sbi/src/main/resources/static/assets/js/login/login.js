@@ -70,6 +70,7 @@ function passwordValor(){
 }
 
 function enviaInfo(){
+	modal();
 	if(segValidaForm()){
 		$('#formLogin').submit();
 	}

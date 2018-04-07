@@ -23,3 +23,18 @@ h5.lead{
 	color: #F7F6F2 !important;
 }
 /*Fin Inicio de Sesion*/
+
+/*Modal del spinner de carga*/
+.bd-example-modal-lg .modal-dialog {
+	display: table;
+	position: relative;
+	margin: 0 auto;
+	top: calc(50% - 24px);
+}
+
+.bd-example-modal-lg .modal-dialog .modal-content {
+	background-color: transparent;
+	border: none;
+	color: #ffffff;
+}
+/*Fin Spinner*/
