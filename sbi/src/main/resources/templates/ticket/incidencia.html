@@ -56,73 +56,80 @@
 		<div class="row"> <!-- row fila 2-->
 
 			<div id="inventario" class="row col-md-4">
-					<label for="inventario" class="col-md-6">
+					<label for="inventario" class="col-md-4">
 						<h5 class="lead">Numero de Inventario:</h5></label>
-					<div class="col-md-8 ">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="inventario" name="inventario" placeholder="N° Inventario" />
 					</div>
 			</div>
 			
 
-			<div id="usuario" class="col-md-4">
+			<div id="usuario" class="row col-md-4">
 					<label for="usuario" class="col-md-4">
 						<h5 class="lead">Usuario:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="usuario" name="usuario" placeholder="Usuario" />
 					</div>
 			</div>
 
-			<div id="edificio" class="form-group row align-items-center">
-					<label for="edificio" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="edificio" class="row col-md-4">
+					<label for="edificio" class="col-md-4">
 						<h5 class="lead">Edificio:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="edificio" name="edificio" placeholder="Edificio" />
 					</div>
 			</div>
 		</div> <!-- row fila 2 final -->
-			<div id="piso" class="form-group row align-items-center">
-					<label for="piso" class="col-md-3 offset-md-3 text-center col-form-label">
+
+		<div class="row"> <!-- Row fila 3 inicio-->
+			<div id="piso" class="row col-md-4">
+					<label for="piso" class="col-md-4 col-form-label">
 						<h5 class="lead">Piso:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="piso" name="piso" placeholder="Piso" />
 					</div>
 			</div>
 
-			<div id="oficina" class="form-group row align-items-center">
-					<label for="oficina" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="oficina" class="row col-md-4">
+					<label for="oficina" class="col-md-4 col-form-label">
 						<h5 class="lead">Oficina:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="oficina" name="oficina" placeholder="Oficina" />
 					</div>
 			</div>
 			
-			<div id="resguardante" class="form-group row align-items-center">
-					<label for="resguardante" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="resguardante" class="row col-md-4">
+					<label for="resguardante" class="col-md-5">
 						<h5 class="lead">Resguardante:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-7">
 						<input type="text" class="form-control form-control-lg"
 							id="resguardante" name="resguardante" placeholder="Resguardante" />
 					</div>
 			</div>
+		</div> <!-- Row final 3 final -->
 
-			<div id="solicitante" class="form-group row align-items-center">
-					<label for="solicitante" class="col-md-3 offset-md-3 text-center col-form-label">
+		<br></br>
+
+		<div class="row">
+
+			<div id="solicitante" class="row col-md-4">
+					<label for="solicitante" class="col-md-4 col-form-label">
 						<h5 class="lead">Solicitante:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="solicitante" name="solicitante" placeholder="" />
 					</div>
 			</div>
 
-			<div id="Nvlcriticidad" class="form-group row align-items-center">
-					<label for="Nvlcriticidad" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="Nvlcriticidad" class="row col-md-4">
+					<label for="Nvlcriticidad" class="col-md-4 col-form-label">
 						<h5 class="lead">Nivel de criticidad:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<select class="form-control form-control-lg" id="Nvlcriticidad" name="Nvlcriticidad">
 							<option value="Red">Alto</option>
 							<option value="Red">Medio</option>
@@ -131,10 +138,10 @@
 					</div>
 			</div>
 
-			<div id="observns" class="form-group row align-items-center">
-					<label for="observns" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="observns" class="row col-md-4">
+					<label for="observns" class="col-md-5 col-form-label">
 						<h5 class="lead">Observaciones:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-7">
 						<input type="text" class="form-control form-control-lg"
 							id="observns" name="observns" placeholder="" />
 					</div>
@@ -144,6 +151,7 @@
 				<button type="button" class="btn btn-primary btn-lg btn-block"
 					onclick="segValidaForm();">Ingresar</button>
 			</div>
+		</div>
 		</form>
 		
 
