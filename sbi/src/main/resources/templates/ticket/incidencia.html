@@ -5,13 +5,13 @@
 		<h3>Registro</h3>
 		
 		<form id="form1" th:action="@{/segValidaSesionP}" method="POST">
-			<div id="prue" class="form-group row align-items-center">
 
 		<div class="row">
-				<label id="Uno" for="frmSolicitud" class="col-md-6">
+			<div id="prue" class="row col-md-4">
+				<label id="Uno" for="frmSolicitud" class="col-md-4">
 					<h5  class="lead" >Tipo de Solicitud:</h5></label>
-				<div class="col-md-6">
-					<select  id ="Dos" class="form-control form-control-lg" name="frmSolicitud">
+				<div class="col-md-8">
+					<select  id ="Dos" name="frmSolicitud" class="form-control form-control-lg">
 					  <option value="Telefonico">Telefónico</option>
 					  	<option value="Correo">Correo</option>
 						<option value="Oficio">Oficio</option>
@@ -21,13 +21,12 @@
 				</div>
 			</div>
 
-		</div>
 
-			<div id="solicitud" class="form-group row align-items-center">
+			<div id="solicitud" class="row col-md-4">
 				<label for="solicitud"
-					class="col-md-3 offset-md-3 text-center col-form-label">
+					class="col-md-4">
 					<h5 class="lead">Tipo de Servicio:</h5></label>
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud">
 						<option value="Red">Red</option>
 						<option value="Directorio Activo">Directorio Activo</option>
@@ -39,30 +38,35 @@
 					</select>
 				</div>
 			</div>
-
-			<div id="Servc" class="form-group row align-items-center">
-				<label for="Servc" class="col-md-3 offset-md-3 text-center col-form-label">
+		
+			<div id="Servc" class="row col-md-4">
+				<label for="Servc" class="col-md-4">
 					<h5 class="lead">Servicio solicitado:</h5></label>
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<select class="form-control form-control-lg" id="Servc" name="Servc">
 						<option value="Red">Red</option>
 					</select>
 				</div>
 			</div>
 
-			
-			<div id="inventario" class="form-group row align-items-center">
-					<label for="inventario" class="col-md-3 offset-md-3 text-center col-form-label">
+		</div> <!-- row fila 1 final  -->
+
+		<br></br>
+
+		<div class="row"> <!-- row fila 2-->
+
+			<div id="inventario" class="row col-md-4">
+					<label for="inventario" class="col-md-6">
 						<h5 class="lead">Numero de Inventario:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8 ">
 						<input type="text" class="form-control form-control-lg"
 							id="inventario" name="inventario" placeholder="N° Inventario" />
 					</div>
 			</div>
 			
 
-			<div id="usuario" class="form-group row align-items-center">
-					<label for="usuario" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="usuario" class="col-md-4">
+					<label for="usuario" class="col-md-4">
 						<h5 class="lead">Usuario:</h5></label>
 					<div class="col-md-6">
 						<input type="text" class="form-control form-control-lg"
@@ -78,7 +82,7 @@
 							id="edificio" name="edificio" placeholder="Edificio" />
 					</div>
 			</div>
-
+		</div> <!-- row fila 2 final -->
 			<div id="piso" class="form-group row align-items-center">
 					<label for="piso" class="col-md-3 offset-md-3 text-center col-form-label">
 						<h5 class="lead">Piso:</h5></label>
