@@ -1,4 +1,4 @@
-package com.senado.sbi.controlador.menu;
+package com.senado.sbi.controlador.inicio;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,7 @@ import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.modelo.seg.login.ULogin;
 
 @Controller
-public class Menu {
+public class MenuPrincipal {
 	
 	@GetMapping("/menu/inicio")
 	public ModelAndView Inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
