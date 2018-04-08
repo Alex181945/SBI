@@ -108,7 +108,7 @@
 						<h5 class="lead">Resguardante:</h5></label>
 					<div class="col-md-7">
 						<input type="text" class="form-control form-control-lg"
-							id="resguardante" name="resguardante" placeholder="Resguardante" />
+							id="resguardante" name="resguardante" placeholder="Resguardante"/>
 					</div>
 			</div>
 		</div> <!-- Row final 3 final -->
@@ -138,22 +138,104 @@
 					</div>
 			</div>
 
-			<div id="observns" class="row col-md-4">
-					<label for="observns" class="col-md-5 col-form-label">
-						<h5 class="lead">Observaciones:</h5></label>
-					<div class="col-md-7">
+			
+		</div> <!-- fila 4 final-->
+
+		<div class="row"> <!-- fila 5 Inicio-->
+			
+				<legend> <h5 class="lead">Cuentas de correo electrónico:</h5> </legend>
+
+			<div id="UsuaMail" class="row col-md-4">
+					<label for="UsuaMail" class="col-md-4 col-form-label">
+						<h5 class="lead">N° de Usuarios:</h5></label>
+					<div class="col-md-8">
+							<input type="text" class="form-control form-control-lg"
+							 name="numUsuarios" placeholder=""/>
+					</div>
+			</div>
+
+			<div id="AreaMail" class="row col-md-4">
+					<label for="AreaMail" class="col-md-4 col-form-label">
+						<h5 class="lead">Area:</h5></label>
+					<div class="col-md-8">
+						<select class="form-control form-control-lg">
+							<option value="Red">Area1</option>
+							<option value="Red">Area2</option>
+							<option value="Red">Area3</option>
+						</select>
+					</div>
+			</div>
+
+			<div id="NumEmppleado" class="row col-md-4">
+					<label for="NumEmppleado" class="col-md-4 col-form-label">
+						<h5 class="lead">N° de Empleado:</h5></label>
+					<div class="col-md-8">
+							<input type="text" class="form-control form-control-lg"
+							 name="NumEmppleado" placeholder=""/>
+					</div>
+			</div>	
+		</div> <!-- fila 5 Final-->
+
+		<div class="row"> <!-- fila 6 Inicio-->
+			
+			<div id="TipoNom" class="row col-md-4">
+					<label for="TipoNom" class="col-md-4 col-form-label">
+						<h5 class="lead">Tipo de Nómina:</h5></label>
+					<div class="col-md-8">
+						<select class="form-control form-control-lg">
+							<option value="Red">Honorarios</option>
+						</select>
+					</div>
+			</div>
+
+			<div id="Cargo" class="row col-md-4">
+				<label for="Cargo" class="col-md-4 col-form-label">
+					<h5 class="lead">Cargo:</h5></label>
+				<div class="col-md-8">
+						<select class="form-control form-control-lg">
+							<option value="Red">Cargo 1</option>
+						</select>
+				</div>
+			</div>
+
+			<div id="Extension" class="row col-md-4">
+				<label for="Extension" class="col-md-4 col-form-label">
+					<h5 class="lead">Extension:</h5></label>
+				<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="observns" name="observns" placeholder="" />
+						 name="Extension" placeholder=""/>
+				</div>
+			</div>	
+		</div>	<!-- Fila 6 Final -->
+
+		<div class="row">
+			<div id="observns" class="row col-md-12">
+					<label for="observns" class="col-md-2 col-form-label">
+						<h5 class="lead">Observaciones:</h5></label>
+						
+					<div class="col-md-6">
+							<textarea class="form-control" rows="2" id="comment"></textarea>
 					</div>
 			</div>
 			
-			<div>
-				<button type="button" class="btn btn-primary btn-lg btn-block"
-					onclick="segValidaForm();">Ingresar</button>
-			</div>
-		</div>
-		</form>
-		
 
+		</div>
+
+		<br></br>
+
+		<div class="row">
+			<div class="col-md-4"/>
+			<div class="col-md-2">
+					<button type="button" class="btn btn-primary btn-lg btn-outline"
+						onclick="segValidaForm();">Ingresar</button>
+			</div>
+
+			<div>
+				<button type="button" class="btn btn-outline-primary btn-lg">Resolver</button>
+			</div>
+
+		</div>
+		
+		</form>
 	</div>
 </div>
