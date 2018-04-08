@@ -13,6 +13,9 @@ public class MenuPrincipal {
 	
 	@GetMapping("/menu/inicio")
 	public ModelAndView Inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
+		
+		
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getMenu());
 		mav.addObject("titulo", "Bienvenido");
