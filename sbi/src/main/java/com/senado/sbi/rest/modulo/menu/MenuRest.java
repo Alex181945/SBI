@@ -1,5 +1,6 @@
 package com.senado.sbi.rest.modulo.menu;
 
+import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.modulo.Menu;
 
 /**
@@ -19,7 +20,7 @@ import com.senado.sbi.modelo.modulo.Menu;
 
 public interface MenuRest {
 
-	public Menu cargaMenu();
+	public Menu cargaMenu(DosParametrosEnteros consulta, String cToken);
 	public boolean islResultado();
 	public String getMensaje();
 	
