@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.senado.sbi.configuracion.Vistas;
@@ -12,6 +13,7 @@ import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.modulo.menu.MenuRest;
 
 @Controller
+@SessionAttributes("Usuario")
 public class MenuPrincipal {
 	
 	@Autowired

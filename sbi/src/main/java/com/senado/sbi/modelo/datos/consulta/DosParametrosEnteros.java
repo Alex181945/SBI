@@ -1,6 +1,5 @@
 package com.senado.sbi.modelo.datos.consulta;
 
-import org.springframework.http.HttpHeaders;
 
 /**
  * 
@@ -21,9 +20,7 @@ public class DosParametrosEnteros {
 
 	private Integer parametro1;
 	private Integer parametro2;
-	private HttpHeaders headers;
-	
-	
+		
 	public Integer getParametro1() {
 		return parametro1;
 	}
@@ -35,12 +32,6 @@ public class DosParametrosEnteros {
 	}
 	public void setParametro2(Integer parametro2) {
 		this.parametro2 = parametro2;
-	}
-	public HttpHeaders getHeaders() {
-		return headers;
-	}
-	public void setHeaders(HttpHeaders headers) {
-		this.headers = headers;
 	}
 	
 }

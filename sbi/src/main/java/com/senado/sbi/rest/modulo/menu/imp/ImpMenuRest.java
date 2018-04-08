@@ -2,8 +2,11 @@ package com.senado.sbi.rest.modulo.menu.imp;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -12,7 +15,6 @@ import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.modulo.Menu;
-import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.modulo.menu.MenuRest;
 
 /**
@@ -50,29 +52,41 @@ public class ImpMenuRest implements MenuRest {
 		try {
 			
 			HttpHeaders headers = new HttpHeaders();
-			headers.add("Authorization", VariablesEntorno.getTokenPrefix() + cToken);
+			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
+			headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 			
-			consulta.setHeaders(headers);
+			MultiValueMap<String, String> postParameters = new LinkedMultiValueMap<String, String>();
+			postParameters.add("iTipoConsulta", consulta.getParametro1().toString());
+			postParameters.add("iIDPerfil", consulta.getParametro2().toString());
+
+			HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(
+					postParameters, headers);
 			
 			/*JSON obtenido de forma plana*/
 			ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getUrlwsd() + "/carga/modulo",
-					consulta, String.class);
+					request, String.class);
 			
+			root = mapper.readTree(response.getBody());
+			validacionJs = root.path("validacion");
+			datos = root.path("datos");
 			
+			validacion = mapper.convertValue(validacionJs, Validacion[].class);
+			
+			if(validacion[0].getlError() == 1) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+			} else {
+				//uLogin = mapper.convertValue(datos, ULogin[].class);
+				this.setResultadoLocal(false);
+				this.setMensajeLocal("");
+				//this.setuLogin(uLogin, token.asText());
+			}
 			
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 		
-		if(validacion[0].getlError() == 1) {
-			this.setResultadoLocal(true);
-			this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
-		} else {
-			//uLogin = mapper.convertValue(datos, ULogin[].class);
-			this.setResultadoLocal(false);
-			this.setMensajeLocal("");
-			//this.setuLogin(uLogin, token.asText());
-		}
+		
 
 		return null;
 	}
