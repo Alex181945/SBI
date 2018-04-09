@@ -34,4 +34,16 @@ public class DosParametrosEnteros {
 		this.parametro2 = parametro2;
 	}
 	
+	@Override
+	public String toString() {
+		return "DosParametrosEnteros [parametro1=" + parametro1 + ", parametro2=" + parametro2 + "]";
+	}
+	
+	public String toJson() {
+		return "{"
+				+ "parametro1:" + parametro1 + ","
+				+ "parametro2:" + parametro2     
+				+ "}";
+	}
+	
 }

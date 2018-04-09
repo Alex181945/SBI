@@ -2,6 +2,7 @@ package com.senado.sbi.rest.modulo.menu.imp;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -55,12 +56,12 @@ public class ImpMenuRest implements MenuRest {
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 			
-			MultiValueMap<String, String> postParameters = new LinkedMultiValueMap<String, String>();
-			postParameters.add("iTipoConsulta", consulta.getParametro1().toString());
-			postParameters.add("iIDPerfil", consulta.getParametro2().toString());
+			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
+			body.add("iTipoConsulta", consulta.getParametro1().toString());
+			body.add("iIDPerfil", consulta.getParametro2().toString());
 
 			HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(
-					postParameters, headers);
+					body, headers);
 			
 			/*JSON obtenido de forma plana*/
 			ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getUrlwsd() + "/carga/modulo",
