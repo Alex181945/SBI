@@ -1,8 +1,9 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+		<script type="text/javascript" src="/js/validdata/app.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<div class="container">
 
-		<h3>Registro</h3>
+		<h1 class="display-6">Registro</h1>
 		
 		<form id="form1" th:action="@{/segValidaSesionP}" method="POST">
 
@@ -60,7 +61,7 @@
 						<h5 class="lead">Numero de Inventario:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="inventario" name="inventario" placeholder="N° Inventario" />
+							id="inventario" name="inventario" placeholder="N° Inventario"  onkeypress="return soloNumeros(event)"/>
 					</div>
 			</div>
 			
@@ -78,9 +79,20 @@
 					<label for="edificio" class="col-md-4">
 						<h5 class="lead">Edificio:</h5></label>
 					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="edificio" name="edificio" placeholder="Edificio" />
-					</div>
+							<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud">
+								<option value="HEM">HEM – Hemiciclo</option>
+								<option value="PLN">PLN – Pleno</option>
+								<option value="TCO">TCO – Torre de Comisiones</option>
+								<option value="TAZ">TAZ – Torre Azul</option>
+								<option value="DCL">DCL – Donceles</option>
+								<option value="ALL">ALL – Allende</option>
+								<option value="XIC">XIC – Xicoténcatl</option>
+								<option value="M68">M68 – Madrid 68</option>
+								<option value="M35">M35 - Madrid 35</option>
+								<option value="M62">M62 - Madrid 62</option>
+								<option value="M37">M37 - Madrid 37</option>
+							</select>
+						</div>
 			</div>
 		</div> <!-- row fila 2 final -->
 
@@ -216,21 +228,38 @@
 					<div class="col-md-6">
 							<textarea class="form-control" rows="2" id="comment"></textarea>
 					</div>
-			</div>
+			</div>			
 		</div>
 
 		<br></br>
 
 		<div class="row">
+			<div id="soluc" class="row col-md-12">
+					<label for="soluc" class="col-md-2 col-form-label">
+						<h5 class="lead">Solución:</h5></label>
+						
+					<div class="col-md-6">
+							<textarea class="form-control" rows="2" id="comment"></textarea>
+					</div>
+			</div>
+		</div>
+
+		<br></br>
+
+		<div class="row"> <!-- Row Botones-->
 			<div class="col-md-4"/>
 			<div class="col-md-2">
 					<button type="button" class="btn btn-primary btn-lg btn-outline"
-						onclick="segValidaForm();">Ingresar</button>
+						onclick="segValidaForm();">Registrar</button>
+			</div>
+
+			<div class="col-md-2">
+				<button type="button" class="btn btn-outline-primary btn-lg">Resolver</button>
 			</div>
 
 			<div>
-				<button type="button" class="btn btn-outline-primary btn-lg">Resolver</button>
-			</div>
+					<button type="button" class="btn btn-outline-danger btn-lg">Cancelar</button>
+				</div>
 
 		</div>
 		</form>
