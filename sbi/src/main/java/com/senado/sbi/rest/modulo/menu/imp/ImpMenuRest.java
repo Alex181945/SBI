@@ -75,7 +75,6 @@ public class ImpMenuRest implements MenuRest {
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
 				menu = mapper.convertValue(datos, Menu[].class);
-				System.out.println(datos);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}

@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.modelo.seg.login.UsuarioTemp;
@@ -64,8 +63,9 @@ public class Login {
 	}
 	
 	@GetMapping("/logout")
-	public String cerrarSesion(SessionStatus  status) {
-		status.setComplete();		
+	public String cerrarSesion(HttpServletRequest request) {
+		//status.setComplete();
+		request.getSession().invalidate();
 		return Vistas.getLogin();
 	}
 
