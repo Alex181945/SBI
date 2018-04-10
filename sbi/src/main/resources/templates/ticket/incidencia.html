@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
-		<script type="text/javascript" src="/js/validdata/app.js"></script>
+	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<div class="container">
 
@@ -65,12 +65,12 @@
 					</div>
 			</div>
 			
-			<div id="usuario" class="row col-md-4">
-					<label for="usuario" class="col-md-4">
+			<div id="user" class="row col-md-4">
+					<label for="user" class="col-md-4">
 						<h5 class="lead">Usuario:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="usuario" name="usuario" placeholder="Usuario" />
+							id="user" name="user" placeholder="Usuario" onkeypress="return soloLetras(event)"/>
 					</div>
 			</div>
 
@@ -119,7 +119,7 @@
 						<h5 class="lead">Resguardante:</h5></label>
 					<div class="col-md-7">
 						<input type="text" class="form-control form-control-lg"
-							id="resguardante" name="resguardante" placeholder="Resguardante"/>
+							id="resguardante" name="resguardante" placeholder="Resguardante" onkeypress="return soloLetras(event)"/>
 					</div>
 			</div>
 		</div> <!-- Row final 3 final -->
@@ -133,7 +133,7 @@
 						<h5 class="lead">Solicitante:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="solicitante" name="solicitante" placeholder="" />
+							id="solicitante" name="solicitante" placeholder="" onkeypress="return soloLetras(event)"/>
 					</div>
 			</div>
 
@@ -160,8 +160,11 @@
 					<label for="UsuaMail" class="col-md-4 col-form-label">
 						<h5 class="lead">N° de Usuarios:</h5></label>
 					<div class="col-md-8">
-							<input type="text" class="form-control form-control-lg"
-							 name="numUsuarios" placeholder=""/>
+						<select class="form-control form-control-lg" id="numUser" name="numUser">
+							<option value="Red">1</option>
+							<option value="Red">2</option>
+							<option value="Red">3</option>
+						</select>
 					</div>
 			</div>
 
@@ -182,7 +185,7 @@
 						<h5 class="lead">N° de Empleado:</h5></label>
 					<div class="col-md-8">
 							<input type="text" class="form-control form-control-lg"
-							 name="NumEmppleado" placeholder=""/>
+							 name="NumEmppleado" placeholder="" onkeypress="return soloNumeros(event)"/>
 					</div>
 			</div>	
 		</div> <!-- fila 5 Final-->
@@ -214,7 +217,7 @@
 					<h5 class="lead">Extension:</h5></label>
 				<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-						 name="Extension" placeholder=""/>
+						 name="Extension" placeholder="" onkeypress="return soloNumeros(event)"/>
 				</div>
 			</div>	
 		</div>	<!-- Fila 6 Final -->
@@ -249,7 +252,7 @@
 			<div class="col-md-4"/>
 			<div class="col-md-2">
 					<button type="button" class="btn btn-primary btn-lg btn-outline"
-						onclick="segValidaForm();">Registrar</button>
+						>Registrar</button>
 			</div>
 
 			<div class="col-md-2">
@@ -262,5 +265,6 @@
 
 		</div>
 		</form>
+		<div class="col-12" style="display:none;"><span id="message" th:text="${error}"></span></div>
 	</div>
 </div>

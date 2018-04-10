@@ -1,4 +1,5 @@
 
+//Solo letras en HTML con erta 
 function soloLetras(e){
 	key = e.keyCode || e.which;
 	tecla = String.fromCharCode(key).toLowerCase();
@@ -14,7 +15,8 @@ function soloLetras(e){
 	 }
 
 	 if(letras.indexOf(tecla)==-1 && !tecla_especial){
-		 alert("Ingrese lo indicado");
+		 //alert("Campo solo para ingresar Letras");
+		 swal('Solo permite letras',document.getElementById("message").innerHTML,'error');
 		 return false;
 	 }
  }//Fin de funcion solo letras
@@ -25,7 +27,8 @@ function soloLetras(e){
 	numeros = " 0123456789.";
 
 	if(numeros.indexOf(tecla)==-1){
-		 alert("Ingrese lo indicado");
+		 //alert("Campo solo para ingresar Numeros");
+		 swal('Solo permite numeros',document.getElementById("message").innerHTML,'error');
 		 return false;
 	 }
  }//Fin de funcion solo numeros
