@@ -20,7 +20,7 @@ import com.senado.sbi.modelo.modulo.Menu;
 
 public interface MenuRest {
 
-	public Menu cargaMenu(DosParametrosEnteros consulta, String cToken);
+	public Menu[] cargaMenu(DosParametrosEnteros consulta, String cToken);
 	public boolean islResultado();
 	public String getMensaje();
 	

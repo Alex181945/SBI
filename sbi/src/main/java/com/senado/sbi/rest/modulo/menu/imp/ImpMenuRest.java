@@ -3,7 +3,6 @@ package com.senado.sbi.rest.modulo.menu.imp;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
@@ -39,7 +38,7 @@ public class ImpMenuRest implements MenuRest {
 	private String  mensajeLocal;
 
 	@Override
-	public Menu cargaMenu(DosParametrosEnteros consulta, String cToken) {
+	public Menu[] cargaMenu(DosParametrosEnteros consulta, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
@@ -54,18 +53,16 @@ public class ImpMenuRest implements MenuRest {
 			
 			HttpHeaders headers = new HttpHeaders();
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
-			headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 			
-			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
+			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
 			body.add("iTipoConsulta", consulta.getParametro1().toString());
 			body.add("iIDPerfil", consulta.getParametro2().toString());
 
-			HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(
-					body, headers);
+			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getUrlwsd() + "/carga/modulo",
-					request, String.class);
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/carga/modulo",
+					HttpMethod.POST ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
 			validacionJs = root.path("validacion");
@@ -77,19 +74,20 @@ public class ImpMenuRest implements MenuRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
-				//uLogin = mapper.convertValue(datos, ULogin[].class);
+				menu = mapper.convertValue(datos, Menu[].class);
+				System.out.println(datos);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
-				//this.setuLogin(uLogin, token.asText());
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: Exception en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
 		}
-		
-		
 
-		return null;
+		return menu;
 	}
 
 	@Override

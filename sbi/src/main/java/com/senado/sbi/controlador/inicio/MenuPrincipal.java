@@ -23,15 +23,13 @@ public class MenuPrincipal {
 	public ModelAndView Inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
-		consulta.setParametro1(1);
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
 		consulta.setParametro2(sessionUsu.getiPerfil());
-		
-		menuRest.cargaMenu(consulta, sessionUsu.getcToken());
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getMenu());
 		mav.addObject("titulo", "Bienvenido");
-		mav.addObject("menu", "Menu");
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		return mav;
 	}
 	
