@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,10 +36,10 @@ public class Ticket {
 		return mav;
 	}
 	
-	@GetMapping("/ticket/inserta")
+	@PostMapping("/ticket/inserta")
 	public ModelAndView creaTicket(@ModelAttribute("Usuario") ULogin sessionUsu, @ModelAttribute("Ticket") TicketM ticket) {
 		
-		System.out.println(ticket);
+		System.out.println(ticket.toString());
 
 		return null;
 	}
