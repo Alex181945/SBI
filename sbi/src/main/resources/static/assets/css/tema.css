@@ -6,6 +6,8 @@ body{
     background-size: cover;
     min-height: 100%; 
     min-height: 100vh;
+
+
 }
 
 /*Menu*/
@@ -22,6 +24,22 @@ a.nav-link{
 h5.lead{
 	color: #F7F6F2 !important;
 }
+
+form {
+	max-width: 100%;
+	margin: 10px auto;
+	padding: 10px 20px;
+	background: #13131373;
+	border-radius: 8px;
+	
+  }
+
+  h3 {
+	margin: 0 0 30px 0;
+	text-align: left;
+	
+  }
+
 /*Fin Inicio de Sesion*/
 
 /*Modal del spinner de carga*/
@@ -38,3 +56,4 @@ h5.lead{
 	color: #ffffff;
 }
 /*Fin Spinner*/
+

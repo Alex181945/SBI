@@ -1,29 +1,33 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<div class="container">
+
+		<h1 class="display-6">Registro</h1>
 		
 		<form id="form1" th:action="@{/segValidaSesionP}" method="POST">
-			<div id="frmSolicitud" class="form-group row align-items-center">
-				<label for="frmSolicitud"
-					class="col-md-3 offset-md-3 text-center col-form-label">
-					<h5 class="lead">Tipo de Solicitud:</h5></label>
-				<div class="col-md-6">
-					<select class="form-control form-control-lg" id="frmSolicitud" name="frmSolicitud">
+
+		<div class="row">
+			<div id="prue" class="row col-md-4">
+				<label id="Uno" for="frmSolicitud" class="col-md-4">
+					<h5  class="lead" >Tipo de Solicitud:</h5></label>
+				<div class="col-md-8">
+					<select  id ="Dos" name="frmSolicitud" class="form-control form-control-lg">
 					  <option value="Telefonico">Telefónico</option>
 					  	<option value="Correo">Correo</option>
 						<option value="Oficio">Oficio</option>
 						<option value="Tarjeta">Tarjeta</option>
 						<option value="Correo Electronico">Correo Electrónico</option>
 					</select>
-					<div id="errorU" class="form-control-feedback"></div>
 				</div>
 			</div>
 
-			<div id="solicitud" class="form-group row align-items-center">
+
+			<div id="solicitud" class="row col-md-4">
 				<label for="solicitud"
-					class="col-md-3 offset-md-3 text-center col-form-label">
+					class="col-md-4">
 					<h5 class="lead">Tipo de Servicio:</h5></label>
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud">
 						<option value="Red">Red</option>
 						<option value="Directorio Activo">Directorio Activo</option>
@@ -35,86 +39,108 @@
 					</select>
 				</div>
 			</div>
-
-			<div id="Servc" class="form-group row align-items-center">
-				<label for="Servc" class="col-md-3 offset-md-3 text-center col-form-label">
+		
+			<div id="Servc" class="row col-md-4">
+				<label for="Servc" class="col-md-4">
 					<h5 class="lead">Servicio solicitado:</h5></label>
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<select class="form-control form-control-lg" id="Servc" name="Servc">
 						<option value="Red">Red</option>
 					</select>
 				</div>
 			</div>
 
-			
-			<div id="inventario" class="form-group row align-items-center">
-					<label for="inventario" class="col-md-3 offset-md-3 text-center col-form-label">
+		</div> <!-- row fila 1 final  -->
+
+		<br></br>
+
+		<div class="row"> <!-- row fila 2-->
+
+			<div id="inventario" class="row col-md-4">
+					<label for="inventario" class="col-md-4">
 						<h5 class="lead">Numero de Inventario:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="inventario" name="inventario" placeholder="N° Inventario" />
+							id="inventario" name="inventario" placeholder="N° Inventario"  onkeypress="return soloNumeros(event)"/>
 					</div>
 			</div>
 			
-
-			<div id="usuario" class="form-group row align-items-center">
-					<label for="usuario" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="user" class="row col-md-4">
+					<label for="user" class="col-md-4">
 						<h5 class="lead">Usuario:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="usuario" name="usuario" placeholder="Usuario" />
+							id="user" name="user" placeholder="Usuario" onkeypress="return soloLetras(event)"/>
 					</div>
 			</div>
 
-			<div id="edificio" class="form-group row align-items-center">
-					<label for="edificio" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="edificio" class="row col-md-4">
+					<label for="edificio" class="col-md-4">
 						<h5 class="lead">Edificio:</h5></label>
-					<div class="col-md-6">
-						<input type="text" class="form-control form-control-lg"
-							id="edificio" name="edificio" placeholder="Edificio" />
-					</div>
+					<div class="col-md-8">
+							<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud">
+								<option value="HEM">HEM – Hemiciclo</option>
+								<option value="PLN">PLN – Pleno</option>
+								<option value="TCO">TCO – Torre de Comisiones</option>
+								<option value="TAZ">TAZ – Torre Azul</option>
+								<option value="DCL">DCL – Donceles</option>
+								<option value="ALL">ALL – Allende</option>
+								<option value="XIC">XIC – Xicoténcatl</option>
+								<option value="M68">M68 – Madrid 68</option>
+								<option value="M35">M35 - Madrid 35</option>
+								<option value="M62">M62 - Madrid 62</option>
+								<option value="M37">M37 - Madrid 37</option>
+							</select>
+						</div>
 			</div>
+		</div> <!-- row fila 2 final -->
 
-			<div id="piso" class="form-group row align-items-center">
-					<label for="piso" class="col-md-3 offset-md-3 text-center col-form-label">
+		<div class="row"> <!-- Row fila 3 inicio-->
+			<div id="piso" class="row col-md-4">
+					<label for="piso" class="col-md-4 col-form-label">
 						<h5 class="lead">Piso:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="piso" name="piso" placeholder="Piso" />
 					</div>
 			</div>
 
-			<div id="oficina" class="form-group row align-items-center">
-					<label for="oficina" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="oficina" class="row col-md-4">
+					<label for="oficina" class="col-md-4 col-form-label">
 						<h5 class="lead">Oficina:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="oficina" name="oficina" placeholder="Oficina" />
 					</div>
 			</div>
 			
-			<div id="resguardante" class="form-group row align-items-center">
-					<label for="resguardante" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="resguardante" class="row col-md-4">
+					<label for="resguardante" class="col-md-5">
 						<h5 class="lead">Resguardante:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-7">
 						<input type="text" class="form-control form-control-lg"
-							id="resguardante" name="resguardante" placeholder="Resguardante" />
+							id="resguardante" name="resguardante" placeholder="Resguardante" onkeypress="return soloLetras(event)"/>
 					</div>
 			</div>
+		</div> <!-- Row final 3 final -->
 
-			<div id="solicitante" class="form-group row align-items-center">
-					<label for="solicitante" class="col-md-3 offset-md-3 text-center col-form-label">
+		<br></br>
+
+		<div class="row">
+
+			<div id="solicitante" class="row col-md-4">
+					<label for="solicitante" class="col-md-4 col-form-label">
 						<h5 class="lead">Solicitante:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="solicitante" name="solicitante" placeholder="" />
+							id="solicitante" name="solicitante" placeholder="" onkeypress="return soloLetras(event)"/>
 					</div>
 			</div>
 
-			<div id="Nvlcriticidad" class="form-group row align-items-center">
-					<label for="Nvlcriticidad" class="col-md-3 offset-md-3 text-center col-form-label">
+			<div id="Nvlcriticidad" class="row col-md-4">
+					<label for="Nvlcriticidad" class="col-md-4 col-form-label">
 						<h5 class="lead">Nivel de criticidad:</h5></label>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<select class="form-control form-control-lg" id="Nvlcriticidad" name="Nvlcriticidad">
 							<option value="Red">Alto</option>
 							<option value="Red">Medio</option>
@@ -123,20 +149,122 @@
 					</div>
 			</div>
 
-			<div id="observns" class="form-group row align-items-center">
-					<label for="observns" class="col-md-3 offset-md-3 text-center col-form-label">
-						<h5 class="lead">Observaciones:</h5></label>
-					<div class="col-md-6">
-						<input type="text" class="form-control form-control-lg"
-							id="observns" name="observns" placeholder="" />
+			
+		</div> <!-- fila 4 final-->
+
+		<div class="row"> <!-- fila 5 Inicio-->
+			
+				<legend> <h5 class="lead">Cuentas de correo electrónico:</h5> </legend>
+
+			<div id="UsuaMail" class="row col-md-4">
+					<label for="UsuaMail" class="col-md-4 col-form-label">
+						<h5 class="lead">N° de Usuarios:</h5></label>
+					<div class="col-md-8">
+						<select class="form-control form-control-lg" id="numUser" name="numUser">
+							<option value="Red">1</option>
+							<option value="Red">2</option>
+							<option value="Red">3</option>
+						</select>
 					</div>
 			</div>
-			
-			<div>
-				<button type="button" class="btn btn-primary btn-lg btn-block"
-					onclick="segValidaForm();">Ingresar</button>
-			</div>
-		</form>
 
+			<div id="AreaMail" class="row col-md-4">
+					<label for="AreaMail" class="col-md-4 col-form-label">
+						<h5 class="lead">Area:</h5></label>
+					<div class="col-md-8">
+						<select class="form-control form-control-lg">
+							<option value="Red">Area1</option>
+							<option value="Red">Area2</option>
+							<option value="Red">Area3</option>
+						</select>
+					</div>
+			</div>
+
+			<div id="NumEmppleado" class="row col-md-4">
+					<label for="NumEmppleado" class="col-md-4 col-form-label">
+						<h5 class="lead">N° de Empleado:</h5></label>
+					<div class="col-md-8">
+							<input type="text" class="form-control form-control-lg"
+							 name="NumEmppleado" placeholder="" onkeypress="return soloNumeros(event)"/>
+					</div>
+			</div>	
+		</div> <!-- fila 5 Final-->
+
+		<div class="row"> <!-- fila 6 Inicio-->
+			
+			<div id="TipoNom" class="row col-md-4">
+					<label for="TipoNom" class="col-md-4 col-form-label">
+						<h5 class="lead">Tipo de Nómina:</h5></label>
+					<div class="col-md-8">
+						<select class="form-control form-control-lg">
+							<option value="Red">Honorarios</option>
+						</select>
+					</div>
+			</div>
+
+			<div id="Cargo" class="row col-md-4">
+				<label for="Cargo" class="col-md-4 col-form-label">
+					<h5 class="lead">Cargo:</h5></label>
+				<div class="col-md-8">
+						<select class="form-control form-control-lg">
+							<option value="Red">Cargo 1</option>
+						</select>
+				</div>
+			</div>
+
+			<div id="Extension" class="row col-md-4">
+				<label for="Extension" class="col-md-4 col-form-label">
+					<h5 class="lead">Extension:</h5></label>
+				<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
+						 name="Extension" placeholder="" onkeypress="return soloNumeros(event)"/>
+				</div>
+			</div>	
+		</div>	<!-- Fila 6 Final -->
+
+		<div class="row">
+			<div id="observns" class="row col-md-12">
+					<label for="observns" class="col-md-2 col-form-label">
+						<h5 class="lead">Observaciones:</h5></label>
+						
+					<div class="col-md-6">
+							<textarea class="form-control" rows="2" id="comment"></textarea>
+					</div>
+			</div>			
+		</div>
+
+		<br></br>
+
+		<div class="row">
+			<div id="soluc" class="row col-md-12">
+					<label for="soluc" class="col-md-2 col-form-label">
+						<h5 class="lead">Solución:</h5></label>
+						
+					<div class="col-md-6">
+							<textarea class="form-control" rows="2" id="comment"></textarea>
+					</div>
+			</div>
+		</div>
+
+		<br></br>
+
+		<div class="row"> <!-- Row Botones-->
+			<div class="col-md-4"/>
+			<div class="col-md-2">
+					<button type="button" class="btn btn-primary btn-lg btn-outline"
+						>Registrar</button>
+			</div>
+
+			<div class="col-md-2">
+				<button type="button" class="btn btn-outline-primary btn-lg">Resolver</button>
+			</div>
+
+			<div>
+					<button type="button" class="btn btn-outline-danger btn-lg">Cancelar</button>
+				</div>
+
+		</div>
+		</form>
+		<div class="col-12" style="display:none;"><span id="message" th:text="${error}"></span></div>
 	</div>
 </div>
