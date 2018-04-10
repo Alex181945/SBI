@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 		<title>Crear</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</head>
+<style>
+	/* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+   /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+    body
+    {
+        background:url(3.png) #2b2b2a;
+        background-position: left;
+        width:30;
+        height: 30;
+		}
+		.navbar-nav.navbar-center {
+		position: absolute;
+		left: 50%;
+		transform: translatex(-50%);
+		}
+    * {
+				margin:0px;
+				padding:0px;
+			}
+			
+			#header {
+				margin:center;
+				width:700px;
+				font-family: Helvetica, sans-serif;
+			}
+			
+			ul, ol {
+				list-style:none;
+			}
+			
+			.nav > li {
+				float:left;
+			}
+			
+			.nav li a {
+				
+				color: gray;
+                background-color:#FAFAFA;
+				text-decoration:none;
+				padding:20px 12px;
+				display:block;
+			}
+           
+			.nav li ul {
+				display:none;
+				position: center;
+                
+            
+			#header {
+				margin:auto;
+				width:700px;
+				font-family: Helvetica, sans-serif;
+			}
+			
+			ul, ol {
+				list-style:none;
+			}
+			
+			.nav > li {
+				float:left;
+			}
+			
+			.nav li a {
+				
+				color: gray;
+                background-color:#FAFAFA;
+				text-decoration:none;
+				padding:20px 12px;
+				display:block;
+			}
+			
+			.nav li ul {
+				display:none;
+				position:center;
+				min-width:140px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.nav li ul li {
+				position:center;
+			}
+			
+			.nav li ul li ul {
+				right:-140px;
+				top:0px;
+			}
+            h1
+    {
+        margin:5%;
+        padding: 0px;
+    };
+				min-width:140px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.nav li ul li {
+				position:center;
+			}
+			
+			.nav li ul li ul {
+				right:-140px;
+				top:0px;
+			}
+            h1
+    {
+        margin:5%;
+        padding: 0px;
+    }
+</style>
+<pre style="background-color:#646569">
+    <left><img src="image1.jpg" alt="image" width="450px" height="110px">
+    </left>
+        
+</pre>
+    <body>
+			<nav class="navbar ">
+					<div class="container-fluid">
+							<div class="navbar-header">
+								<ul class="nav navbar-nav navbar-center">
+                                    <li class="active"><a href="sabi.html">Consultar</a></li>
+									<li class="active"><a href="editarsa.html">Editar</a></li>
+									<li class="active"><a href="nuevosa.html">Nuevo</a></li>
+									<li class="active"><a href="deshsa.html">Deshabilitar</a></li></ul>
+								</ul>
+					</div>
+			</nav>
+			<div class="container">
+
+				<div class="signup-form-container">
+						<div class="form-header">
+								<center> <h1 class="form-title"><i class="fa fa-user"></i> NUEVO RESGUARDO</h1></center>
+						</div>
+					 <!-- form para ingresar el resguardo -->
+					
+						<form class="form-inline">
+                            <div class = text-right>
+							    <label for="iIDBienesInformaticos">Resguardo:</label>
+								    <div class="input-group mb-2 mr-sm-2">
+									<input type="text" class="form-control" id="iIDBienesInformaticos" placeholder="Resguardo">
+							</div>
+                                      <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+                </div>
+                <br> <br>
+                <div class="form-row">
+                        <div class="form-group col-md-4">
+                                <label for="ctBienesInformáticos">Tipo de equipo: </label>
+                                <select id="cBienes" class="form-control">
+                                  <option selected>Equipo completo</option>
+                                  <option>Impresora</option>
+                                  <option>Escanner</option>
+                                </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="ctBienesInformáticos">Modelo del equipo: </label>
+                                <input type="modelo" class="form-control" id="mod" placeholder="Modelo">        
+                        </div>
+                        <div class="form-group col-md-3">
+                                <label for="ctBienesInformáticos">N.Serie: </label>
+                                <input type="serie" class="form-control" id="bumser" placeholder="NumeroSerie">        
+                        </div>
+                </div>
+                <br><br><br><br>
+                <div class="form-inline">
+                        <div class="form-group col-md-4">
+                                <label for="ctBienesInformáticos">MAC del equipo: </label>
+                                <input type="mac" class="form-control mb-2 mr-sm-2" id="mac" placeholder="Modelo">        
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="ctBienesInformáticos">Ingreso del equipo: </label>
+                                <input type="date" class="form-control" id="fecha" name="fecha" />
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="ctBienesInformáticos">Marca: </label>
+                                <input type="text" class="form-control" id="marca" placeholder="Marca" />
+                        </div>
+                </div>
+                <br><br><br>
+                <div class="form-row">
+                        <div class="form-group col-md-4">
+                                <label for="ctBienesInformáticos">Hostname: </label>
+                                <input type="mac" class="form-control" id="mac" placeholder="Modelo">        
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="ctBienesInformáticos">Clave de Activación: </label>
+                                <input type="dtext" class="form-control" id="fecha" name="fecha" />
+                        </div>
+                </div>
+                        <br><br><br>
+                <div class= center>
+                                <div class="form-group col-md-4">
+                                        <label for="ctBienesInformáticos">Fecha garantía: </label>
+                                        <input type="date" class="form-control" id="garantia" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                        <label for="ctBienesInformáticos">Término de garantia: </label>
+                                        <input type="date" class="form-control" id="fingarantia" />
+                                </div>
+                </div>
+                <br><br><br>
+                <div class = text-center>
+                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                </div>
+                    </form>
+                    <br><br>
+                    <div class="container">
+                        <table class="table table-hover">
+							  <thead>
+								<tr>
+                                  <th>Partida</th>
+                                  <th>Tipo de equipo</th>
+								  <th>Modelo</th>
+								  <th>Num Serie</th>
+								  <th>MAC del equipo</th>
+								  <th>Fec. ingreso del equipo</th>
+								  <th>Marca</th>
+								  <th>Hostname</th>
+                                  <th>Clave Activación</th>
+                                  <th>Fec. inicio garantia</th>
+                                  <th>Fec. termino garantia</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr>
+                                  <td>1</td>
+								  <td>Impresora HP</td>
+								  <td>Laser Jet 1024</td>
+								  <td>8u9dpsf0mlkn</td>
+								  <td>00:1e:c2:9e:28:6b</td>
+                                  <td>26/01/1995</td>
+                                  <td>HP</td>
+                                  <td>DESKTOP-5MPQUMM</td>
+                                  <th>93kjdssdjlw83b</th>
+                                  <td>25/01/2017</td>
+                                  <td>25/01/2020</td>
+								</tr>
+								<tr>
+                                        <td>1</td>
+                                        <td>Impresora HP</td>
+                                        <td>Laser Jet 1024</td>
+                                        <td>8u9dpsf0mlkn</td>
+                                        <td>00:1e:c2:9e:28:6b</td>
+                                        <td>26/01/1995</td>
+                                        <td>HP</td>
+                                        <td>DESKTOP-5MPQUMM</td>
+                                        <th>93kjdssdjlw83b</th>
+                                        <td>25/01/2017</td>
+                                        <td>25/01/2020</td>
+								</tr>
+								</tbody>
+							</table>
+						  </div>
+					
+		
+		<br>
+		<footer class="text-center">
+			<a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+				 <span class="glyphicon glyphicon-chevron-up"></span>
+			</a><br><br>
+			<p>Dirección de Soporte Técnico <br> 2018</p> 
+		</footer>
+						  
+</body>
+
+</html>

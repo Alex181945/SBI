@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 		<title>Consulta SABI</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</head>
+<style>
+	/* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+   /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+    body
+    {
+        background:url(3.png) #2b2b2a;
+        background-position: left;
+        width:30;
+        height: 30;
+		}
+		.navbar-nav.navbar-center {
+		position: absolute;
+		left: 50%;
+		transform: translatex(-50%);
+		}
+    * {
+				margin:0px;
+				padding:0px;
+			}
+			
+			#header {
+				margin:center;
+				width:700px;
+				font-family: Helvetica, sans-serif;
+			}
+			
+			ul, ol {
+				list-style:none;
+			}
+			
+			.nav > li {
+				float:left;
+			}
+			
+			.nav li a {
+				
+				color: gray;
+                background-color:#FAFAFA;
+				text-decoration:none;
+				padding:20px 12px;
+				display:block;
+			}
+           
+			.nav li ul {
+				display:none;
+				position: center;
+                
+            
+			#header {
+				margin:auto;
+				width:700px;
+				font-family: Helvetica, sans-serif;
+			}
+			
+			ul, ol {
+				list-style:none;
+			}
+			
+			.nav > li {
+				float:left;
+			}
+			
+			.nav li a {
+				
+				color: gray;
+                background-color:#FAFAFA;
+				text-decoration:none;
+				padding:20px 12px;
+				display:block;
+			}
+			
+			.nav li ul {
+				display:none;
+				position:center;
+				min-width:140px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.nav li ul li {
+				position:center;
+			}
+			
+			.nav li ul li ul {
+				right:-140px;
+				top:0px;
+			}
+            h1
+    {
+        margin:5%;
+        padding: 0px;
+    };
+				min-width:140px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.nav li ul li {
+				position:center;
+			}
+			
+			.nav li ul li ul {
+				right:-140px;
+				top:0px;
+			}
+            h1
+    {
+        margin:5%;
+        padding: 0px;
+    }
+</style>
+<pre style="background-color:#646569">
+    <left><img src="image1.jpg" alt="image" width="450px" height="110px">
+    </left>
+        
+</pre>
+    <body>
+			<nav class="navbar ">
+					<div class="container-fluid">
+							<div class="navbar-header">
+								<ul class="nav navbar-nav navbar-center">
+									<li class="active"><a href="sabi.html">Consultar</a></li>
+									<li class="active"><a href="editarsa.html">Editar</a></li>
+									<li class="active"><a href="nuevosa.html">Nuevo</a></li>
+									<li class="active"><a href="deshsa.html">Deshabilitar</a></li></ul>
+								</ul>
+					</div>
+			</nav>
+			<div class="container">
+
+				<div class="signup-form-container">
+						<div class="form-header">
+								<center> <h1 class="form-title"><i class="fa fa-user"></i> CONSULTA SABI</h1></center>
+						</div>
+					 <!-- form para ingresar el resguardo -->
+					<div class = text-right>
+						<form class="form-inline">
+							<label for="iIDBienesInformaticos">Resguardo:</label>
+								<div class="input-group mb-2 mr-sm-2">
+									<input type="text" class="form-control" id="iIDBienesInformaticos" placeholder="Resguardo">
+								</div>
+						  			<button type="submit" class="btn btn-success mb-2">Consultar</button>
+						</form>
+					</div>
+					<div class="container">
+							<h2><b>Bienes Informáticos</b></h2>
+							<p>Consulta la información del resguardo:</p>            
+							<table class="table table-hover">
+							  <thead>
+								<tr>
+								  <th>Partida</th>
+								  <th>Equipo</th>
+								  <th>Modelo</th>
+								  <th>Num Serie</th>
+								  <th>Observaciones</th>
+								  <th>Resguardante</th>
+								  <th>Responsable</th>
+								  <th>Adscripción</th>
+
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr>
+								  <td>1</td>
+								  <td>Impresora Laser Jet 1024</td>
+								  <td>#</td>
+								  <td>24en34u92u5</td>
+								  <td>#</td>
+								  <td>Adolfo Pinto Santiago</td>
+								  <td>Alejandro Camargo Nava</td>
+								  <td>Dirección de Informática</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Impresora Laser Jet 1024</td>
+									<td>#</td>
+									<td>24en34u92u5</td>
+									<td>#</td>
+									<td>Adolfo Pinto Santiago</td>
+									<td>Alejandro Camargo Nava</td>
+									<td>Dirección de Informática</td>
+									  </tr>
+								</tbody>
+							</table>
+						  </div>
+		
+		<br>
+		<footer class="text-center">
+			<a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+				 <span class="glyphicon glyphicon-chevron-up"></span>
+			</a><br><br>
+			<p>Dirección de Soporte Técnico <br> 2018</p> 
+		</footer>
+						  
+</body>
+
+</html>
