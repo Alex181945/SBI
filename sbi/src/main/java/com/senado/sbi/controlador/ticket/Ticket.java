@@ -13,6 +13,7 @@ import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.op.ticket.TicketM;
 import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.modulo.menu.MenuRest;
+import com.senado.sbi.rest.op.ticket.TicketRest;
 
 @Controller
 @SessionAttributes("Usuario")
@@ -20,6 +21,7 @@ public class Ticket {
 	
 	@Autowired
 	private MenuRest menuRest;
+	private TicketRest ticketRest;
 	
 	@GetMapping("/ticket")
 	public ModelAndView Inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
@@ -40,6 +42,7 @@ public class Ticket {
 	public ModelAndView creaTicket(@ModelAttribute("Usuario") ULogin sessionUsu, @ModelAttribute("Ticket") TicketM ticket) {
 		
 		System.out.println(ticket.toString());
+		ticketRest.insertaTicket(ticket, sessionUsu.getcToken());
 
 		return null;
 	}
