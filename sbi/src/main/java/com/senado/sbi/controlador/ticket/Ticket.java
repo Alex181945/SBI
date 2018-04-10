@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
+import com.senado.sbi.modelo.op.ticket.TicketM;
 import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.modulo.menu.MenuRest;
 
@@ -30,7 +31,16 @@ public class Ticket {
 		mav.setViewName(Vistas.getTicket());
 		mav.addObject("titulo", "Ticket");
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
+		mav.addObject("Ticket", new TicketM());
 		return mav;
+	}
+	
+	@GetMapping("/ticket/inserta")
+	public ModelAndView creaTicket(@ModelAttribute("Usuario") ULogin sessionUsu, @ModelAttribute("Ticket") TicketM ticket) {
+		
+		System.out.println(ticket);
+
+		return null;
 	}
 	
 
