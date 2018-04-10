@@ -11,11 +11,6 @@ import com.senado.sbi.configuracion.Vistas;
 @SessionAttributes("Usuario")
 public class Ticket {
 	
-	@GetMapping("/t")
-	public String redireccion(){
-		return Vistas.getRedirectTicket();
-	}
-	
 	@GetMapping("/ticket")
 	public ModelAndView Inicio() {
 		ModelAndView mav = new ModelAndView();
