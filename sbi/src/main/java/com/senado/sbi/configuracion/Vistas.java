@@ -38,8 +38,7 @@ public class Vistas {
 	/***                         Redireccionamientos                       ***/
 	/*************************************************************************/
 	private static final String REDIRECT_LOGIN = "redirect:/login";
-	private static final String REDIRECT_MENUPRINCIPAL = "redirect:/menu/inicio";
-	private static final String REDIRECT_MODULO = "redirect:/carga/modulo";
+	private static final String REDIRECT_MENU = "redirect:/menu/inicio";
 	private static final String REDIRECT_TICKET = "redirect:/ticket";
 	private static final String REDIRECT_ASIGNACION = "redirect:/asignacion";
 	
@@ -51,7 +50,6 @@ public class Vistas {
 	public static String getRedirectTicket() {
 		return REDIRECT_TICKET;
 	}
-<<<<<<< HEAD
 	
 	public static String getReditectAsignacion() {
 		return REDIRECT_ASIGNACION;
@@ -60,8 +58,6 @@ public class Vistas {
 	public static String getRedirectMenu() {
 		return REDIRECT_MENU;
 	}
-=======
->>>>>>> 519c586d313e35a4f5ab4091daeffee64a786905
 	public static String getDefaultLayout() {
 		return DEFAULT_LAYOUT;
 	}
@@ -79,12 +75,6 @@ public class Vistas {
 	}
 	public static String getTicket() {
 		return TICKET;
-	}
-	public static String getRedirectMenuprincipal() {
-		return REDIRECT_MENUPRINCIPAL;
-	}
-	public static String getRedirectModulo() {
-		return REDIRECT_MODULO;
 	}
 
 }
