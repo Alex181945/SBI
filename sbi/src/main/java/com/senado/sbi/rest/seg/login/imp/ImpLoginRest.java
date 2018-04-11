@@ -62,6 +62,16 @@ public class ImpLoginRest implements LoginRest {
 			
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
 			
+			if(validacion[0].getlError() == 1) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+			} else {
+				uLogin = mapper.convertValue(datos, ULogin[].class);
+				this.setResultadoLocal(false);
+				this.setMensajeLocal("");
+				this.setuLogin(uLogin, token.asText());
+			}
+			
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 			this.setResultadoLocal(true);
@@ -80,17 +90,7 @@ public class ImpLoginRest implements LoginRest {
 			this.setMensajeLocal("Error: Exception en " + new Object() {
 			}.getClass().getEnclosingMethod().getName());
 			return;
-		}
-		
-		if(validacion[0].getlError() == 1) {
-			this.setResultadoLocal(true);
-			this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
-		} else {
-			uLogin = mapper.convertValue(datos, ULogin[].class);
-			this.setResultadoLocal(false);
-			this.setMensajeLocal("");
-			this.setuLogin(uLogin, token.asText());
-		}
+		}		
 		
 	}
 	

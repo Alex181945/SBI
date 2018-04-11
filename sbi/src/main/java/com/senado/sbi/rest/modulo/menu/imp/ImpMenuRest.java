@@ -92,13 +92,13 @@ public class ImpMenuRest implements MenuRest {
 	@Override
 	public boolean islResultado() {
 
-		return false;
+		return this.getResultadoLocal();
 	}
 
 	@Override
 	public String getMensaje() {
 
-		return null;
+		return this.getMensajeLocal();
 	}
 
 	public Boolean getResultadoLocal() {
