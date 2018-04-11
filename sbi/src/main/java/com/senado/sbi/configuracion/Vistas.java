@@ -30,6 +30,12 @@ public class Vistas {
 	private static final String LOGIN = "index";
 	private static final String TICKET = "ticket/incidencia";
 	private static final String MENU = "menu/menu";
+	private static final String bienesInformaticos = "bieninformatico/menu";
+	private static final String consultaSABI = "consultaSabi/sabi";
+	private static final String editarSABI = "editarSabi/SABI";
+	private static final String deshabilitaSABI = "deshabilitarSABI/deshsa";
+	private static final String nuevoSABI = "insertaSABI/nuevosa";
+	/*Explica en donde esta el archivo que se va a ver*/
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -37,8 +43,14 @@ public class Vistas {
 	/*************************************************************************/
 	private static final String REDIRECT_LOGIN = "redirect:/login";
 	private static final String REDIRECT_MENUPRINCIPAL = "redirect:/menu/inicio";
+	private static final String REDIRECT_SABI = "redirect:/bienesInformaticos"; /*carpeta creada en controller*/
+	private static final String REDIRECT_CONSULTA = "redirect:/consultaSABI"; /*carpeta creada en controller*/
+	private static final String REDIRECT_EDITAR = "redirect:/editarSABI"; /*carpeta creada en controller*/
+	private static final String REDIRECT_DESHABILITA = "redirect:/deshabilitarSABI"; /*carpeta creada en controller*/
+	private static final String REDIRECT_NUEVO = "redirect:/insertarSABI"; /*carpeta creada en controller*/
 	private static final String REDIRECT_MODULO = "redirect:/carga/modulo";
 	private static final String REDIRECT_TICKET = "redirect:/ticket";
+
 	/********************************* Fin ***********************************/
 	
 	public static String getRedirectLogin() {
@@ -56,6 +68,21 @@ public class Vistas {
 	public static String getLogin() {
 		return LOGIN;
 	}
+	public static String getRedirectConsulta() { /*Redirecciona lo de arriba*/
+		return REDIRECT_CONSULTA;
+	}
+	public static String getRedirectEditar() { /*Redirecciona lo de arriba*/
+		return REDIRECT_EDITAR;
+	}
+	public static String getRedirectSabi() { /*Redirecciona lo de arriba*/
+		return REDIRECT_SABI;
+	}
+	public static String getRedirectDeshabilita() { /*Redirecciona lo de arriba*/
+		return REDIRECT_DESHABILITA;
+	}
+	public static String getRedirectNuevo() { /*Redirecciona lo de arriba*/
+		return REDIRECT_NUEVO;
+	}
 	public static String getMenu() {
 		return MENU;
 	}
@@ -67,6 +94,21 @@ public class Vistas {
 	}
 	public static String getRedirectModulo() {
 		return REDIRECT_MODULO;
+	}
+	public static String getbieninformatico() {
+		return bienesInformaticos;
+	}
+	public static String getconsultaSabi() {
+		return consultaSABI;
+	}
+	public static String geteditarSabi() {
+		return editarSABI;
+	}
+	public static String getdeshabilitaSabi() {
+		return deshabilitaSABI;
+	}
+	public static String getinsertarSabi() {
+		return nuevoSABI;
 	}
 
 }
