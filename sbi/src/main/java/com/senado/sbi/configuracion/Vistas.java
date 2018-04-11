@@ -29,7 +29,9 @@ public class Vistas {
 	/*************************************************************************/
 	private static final String LOGIN = "index";
 	private static final String TICKET = "ticket/incidencia";
+	private static final String ASIGNACION = "ticket/asigancionTecnico";
 	private static final String MENU = "menu/menu";
+	
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -38,6 +40,8 @@ public class Vistas {
 	private static final String REDIRECT_LOGIN = "redirect:/login";
 	private static final String REDIRECT_MENU = "redirect:/menu/inicio";
 	private static final String REDIRECT_TICKET = "redirect:/ticket";
+	private static final String REDIRECT_ASIGNACION = "redirect:/asignacion";
+	
 	/********************************* Fin ***********************************/
 	
 	public static String getRedirectLogin() {
@@ -46,6 +50,11 @@ public class Vistas {
 	public static String getRedirectTicket() {
 		return REDIRECT_TICKET;
 	}
+	
+	public static String getReditectAsignacion() {
+		return REDIRECT_ASIGNACION;
+	}
+	
 	public static String getRedirectMenu() {
 		return REDIRECT_MENU;
 	}
@@ -60,6 +69,9 @@ public class Vistas {
 	}
 	public static String getMenu() {
 		return MENU;
+	}
+	public static String getAsigancion() {
+		return ASIGNACION;
 	}
 	public static String getTicket() {
 		return TICKET;
