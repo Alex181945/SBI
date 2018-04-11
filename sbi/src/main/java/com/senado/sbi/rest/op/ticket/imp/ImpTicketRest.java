@@ -1,10 +1,9 @@
-package com.senado.sbi.rest.modulo.menu.imp;
+package com.senado.sbi.rest.op.ticket.imp;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -13,34 +12,19 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.datos.Validacion;
-import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.modulo.Menu;
-import com.senado.sbi.rest.modulo.menu.MenuRest;
+import com.senado.sbi.modelo.op.ticket.TicketM;
+import com.senado.sbi.rest.op.ticket.TicketRest;
 
-/**
- * 
- * Autor: Alejandro Estrada
- * Fecha: 07/04/2018
- * Descripcion: Implementacion de la interfaz MenuRest
- *  
- * Modificaciones:
- * <Quien modifico:> <Cuando modifico:> <Donde modifico:>
- * Ejemplo: Alejandro Estrada 09/09/2017 In-15 Fn-19 
- *
- * Nota: 0 es falso, 1 es verdadero
- * 
- */
-
-@Component
-public class ImpMenuRest implements MenuRest {
+public class ImpTicketRest implements TicketRest {
 	
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 
 	@Override
-	public Menu[] cargaMenu(DosParametrosEnteros consulta, String cToken) {
+	public void insertaTicket(TicketM objTicket, String cToken) {
 		
-		RestTemplate restTemplate = new RestTemplate();		
+RestTemplate restTemplate = new RestTemplate();		
 		
 		Menu[]       menu         = null;
 		Validacion[] validacion   = null;
@@ -55,13 +39,12 @@ public class ImpMenuRest implements MenuRest {
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			
 			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
-			body.add("iTipoConsulta", consulta.getParametro1().toString());
-			body.add("iIDPerfil", consulta.getParametro2().toString());
+			body.add("objTicket", objTicket.toString());
 
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/carga/modulo",
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/ticket/inserta",
 					HttpMethod.POST ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -85,10 +68,9 @@ public class ImpMenuRest implements MenuRest {
 			this.setMensajeLocal("Error: Exception en " + new Object() {
 			}.getClass().getEnclosingMethod().getName());
 		}
-
-		return menu;
+		
 	}
-
+	
 	@Override
 	public boolean islResultado() {
 

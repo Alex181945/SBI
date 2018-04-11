@@ -5,7 +5,7 @@
 
 		<h1 class="display-6">Registro</h1>
 		
-		<form id="form1" th:action="@{/segValidaSesionP}" method="POST">
+		<form id="form1" th:action="@{/ticket/inserta}" th:object="${Ticket}" method="POST">
 
 		<div class="row">
 			<div id="prue" class="row col-md-4">
@@ -61,7 +61,7 @@
 						<h5 class="lead">Numero de Inventario:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="inventario" name="inventario" placeholder="N° Inventario"  onkeypress="return soloNumeros(event)"/>
+							id="inventario" name="inventario" placeholder="N° Inventario" th:field="*{cNumInventario}" th:value="${cNumInventario}"  onkeypress="return soloNumeros(event)"/>
 					</div>
 			</div>
 			
@@ -70,7 +70,7 @@
 						<h5 class="lead">Usuario:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="user" name="user" placeholder="Usuario" onkeypress="return soloLetras(event)"/>
+							id="user" name="user" placeholder="Usuario" th:field="*{cUsuarioEquipo}" th:value="${cUsuarioEquipo}" onkeypress="return soloLetras(event)"/>
 					</div>
 			</div>
 
@@ -101,7 +101,7 @@
 						<h5 class="lead">Piso:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="piso" name="piso" placeholder="Piso" />
+							id="piso" name="piso" th:field="*{cPiso}" th:value="${cPiso}" placeholder="Piso" />
 					</div>
 			</div>
 
@@ -110,7 +110,7 @@
 						<h5 class="lead">Oficina:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="oficina" name="oficina" placeholder="Oficina" />
+							id="oficina" name="oficina" th:field="*{cOficina}" th:value="${cOficina}" placeholder="Oficina" />
 					</div>
 			</div>
 			
@@ -119,7 +119,7 @@
 						<h5 class="lead">Resguardante:</h5></label>
 					<div class="col-md-7">
 						<input type="text" class="form-control form-control-lg"
-							id="resguardante" name="resguardante" placeholder="Resguardante" onkeypress="return soloLetras(event)"/>
+							id="resguardante" name="resguardante" placeholder="Resguardante" th:field="*{cResguardante}" th:value="${cResguardante}" onkeypress="return soloLetras(event)"/>
 					</div>
 			</div>
 		</div> <!-- Row final 3 final -->
@@ -133,7 +133,7 @@
 						<h5 class="lead">Solicitante:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="solicitante" name="solicitante" placeholder="" onkeypress="return soloLetras(event)"/>
+							id="solicitante" name="solicitante" placeholder="" th:field="*{cUsuReporta}" th:value="${cUsuReporta}" onkeypress="return soloLetras(event)"/>
 					</div>
 			</div>
 
@@ -251,7 +251,7 @@
 		<div class="row"> <!-- Row Botones-->
 			<div class="col-md-4"/>
 			<div class="col-md-2">
-					<button type="button" class="btn btn-primary btn-lg btn-outline"
+					<button type="submit" class="btn btn-primary btn-lg btn-outline"
 						>Registrar</button>
 			</div>
 
