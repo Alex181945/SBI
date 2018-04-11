@@ -18,14 +18,24 @@
   	<div th:replace="plantilla/fragments/encabezado :: encabezado"></div>
 	
 	<div th:replace="${view} :: content"></div>
+	
+	<div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+	    <div class="modal-dialog modal-sm">
+	        <div class="modal-content" style="width: 48px">
+	            <span class="fa fa-spinner fa-pulse fa-5x fa-fw" aria-hidden="true"></span>
+	        </div>
+	    </div>
+	</div>
 
     <!-- Librerias -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="#" th:src="@{/assets/js/lib/jquery-3.3.1.min.js}"></script>
     <script src="#" th:src="@{/sweetalert/js/sweetalert.min.js}"></script>
     <script src="#" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script src="#" th:src="@{/fontawesome/js/fontawesome-all.js}"></script>
     <!-- Fin Librerias -->
     <script src="#" th:src="@{/assets/js/login/login.js}"></script>
     <script src="#" th:src="@{/assets/js/validdata/app.js}"></script>
+    <script src="#" th:src="@{/assets/js/funciones/visuales.js}"></script>
   </body>
 </html>

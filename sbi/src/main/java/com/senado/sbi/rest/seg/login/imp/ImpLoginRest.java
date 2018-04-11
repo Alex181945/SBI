@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.modelo.seg.login.ULogin;
+import com.senado.sbi.modelo.seg.login.UsuarioTemp;
 import com.senado.sbi.rest.seg.login.LoginRest;
 
 /**
@@ -36,12 +37,9 @@ public class ImpLoginRest implements LoginRest {
 	private ULogin  uLogin;
 
 	@Override
-	public void validaUsuario(ULogin objUsuario) {
+	public void validaUsuario(UsuarioTemp objUsuario) {
 		
-		RestTemplate restTemplate = new RestTemplate();
-		
-		/*JSON obtenido de forma plana*/
-		ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getURLWSD()+"validausuario", objUsuario, String.class);
+		RestTemplate restTemplate = new RestTemplate();		
 		
 		ULogin[] uLogin = null;
 		Validacion[] validacion = null;
@@ -53,6 +51,10 @@ public class ImpLoginRest implements LoginRest {
 		
 		try {
 			
+			/*JSON obtenido de forma plana*/
+			ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getUrlwsd() + "validausuario",
+					objUsuario, String.class);
+			
 			root = mapper.readTree(response.getBody());
 			validacionJs = root.path("validacion");
 			datos = root.path("datos");
@@ -61,15 +63,23 @@ public class ImpLoginRest implements LoginRest {
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
 			
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			this.setResultadoLocal(true);
-			this.setMensajeLocal("Error: JsonProcessingException en " + this.getClass().getEnclosingMethod().getName());
+			this.setMensajeLocal("Error: JsonProcessingException en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+			return;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			this.setResultadoLocal(true);
-			this.setMensajeLocal("Error: IOException en " + this.getClass().getEnclosingMethod().getName());
+			this.setMensajeLocal("Error: IOException en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: Exception en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+			return;
 		}
 		
 		if(validacion[0].getlError() == 1) {
