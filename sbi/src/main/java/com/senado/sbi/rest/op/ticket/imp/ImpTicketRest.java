@@ -39,7 +39,7 @@ RestTemplate restTemplate = new RestTemplate();
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			
 			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
-			body.add("objTicket", objTicket.toString());
+			body.add("objTicket", objTicket.toJson());
 
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
