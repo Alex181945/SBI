@@ -74,5 +74,29 @@ public class Menu {
 				+ "cRuta:"     + cRuta     + ","
 				+ "lActivo:"   + lActivo     
 				+ "}";
-	} 
+	}
+	
+	public static Menu[] menuDefault() {
+		Menu opcion1 = new Menu();
+		Menu opcion2 = new Menu();
+		
+		opcion1.setiIDModulo(0);
+		opcion1.setcModulo("Menu");
+		opcion1.setcPrograma("Inicio");
+		opcion1.setcRuta("/");
+		opcion1.setiPartida(1);
+		opcion1.setlActivo(1);
+		
+		opcion2.setiIDModulo(0);
+		opcion2.setcModulo("Menu");
+		opcion2.setcPrograma("Cerrar Sesión");
+		opcion2.setcRuta("/logout");
+		opcion2.setiPartida(2);
+		opcion2.setlActivo(1);	
+		
+		Menu[] menuDefault = {opcion1 , opcion2};
+		
+		return menuDefault;
+	}
+	
 }

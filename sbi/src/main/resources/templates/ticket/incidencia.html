@@ -217,7 +217,7 @@
 					<h5 class="lead">Extension:</h5></label>
 				<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-						 name="Extension" placeholder="" th:field="*{cExtension}" th:value="${Extension" onkeypress="return soloNumeros(event)"/>
+						 name="Extension" placeholder="" th:field="*{cExtension}" th:value="${cExtension}" onkeypress="return soloNumeros(event)"/>
 				</div>
 			</div>	
 		</div>	<!-- Fila 6 Final -->
@@ -228,7 +228,7 @@
 						<h5 class="lead">Observaciones:</h5></label>
 						
 					<div class="col-md-6">
-							<textarea class="form-control" rows="2" id="comment"></textarea>
+							<textarea class="form-control" th:field="*{cObs}" th:value="${cObs}" rows="2" id="comment"></textarea>
 					</div>
 			</div>			
 		</div>
