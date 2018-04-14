@@ -27,6 +27,7 @@ public class Vistas {
 	/*************************************************************************/
 	/***                          Vistas del sistema                       ***/
 	/*************************************************************************/
+	/******************************En funcion a templates*********************/
 	private static final String LOGIN = "index";
 	private static final String TICKET = "ticket/incidencia";
 	private static final String ASIGNACION = "ticket/asigancionTecnico";
@@ -40,7 +41,7 @@ public class Vistas {
 	private static final String REDIRECT_LOGIN = "redirect:/login";
 	private static final String REDIRECT_MENU = "redirect:/menu/inicio";
 	private static final String REDIRECT_TICKET = "redirect:/ticket";
-	private static final String REDIRECT_ASIGNACION = "redirect:/asignacion";
+	private static final String REDIRECT_ASIGNACION = "redirect:/ticket/asignacion";
     private static final String REDIRECT_MENUPRINCIPAL = "redirect:/menu/inicio";
     private static final String REDIRECT_MODULO = "redirect:/carga/modulo";
 	

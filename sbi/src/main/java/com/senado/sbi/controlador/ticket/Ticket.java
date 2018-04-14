@@ -24,7 +24,7 @@ public class Ticket {
 	private TicketRest ticketRest;
 	
 	@GetMapping("/ticket")
-	public ModelAndView Inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
+	public ModelAndView inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
 		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
@@ -32,6 +32,21 @@ public class Ticket {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getTicket());
+		mav.addObject("titulo", "Ticket");
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
+		mav.addObject("Ticket", new TicketM());
+		return mav;
+	}
+	
+	@GetMapping("/ticket/asignacion")
+	public ModelAndView asignacion(@ModelAttribute("Usuario") ULogin sessionUsu) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getAsigancion());
 		mav.addObject("titulo", "Ticket");
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("Ticket", new TicketM());
