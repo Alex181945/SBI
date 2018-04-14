@@ -41,12 +41,6 @@ public class Vistas {
 	private static final String REDIRECT_TICKET = "redirect:/ticket";
 	/********************************* Fin ***********************************/
 	
-	public static String getRedirectLogin() {
-		return REDIRECT_LOGIN;
-	}
-	public static String getRedirectTicket() {
-		return REDIRECT_TICKET;
-	}
 	public static String getDefaultLayout() {
 		return DEFAULT_LAYOUT;
 	}
@@ -56,17 +50,23 @@ public class Vistas {
 	public static String getLogin() {
 		return LOGIN;
 	}
+	public static String getTicket() {
+		return TICKET;
+	}
 	public static String getMenu() {
 		return MENU;
 	}
-	public static String getTicket() {
-		return TICKET;
+	public static String getRedirectLogin() {
+		return REDIRECT_LOGIN;
 	}
 	public static String getRedirectMenuprincipal() {
 		return REDIRECT_MENUPRINCIPAL;
 	}
 	public static String getRedirectModulo() {
 		return REDIRECT_MODULO;
+	}
+	public static String getRedirectTicket() {
+		return REDIRECT_TICKET;
 	}
 
 }
