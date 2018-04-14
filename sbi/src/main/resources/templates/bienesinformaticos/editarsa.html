@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 		<title>Actualizar</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</head>
+<style>
+	/* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+   /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+    body
+    {
+        background:url(3.png) #2b2b2a;
+        background-position: left;
+        width:30;
+        height: 30;
+		}
+		.navbar-nav.navbar-center {
+		position: absolute;
+		left: 50%;
+		transform: translatex(-50%);
+		}
+    * {
+				margin:0px;
+				padding:0px;
+			}
+			
+			#header {
+				margin:center;
+				width:700px;
+				font-family: Helvetica, sans-serif;
+			}
+			
+			ul, ol {
+				list-style:none;
+			}
+			
+			.nav > li {
+				float:left;
+			}
+			
+			.nav li a {
+				
+				color: gray;
+                background-color:#FAFAFA;
+				text-decoration:none;
+				padding:20px 12px;
+				display:block;
+			}
+           
+			.nav li ul {
+				display:none;
+				position: center;
+                
+            
+			#header {
+				margin:auto;
+				width:700px;
+				font-family: Helvetica, sans-serif;
+			}
+			
+			ul, ol {
+				list-style:none;
+			}
+			
+			.nav > li {
+				float:left;
+			}
+			
+			.nav li a {
+				
+				color: gray;
+                background-color:#FAFAFA;
+				text-decoration:none;
+				padding:20px 12px;
+				display:block;
+			}
+			
+			.nav li ul {
+				display:none;
+				position:center;
+				min-width:140px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.nav li ul li {
+				position:center;
+			}
+			
+			.nav li ul li ul {
+				right:-140px;
+				top:0px;
+			}
+            h1
+    {
+        margin:5%;
+        padding: 0px;
+    };
+				min-width:140px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.nav li ul li {
+				position:center;
+			}
+			
+			.nav li ul li ul {
+				right:-140px;
+				top:0px;
+			}
+            h1
+    {
+        margin:5%;
+        padding: 0px;
+    }
+</style>
+<pre style="background-color:#646569">
+    <left><img src="image1.jpg" alt="image" width="450px" height="110px">
+    </left>
+        
+</pre>
+    <body>
+			<nav class="navbar ">
+					<div class="container-fluid">
+							<div class="navbar-header">
+								<ul class="nav navbar-nav navbar-center">
+                                    <li class="active"><a href="sabi.html">Consultar</a></li>
+									<li class="active"><a href="editarsa.html">Editar</a></li>
+									<li class="active"><a href="nuevosa.html">Nuevo</a></li>
+									<li class="active"><a href="deshsa.html">Deshabilitar</a></li></ul>
+								</ul>
+					</div>
+			</nav>
+			<div class="container">
+
+				<div class="signup-form-container">
+						<div class="form-header">
+								<center> <h1 class="form-title"><i class="fa fa-user"></i> ACTUALIZAR INFORMACIÓN</h1></center>
+						</div>
+					 <!-- form para ingresar el resguardo -->
+					
+						<form class="form-inline">
+                            <div class = text-right>
+							    <label for="iIDBienesInformaticos">Resguardo:</label>
+								    <div class="input-group mb-2 mr-sm-2">
+									<input type="text" class="form-control" id="iIDBienesInformaticos" placeholder="Resguardo">
+							</div>
+                                      <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+                </div>
+                <br> <br>
+                <div class="form-row">
+                        <div class="form-group col-md-5">
+                                <label for="ctBienesInformáticos">Resguardante: </label>
+                                <select id="cUsuario" class="form-control">
+                                  <option selected>Ing. Dino Adán Venegas Zárate</option>
+                                  <option>Alejandro Camargo Nava</option>
+                                  <option>Josue Arrona Martínez</option>
+                                </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="ctBienesInformáticos">Edificio: </label>
+                                <select id="cEdificio" class="form-control">
+                                  <option selected>TCO</option>
+                                  <option>TAZ</option>
+                                  <option>HEM</option>
+                                  <option>M68</option>
+                                  <option>DCL</option>
+                                </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                                <label for="ctBienesInformáticos">Piso: </label>
+                                <select id="cPiso" class="form-control">
+                                  <option selected>S1</option>
+                                  <option>S2</option>
+                                  <option>S3</option>
+                                  <option>S4</option>
+                                  <option>PB</option>
+                                </select>
+                        </div>
+                </div>
+                <br><br><br>
+                <div class="form-row">
+                        <div class="form-group col-md-5">
+                                <label for="ctBienesInformáticos">Responsable: </label>
+                                <select id="cUsuario" class="form-control">
+                                  <option selected>Adolfo Pinto</option>
+                                  <option>Ángel Garibay</option>
+                                  </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="ctBienesInformáticos">Adscripción: </label>
+                                <select id="iIDAreas" class="form-control">
+                                  <option selected>Dirección de Informática</option>
+                                  <option>IBD</option>
+                                  </select>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <center>
+                        <label for="cObs">Observaciones:</label>
+                            <textarea class="form-control input-lg" id="Obs" rows="3"></textarea>
+                    </center>
+                <br>
+                <div class = text-center>
+                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                </div>
+                    </form>
+                    <br><br>
+                    <div class="container">
+                        <table class="table table-hover">
+							  <thead>
+								<tr>
+                                  <th>Partida</th>
+                                  <th>Resguardante</th>
+								  <th>Resguardante</th>
+								  <th>Edificio</th>
+								  <th>Piso</th>
+								  <th>Ádscripción</th>
+								  <th>Subadscripción</th>
+								  <th>Responsable</th>
+								  <th>Observación</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr>
+                                  <td>1</td>
+								  <td>Ing. Dino Adán Venegas Zárate</td>
+								  <td>TCO</td>
+								  <td>PB</td>
+								  <td>Dirección de Informática</td>
+								  <td>Dirección de Soporte Técnico</td>
+								  <td>Adolfo Pinto Santiago</td>
+								  <td>Impresora HP 1024</td>
+								</tr>
+								<tr>
+                                    <td>2</td>
+									<td>Alejandro Camargo</td>
+									<td>M68</td>
+									<td>PB</td>
+									<td>Dirección de Informática</td>
+									<td>Dirección de Presupuestos</td>
+									<td>Ángel Garibay</td>
+									<td>Impresora HP 1024</td>
+								</tr>
+								</tbody>
+							</table>
+						  </div>
+					
+		
+		<footer class="text-center">
+			<a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+				 <span class="glyphicon glyphicon-chevron-up"></span>
+			</a><br><br>
+			<p>Dirección de Soporte Técnico <br> 2018</p> 
+		</footer>
+						  
+</body>
+
+</html>
