@@ -10,7 +10,7 @@ package com.senado.sbi.configuracion;
  * <Quien modifico:> <Cuando modifico:> <Donde modifico:>
  * Ejemplo: Alejandro Estrada 09/09/2017 In-15 Fn-19 
  *
- * Nota: 0 es falso, 1 es verdadero
+ * Nota: 0 esx falso, 1 es verdadero
  * 
  */
 
@@ -41,6 +41,8 @@ public class Vistas {
 	private static final String REDIRECT_MENU = "redirect:/menu/inicio";
 	private static final String REDIRECT_TICKET = "redirect:/ticket";
 	private static final String REDIRECT_ASIGNACION = "redirect:/asignacion";
+    private static final String REDIRECT_MENUPRINCIPAL = "redirect:/menu/inicio";
+    private static final String REDIRECT_MODULO = "redirect:/carga/modulo";
 	
 	/********************************* Fin ***********************************/
 	
@@ -76,5 +78,12 @@ public class Vistas {
 	public static String getTicket() {
 		return TICKET;
 	}
+    public static String getRedirectMenuprincipal() {
+        return REDIRECT_MENUPRINCIPAL;
+    }
+    public static String getRedirectModulo() {
+        return REDIRECT_MODULO;
+    }
+
 
 }

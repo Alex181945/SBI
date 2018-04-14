@@ -61,6 +61,7 @@ public class ImpLoginRest implements LoginRest {
 			token = root.path("token");
 			
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
+			System.out.println(root);
 			
 			if(validacion[0].getlError() == 1) {
 				this.setResultadoLocal(true);
