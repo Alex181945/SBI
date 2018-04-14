@@ -16,7 +16,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.MensajeError;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.datos.Validacion;
-import com.senado.sbi.modelo.modulo.Menu;
 import com.senado.sbi.modelo.op.ticket.TicketM;
 import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
 import com.senado.sbi.rest.op.ticket.TicketRest;
@@ -31,9 +30,8 @@ public class ImpTicketRest implements TicketRest {
 	@Override
 	public void insertaTicket(TicketM objTicket, String cToken) {
 		
-RestTemplate restTemplate = new RestTemplate();		
+		RestTemplate restTemplate = new RestTemplate();		
 		
-		Menu[]       menu         = null;
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
@@ -73,7 +71,6 @@ RestTemplate restTemplate = new RestTemplate();
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
-				menu = mapper.convertValue(datos, Menu[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}

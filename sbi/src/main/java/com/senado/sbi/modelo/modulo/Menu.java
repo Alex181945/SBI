@@ -83,7 +83,7 @@ public class Menu {
 		opcion1.setiIDModulo(0);
 		opcion1.setcModulo("Menu");
 		opcion1.setcPrograma("Inicio");
-		opcion1.setcRuta("/");
+		opcion1.setcRuta("/menu/inicio");
 		opcion1.setiPartida(1);
 		opcion1.setlActivo(1);
 		
