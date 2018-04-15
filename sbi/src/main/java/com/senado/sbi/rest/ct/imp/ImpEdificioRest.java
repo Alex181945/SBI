@@ -1,4 +1,4 @@
-package com.senado.sbi.rest.op.ticket.imp;
+package com.senado.sbi.rest.ct.imp;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,21 +8,19 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.MensajeError;
 import com.senado.sbi.configuracion.VariablesEntorno;
+import com.senado.sbi.modelo.ct.Edificio;
 import com.senado.sbi.modelo.datos.Validacion;
-import com.senado.sbi.modelo.op.ticket.TicketM;
+import com.senado.sbi.rest.ct.EdificioRest;
 import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
-import com.senado.sbi.rest.op.ticket.TicketRest;
 
 @Component
-public class ImpTicketRest implements TicketRest {
+public class ImpEdificioRest implements EdificioRest {
 	
 	private final static Logger LOGGER = Logger.getLogger(ImpMenuRest.class.getName());
 	private Boolean resultadoLocal;
@@ -30,10 +28,11 @@ public class ImpTicketRest implements TicketRest {
 
 	@SuppressWarnings("static-access")
 	@Override
-	public void insertaTicket(TicketM objTicket, String cToken) {
+	public Edificio[] consultaEdificios(Integer iTipoConsulta, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
+		Edificio[]   edificio     = null;
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
@@ -45,23 +44,22 @@ public class ImpTicketRest implements TicketRest {
 			HttpHeaders headers = new HttpHeaders();
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			
-			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
-			body.add("objTicket", objTicket.toJson());
-
-			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
+			HttpEntity<?> httpEntity = new HttpEntity<Object>(headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/ticket/inserta",
-					HttpMethod.POST ,httpEntity, String.class);
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/consulta?iTipoConsulta=" + iTipoConsulta,
+					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
+			
+			System.out.println(root);
 			
 			/*Maneja los errores del servicio rest*/
 			if(root.has("error")) {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(MensajeError.getERROR1());
 				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
-				return;
+				return Edificio.edificioDefault();
 			}
 			
 			validacionJs = root.path("validacion");
@@ -73,6 +71,7 @@ public class ImpTicketRest implements TicketRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
+				edificio = mapper.convertValue(datos, Edificio[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}
@@ -84,20 +83,19 @@ public class ImpTicketRest implements TicketRest {
 			}.getClass().getEnclosingMethod().getName());
 		}
 		
+		return edificio;
 	}
-	
+
 	@Override
 	public boolean islResultado() {
-
 		return this.getResultadoLocal();
 	}
 
 	@Override
 	public String getMensaje() {
-
 		return this.getMensajeLocal();
 	}
-
+	
 	public Boolean getResultadoLocal() {
 		return resultadoLocal;
 	}
@@ -113,5 +111,5 @@ public class ImpTicketRest implements TicketRest {
 	public void setMensajeLocal(String mensajeLocal) {
 		this.mensajeLocal = mensajeLocal;
 	}
-
+	
 }

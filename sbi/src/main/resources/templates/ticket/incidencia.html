@@ -78,19 +78,12 @@
 					<label for="edificio" class="col-md-4">
 						<h5 class="lead">Edificio:</h5></label>
 					<div class="col-md-8">
-							<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud">
-								<option value="HEM">HEM – Hemiciclo</option>
-								<option value="PLN">PLN – Pleno</option>
-								<option value="TCO">TCO – Torre de Comisiones</option>
-								<option value="TAZ">TAZ – Torre Azul</option>
-								<option value="DCL">DCL – Donceles</option>
-								<option value="ALL">ALL – Allende</option>
-								<option value="XIC">XIC – Xicoténcatl</option>
-								<option value="M68">M68 – Madrid 68</option>
-								<option value="M35">M35 - Madrid 35</option>
-								<option value="M62">M62 - Madrid 62</option>
-								<option value="M37">M37 - Madrid 37</option>
-							</select>
+							<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud" 
+								th:field="*{iIDEdificio}">
+					            <option th:each="dropDownItem : ${edificios}"
+					                    th:value="${dropDownItem.iIDEdificio}"
+					                    th:text="${dropDownItem.cAbreviatura} + '-' + ${dropDownItem.cEdificio}" />
+					        </select>
 						</div>
 			</div>
 		</div> <!-- row fila 2 final -->
