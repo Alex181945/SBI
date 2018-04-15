@@ -78,19 +78,12 @@
 					<label for="edificio" class="col-md-4">
 						<h5 class="lead">Edificio:</h5></label>
 					<div class="col-md-8">
-							<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud">
-								<option value="HEM">HEM – Hemiciclo</option>
-								<option value="PLN">PLN – Pleno</option>
-								<option value="TCO">TCO – Torre de Comisiones</option>
-								<option value="TAZ">TAZ – Torre Azul</option>
-								<option value="DCL">DCL – Donceles</option>
-								<option value="ALL">ALL – Allende</option>
-								<option value="XIC">XIC – Xicoténcatl</option>
-								<option value="M68">M68 – Madrid 68</option>
-								<option value="M35">M35 - Madrid 35</option>
-								<option value="M62">M62 - Madrid 62</option>
-								<option value="M37">M37 - Madrid 37</option>
-							</select>
+							<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud" 
+								th:field="*{iIDEdificio}">
+					            <option th:each="dropDownItem : ${edificios}"
+					                    th:value="${dropDownItem.iIDEdificio}"
+					                    th:text="${dropDownItem.cAbreviatura} + '-' + ${dropDownItem.cEdificio}" />
+					        </select>
 						</div>
 			</div>
 		</div> <!-- row fila 2 final -->
@@ -185,7 +178,7 @@
 						<h5 class="lead">N° de Empleado:</h5></label>
 					<div class="col-md-8">
 							<input type="text" class="form-control form-control-lg"
-							 name="NumEmppleado" placeholder="" onkeypress="return soloNumeros(event)"/>
+							 name="NumEmppleado" placeholder="" th:field="*{cUsuarioR}" th:value="${cUsuarioR}" onkeypress="return soloNumeros(event)"/>
 					</div>
 			</div>	
 		</div> <!-- fila 5 Final-->
@@ -217,7 +210,7 @@
 					<h5 class="lead">Extension:</h5></label>
 				<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-						 name="Extension" placeholder="" onkeypress="return soloNumeros(event)"/>
+						 name="Extension" placeholder="" th:field="*{cExtension}" th:value="${cExtension}" onkeypress="return soloNumeros(event)"/>
 				</div>
 			</div>	
 		</div>	<!-- Fila 6 Final -->
@@ -228,7 +221,7 @@
 						<h5 class="lead">Observaciones:</h5></label>
 						
 					<div class="col-md-6">
-							<textarea class="form-control" rows="2" id="comment"></textarea>
+							<textarea class="form-control" th:field="*{cObs}" th:value="${cObs}" rows="2" id="comment"></textarea>
 					</div>
 			</div>			
 		</div>

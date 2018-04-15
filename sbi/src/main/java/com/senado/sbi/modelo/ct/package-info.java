@@ -5,4 +5,4 @@
  * @author Alex
  *
  */
-package com.senado.sbi.rest.op.ticket;
+package com.senado.sbi.modelo.ct;
