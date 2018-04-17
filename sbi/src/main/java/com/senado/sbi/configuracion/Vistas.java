@@ -50,15 +50,8 @@ public class Vistas {
 	private static final String REDIRECT_NUEVO = "redirect:/insertarSABI"; /*carpeta creada en controller*/
 	private static final String REDIRECT_MODULO = "redirect:/carga/modulo";
 	private static final String REDIRECT_TICKET = "redirect:/ticket";
-
 	/********************************* Fin ***********************************/
 	
-	public static String getRedirectLogin() {
-		return REDIRECT_LOGIN;
-	}
-	public static String getRedirectTicket() {
-		return REDIRECT_TICKET;
-	}
 	public static String getDefaultLayout() {
 		return DEFAULT_LAYOUT;
 	}
@@ -68,47 +61,56 @@ public class Vistas {
 	public static String getLogin() {
 		return LOGIN;
 	}
-	public static String getRedirectConsulta() { /*Redirecciona lo de arriba*/
-		return REDIRECT_CONSULTA;
-	}
-	public static String getRedirectEditar() { /*Redirecciona lo de arriba*/
-		return REDIRECT_EDITAR;
-	}
-	public static String getRedirectSabi() { /*Redirecciona lo de arriba*/
-		return REDIRECT_SABI;
-	}
-	public static String getRedirectDeshabilita() { /*Redirecciona lo de arriba*/
-		return REDIRECT_DESHABILITA;
-	}
-	public static String getRedirectNuevo() { /*Redirecciona lo de arriba*/
-		return REDIRECT_NUEVO;
+	public static String getTicket() {
+		return TICKET;
 	}
 	public static String getMenu() {
 		return MENU;
 	}
-	public static String getTicket() {
-		return TICKET;
+	public static String getBienesinformaticos() {
+		return bienesInformaticos;
+	}
+	public static String getConsultasabi() {
+		return consultaSABI;
+	}
+	public static String getEditarsabi() {
+		return editarSABI;
+	}
+	public static String getDeshabilitasabi() {
+		return deshabilitaSABI;
+	}
+	public static String getNuevosabi() {
+		return nuevoSABI;
+	}
+	public static String getRedirectLogin() {
+		return REDIRECT_LOGIN;
 	}
 	public static String getRedirectMenuprincipal() {
 		return REDIRECT_MENUPRINCIPAL;
 	}
+	public static String getRedirectSabi() {
+		return REDIRECT_SABI;
+	}
+	public static String getRedirectConsulta() {
+		return REDIRECT_CONSULTA;
+	}
+	public static String getRedirectEditar() {
+		return REDIRECT_EDITAR;
+	}
+	public static String getRedirectDeshabilita() {
+		return REDIRECT_DESHABILITA;
+	}
+	public static String getRedirectNuevo() {
+		return REDIRECT_NUEVO;
+	}
 	public static String getRedirectModulo() {
 		return REDIRECT_MODULO;
 	}
-	public static String getbieninformatico() {
-		return bienesInformaticos;
+	public static String getRedirectTicket() {
+		return REDIRECT_TICKET;
 	}
-	public static String getconsultaSabi() {
-		return consultaSABI;
-	}
-	public static String geteditarSabi() {
-		return editarSABI;
-	}
-	public static String getdeshabilitaSabi() {
-		return deshabilitaSABI;
-	}
-	public static String getinsertarSabi() {
-		return nuevoSABI;
-	}
-
 }
+
+	
+	
+	
