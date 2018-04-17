@@ -14,7 +14,7 @@ public class BienesInformaticos
 	@GetMapping("/bienesInformaticos") 
 	public String bienesInformaticos(@ModelAttribute("Usuario") ULogin sessionUsu) 
 	{
-		return Vistas.getbieninformatico();
+		return Vistas.getBienesinformaticos();
 		
 	}
 }
