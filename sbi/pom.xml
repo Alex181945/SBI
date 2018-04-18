@@ -48,8 +48,31 @@
 	    <dependency>
 	        <groupId>com.fasterxml.jackson.datatype</groupId>
 	        <artifactId>jackson-datatype-jsr310</artifactId>
-	        <version>2.5.3</version>
 	    </dependency>
+	    
+	    <!-- Spring Security and LDAP -->
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-security</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.springframework.ldap</groupId>
+	        <artifactId>spring-ldap-core</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-ldap</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.unboundid</groupId>
+	        <artifactId>unboundid-ldapsdk</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-test</artifactId>
+	        <scope>test</scope>
+	    </dependency>
+	    <!-- End Spring Security and LDAP -->
 	</dependencies>
 
 	<build>
