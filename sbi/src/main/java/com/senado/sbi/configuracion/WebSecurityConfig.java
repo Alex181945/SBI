@@ -4,9 +4,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.encoding.LdapShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
@@ -15,7 +18,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 				.anyRequest().fullyAuthenticated()
 				.and()
-			.formLogin();
+			.formLogin()
+			.loginPage("/login")
+            .permitAll();;
 	}
 
 	@Override
@@ -30,6 +35,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.passwordCompare()
 					.passwordEncoder(new LdapShaPasswordEncoder())
 					.passwordAttribute("userPassword");
+	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+	    web
+	       .ignoring()
+	       .antMatchers("/assets/**", "/bootstrap/**", "/fontawesome/**", "/sweetalert/**");
 	}
 	
 }
