@@ -19,23 +19,23 @@ function validarUsuario(e){
 
 function segValidaForm(){
 	
-	if($('#usuario').val() == "" && $('#password').val() == ""){
+	if($('#username').val() == "" && $('#password').val() == ""){
 		usuarioVacio();
 		passwordVacio();
 		return false;
-	} else if($('#usuario').val() == ""){
+	} else if($('#username').val() == ""){
 		usuarioVacio();
 	} else if($('#password').val() == ""){
 		passwordVacio();
 	}
 	
-	if($('#usuario').val() != "" && $('#password').val() != ""){
+	if($('#username').val() != "" && $('#password').val() != ""){
 		
 		usuarioValor();
 		passwordValor();
 		return true;
 		
-	}else if($('#usuario').val() != ""){
+	}else if($('#username').val() != ""){
 		usuarioValor();
 	} else if($('#password').val() != ""){
 		passwordValor();
@@ -44,14 +44,14 @@ function segValidaForm(){
 }
 
 function usuarioVacio(){
-	$('#usuario').addClass('form-control is-invalid');
+	$('#username').addClass('form-control is-invalid');
 	document.getElementById("errorU").innerHTML = "Ingresa tu usuario";
 	$('#errorU').addClass('invalid-feedback');
 }
 
 function usuarioValor(){
-	$('#usuario').removeClass('form-control is-invalid');
-	$('#usuario').addClass('form-control is-valid');
+	$('#username').removeClass('form-control is-invalid');
+	$('#username').addClass('form-control is-valid');
 	document.getElementById("errorU").innerHTML = "";
 	$('#errorU').removeClass('invalid-feedback');
 }

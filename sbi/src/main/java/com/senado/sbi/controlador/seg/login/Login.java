@@ -25,7 +25,6 @@ import com.senado.sbi.rest.seg.login.LoginRest;
  * 
  */
 
-
 @Controller
 public class Login {
 	
@@ -37,13 +36,13 @@ public class Login {
 		return Vistas.getRedirectLogin();
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/iniciasesion")
 	public String login() {
 		return Vistas.getLogin();
 	}
 	
 	@PostMapping("/validausuario")
-	public String validaUsuario(@ModelAttribute("usuario") String cUsuario,
+	public String validaUsuario(@ModelAttribute("username") String cUsuario,
 			@ModelAttribute("password") String cPassword, Model model, HttpServletRequest request) {
 		
 		UsuarioTemp objUsuario = new UsuarioTemp();
@@ -62,7 +61,7 @@ public class Login {
 		return Vistas.getRedirectMenuprincipal();
 	}
 	
-	@GetMapping("/logout")
+	@GetMapping("/cierrasesion")
 	public String cerrarSesion(HttpServletRequest request) {
 		//status.setComplete();
 		request.getSession().invalidate();
