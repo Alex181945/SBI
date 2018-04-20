@@ -2,7 +2,7 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 	<div class="container">
 
-		<form id="formLogin" action="/menu/inicio" method="POST">
+		<form id="formLogin" name='f' th:action="@{/inicialdap}" method="POST">
 			<div id="usuarioD" class="form-group row align-items-center">
 				<label for="usuario"
 					class="col-md-3 offset-md-3 text-center col-form-label">
@@ -37,8 +37,8 @@
 			th:value="${_csrf.token}" />
 			
 			
-		<div class="col-12" style="display:none;">
-			<span id="message" th:text="${param.error ne null}"></span>
+		<div class="col-12" style="display:none;" th:if="${param.error}">
+			<span id="message">Error al iniciar sesion</span>
 		</div>
 		
 

@@ -28,15 +28,16 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 		String cURL = request.getRequestURI();
 		request.setAttribute("iniTiempo", System.currentTimeMillis());
 
-		/*if (!cURL.equals("/") && !cURL.equals("/iniciasesion") && !cURL.equals("/inicialdap") && !cURL.equals("/validausuario")) {
-			
-			ULogin user = (ULogin) request.getSession().getAttribute("Usuario");
-			
-			if(user == null) {
-				response.sendRedirect("/"); 
+		if (!cURL.equals("/") && !cURL.equals("/iniciasesion") && !cURL.equals("/inicialdap")
+				&& !cURL.equals("/validausuario")) {
+
+			/*ULogin user = (ULogin) request.getSession().getAttribute("Usuario");
+
+			if (user == null) {
+				response.sendRedirect("/");
 				return false;
-			}
-		}*/
+			}*/
+		}
 		
 		return true;
 
