@@ -33,7 +33,7 @@
 							<div class="col-md-8">
 								<select class="form-control" id="tpSolicitud1" name="tpSolicitud1" 
 									th:field="*{iIDTipoServicio}">
-									<option th:each="dropDownItem : ${solicitud}"
+									<option th:each="dropDownItem : ${tiposervicio}"
 										th:value="${dropDownItem.iIDTipoServicio}"
 										th:text="${dropDownItem.cTipoServicio}"/>
 								</select>

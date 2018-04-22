@@ -13,6 +13,7 @@ import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.op.ticket.TicketM;
 import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.ct.EdificioRest;
+import com.senado.sbi.rest.ct.TipoServicioRest;
 import com.senado.sbi.rest.modulo.menu.MenuRest;
 import com.senado.sbi.rest.op.ticket.TicketRest;
 
@@ -26,6 +27,8 @@ public class Ticket {
 	private TicketRest ticketRest;
 	@Autowired
 	private EdificioRest edificioRest;
+	@Autowired
+	private TipoServicioRest tiposervicioRest;
 	
 	@GetMapping("/ticket")
 	public ModelAndView inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
@@ -40,6 +43,7 @@ public class Ticket {
 		mav.addObject("titulo", "Ticket");
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+		mav.addObject("tiposervicio",tiposervicioRest.consultaTipoServicios1(1, sessionUsu.getcToken()));
 		mav.addObject("Ticket", new TicketM());
 		return mav;
 	}
