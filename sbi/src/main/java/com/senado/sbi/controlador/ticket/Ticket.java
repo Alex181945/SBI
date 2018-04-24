@@ -47,7 +47,7 @@ public class Ticket {
 	@PostMapping("/ticket/inserta")
 	public ModelAndView creaTicket(@ModelAttribute("Usuario") ULogin sessionUsu, @ModelAttribute("Ticket") TicketM ticket) {
 		
-		System.out.println(ticket.toString());
+		System.out.println(ticket.toJson());
 		ticketRest.insertaTicket(ticket, sessionUsu.getcToken());
 
 		return null;
