@@ -47,7 +47,7 @@ public class ImpTipoServicioRest implements TipoServicioRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/tiposervicio/consulta?iTipoConsulta=" + iTipoConsulta,
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/tpservicio/consulta?iTipoConsulta=" + iTipoConsulta,
 					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
