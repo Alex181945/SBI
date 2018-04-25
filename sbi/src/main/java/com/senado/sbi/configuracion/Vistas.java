@@ -30,6 +30,10 @@ public class Vistas {
 	private static final String LOGIN = "index";
 	private static final String TICKET = "ticket/incidencia";
 	private static final String MENU = "menu/menu";
+	private static final String CONSULTAR = "bieninformatico/Consultar";
+	private static final String EDITAR = "bieninformatico/Editar";
+	private static final String INSERTAR = "bieninformatico/Nuevo";
+	private static final String DESHABILITAR = "bieninformatico/Deshabilitar";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -39,6 +43,7 @@ public class Vistas {
 	private static final String REDIRECT_MENUPRINCIPAL = "redirect:/menu/inicio";
 	private static final String REDIRECT_MODULO = "redirect:/carga/modulo";
 	private static final String REDIRECT_TICKET = "redirect:/ticket";
+	private static final String REDIRECT_BIENESI = "redirect:/bienesinformaticos";
 	/********************************* Fin ***********************************/
 	
 	public static String getDefaultLayout() {
@@ -56,6 +61,9 @@ public class Vistas {
 	public static String getMenu() {
 		return MENU;
 	}
+	public static String getRedirectConsulta() {
+		return CONSULTAR;
+	}
 	public static String getRedirectLogin() {
 		return REDIRECT_LOGIN;
 	}
@@ -67,6 +75,19 @@ public class Vistas {
 	}
 	public static String getRedirectTicket() {
 		return REDIRECT_TICKET;
+	}
+	public static String getRedirectConsultar() {
+		return REDIRECT_BIENESI;
+	}
+	
+	public static String getRedirectEditar() {	
+		return EDITAR;
+	}
+	public static String getRedirectInserta() {
+		return INSERTAR;
+	}
+	public static String getRedirectDeshabilitar() {
+		return DESHABILITAR;
 	}
 
 }

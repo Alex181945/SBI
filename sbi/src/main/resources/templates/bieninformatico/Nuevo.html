@@ -1,0 +1,192 @@
+<div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+	
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+            <nav class="navbar ">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                <ul class="nav navbar-nav navbar-center">
+                  <li class="active"><a href="Consultar.html">Consultar</a></li>
+                  <li class="active"><a href="Editar.html">Editar</a></li>
+                  <li class="active"><a href="Nuevo.html">Nuevo</a></li>
+                  <li class="active"><a href="Deshabilitar.html">Deshabilitar</a></li>
+                </ul>
+              </div>
+                    </div>
+            </nav>
+  
+          <h1 class="display-6">SISTEMA DE ADMINISTRACIÓN DE BIENES INFORMÁTICOS</h1>
+                  <h1 class="display-6">Nuevo Resguardo</h1>
+          <!-- form para consultar el resguardo -->
+      <div class = text-right>
+        <form class="form-inline" id="form1" th:action="@{/bieninformatico/Consultar}" th:object="${bienesinformaticos}" method="POST">
+          <label for="inventario" class="col-md-4">
+                                <h5 class="lead">Numero de Inventario:</h5></label>
+                        </label>
+            <div class="input-group mb-2 mr-sm-2">
+                                    <input type="text" class="form-control form-control-lg"
+                                    id="resguardo" name="Resguardo" placeholder="N° Inventario" th:field="*{cNumInventario}"
+                                    th:value="${cNumInventario}"  onkeypress="return soloNumeros(event)"/>
+                <!--input type="text" class="form-control" id="iIDBienesInformaticos" placeholder="Resguardo"-->
+            </div>
+                            <div class="row"> <!-- Row Botones-->
+                                <div class="col-md-4"/>
+                                <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-outline"
+                                            >Consultar</button>
+                                </div>
+        </form>
+  
+              <form id="form2" th:action="@{/bieninformatico/Insertar}" th:object="${bienesinformaticos}" method="POST">
+                <div class="row">
+                    <div id="tiporesguardo" class="row col-md-4">
+                      <label for="tiporesguardo" class="col-md-5">
+                        <h5 class="lead">Tipo de :</h5></label>
+                        <div class="col-md-8">
+                          <select class="form-control form-control-lg">
+                            <option value="Resguardante">Ing. Dino Adán Venegas Zárate</option>
+                          </select>
+                      </div>
+                    </div>
+                    
+                  <div id="edificio" class="row col-md-4">
+                    <label for="edificio" class="col-md-5">
+                      <h5 class="lead">Tipo de Equipo:</h5></label>
+                      <div class="col-md-8">
+                        <select class="form-control form-control-lg">
+                          <option value="edificio">Impresora</option>
+                        </select>
+                    </div>
+                </div>
+  
+                <div id="piso" class="row col-md-4">
+                  <label for="piso" class="col-md-5">
+                    <h5 class="lead">Modelo del equipo:</h5></label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control form-control-lg"
+						 name="Extension" placeholder="" th:field="*{cExtension}" th:value="${cExtension}" onkeypress="return soloNumeros(event)"/>
+				</div>
+            </div>	
+            <div id="piso" class="row col-md-4">
+                <label for="piso" class="col-md-5">
+                  <h5 class="lead">MAC del equipo:</h5></label>
+                  <div class="col-md-8">
+                      <input type="text" class="form-control form-control-lg"
+                       name="Extension" placeholder="" th:field="*{cExtension}" th:value="${cExtension}" onkeypress="return soloNumeros(event)"/>
+              </div>
+          </div>	
+        </div>
+        <div id="piso" class="row col-md-4">
+            <label for=mac2 class="col-md-5">
+              <h5 class="lead">MAC 2 del equipo:</h5></label>
+              <div class="col-md-8">
+                  <input type="text" class="form-control form-control-lg"
+                   name="MAC" placeholder="" th:field="*{cExtension}" th:value="${CP}">
+          </div>
+      </div>
+      <div id="piso" class="row col-md-4">
+        <label for=mac2 class="col-md-5">
+          <h5 class="lead">Ingreso de  resguardo:</h5></label>
+          <div class="col-md-8">
+            <input type="date" class="form-control" id="fecha" name="fecha">
+      </div>
+  </div>	
+
+    </div>
+                  </div>
+              </div>
+              <br></br>
+              
+              <div id="responsable" class="row col-md-4">
+                <label for="responsable" class="col-md-5">
+                  <h5 class="lead">Responsable:</h5></label>
+                <div class="col-md-8">
+                  <select class="form-control form-control-lg">
+                    <option value="responsable">Ing. Dino Adán Venegas Zárate </option>
+                  </select>
+                </div>
+            </div>
+  
+            <div id="adscripcion" class="row col-md-4">
+              <label for="adscripcion" class="col-md-5">
+                <h5 class="lead">Adscripción:</h5></label>
+              <div class="col-md-8">
+                <select class="form-control form-control-lg">
+                  <option value="adscripcion"> Dirección de Informática</option>
+                </select>
+              </div>
+          </div>             
+                         
+          <div id="subadscripcion" class="row col-md-4">
+            <label for="subadscripcion" class="col-md-5">
+              <h5 class="lead">Sub-Adscripción:</h5></label>
+            <div class="col-md-8">
+              <select class="form-control form-control-lg">
+                <option value="subadscripcion"> Dirección de soporte Técnico </option>
+              </select>
+            </div>
+        </div>  
+  
+        <div class="row">
+          <div id="observns" class="row col-md-12">
+              <label for="observns" class="col-md-2 col-form-label">
+                <h5 class="lead">Observaciones:</h5></label>
+                
+              <div class="col-md-6">
+                  <textarea class="form-control" th:field="*{cObs}" th:value="${cObs}" rows="2" id="comment"></textarea>
+              </div>
+          </div>			
+        </div>
+    
+        <br></br>
+            <div class="row"> <!-- Row Botones-->
+                    <div class="col-md-4"/>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary btn-lg btn-outline"
+                          >Actualizar</button>
+            </div>
+        </form>
+        <br></br>          
+              <div class="container">
+                <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th>Partida</th>
+                                    <th>Resguardante</th>
+                                    <th>Resguardante</th>
+                                    <th>Edificio</th>
+                                    <th>Piso</th>
+                                    <th>Ádscripción</th>
+                                    <th>Subadscripción</th>
+                                    <th>Responsable</th>
+                                    <th>Observación</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>Ing. Dino Adán Venegas Zárate</td>
+                                    <td>TCO</td>
+                                    <td>PB</td>
+                                    <td>Dirección de Informática</td>
+                                    <td>Dirección de Soporte Técnico</td>
+                                    <td>Adolfo Pinto Santiago</td>
+                                    <td>Impresora HP 1024</td>
+                                  </tr>
+                                  <tr>
+                                      <td>2</td>
+                                      <td>Alejandro Camargo</td>
+                                      <td>M68</td>
+                                      <td>PB</td>
+                                      <td>Dirección de Informática</td>
+                                      <td>Dirección de Presupuestos</td>
+                                      <td>Ángel Garibay</td>
+                                      <td>Impresora HP 1024</td>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                            </div>
+             </div>
+        
+         
+         
+  
