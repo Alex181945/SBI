@@ -30,10 +30,10 @@ public class Vistas {
 	private static final String LOGIN = "index";
 	private static final String TICKET = "ticket/incidencia";
 	private static final String MENU = "menu/menu";
-	private static final String CONSULTAR = "bieninformatico/Consultar";
-	private static final String EDITAR = "bieninformatico/Editar";
-	private static final String INSERTAR = "bieninformatico/Nuevo";
-	private static final String DESHABILITAR = "bieninformatico/Deshabilitar";
+	private static final String CONSULTARBI = "bieninformatico/Consultar";
+	private static final String EDITARBI = "bieninformatico/Editar";
+	private static final String INSERTARBI = "bieninformatico/Nuevo";
+	private static final String DESHABILITARBI = "bieninformatico/Deshabilitar";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -62,7 +62,7 @@ public class Vistas {
 		return MENU;
 	}
 	public static String getRedirectConsulta() {
-		return CONSULTAR;
+		return CONSULTARBI;
 	}
 	public static String getRedirectLogin() {
 		return REDIRECT_LOGIN;
@@ -70,24 +70,24 @@ public class Vistas {
 	public static String getRedirectMenuprincipal() {
 		return REDIRECT_MENUPRINCIPAL;
 	}
-	public static String getRedirectModulo() {
+	public static String getModulo() {
 		return REDIRECT_MODULO;
 	}
 	public static String getRedirectTicket() {
 		return REDIRECT_TICKET;
 	}
-	public static String getRedirectConsultar() {
+	public static String getConsulta() {
 		return REDIRECT_BIENESI;
 	}
 	
-	public static String getRedirectEditar() {	
-		return EDITAR;
+	public static String getEditar() {	
+		return EDITARBI;
 	}
-	public static String getRedirectInserta() {
-		return INSERTAR;
+	public static String getInserta() {
+		return INSERTARBI;
 	}
-	public static String getRedirectDeshabilitar() {
-		return DESHABILITAR;
+	public static String getDeshabilitar() {
+		return DESHABILITARBI;
 	}
-
+	
 }

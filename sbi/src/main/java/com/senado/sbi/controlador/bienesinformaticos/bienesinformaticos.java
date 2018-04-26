@@ -9,19 +9,19 @@ public class bienesinformaticos {
 	@GetMapping("/bienesinformaticos")
 	public String Consulta(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
-		return Vistas.getRedirectConsulta();
+		return Vistas.getConsulta();
 	}
 	public String Editar(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
-		return Vistas.getRedirectEditar();
+		return Vistas.getEditar();
 	}
 	public String Inserta(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
-		return Vistas.getRedirectInserta();
+		return Vistas.getInserta();
 	}
 	public String Deshabilitar(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
-		return Vistas.getRedirectDeshabilitar();
+		return Vistas.getDeshabilitar();
 	}
 
 }

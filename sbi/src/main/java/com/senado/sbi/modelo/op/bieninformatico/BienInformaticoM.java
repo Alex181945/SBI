@@ -90,10 +90,18 @@ public class BienInformaticoM
 	
 	@Override
 	public String toString() {
-		return "TicketM [iIDResguardo=" + iIDResguardo + ", iIDEdificio=" + iIDEdificio + ", cPiso=" + cPiso
-				+ ", cOficina=" + cOficina + ", iIDArea=" + iIDArea + ", iIDSubArea="
-				+ iIDSubArea + ", cResguardante=" + cResguardante + ", cResponsable=" + cResponsable + ", cFactura=" + cFactura
-				+ ", cObs=" + cObs + ", dtCreado=" + dtCreado + ", cUsuarioR=" + cUsuarioR + "]";
+		return "BienInformaticoM [iIDResguardo=" + iIDResguardo + ","
+				+ " iIDEdificio=" 				 + iIDEdificio + ","
+				+ " cPiso="                      + cPiso
+				+ ", cOficina="                  + cOficina + ""
+				+ ", iIDArea="                   + iIDArea + ", "
+				+ "iIDSubArea="   + iIDSubArea + ","
+			    + " cResguardante=" + cResguardante + ", "
+			    + "cResponsable=" + cResponsable + ", "
+			    + "cFactura=" + cFactura
+				+ ", cObs=" + cObs + ""
+				+ ", dtCreado=" + dtCreado + ","
+				+ " cUsuarioR=" + cUsuarioR + "]";
 	}
 	
 	public String toJson() {
