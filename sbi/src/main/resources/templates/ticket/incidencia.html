@@ -15,12 +15,11 @@
 							<label id="Uno" for="frmSolicitud" class="col-md-4">
 								<h5  class="lead" >Tipo de Solicitud:</h5></label>
 							<div class="col-md-8">
-								<select  id ="Dos" name="frmSolicitud" class="form-control">
-								<option value="Telefonico">Telefónico</option>
-									<option value="Correo">Correo</option>
-									<option value="Oficio">Oficio</option>
-									<option value="Tarjeta">Tarjeta</option>
-									<option value="Correo Electronico">Correo Electrónico</option>
+								<select class="form-control" id="fmsolicitud" name="fmsolicitud" 
+									th:field="*{iIDCreaTicket}">
+									<option th:each="dropDownItem : ${formasolicitud}"
+										th:value="${dropDownItem.iIDCreaTicket}"
+										th:text="${dropDownItem.cCreaTicket}"/>
 								</select>
 							</div>
 						</div>
@@ -33,7 +32,7 @@
 							<div class="col-md-8">
 								<select class="form-control" id="tpSolicitud1" name="tpSolicitud1" 
 									th:field="*{iIDTipoServicio}">
-									<option th:each="dropDownItem : ${tiposervicio}"
+									<option th:each="dropDownItem : ${tpservicio}"
 										th:value="${dropDownItem.iIDTipoServicio}"
 										th:text="${dropDownItem.cTipoServicio}"/>
 								</select>
@@ -44,9 +43,12 @@
 							<label for="Servc" class="col-md-4">
 								<h5 class="lead">Servicio solicitado:</h5></label>
 							<div class="col-md-8">
-								<select class="form-control " id="Servc" name="Servc">
-									<option value="Red">Red</option>
-								</select>
+								<select class="form-control" id="srvSolicitado" name="srvSolicitado" 
+								th:field="*{iIDServicioSolic}">
+								<option th:each="dropDownItem : ${srvsolicitado}"
+									th:value="${dropDownItem.iIDServicioSolic}"
+									th:text="${dropDownItem.cServicioSolicitado}"/>
+							</select>
 							</div>
 						</div>
 		

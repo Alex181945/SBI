@@ -13,6 +13,8 @@ import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.op.ticket.TicketM;
 import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.ct.EdificioRest;
+import com.senado.sbi.rest.ct.FormaSolicitudRest;
+import com.senado.sbi.rest.ct.SrvSolicitadoRest;
 import com.senado.sbi.rest.ct.TipoServicioRest;
 import com.senado.sbi.rest.modulo.menu.MenuRest;
 import com.senado.sbi.rest.op.ticket.TicketRest;
@@ -29,6 +31,10 @@ public class Ticket {
 	private EdificioRest edificioRest;
 	@Autowired
 	private TipoServicioRest tiposervicioRest;
+	@Autowired
+	private FormaSolicitudRest formasolicitudRest;
+	@Autowired
+	private SrvSolicitadoRest srvsolicitadoRest;
 	
 	@GetMapping("/ticket")
 	public ModelAndView inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
@@ -44,6 +50,8 @@ public class Ticket {
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
 		mav.addObject("tiposervicio",tiposervicioRest.consultaTipoServicios1(1, sessionUsu.getcToken()));
+		mav.addObject("formasolicitud", formasolicitudRest.consultaFormaSolicitudes(1, sessionUsu.getcToken()));
+		mav.addObject("srvsolicitado", srvsolicitadoRest.consultaSrvSolicitados(1, sessionUsu.getcToken()));
 		mav.addObject("Ticket", new TicketM());
 		return mav;
 	}
