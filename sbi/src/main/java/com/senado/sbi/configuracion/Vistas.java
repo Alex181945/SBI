@@ -30,6 +30,12 @@ public class Vistas {
 	private static final String LOGIN = "index";
 	private static final String TICKET = "ticket/incidencia";
 	private static final String MENU = "menu/menu";
+	private static final String bienesInformaticos = "bieninformatico/menu";
+	private static final String consultaSABI = "consultaSabi/sabi";
+	private static final String editarSABI = "editarSabi/SABI";
+	private static final String deshabilitaSABI = "deshabilitarSABI/deshsa";
+	private static final String nuevoSABI = "insertaSABI/nuevosa";
+	/*Explica en donde esta el archivo que se va a ver*/
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -37,16 +43,15 @@ public class Vistas {
 	/*************************************************************************/
 	private static final String REDIRECT_LOGIN = "redirect:/login";
 	private static final String REDIRECT_MENUPRINCIPAL = "redirect:/menu/inicio";
+	private static final String REDIRECT_SABI = "redirect:/bienesInformaticos"; /*carpeta creada en controller*/
+	private static final String REDIRECT_CONSULTA = "redirect:/consultaSABI"; /*carpeta creada en controller*/
+	private static final String REDIRECT_EDITAR = "redirect:/editarSABI"; /*carpeta creada en controller*/
+	private static final String REDIRECT_DESHABILITA = "redirect:/deshabilitarSABI"; /*carpeta creada en controller*/
+	private static final String REDIRECT_NUEVO = "redirect:/insertarSABI"; /*carpeta creada en controller*/
 	private static final String REDIRECT_MODULO = "redirect:/carga/modulo";
 	private static final String REDIRECT_TICKET = "redirect:/ticket";
 	/********************************* Fin ***********************************/
 	
-	public static String getRedirectLogin() {
-		return REDIRECT_LOGIN;
-	}
-	public static String getRedirectTicket() {
-		return REDIRECT_TICKET;
-	}
 	public static String getDefaultLayout() {
 		return DEFAULT_LAYOUT;
 	}
@@ -56,17 +61,56 @@ public class Vistas {
 	public static String getLogin() {
 		return LOGIN;
 	}
+	public static String getTicket() {
+		return TICKET;
+	}
 	public static String getMenu() {
 		return MENU;
 	}
-	public static String getTicket() {
-		return TICKET;
+	public static String getBienesinformaticos() {
+		return bienesInformaticos;
+	}
+	public static String getConsultasabi() {
+		return consultaSABI;
+	}
+	public static String getEditarsabi() {
+		return editarSABI;
+	}
+	public static String getDeshabilitasabi() {
+		return deshabilitaSABI;
+	}
+	public static String getNuevosabi() {
+		return nuevoSABI;
+	}
+	public static String getRedirectLogin() {
+		return REDIRECT_LOGIN;
 	}
 	public static String getRedirectMenuprincipal() {
 		return REDIRECT_MENUPRINCIPAL;
 	}
+	public static String getRedirectSabi() {
+		return REDIRECT_SABI;
+	}
+	public static String getRedirectConsulta() {
+		return REDIRECT_CONSULTA;
+	}
+	public static String getRedirectEditar() {
+		return REDIRECT_EDITAR;
+	}
+	public static String getRedirectDeshabilita() {
+		return REDIRECT_DESHABILITA;
+	}
+	public static String getRedirectNuevo() {
+		return REDIRECT_NUEVO;
+	}
 	public static String getRedirectModulo() {
 		return REDIRECT_MODULO;
 	}
-
+	public static String getRedirectTicket() {
+		return REDIRECT_TICKET;
+	}
 }
+
+	
+	
+	

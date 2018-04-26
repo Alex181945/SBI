@@ -155,4 +155,27 @@ public class TicketM {
 				+ lArrendado + ", cUsuarioR=" + cUsuarioR + ", dtFecha=" + dtFecha + "]";
 	}
 	
+	public String toJson() {
+		return "{"
+				+ "iIDTicket:"       + iIDTicket         + ","
+				+ "iIDEstado:"       + iIDEstado         + ","
+				+ "cNumInventario:"  + cNumInventario    + ","
+				+ "cResguardante:"   + cResguardante     + ","
+				+ "cUsuarioEquipo:"  + cUsuarioEquipo    + ","
+				+ "cExtension:"      + cExtension        + ","
+				+ "iIDEdificio:"     + iIDEdificio       + ","
+				+ "cExtension:"      + cExtension        + ","
+				+ "cPiso:"           + cPiso             + ","
+				+ "cOficina:"        + cOficina          + ","
+				+ "iIDTipoServicio:" + iIDTipoServicio   + ","
+				+ "cUsuReporta:"     + cUsuReporta       + ","
+				+ "cObs:"            + cObs              + ","
+				+ "lTecnicoAcepta:"  + lTecnicoAcepta    + ","
+				+ "lNotificacion:"   + lNotificacion     + ","
+				+ "lArrendado:"      + lArrendado        + ","
+				+ "cUsuarioR:"       + cUsuarioR         + ","
+				+ "dtFecha:"         + dtFecha    
+				+ "}";
+	}
+	
 }
