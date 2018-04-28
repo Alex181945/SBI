@@ -63,8 +63,6 @@ public class ImpSrvSolicitado implements SrvSolicitadoRest {
 			validacionJs = root.path("validacion");
 			datos = root.path("datos");
 			
-			System.out.println(root);
-			
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
 			
 			if(validacion[0].getlError() == 1) {
