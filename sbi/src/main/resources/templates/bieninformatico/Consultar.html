@@ -1,0 +1,92 @@
+<div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+	
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+            <nav class="navbar ">
+					<div class="container-fluid">
+							<div class="navbar-header">
+								<ul class="nav navbar-nav navbar-center">
+									<li class="active"><a href="Consultar.html">Consultar</a></li>
+									<li class="active"><a href="Editar.html">Editar</a></li>
+									<li class="active"><a href="Nuevo.html">Nuevo</a></li>
+									<li class="active"><a href="Deshabilitar.html">Deshabilitar</a></li></ul>
+								</ul>
+                            </div>
+                    </div>
+            </nav>
+            
+            
+			<div class="container">
+                <h1>SISTEMA DE ADMINISTRACIÓN DE BIENES INFORMÁTICOS</h1>
+                <h1 class="display-6">Editar</h1>
+		
+		<form id="form1" th:action="@{/bienInformatico/consulta}" th:object="${bienInformatico}" method="POST">
+
+		<div class="row">
+				<div class="signup-form-container">
+						<div class="form-header">
+								<center> <h1 class="form-title"><i class="fa fa-user"></i> CONSULTA SABI</h1></center>
+						</div>
+					 <!-- form para consultar el resguardo -->
+					<div class = text-right>
+						<form class="form-inline">
+							<label for="inventario" class="col-md-4">
+                                    <h5 class="lead">Numero de Inventario:</h5></label>
+                            </label>
+								<div class="input-group mb-2 mr-sm-2">
+                                        <input type="text" class="form-control form-control-lg"
+                                        id="resguardo" name="Resguardo" placeholder="N° Inventario" th:field="*{cNumInventario}"
+                                        th:value="${cNumInventario}"  onkeypress="return soloNumeros(event)"/>
+								    <!--input type="text" class="form-control" id="iIDBienesInformaticos" placeholder="Resguardo"-->
+								</div>
+                                <div class="row"> <!-- Row Botones-->
+                                    <div class="col-md-4"/>
+                                    <div class="col-md-2">
+                                            <button type="submit" class="btn btn-primary btn-lg btn-outline"
+                                                >Consultar</button>
+                                    </div>
+						</form>
+                    </div>
+                    
+					<div class="container">
+                            <h2><b>Bienes Informáticos</b></h2>
+                            
+							<p>Consulta la información del resguardo:</p>            
+							<table class="table table-hover">
+							  <thead>
+								<tr>
+								  <th>Partida</th>
+								  <th>Equipo</th>
+								  <th>Modelo</th>
+								  <th>Num Serie</th>
+								  <th>Observaciones</th>
+								  <th>Resguardante</th>
+								  <th>Responsable</th>
+								  <th>Adscripción</th>
+
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr>
+								  <td>1</td>
+								  <td>Impresora Laser Jet 1024</td>
+								  <td>#</td>
+								  <td>24en34u92u5</td>
+								  <td>#</td>
+								  <td>Adolfo Pinto Santiago</td>
+								  <td>Alejandro Camargo Nava</td>
+								  <td>Dirección de Informática</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Impresora Laser Jet 1024</td>
+									<td>#</td>
+									<td>24en34u92u5</td>
+									<td>#</td>
+									<td>Adolfo Pinto Santiago</td>
+									<td>Alejandro Camargo Nava</td>
+									<td>Dirección de Informática</td>
+									  </tr>
+								</tbody>
+							</table>
+                          </div>
+    <div class="col-12" style="display:none;"><span id="message" th:text="${error}"></span></div>
