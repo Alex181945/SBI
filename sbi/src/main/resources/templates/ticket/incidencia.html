@@ -7,220 +7,237 @@
 		
 		<form id="form1" th:action="@{/ticket/inserta}" th:object="${Ticket}" method="POST">
 
-		<div class="row">
-			<div id="prue" class="row col-md-4">
-				<label id="Uno" for="frmSolicitud" class="col-md-4">
-					<h5  class="lead" >Tipo de Solicitud:</h5></label>
-				<div class="col-md-8">
-					<select  id ="Dos" name="frmSolicitud" class="form-control form-control-lg">
-					  <option value="Telefonico">Telefónico</option>
-					  	<option value="Correo">Correo</option>
-						<option value="Oficio">Oficio</option>
-						<option value="Tarjeta">Tarjeta</option>
-						<option value="Correo Electronico">Correo Electrónico</option>
-					</select>
-				</div>
-			</div>
-
-
-			<div id="solicitud" class="row col-md-4">
-				<label for="solicitud"
-					class="col-md-4">
-					<h5 class="lead">Tipo de Servicio:</h5></label>
-				<div class="col-md-8">
-					<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud">
-						<option value="Red">Red</option>
-						<option value="Directorio Activo">Directorio Activo</option>
-						<option value="Correo Electrónico ">Correo Electrónico </option>
-						<option value="Software">Software</option>
-						<option value="Telefonía">Telefonía</option>
-						<option value="Seguridad">Seguridad</option>
-						<option value="Servicio a Bienes Informáticos">Servicio a Bienes Informáticos</option>
-					</select>
-				</div>
-			</div>
-		
-			<div id="Servc" class="row col-md-4">
-				<label for="Servc" class="col-md-4">
-					<h5 class="lead">Servicio solicitado:</h5></label>
-				<div class="col-md-8">
-					<select class="form-control form-control-lg" id="Servc" name="Servc">
-						<option value="Red">Red</option>
-					</select>
-				</div>
-			</div>
-
-		</div> <!-- row fila 1 final  -->
-
-		<br></br>
-
-		<div class="row"> <!-- row fila 2-->
-
-			<div id="inventario" class="row col-md-4">
-					<label for="inventario" class="col-md-4">
-						<h5 class="lead">Numero de Inventario:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="inventario" name="inventario" placeholder="N° Inventario" th:field="*{cNumInventario}" th:value="${cNumInventario}"  onkeypress="return soloNumeros(event)"/>
-					</div>
-			</div>
-			
-			<div id="user" class="row col-md-4">
-					<label for="user" class="col-md-4">
-						<h5 class="lead">Usuario:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="user" name="user" placeholder="Usuario" th:field="*{cUsuarioEquipo}" th:value="${cUsuarioEquipo}" onkeypress="return soloLetras(event)"/>
-					</div>
-			</div>
-
-			<div id="edificio" class="row col-md-4">
-					<label for="edificio" class="col-md-4">
-						<h5 class="lead">Edificio:</h5></label>
-					<div class="col-md-8">
-							<select class="form-control form-control-lg" id="tpSolicitud" name="tpSolicitud">
-								<option value="HEM">HEM – Hemiciclo</option>
-								<option value="PLN">PLN – Pleno</option>
-								<option value="TCO">TCO – Torre de Comisiones</option>
-								<option value="TAZ">TAZ – Torre Azul</option>
-								<option value="DCL">DCL – Donceles</option>
-								<option value="ALL">ALL – Allende</option>
-								<option value="XIC">XIC – Xicoténcatl</option>
-								<option value="M68">M68 – Madrid 68</option>
-								<option value="M35">M35 - Madrid 35</option>
-								<option value="M62">M62 - Madrid 62</option>
-								<option value="M37">M37 - Madrid 37</option>
-							</select>
+		<fieldset class="col-md-12">
+			<legend >Información básica</legend>
+				<div class="panel panel-default"/>
+					<div class="row">
+						<div id="prue" class="row col-md-4">
+							<label id="Uno" for="frmSolicitud" class="col-md-4">
+								<h5  class="lead" >Tipo de Solicitud:</h5></label>
+							<div class="col-md-8">
+								<select class="form-control" id="fmsolicitud" name="fmsolicitud" 
+									th:field="*{iIDCreaTicket}">
+									<option th:each="dropDownItem : ${formasolicitud}"
+										th:value="${dropDownItem.iIDCreaTicket}"
+										th:text="${dropDownItem.cCreaTicket}"/>
+								</select>
+							</div>
 						</div>
-			</div>
-		</div> <!-- row fila 2 final -->
 
-		<div class="row"> <!-- Row fila 3 inicio-->
-			<div id="piso" class="row col-md-4">
-					<label for="piso" class="col-md-4 col-form-label">
-						<h5 class="lead">Piso:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="piso" name="piso" th:field="*{cPiso}" th:value="${cPiso}" placeholder="Piso" />
+
+						<div id="solicitud" class="row col-md-4">
+							<label for="solicitud"
+								class="col-md-4">
+								<h5 class="lead">Tipo de Servicio:</h5></label>
+							<div class="col-md-8">
+								<select class="form-control" id="tpSolicitud1" name="tpSolicitud1" 
+									th:field="*{iIDTipoServicio}">
+									<option th:each="dropDownItem : ${tpservicio}"
+										th:value="${dropDownItem.iIDTipoServicio}"
+										th:text="${dropDownItem.cTipoServicio}"/>
+								</select>
+							</div>
+						</div>
+					
+						<div id="Servc" class="row col-md-4">
+							<label for="Servc" class="col-md-4">
+								<h5 class="lead">Servicio solicitado:</h5></label>
+							<div class="col-md-8">
+								<select class="form-control" id="srvSolicitado" name="srvSolicitado" 
+								th:field="*{iIDServicioSolic}">
+								<option th:each="dropDownItem : ${srvsolicitado}"
+									th:value="${dropDownItem.iIDServicioSolic}"
+									th:text="${dropDownItem.cServicioSolicitado}"/>
+							</select>
+							</div>
+						</div>
+		
+					</div> <!-- row fila 1 final  -->
+				
+		
+			<br/>
+
+					<div class="row"> <!-- row fila 2-->
+
+						<div id="inventario" class="row col-md-4">
+								<label for="inventario" class="col-md-4">
+									<h5 class="lead">Numero de Inventario:</h5></label>
+								<div class="col-md-8">
+									<input type="text" class="form-control"
+										id="inventario" name="inventario" placeholder="N° Inventario" th:field="*{cNumInventario}" th:value="${cNumInventario}"  onkeypress="return soloNumeros(event)"/>
+								</div>
+						</div>
+						
+						<div id="user" class="row col-md-4">
+								<label for="user" class="col-md-4">
+									<h5 class="lead">Usuario:</h5></label>
+								<div class="col-md-8">
+									<input type="text" class="form-control"
+										id="user" name="user" placeholder="Usuario" th:field="*{cUsuarioEquipo}" th:value="${cUsuarioEquipo}" onkeypress="return soloLetras(event)"/>
+								</div>
+						</div>
+
+						<div id="edificio" class="row col-md-4">
+								<label for="edificio" class="col-md-4">
+									<h5 class="lead">Edificio:</h5></label>
+								<div class="col-md-8">
+										<select class="form-control" id="tpSolicitud" name="tpSolicitud" 
+											th:field="*{iIDEdificio}">
+											<option th:each="dropDownItem : ${edificios}"
+													th:value="${dropDownItem.iIDEdificio}"
+													th:text="${dropDownItem.cAbreviatura} + '-' + ${dropDownItem.cEdificio}" />
+										</select>
+									</div>
+						</div>
+					
+					</div> <!-- row fila 2 final -->
+
+					<div class="row"> <!-- Row fila 3 inicio-->
+						<div id="piso" class="row col-md-4">
+								<label for="piso" class="col-md-4 col-form-label">
+									<h5 class="lead">Piso:</h5></label>
+								<div class="col-md-8">
+									<input type="text" class="form-control"
+										id="piso" name="piso" th:field="*{cPiso}" th:value="${cPiso}" placeholder="Piso" />
+								</div>
+						</div>
+
+						<div id="oficina" class="row col-md-4">
+								<label for="oficina" class="col-md-4 col-form-label">
+									<h5 class="lead">Oficina:</h5></label>
+								<div class="col-md-8">
+									<input type="text" class="form-control"
+										id="oficina" name="oficina" th:field="*{cOficina}" th:value="${cOficina}" placeholder="Oficina" />
+								</div>
+						</div>
+						
+						<div id="resguardante" class="row col-md-4">
+								<label for="resguardante" class="col-md-5">
+									<h5 class="lead">Resguardante:</h5></label>
+								<div class="col-md-7">
+									<input type="text" class="form-control"
+										id="resguardante" name="resguardante" placeholder="Resguardante" th:field="*{cResguardante}" th:value="${cResguardante}" onkeypress="return soloLetras(event)"/>
+								</div>
+						</div>
+					</div> <!-- Row final 3 final -->
+
+				<br></br>
+
+				<div class="row">
+
+					<div id="solicitante" class="row col-md-4">
+							<label for="solicitante" class="col-md-4 col-form-label">
+								<h5 class="lead">Solicitante:</h5></label>
+							<div class="col-md-8">
+								<input type="text" class="form-control"
+									id="solicitante" name="solicitante" placeholder="" th:field="*{cUsuReporta}" th:value="${cUsuReporta}" onkeypress="return soloLetras(event)"/>
+							</div>
 					</div>
-			</div>
 
-			<div id="oficina" class="row col-md-4">
-					<label for="oficina" class="col-md-4 col-form-label">
-						<h5 class="lead">Oficina:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="oficina" name="oficina" th:field="*{cOficina}" th:value="${cOficina}" placeholder="Oficina" />
+					<div id="Nvlcriticidad" class="row col-md-4">
+							<label for="Nvlcriticidad" class="col-md-4 col-form-label">
+								<h5 class="lead">Nivel de criticidad:</h5></label>
+							<div class="col-md-8">
+								<select class="form-control" id="Nvlcriticidad" name="Nvlcriticidad">
+									<option value="Red">Alto</option>
+									<option value="Red">Medio</option>
+									<option value="Red">Bajo</option>
+								</select>
+							</div>
 					</div>
-			</div>
-			
-			<div id="resguardante" class="row col-md-4">
-					<label for="resguardante" class="col-md-5">
-						<h5 class="lead">Resguardante:</h5></label>
-					<div class="col-md-7">
-						<input type="text" class="form-control form-control-lg"
-							id="resguardante" name="resguardante" placeholder="Resguardante" th:field="*{cResguardante}" th:value="${cResguardante}" onkeypress="return soloLetras(event)"/>
+
+					<div class=" row col-md-4">
+                            <div class="custom-checkbox"> 
+									<input type="checkbox" class="custom-control-input" id="customCheck1"/>
+									<label class="custom-control-label" for="customCheck1"><h5 class="lead">Notificar</h5></label>
+							</div>
 					</div>
-			</div>
-		</div> <!-- Row final 3 final -->
+		
+				</div> <!-- fila 4 final-->
+		</fieldset>	
 
-		<br></br>
+			<br/>
 
-		<div class="row">
+		<fieldset class="col-md-12">
+			<legend >Cuentas de Usuario</legend>
+				<div class="row"> <!-- fila 5 Inicio-->	
 
-			<div id="solicitante" class="row col-md-4">
-					<label for="solicitante" class="col-md-4 col-form-label">
-						<h5 class="lead">Solicitante:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="solicitante" name="solicitante" placeholder="" th:field="*{cUsuReporta}" th:value="${cUsuReporta}" onkeypress="return soloLetras(event)"/>
+					<div id="UsuaMail" class="row col-md-4">
+							<label for="UsuaMail" class="col-md-4 col-form-label">
+								<h5 class="lead">N° de Usuarios:</h5></label>
+							<div class="col-md-8">
+								<input type="number" class="form-control" value="1" min="1" max="5"/>
+							</div>
 					</div>
-			</div>
+				</div> <!-- fila 5 Final-->
 
-			<div id="Nvlcriticidad" class="row col-md-4">
-					<label for="Nvlcriticidad" class="col-md-4 col-form-label">
-						<h5 class="lead">Nivel de criticidad:</h5></label>
-					<div class="col-md-8">
-						<select class="form-control form-control-lg" id="Nvlcriticidad" name="Nvlcriticidad">
-							<option value="Red">Alto</option>
-							<option value="Red">Medio</option>
-							<option value="Red">Bajo</option>
-						</select>
+				<div class="row">
+
+					<div class="row col-md-4">
+						<label for="user" class="col-md-4">
+								<h5 class="lead">Nombre:</h5></label>
+							<div class="col-md-8">
+								<input type="text" class="form-control"
+									 onkeypress="return soloLetras(event)"/>
+							</div>
 					</div>
-			</div>
 
-			
-		</div> <!-- fila 4 final-->
-
-		<div class="row"> <!-- fila 5 Inicio-->
-			
-				<legend> <h5 class="lead">Cuentas de correo electrónico:</h5> </legend>
-
-			<div id="UsuaMail" class="row col-md-4">
-					<label for="UsuaMail" class="col-md-4 col-form-label">
-						<h5 class="lead">N° de Usuarios:</h5></label>
-					<div class="col-md-8">
-						<select class="form-control form-control-lg" id="numUser" name="numUser">
-							<option value="Red">1</option>
-							<option value="Red">2</option>
-							<option value="Red">3</option>
-						</select>
+					<div id="AreaMail" class="row col-md-4">
+							<label for="AreaMail" class="col-md-4 col-form-label">
+								<h5 class="lead">Area:</h5></label>
+							<div class="col-md-8">
+								<select class="form-control">
+									<option value="Red">Area1</option>
+									<option value="Red">Area2</option>
+									<option value="Red">Area3</option>
+								</select>
+							</div>
 					</div>
-			</div>
 
-			<div id="AreaMail" class="row col-md-4">
-					<label for="AreaMail" class="col-md-4 col-form-label">
-						<h5 class="lead">Area:</h5></label>
-					<div class="col-md-8">
-						<select class="form-control form-control-lg">
-							<option value="Red">Area1</option>
-							<option value="Red">Area2</option>
-							<option value="Red">Area3</option>
-						</select>
+					<div id="NumEmppleado" class="row col-md-4">
+							<label for="NumEmppleado" class="col-md-4 col-form-label">
+								<h5 class="lead">N° de Empleado:</h5></label>
+							<div class="col-md-8">
+									<input type="text" class="form-control"
+									name="NumEmppleado" placeholder="" th:field="*{cUsuarioR}" th:value="${cUsuarioR}" onkeypress="return soloNumeros(event)"/>
+							</div>
+					</div>	
+				</div> <!-- fila 6 Final-->
+
+				<div class="row"> <!-- fila 7 Inicio-->
+					
+					<div id="TipoNom" class="row col-md-4">
+							<label for="TipoNom" class="col-md-4 col-form-label">
+								<h5 class="lead">Tipo de Nómina:</h5></label>
+							<div class="col-md-8">
+								<select class="form-control">
+									<option value="Red">Honorarios</option>
+								</select>
+							</div>
 					</div>
-			</div>
 
-			<div id="NumEmppleado" class="row col-md-4">
-					<label for="NumEmppleado" class="col-md-4 col-form-label">
-						<h5 class="lead">N° de Empleado:</h5></label>
-					<div class="col-md-8">
-							<input type="text" class="form-control form-control-lg"
-							 name="NumEmppleado" placeholder="" onkeypress="return soloNumeros(event)"/>
+					<div id="Cargo" class="row col-md-4">
+						<label for="Cargo" class="col-md-4 col-form-label">
+							<h5 class="lead">Cargo:</h5></label>
+						<div class="col-md-8">
+								<select class="form-control">
+									<option value="Red">Cargo 1</option>
+								</select>
+						</div>
 					</div>
-			</div>	
-		</div> <!-- fila 5 Final-->
 
-		<div class="row"> <!-- fila 6 Inicio-->
-			
-			<div id="TipoNom" class="row col-md-4">
-					<label for="TipoNom" class="col-md-4 col-form-label">
-						<h5 class="lead">Tipo de Nómina:</h5></label>
-					<div class="col-md-8">
-						<select class="form-control form-control-lg">
-							<option value="Red">Honorarios</option>
-						</select>
-					</div>
-			</div>
+					<div id="Extension" class="row col-md-4">
+						<label for="Extension" class="col-md-4 col-form-label">
+							<h5 class="lead">Extension:</h5></label>
+						<div class="col-md-8">
+								<input type="text" class="form-control"
+								name="Extension" placeholder="" th:field="*{cExtension}" th:value="${cExtension}" onkeypress="return soloNumeros(event)"/>
+						</div>
+					</div>	
+				</div>	<!-- Fila 7 Final -->
+		</fieldset>	
 
-			<div id="Cargo" class="row col-md-4">
-				<label for="Cargo" class="col-md-4 col-form-label">
-					<h5 class="lead">Cargo:</h5></label>
-				<div class="col-md-8">
-						<select class="form-control form-control-lg">
-							<option value="Red">Cargo 1</option>
-						</select>
-				</div>
-			</div>
-
-			<div id="Extension" class="row col-md-4">
-				<label for="Extension" class="col-md-4 col-form-label">
-					<h5 class="lead">Extension:</h5></label>
-				<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-						 name="Extension" placeholder="" onkeypress="return soloNumeros(event)"/>
-				</div>
-			</div>	
-		</div>	<!-- Fila 6 Final -->
+		<br/>
 
 		<div class="row">
 			<div id="observns" class="row col-md-12">
@@ -228,7 +245,7 @@
 						<h5 class="lead">Observaciones:</h5></label>
 						
 					<div class="col-md-6">
-							<textarea class="form-control" rows="2" id="comment"></textarea>
+							<textarea class="form-control" th:field="*{cObs}" th:value="${cObs}" rows="2" id="comment"></textarea>
 					</div>
 			</div>			
 		</div>

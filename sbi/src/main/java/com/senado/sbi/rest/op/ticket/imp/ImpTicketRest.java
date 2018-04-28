@@ -1,32 +1,39 @@
 package com.senado.sbi.rest.op.ticket.imp;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.senado.sbi.configuracion.MensajeError;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.datos.Validacion;
-import com.senado.sbi.modelo.modulo.Menu;
 import com.senado.sbi.modelo.op.ticket.TicketM;
+import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
 import com.senado.sbi.rest.op.ticket.TicketRest;
 
+@Component
 public class ImpTicketRest implements TicketRest {
 	
+	private final static Logger LOGGER = Logger.getLogger(ImpMenuRest.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void insertaTicket(TicketM objTicket, String cToken) {
 		
-RestTemplate restTemplate = new RestTemplate();		
+		RestTemplate restTemplate = new RestTemplate();		
 		
-		Menu[]       menu         = null;
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
@@ -39,7 +46,7 @@ RestTemplate restTemplate = new RestTemplate();
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			
 			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
-			body.add("objTicket", objTicket.toString());
+			body.add("objTicket", objTicket.toJson());
 
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
@@ -48,6 +55,15 @@ RestTemplate restTemplate = new RestTemplate();
 					HttpMethod.POST ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
+			
+			/*Maneja los errores del servicio rest*/
+			if(root.has("error")) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(MensajeError.getERROR1());
+				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
+				return;
+			}
+			
 			validacionJs = root.path("validacion");
 			datos = root.path("datos");
 			
@@ -57,7 +73,6 @@ RestTemplate restTemplate = new RestTemplate();
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
-				menu = mapper.convertValue(datos, Menu[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}

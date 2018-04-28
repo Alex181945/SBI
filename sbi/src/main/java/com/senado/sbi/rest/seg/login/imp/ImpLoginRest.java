@@ -1,6 +1,8 @@
 package com.senado.sbi.rest.seg.login.imp;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -9,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.senado.sbi.configuracion.MensajeError;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.modelo.seg.login.ULogin;
@@ -31,16 +34,20 @@ import com.senado.sbi.rest.seg.login.LoginRest;
 
 @Component
 public class ImpLoginRest implements LoginRest {
-	
+
+	private final static Logger LOGGER = Logger.getLogger(ImpLoginRest.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 	private ULogin  uLogin;
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void validaUsuario(UsuarioTemp objUsuario) {
 		
+		/*Instancia de restTemplate*/
 		RestTemplate restTemplate = new RestTemplate();		
 		
+		/*Variables de la clase*/
 		ULogin[] uLogin = null;
 		Validacion[] validacion = null;
 		ObjectMapper mapper = new ObjectMapper();
@@ -51,17 +58,35 @@ public class ImpLoginRest implements LoginRest {
 		
 		try {
 			
-			/*JSON obtenido de forma plana*/
+			/*Envia peticion y parametros*/
 			ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getUrlwsd() + "validausuario",
 					objUsuario, String.class);
 			
+			/*Obtiene todo el contenido de la respuesta json*/
 			root = mapper.readTree(response.getBody());
+			
+			/*Maneja los errores del servicio rest*/
+			if(root.has("error")) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(MensajeError.getERROR1());
+				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
+				return;
+			}
+			
+			/* Si no devuleve errores el servicio rest
+			 * secciona la respuesta*/
 			validacionJs = root.path("validacion");
 			datos = root.path("datos");
 			token = root.path("token");
 			
+			/* Mapea las validaciones del servicio rest,
+			 * lo vuelve un objeto*/
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
+			System.out.println(root);
 			
+			/* Comprueba si existen errore en la consulta a datos
+			 * si todo sale bien devulve el objeto usuario y el token
+			 * para las futuras peticiones al servicio rest*/
 			if(validacion[0].getlError() == 1) {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
