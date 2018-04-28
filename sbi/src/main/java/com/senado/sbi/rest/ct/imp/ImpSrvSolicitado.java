@@ -68,6 +68,7 @@ public class ImpSrvSolicitado implements SrvSolicitadoRest {
 			if(validacion[0].getlError() == 1) {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+				srvsolicitado = SrvSolicitado.srvsolicitadoDefault();
 			} else {
 				srvsolicitado = mapper.convertValue(datos, SrvSolicitado[].class);
 				this.setResultadoLocal(false);

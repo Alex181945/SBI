@@ -68,10 +68,8 @@ public class ImpEdificioRest implements EdificioRest {
 			if(validacion[0].getlError() == 1) {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+				edificio = Edificio.edificioDefault();
 			} else {
-				if(datos.isNull()) {
-					System.out.println("Vacio");
-				}
 				edificio = mapper.convertValue(datos, Edificio[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");

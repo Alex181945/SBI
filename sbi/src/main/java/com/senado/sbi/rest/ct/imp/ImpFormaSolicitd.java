@@ -68,10 +68,8 @@ public class ImpFormaSolicitd implements FormaSolicitudRest {
 			if(validacion[0].getlError() == 1) {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+				formasolicitud = FormaSolicitud.formasolicitudDefault();
 			} else {
-				if(datos.isNull()) {
-					System.out.println("Vacio");
-				}
 				formasolicitud = mapper.convertValue(datos, FormaSolicitud[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
