@@ -52,8 +52,6 @@ public class ImpTipoServicioRest implements TipoServicioRest {
 			
 			root = mapper.readTree(response.getBody());
 			
-			System.out.println(root);
-			
 			/*Maneja los errores del servicio rest*/
 			if(root.has("error")) {
 				this.setResultadoLocal(true);

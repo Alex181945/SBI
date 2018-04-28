@@ -52,8 +52,6 @@ public class ImpEdificioRest implements EdificioRest {
 			
 			root = mapper.readTree(response.getBody());
 			
-			System.out.println(root);
-			
 			/*Maneja los errores del servicio rest*/
 			if(root.has("error")) {
 				this.setResultadoLocal(true);
@@ -71,6 +69,9 @@ public class ImpEdificioRest implements EdificioRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
+				if(datos.isNull()) {
+					System.out.println("Vacio");
+				}
 				edificio = mapper.convertValue(datos, Edificio[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");

@@ -52,8 +52,6 @@ public class ImpSrvSolicitado implements SrvSolicitadoRest {
 			
 			root = mapper.readTree(response.getBody());
 			
-			System.out.println(root);
-			
 			/*Maneja los errores del servicio rest*/
 			if(root.has("error")) {
 				this.setResultadoLocal(true);
@@ -64,6 +62,8 @@ public class ImpSrvSolicitado implements SrvSolicitadoRest {
 			
 			validacionJs = root.path("validacion");
 			datos = root.path("datos");
+			
+			System.out.println(root);
 			
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
 			

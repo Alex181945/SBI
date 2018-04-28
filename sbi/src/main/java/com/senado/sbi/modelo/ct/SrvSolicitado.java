@@ -2,7 +2,7 @@ package com.senado.sbi.modelo.ct;
 
 public class SrvSolicitado{
 	
-	private Integer iIDServicioSolic;
+	private Integer iIDTipoServicio;
 	private Integer iPartida;
 	private String cServicioSolicitado; 
 	private Integer lActivo;
@@ -10,12 +10,13 @@ public class SrvSolicitado{
 	private String dtModificado; 
 	private String cUsuario;
 	
-	public Integer getiIDServicioSolic() {
-		return iIDServicioSolic;
+	public Integer getiIDTipoServicio() {
+		return iIDTipoServicio;
 	}
-	public void setiIDServicioSolic(Integer iIDServicioSolic) {
-		this.iIDServicioSolic = iIDServicioSolic;
+	public void setiIDTipoServicio(Integer iIDTipoServicio) {
+		this.iIDTipoServicio = iIDTipoServicio;
 	}
+	
 	public Integer getiPartida() {
 		return iPartida;
 	}
@@ -55,14 +56,14 @@ public class SrvSolicitado{
 	
 	@Override
 	public String toString() {
-		return "SrvSolicitado [iIDServicioSolic=" + iIDServicioSolic + ", iPartida=" + iPartida + ", cServicioSolicitado =" + cServicioSolicitado
+		return "SrvSolicitado [iIDTipoServicio=" + iIDTipoServicio + ", iPartida=" + iPartida + ", cServicioSolicitado =" + cServicioSolicitado
 				+ ", lActivo=" + lActivo + ", dtCreado=" + dtCreado + ", dtModificado=" + dtModificado + ", cUsuario="
 				+ cUsuario + "]";
 	}
 	
 	public String toJson() {
 		return "{"
-				+ "iIDServicioSolic:"   + iIDServicioSolic	  	+ ","
+				+ "iIDTipoServicio:"   + iIDTipoServicio	  	+ ","
 				+ "iPartida:"     		+ iPartida    			+ ","
 				+ "cServicioSolicitado" + cServicioSolicitado 	+ ","
 				+ "lActivo:"       		+ lActivo      			+ ","
@@ -76,7 +77,7 @@ public class SrvSolicitado{
 		
 		SrvSolicitado srvsolicitado = new SrvSolicitado();
 		
-		srvsolicitado.setiIDServicioSolic(0);
+		srvsolicitado.setiIDTipoServicio(0);
 		srvsolicitado.setiPartida(0);
 		srvsolicitado.setcServicioSolicitado("N/A");
 		srvsolicitado.setlActivo(0);
