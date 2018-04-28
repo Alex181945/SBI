@@ -36,7 +36,7 @@ public class Ticket {
 	@Autowired
 	private SrvSolicitadoRest srvsolicitadoRest;
 	
-	@GetMapping("/ticket")
+	@GetMapping(Vistas.TICKET_R)
 	public ModelAndView inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
 		/*Consulta del menu*/
@@ -45,7 +45,7 @@ public class Ticket {
 		consulta.setParametro2(sessionUsu.getiPerfil());
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(Vistas.getTicket());
+		mav.setViewName(Vistas.getTicketIncidencia());
 		mav.addObject("titulo", "Ticket");
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
@@ -56,7 +56,7 @@ public class Ticket {
 		return mav;
 	}
 	
-	@GetMapping("/ticket/asignacion")
+	@GetMapping(Vistas.TICKET_ASIGNACION_R)
 	public ModelAndView asignacion(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
@@ -64,14 +64,14 @@ public class Ticket {
 		consulta.setParametro2(sessionUsu.getiPerfil());
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(Vistas.getAsigancion());
+		mav.setViewName(Vistas.getTicketAsignacion());
 		mav.addObject("titulo", "Ticket");
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("Ticket", new TicketM());
 		return mav;
 	}
 	
-	@PostMapping("/ticket/inserta")
+	@PostMapping(Vistas.TICKET_INSERTA_R)
 	public ModelAndView creaTicket(@ModelAttribute("Usuario") ULogin sessionUsu, @ModelAttribute("Ticket") TicketM ticket) {
 		
 		System.out.println(ticket.toString());

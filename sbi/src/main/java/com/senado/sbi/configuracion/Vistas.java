@@ -27,40 +27,41 @@ public class Vistas {
 	/*************************************************************************/
 	/***                          Vistas del sistema                       ***/
 	/*************************************************************************/
-	private static final String LOGIN = "index";
-	private static final String TICKET = "ticket/incidencia";
-	private static final String ASIGNACION = "ticket/asigancionTecnico";
-	private static final String MENU = "menu/menu";
-	private static final String CONSULTARBI = "bieninformatico/Consultar";
-	private static final String EDITARBI = "bieninformatico/Editar";
-	private static final String INSERTARBI = "bieninformatico/Nuevo";
-	private static final String DESHABILITARBI = "bieninformatico/Deshabilitar";
+	private static final String LOGIN             = "index";
+	private static final String MENU              = "menu/menu";
+	private static final String TICKET_INCIDENCIA = "ticket/incidencia";
+	private static final String TICKET_ASIGNACION = "ticket/asigancionTecnico";
+	private static final String BI_CONSULTAR      = "bieninformatico/Consultar";
+	private static final String BI_EDITAR         = "bieninformatico/Editar";
+	private static final String BI_INSERTAR       = "bieninformatico/Nuevo";
+	private static final String BI_DESHABILITAR   = "bieninformatico/Deshabilitar";
+	/********************************* Fin ***********************************/
+	
+	/*************************************************************************/
+	/***                          Rutas del sistema                        ***/
+	/*************************************************************************/
+	public static final String RAIZ        = "/";
+	public static final String LOGIN_R     = "/login";
+	public static final String VALIDAUSU_R = "/validausuario";
+	public static final String LOGOUT_R    = "/logout";
+	public static final String TICKET_R    = "/ticket";
+	public static final String TICKET_ASIGNACION_R = "/ticket/asignacion";
+	public static final String TICKET_INSERTA_R    = "/ticket/inserta";
+	public static final String BI_R = "/bienesinformaticos";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
 	/***                         Redireccionamientos                       ***/
 	/*************************************************************************/
-	private static final String REDIRECT_LOGIN = "redirect:/login";
-	private static final String REDIRECT_MENU = "redirect:/menu/inicio";
-	private static final String REDIRECT_TICKET = "redirect:/ticket";
-	private static final String REDIRECT_BIENESI = "redirect:/bienesinformaticos";
-	private static final String REDIRECT_ASIGNACION = "redirect:/ticket/asignacion";
-  private static final String REDIRECT_MENUPRINCIPAL = "redirect:/menu/inicio";
-  private static final String REDIRECT_MODULO = "redirect:/carga/modulo";
+	private static final String REDIRECT_LOGIN             = "redirect:/login";
+	private static final String REDIRECT_MENU              = "redirect:/menu/inicio";
+	private static final String REDIRECT_MODULO            = "redirect:/carga/modulo";
+	private static final String REDIRECT_MENUPRINCIPAL     = "redirect:/menu/inicio";
+	private static final String REDIRECT_TICKET            = "redirect:/ticket";
+	private static final String REDIRECT_TICKET_ASIGNACION = "redirect:/ticket/asignacion";
+	private static final String REDIRECT_BI                = "redirect:/bienesinformaticos";
 	/********************************* Fin ***********************************/
 	
-	public static String getRedirectLogin() {
-		return REDIRECT_LOGIN;
-	}
-	public static String getRedirectTicket() {
-		return REDIRECT_TICKET;
-	}
-	public static String getReditectAsignacion() {
-		return REDIRECT_ASIGNACION;
-	}
-	public static String getRedirectMenu() {
-		return REDIRECT_MENU;
-	}
 	public static String getDefaultLayout() {
 		return DEFAULT_LAYOUT;
 	}
@@ -70,50 +71,71 @@ public class Vistas {
 	public static String getLogin() {
 		return LOGIN;
 	}
-	public static String getTicket() {
-		return TICKET;
-	}
 	public static String getMenu() {
 		return MENU;
 	}
-	public static String getRedirectConsulta() {
-		return CONSULTARBI;
+	public static String getTicketIncidencia() {
+		return TICKET_INCIDENCIA;
 	}
-	public static String getAsigancion() {
-		return ASIGNACION;
+	public static String getTicketAsignacion() {
+		return TICKET_ASIGNACION;
 	}
-	public static String getTicket() {
-		return TICKET;
+	public static String getBiConsultar() {
+		return BI_CONSULTAR;
 	}
-  public static String getRedirectMenuprincipal() {
-    return REDIRECT_MENUPRINCIPAL;
-  }
-  public static String getRedirectModulo() {
-    return REDIRECT_MODULO;
-  }
+	public static String getBiEditar() {
+		return BI_EDITAR;
+	}
+	public static String getBiInsertar() {
+		return BI_INSERTAR;
+	}
+	public static String getBiDeshabilitar() {
+		return BI_DESHABILITAR;
+	}
+	public static String getRaiz() {
+		return RAIZ;
+	}
+	public static String getLoginR() {
+		return LOGIN_R;
+	}
+	public static String getValidausuR() {
+		return VALIDAUSU_R;
+	}
+	public static String getLogoutR() {
+		return LOGOUT_R;
+	}
+	public static String getTicketR() {
+		return TICKET_R;
+	}
+	public static String getTicketAsignacionR() {
+		return TICKET_ASIGNACION_R;
+	}
+	public static String getTicketInsertaR() {
+		return TICKET_INSERTA_R;
+	}
+	public static String getBiR() {
+		return BI_R;
+	}
 	public static String getRedirectLogin() {
 		return REDIRECT_LOGIN;
+	}
+	public static String getRedirectMenu() {
+		return REDIRECT_MENU;
+	}
+	public static String getRedirectModulo() {
+		return REDIRECT_MODULO;
 	}
 	public static String getRedirectMenuprincipal() {
 		return REDIRECT_MENUPRINCIPAL;
 	}
-	public static String getModulo() {
-		return REDIRECT_MODULO;
-	}
 	public static String getRedirectTicket() {
 		return REDIRECT_TICKET;
 	}
-	public static String getConsulta() {
-		return REDIRECT_BIENESI;
+	public static String getRedirectTicketAsignacion() {
+		return REDIRECT_TICKET_ASIGNACION;
 	}
-	public static String getEditar() {	
-		return EDITARBI;
-	}
-	public static String getInserta() {
-		return INSERTARBI;
-	}
-	public static String getDeshabilitar() {
-		return DESHABILITARBI;
-	}
-	
+	public static String getRedirectBi() {
+		return REDIRECT_BI;
+	}	
+
 }

@@ -32,17 +32,17 @@ public class Login {
 	@Autowired
 	private LoginRest loginRest;
 	
-	@GetMapping("/")
+	@GetMapping(Vistas.RAIZ)
 	public String redirectLogin() {
 		return Vistas.getRedirectLogin();
 	}
 	
-	@GetMapping("/login")
+	@GetMapping(Vistas.LOGIN_R)
 	public String login() {
 		return Vistas.getLogin();
 	}
 	
-	@PostMapping("/validausuario")
+	@PostMapping(Vistas.VALIDAUSU_R)
 	public String validaUsuario(@ModelAttribute("usuario") String cUsuario,
 			@ModelAttribute("password") String cPassword, Model model, HttpServletRequest request) {
 		
@@ -62,7 +62,7 @@ public class Login {
 		return Vistas.getRedirectMenuprincipal();
 	}
 	
-	@GetMapping("/logout")
+	@GetMapping(Vistas.LOGOUT_R)
 	public String cerrarSesion(HttpServletRequest request) {
 		//status.setComplete();
 		request.getSession().invalidate();
