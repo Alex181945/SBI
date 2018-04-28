@@ -44,9 +44,9 @@
 								<h5 class="lead">Servicio solicitado:</h5></label>
 							<div class="col-md-8">
 								<select class="form-control" id="srvSolicitado" name="srvSolicitado" 
-								th:field="*{iIDServicioSolic}">
+								th:field="*{iIDTipoServicio}">
 								<option th:each="dropDownItem : ${srvsolicitado}"
-									th:value="${dropDownItem.iIDServicioSolic}"
+									th:value="${dropDownItem.iIDTipoServicio}"
 									th:text="${dropDownItem.cServicioSolicitado}"/>
 							</select>
 							</div>

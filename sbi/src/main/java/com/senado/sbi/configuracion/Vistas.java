@@ -44,25 +44,8 @@ public class Vistas {
 	private static final String REDIRECT_ASIGNACION = "redirect:/ticket/asignacion";
     private static final String REDIRECT_MENUPRINCIPAL = "redirect:/menu/inicio";
     private static final String REDIRECT_MODULO = "redirect:/carga/modulo";
-	
 	/********************************* Fin ***********************************/
-	
-
-	public static String getRedirectLogin() {
-		return REDIRECT_LOGIN;
-	}
-	public static String getRedirectTicket() {
-		return REDIRECT_TICKET;
-	}
-	
-	public static String getReditectAsignacion() {
-		return REDIRECT_ASIGNACION;
-	}
-	
-	public static String getRedirectMenu() {
-		return REDIRECT_MENU;
-	}
-
+    
 	public static String getDefaultLayout() {
 		return DEFAULT_LAYOUT;
 	}
@@ -75,24 +58,23 @@ public class Vistas {
 	public static String getTicket() {
 		return TICKET;
 	}
+	public static String getAsignacion() {
+		return ASIGNACION;
+	}
 	public static String getMenu() {
 		return MENU;
 	}
-
-	public static String getAsigancion() {
-		return ASIGNACION;
-	}
-	public static String getTicket() {
-		return TICKET;
-	}
-    public static String getRedirectMenuprincipal() {
-        return REDIRECT_MENUPRINCIPAL;
-    }
-    public static String getRedirectModulo() {
-        return REDIRECT_MODULO;
-    }
 	public static String getRedirectLogin() {
 		return REDIRECT_LOGIN;
+	}
+	public static String getRedirectMenu() {
+		return REDIRECT_MENU;
+	}
+	public static String getRedirectTicket() {
+		return REDIRECT_TICKET;
+	}
+	public static String getRedirectAsignacion() {
+		return REDIRECT_ASIGNACION;
 	}
 	public static String getRedirectMenuprincipal() {
 		return REDIRECT_MENUPRINCIPAL;
@@ -100,8 +82,9 @@ public class Vistas {
 	public static String getRedirectModulo() {
 		return REDIRECT_MODULO;
 	}
-	public static String getRedirectTicket() {
-		return REDIRECT_TICKET;
-	}
+	
 
+	
+
+	
 }
