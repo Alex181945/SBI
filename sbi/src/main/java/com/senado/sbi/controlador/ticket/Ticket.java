@@ -12,6 +12,10 @@ import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.op.ticket.TicketM;
 import com.senado.sbi.modelo.seg.login.ULogin;
+import com.senado.sbi.rest.ct.EdificioRest;
+import com.senado.sbi.rest.ct.FormaSolicitudRest;
+import com.senado.sbi.rest.ct.SrvSolicitadoRest;
+import com.senado.sbi.rest.ct.TipoServicioRest;
 import com.senado.sbi.rest.modulo.menu.MenuRest;
 import com.senado.sbi.rest.op.ticket.TicketRest;
 
@@ -21,17 +25,46 @@ public class Ticket {
 	
 	@Autowired
 	private MenuRest menuRest;
+	@Autowired
 	private TicketRest ticketRest;
+	@Autowired
+	private EdificioRest edificioRest;
+	@Autowired
+	private TipoServicioRest tiposervicioRest;
+	@Autowired
+	private FormaSolicitudRest formasolicitudRest;
+	@Autowired
+	private SrvSolicitadoRest srvsolicitadoRest;
 	
 	@GetMapping("/ticket")
-	public ModelAndView Inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
+	public ModelAndView inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
+		/*Consulta del menu*/
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
 		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
 		consulta.setParametro2(sessionUsu.getiPerfil());
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getTicket());
+		mav.addObject("titulo", "Ticket");
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
+		mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+		mav.addObject("tiposervicio",tiposervicioRest.consultaTipoServicios1(1, sessionUsu.getcToken()));
+		mav.addObject("formasolicitud", formasolicitudRest.consultaFormaSolicitudes(1, sessionUsu.getcToken()));
+		mav.addObject("srvsolicitado", srvsolicitadoRest.consultaSrvSolicitados(1, sessionUsu.getcToken()));
+		mav.addObject("Ticket", new TicketM());
+		return mav;
+	}
+	
+	@GetMapping("/ticket/asignacion")
+	public ModelAndView asignacion(@ModelAttribute("Usuario") ULogin sessionUsu) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getAsigancion());
 		mav.addObject("titulo", "Ticket");
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("Ticket", new TicketM());

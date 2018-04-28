@@ -1,4 +1,4 @@
-package com.senado.sbi.rest.modulo.menu.imp;
+package com.senado.sbi.rest.ct.imp;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,35 +8,19 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.MensajeError;
 import com.senado.sbi.configuracion.VariablesEntorno;
+import com.senado.sbi.modelo.ct.SrvSolicitado;
 import com.senado.sbi.modelo.datos.Validacion;
-import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
-import com.senado.sbi.modelo.modulo.Menu;
-import com.senado.sbi.rest.modulo.menu.MenuRest;
-
-/**
- * 
- * Autor: Alejandro Estrada
- * Fecha: 07/04/2018
- * Descripcion: Implementacion de la interfaz MenuRest
- *  
- * Modificaciones:
- * <Quien modifico:> <Cuando modifico:> <Donde modifico:>
- * Ejemplo: Alejandro Estrada 09/09/2017 In-15 Fn-19 
- *
- * Nota: 0 es falso, 1 es verdadero
- * 
- */
+import com.senado.sbi.rest.ct.SrvSolicitadoRest;
+import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
 
 @Component
-public class ImpMenuRest implements MenuRest {
+public class ImpSrvSolicitado implements SrvSolicitadoRest {
 	
 	private final static Logger LOGGER = Logger.getLogger(ImpMenuRest.class.getName());
 	private Boolean resultadoLocal;
@@ -44,40 +28,38 @@ public class ImpMenuRest implements MenuRest {
 
 	@SuppressWarnings("static-access")
 	@Override
-	public Menu[] cargaMenu(DosParametrosEnteros consulta, String cToken) {
+	public SrvSolicitado[] consultaSrvSolicitados(Integer iTipoConsulta, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
-		Menu[]       menu         = null;
-		Validacion[] validacion   = null;
-		ObjectMapper mapper       = new ObjectMapper();
-		JsonNode     root         = null;
-		JsonNode     validacionJs = null;
-		JsonNode     datos        = null;
+		SrvSolicitado[] srvsolicitado 	= null;
+		Validacion[] validacion   	= null;
+		ObjectMapper mapper       	= new ObjectMapper();
+		JsonNode     root         	= null;
+		JsonNode     validacionJs 	= null;
+		JsonNode     datos        	= null;
 		
 		try {
 			
 			HttpHeaders headers = new HttpHeaders();
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			
-			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
-			body.add("iTipoConsulta", consulta.getParametro1().toString());
-			body.add("iIDPerfil", consulta.getParametro2().toString());
-
-			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
+			HttpEntity<?> httpEntity = new HttpEntity<Object>(headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/carga/modulo",
-					HttpMethod.POST ,httpEntity, String.class);
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/srvsolicitado/consulta?iTipoConsulta=" + iTipoConsulta,
+					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
+			
+			System.out.println(root);
 			
 			/*Maneja los errores del servicio rest*/
 			if(root.has("error")) {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(MensajeError.getERROR1());
 				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
-				return menu = Menu.menuDefault();
+				return SrvSolicitado.srvsolicitadoDefault();
 			}
 			
 			validacionJs = root.path("validacion");
@@ -89,7 +71,7 @@ public class ImpMenuRest implements MenuRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
-				menu = mapper.convertValue(datos, Menu[].class);
+				srvsolicitado = mapper.convertValue(datos, SrvSolicitado[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}
@@ -100,22 +82,20 @@ public class ImpMenuRest implements MenuRest {
 			this.setMensajeLocal("Error: Exception en " + new Object() {
 			}.getClass().getEnclosingMethod().getName());
 		}
-
-		return menu;
+		
+		return srvsolicitado;
 	}
 
 	@Override
 	public boolean islResultado() {
-
 		return this.getResultadoLocal();
 	}
 
 	@Override
 	public String getMensaje() {
-
 		return this.getMensajeLocal();
 	}
-
+	
 	public Boolean getResultadoLocal() {
 		return resultadoLocal;
 	}
@@ -131,5 +111,5 @@ public class ImpMenuRest implements MenuRest {
 	public void setMensajeLocal(String mensajeLocal) {
 		this.mensajeLocal = mensajeLocal;
 	}
-
+	
 }
