@@ -82,7 +82,6 @@ public class ImpLoginRest implements LoginRest {
 			/* Mapea las validaciones del servicio rest,
 			 * lo vuelve un objeto*/
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
-			System.out.println(root);
 			
 			/* Comprueba si existen errore en la consulta a datos
 			 * si todo sale bien devulve el objeto usuario y el token
