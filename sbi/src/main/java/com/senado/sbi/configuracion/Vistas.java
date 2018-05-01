@@ -30,7 +30,7 @@ public class Vistas {
 	private static final String LOGIN             = "index";
 	private static final String MENU              = "menu/menu";
 	private static final String TICKET_INCIDENCIA = "ticket/incidencia";
-	private static final String TICKET_ASIGNACION = "ticket/asigancionTecnico";
+	private static final String TICKET_ASIGNACION = "ticket/asignacion";
 	private static final String BI_CONSULTAR      = "bieninformatico/Consultar";
 	private static final String BI_EDITAR         = "bieninformatico/Editar";
 	private static final String BI_INSERTAR       = "bieninformatico/Nuevo";
