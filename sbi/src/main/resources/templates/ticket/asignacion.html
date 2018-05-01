@@ -7,24 +7,51 @@
 				
 				<form id="form1" th:action="@{/ticket/inserta}" th:object="${Ticket}" method="POST">
 					
-					<fieldset class="col-md-12">
-						<legend >Elegir Técnico</legend>
-						<div class="panel panel-default"/>
+				<fieldset class="col-md-12">
+					<legend >Elegir Técnico</legend>
+					<div class="panel panel-default"/>
 
-						<div class ="row">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label><h5 class="lead">Grupo:</h5></label>
+									<div>
+										<select class="form-control">
+											<option value="Red">Grupo 1</option>
+											<option value="Red">Grupo 2</option>
+											<option value="Red">Grupo 3</option>
+										</select>
+									</div>
+							</div>
 
-								<div id="prue" class="row col-md-6">
-										<label for="NameTecnico" class="col-md-4">
-											<h5  class="lead" >Nombre del Técnico:</h5></label>
-										<div class="col-md-6">
-												<select class="form-control">
-														<option value="Red">Area1</option>
-														<option value="Red">Area2</option>
-														<option value="Red">Area3</option>
-												</select>
-										</div>
-								</div>
+							<div class="form-group col-md-6">
+								<label><h5 class="lead">Nombre del Técnico:</h5></label>
+									<select class="form-control" id="Nvlcriticidad" name="Nvlcriticidad">
+										<option value="Red">Técnico 1</option>
+										<option value="Red">Técnico 2</option>
+										<option value="Red">Bajo</option>
+									</select>
+							</div>
 						</div>
+
+						<div class="form-row">
+							<div class="col-md-6">
+								<label><h5 class="lead">Edificio:</h5></label>
+								<label class="fomr-control">Edificio asignado</label>
+							</div>
+						
+
+						
+							<div class="col-auto">
+								<div class="form-check mb-2 custom-checkbox">
+									<input class="custom-control-input" type="checkbox" id="gridCheck"/>
+									<label class="custom-control-label" for="gridCheck">
+										<h5 class="lead">Modificar</h5>
+									</label>
+								</div>
+							</div>
+							  
+						</div>
+						
 					</fieldset>
 				</form>
 	</div>
