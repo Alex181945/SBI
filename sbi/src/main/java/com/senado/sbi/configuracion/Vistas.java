@@ -35,6 +35,8 @@ public class Vistas {
 	private static final String BI_EDITAR         = "bieninformatico/Editar";
 	private static final String BI_INSERTAR       = "bieninformatico/Nuevo";
 	private static final String BI_DESHABILITAR   = "bieninformatico/Deshabilitar";
+	private static final String CT_TODOS             = "catalogo/catalogos";
+	private static final String CT_EDIFICIO_CONSULTA = "catalogo/edificio/consulta";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -45,9 +47,11 @@ public class Vistas {
 	public static final String VALIDAUSU_R = "/validausuario";
 	public static final String LOGOUT_R    = "/logout";
 	public static final String TICKET_R    = "/ticket";
-	public static final String TICKET_ASIGNACION_R = "/ticket/asignacion";
-	public static final String TICKET_INSERTA_R    = "/ticket/inserta";
-	public static final String BI_R = "/bienesinformaticos";
+	public static final String TICKET_ASIGNACION_R    = "/ticket/asignacion";
+	public static final String TICKET_INSERTA_R       = "/ticket/inserta";
+	public static final String BI_R                   = "/bienesinformaticos";
+	public static final String CT_TODOS_R             = "/config/catalogos";
+	public static final String CT_EDIFICIO_CONSULTA_R = "/config/catalogos/edificio/consulta";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -60,6 +64,8 @@ public class Vistas {
 	private static final String REDIRECT_TICKET            = "redirect:/ticket";
 	private static final String REDIRECT_TICKET_ASIGNACION = "redirect:/ticket/asignacion";
 	private static final String REDIRECT_BI                = "redirect:/bienesinformaticos";
+	private static final String REDIRECT_CT                = "redirect:/config/catalogos";
+	private static final String REDIRECT_CT_EDIFICIO       = "redirect:/config/catalogos/edificio/consulta";
 	/********************************* Fin ***********************************/
 	
 	public static String getDefaultLayout() {
@@ -136,6 +142,24 @@ public class Vistas {
 	}
 	public static String getRedirectBi() {
 		return REDIRECT_BI;
+	}
+	public static String getCtEdificioConsulta() {
+		return CT_EDIFICIO_CONSULTA;
+	}
+	public static String getCtEdificioConsultaR() {
+		return CT_EDIFICIO_CONSULTA_R;
+	}
+	public static String getRedirectCtEdificio() {
+		return REDIRECT_CT_EDIFICIO;
+	}
+	public static String getCtTodos() {
+		return CT_TODOS;
+	}
+	public static String getCtTodosR() {
+		return CT_TODOS_R;
+	}
+	public static String getRedirectCt() {
+		return REDIRECT_CT;
 	}	
 
 }
