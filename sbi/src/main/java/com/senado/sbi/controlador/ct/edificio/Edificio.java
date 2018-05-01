@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.senado.sbi.configuracion.Vistas;
+import com.senado.sbi.modelo.ct.EdificioM;
 import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.ct.EdificioRest;
 
@@ -37,6 +38,14 @@ public class Edificio {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getCtEdificioConsulta());
 		mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+		return mav;
+	}
+	
+	@GetMapping(Vistas.CT_EDIFICIO_FORMULARIO_R)
+	public ModelAndView formulario(@ModelAttribute("Usuario") ULogin sessionUsu) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getCtEdificioFormulario());
+		mav.addObject("objEdificio", new EdificioM());
 		return mav;
 	}
 

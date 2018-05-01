@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.MensajeError;
 import com.senado.sbi.configuracion.VariablesEntorno;
-import com.senado.sbi.modelo.ct.Edificio;
+import com.senado.sbi.modelo.ct.EdificioM;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.rest.ct.EdificioRest;
 import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
@@ -28,11 +28,11 @@ public class ImpEdificioRest implements EdificioRest {
 
 	@SuppressWarnings("static-access")
 	@Override
-	public Edificio[] consultaEdificios(Integer iTipoConsulta, String cToken) {
+	public EdificioM[] consultaEdificios(Integer iTipoConsulta, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
-		Edificio[]   edificio     = null;
+		EdificioM[]   edificio     = null;
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
@@ -57,7 +57,7 @@ public class ImpEdificioRest implements EdificioRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(MensajeError.getERROR1());
 				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
-				return Edificio.edificioDefault();
+				return EdificioM.edificioDefault();
 			}
 			
 			validacionJs = root.path("validacion");
@@ -68,9 +68,9 @@ public class ImpEdificioRest implements EdificioRest {
 			if(validacion[0].getlError() == 1) {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
-				edificio = Edificio.edificioDefault();
+				edificio = EdificioM.edificioDefault();
 			} else {
-				edificio = mapper.convertValue(datos, Edificio[].class);
+				edificio = mapper.convertValue(datos, EdificioM[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}

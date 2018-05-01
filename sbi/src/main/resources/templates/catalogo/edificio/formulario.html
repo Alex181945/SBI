@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+	
+	<div class="container">
+		<form id="formEdificio" th:action="@{/config/catalogos/edificio/inserta}"
+			th:object="${objEdificio}" method="POST">
+			<fieldset class="col-md-12">
+				<legend></legend>
+
+				<div class="row">
+					<div id="prue" class="row col-md-4">
+						<label id="Uno" for="iIDEdificio" class="col-md-4"> <span
+							class="lead">ID</span>
+						</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control mb-2" id="iIDEdificio"
+								name="iIDEdificio" th:field="*{iIDEdificio}"
+								th:value="${iIDEdificio}" placeholder="0" readonly="true" />
+						</div>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+	</div>
+	
+</div>

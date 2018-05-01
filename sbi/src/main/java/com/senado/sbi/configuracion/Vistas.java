@@ -35,8 +35,9 @@ public class Vistas {
 	private static final String BI_EDITAR         = "bieninformatico/Editar";
 	private static final String BI_INSERTAR       = "bieninformatico/Nuevo";
 	private static final String BI_DESHABILITAR   = "bieninformatico/Deshabilitar";
-	private static final String CT_TODOS             = "catalogo/catalogos";
-	private static final String CT_EDIFICIO_CONSULTA = "catalogo/edificio/consulta";
+	private static final String CT_TODOS               = "catalogo/catalogos";
+	private static final String CT_EDIFICIO_CONSULTA   = "catalogo/edificio/consulta";
+	private static final String CT_EDIFICIO_FORMULARIO = "catalogo/edificio/formulario";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -47,11 +48,15 @@ public class Vistas {
 	public static final String VALIDAUSU_R = "/validausuario";
 	public static final String LOGOUT_R    = "/logout";
 	public static final String TICKET_R    = "/ticket";
-	public static final String TICKET_ASIGNACION_R    = "/ticket/asignacion";
-	public static final String TICKET_INSERTA_R       = "/ticket/inserta";
-	public static final String BI_R                   = "/bienesinformaticos";
-	public static final String CT_TODOS_R             = "/config/catalogos";
-	public static final String CT_EDIFICIO_CONSULTA_R = "/config/catalogos/edificio/consulta";
+	public static final String TICKET_ASIGNACION_R      = "/ticket/asignacion";
+	public static final String TICKET_INSERTA_R         = "/ticket/inserta";
+	public static final String BI_R                     = "/bienesinformaticos";
+	public static final String CT_TODOS_R               = "/config/catalogos";
+	public static final String CT_EDIFICIO_CONSULTA_R   = "/config/catalogos/edificio/consulta";
+	public static final String CT_EDIFICIO_FORMULARIO_R = "/config/catalogos/edificio/form";
+	public static final String CT_EDIFICIO_INSERTA_R    = "/config/catalogos/edificio/inserta";
+	public static final String CT_EDIFICIO_EDITA_R      = "/config/catalogos/edificio/actualiza";
+	public static final String CT_EDIFICIO_BORRA_R      = "/config/catalogos/edificio/elimina";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -160,6 +165,21 @@ public class Vistas {
 	}
 	public static String getRedirectCt() {
 		return REDIRECT_CT;
+	}
+	public static String getCtEdificioFormulario() {
+		return CT_EDIFICIO_FORMULARIO;
+	}
+	public static String getCtEdificioFormularioR() {
+		return CT_EDIFICIO_FORMULARIO_R;
+	}
+	public static String getCtEdificioInsertaR() {
+		return CT_EDIFICIO_INSERTA_R;
+	}
+	public static String getCtEdificioEditaR() {
+		return CT_EDIFICIO_EDITA_R;
+	}
+	public static String getCtEdificioBorraR() {
+		return CT_EDIFICIO_BORRA_R;
 	}	
 
 }
