@@ -40,7 +40,7 @@ a.nav-link {
 /*Fin Texto Personalizado*/
 
 /*Formularios*/
-h5.lead {
+h5.lead, span.lead {
 	color: #F7F6F2 !important;
 }
 
