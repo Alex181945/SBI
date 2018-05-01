@@ -31,6 +31,14 @@ a.nav-link {
 }
 /*Fin Cards*/
 
+/*Texto Personalizado*/
+
+.text-color-white{
+	color: white;
+}
+
+/*Fin Texto Personalizado*/
+
 /*Formularios*/
 h5.lead {
 	color: #F7F6F2 !important;
@@ -72,6 +80,14 @@ legend {
 }
 
 /*Fin Formularios*/
+
+/*Tablas custom*/
+.table-custom{
+	background-color: #13131373 !important;
+	color: white !important;
+	
+}
+/*Fin tablas custom*/
 
 /*Modal del spinner de carga*/
 .bd-example-modal-lg .modal-dialog {
