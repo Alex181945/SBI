@@ -3,15 +3,29 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<div class="container">
 		
-				<h1 class="display-6">Asignación de Técnico</h1>
+			<h1 class="display-6">Asignación de Técnico</h1>
 				
 				<form id="form1" th:action="@{/ticket/inserta}" th:object="${Ticket}" method="POST">
+					
+					<fieldset class="col-md-12">
+						<legend >Elegir Técnico</legend>
+						<div class="panel panel-default"/>
 
+						<div class ="row">
 
-
+								<div id="prue" class="row col-md-6">
+										<label for="NameTecnico" class="col-md-4">
+											<h5  class="lead" >Nombre del Técnico:</h5></label>
+										<div class="col-md-6">
+												<select class="form-control">
+														<option value="Red">Area1</option>
+														<option value="Red">Area2</option>
+														<option value="Red">Area3</option>
+												</select>
+										</div>
+								</div>
+						</div>
+					</fieldset>
 				</form>
-		
-	
-
 	</div>
 </div>
