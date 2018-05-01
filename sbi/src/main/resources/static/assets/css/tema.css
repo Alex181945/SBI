@@ -1,27 +1,38 @@
-body{
+body {
 	background: url("/assets/img/fondo/wallpaper_3_LXIII.png");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-    background-size: cover;
-    min-height: 100%; 
-    min-height: 100vh;
-
-
+	background-size: cover;
+	min-height: 100%;
+	min-height: 100vh;
 }
 
 /*Menu*/
-.bg-light{
+.bg-light {
 	background-color: #646569 !important;
 }
 
-a.nav-link{
+a.nav-link {
 	color: #F7F6F2 !important;
 }
 /*Fin Menu*/
 
-/*Inicio de Sesion*/
-h5.lead{
+/*Cards*/
+.card{
+	background-color: #13131373 !important;
+	color: white;
+}
+.custom-fa{
+	color: #B7B6B6 !important;
+}
+.custom-muted{
+	color: white !important;
+}
+/*Fin Cards*/
+
+/*Formularios*/
+h5.lead {
 	color: #F7F6F2 !important;
 }
 
@@ -31,41 +42,36 @@ form {
 	padding: 10px 20px;
 	background: #13131373;
 	border-radius: 8px;
-	
-  }
+}
 
-  h3 {
+h3 {
 	margin: 0 0 30px 0;
 	text-align: left;
-	
-  }
-  
-   fieldset 
-	{
-		border: 1px solid rgb(255, 255, 255) !important;
-		margin: 0;
-		xmin-width: 0;
-		padding: 10px;       
-		position: relative;
-		border-radius:4px;
-		background-color:#00000000;
-		padding-left:10px!important;
-	}	
-	
-		legend
-		{
-			font-size:14px;
-			font-weight:bold;
-			margin-bottom: 0px; 
-			width: 35%; 
-			border: 1px solid #ddd;
-			border-radius: 4px; 
-			padding: 5px 5px 5px 10px; 
-			background-color: #ffffff;
-		}
-	
+}
 
-/*Fin Inicio de Sesion*/
+fieldset {
+	border: 1px solid rgb(255, 255, 255) !important;
+	margin: 0;
+	xmin-width: 0;
+	padding: 10px;
+	position: relative;
+	border-radius: 4px;
+	background-color: #00000000;
+	padding-left: 10px !important;
+}
+
+legend {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 0px;
+	width: 35%;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px 5px 5px 10px;
+	background-color: #ffffff;
+}
+
+/*Fin Formularios*/
 
 /*Modal del spinner de carga*/
 .bd-example-modal-lg .modal-dialog {
@@ -81,4 +87,3 @@ form {
 	color: #ffffff;
 }
 /*Fin Spinner*/
-
