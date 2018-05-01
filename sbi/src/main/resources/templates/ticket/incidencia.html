@@ -10,12 +10,12 @@
 		<fieldset class="col-md-12">
 			<legend >Información básica</legend>
 				<div class="panel panel-default"/>
-					<div class="row">
-						<div id="prue" class="row col-md-4">
-							<label id="Uno" for="frmSolicitud" class="col-md-4">
+					<div class="form-row">
+						<div id="prue" class="form-group col-md-4">
+							<label id="Uno" for="frmSolicitud">
 								<h5  class="lead" >Tipo de Solicitud:</h5></label>
-							<div class="col-md-8">
-								<select class="form-control" id="fmsolicitud" name="fmsolicitud" 
+							<div>
+								<select class="form-control col-md-8" id="fmsolicitud" name="fmsolicitud" 
 									th:field="*{iIDCreaTicket}">
 									<option th:each="dropDownItem : ${formasolicitud}"
 										th:value="${dropDownItem.iIDCreaTicket}"
@@ -25,12 +25,11 @@
 						</div>
 
 
-						<div id="solicitud" class="row col-md-4">
-							<label for="solicitud"
-								class="col-md-4">
+						<div id="solicitud" class="form-group col-md-4">
+							<label for="solicitud">
 								<h5 class="lead">Tipo de Servicio:</h5></label>
-							<div class="col-md-8">
-								<select class="form-control" id="tpSolicitud1" name="tpSolicitud1" 
+							<div>
+								<select class="form-control col-md-8" id="tpSolicitud1" name="tpSolicitud1" 
 									th:field="*{iIDTipoServicio}">
 									<option th:each="dropDownItem : ${tpservicio}"
 										th:value="${dropDownItem.iIDTipoServicio}"
@@ -39,10 +38,10 @@
 							</div>
 						</div>
 					
-						<div id="Servc" class="row col-md-4">
-							<label for="Servc" class="col-md-4">
+						<div id="Servc" class="form-group col-md-4">
+							<label for="Servc">
 								<h5 class="lead">Servicio solicitado:</h5></label>
-							<div class="col-md-8">
+							<div>
 								<select class="form-control" id="srvSolicitado" name="srvSolicitado" 
 								th:field="*{iIDTipoServicio}">
 								<option th:each="dropDownItem : ${srvsolicitado}"
@@ -57,65 +56,65 @@
 		
 			<br/>
 
-					<div class="row"> <!-- row fila 2-->
+					<div class="form-row"> <!-- row fila 2-->
 
-						<div id="inventario" class="row col-md-4">
-								<label for="inventario" class="col-md-4">
+						<div id="inventario" class="form-group col-md-4">
+								<label for="inventario">
 									<h5 class="lead">Numero de Inventario:</h5></label>
-								<div class="col-md-8">
-									<input type="text" class="form-control"
+								<div>
+									<input type="text" class="form-control col-md-8"
 										id="inventario" name="inventario" placeholder="N° Inventario" th:field="*{cNumInventario}" th:value="${cNumInventario}"  onkeypress="return soloNumeros(event)"/>
 								</div>
 						</div>
 						
-						<div id="user" class="row col-md-4">
-								<label for="user" class="col-md-4">
+						<div id="user" class="form-group col-md-4">
+								<label for="user">
 									<h5 class="lead">Usuario:</h5></label>
-								<div class="col-md-8">
-									<input type="text" class="form-control"
+								<div>
+									<input type="text" class="form-control col-md-8"
 										id="user" name="user" placeholder="Usuario" th:field="*{cUsuarioEquipo}" th:value="${cUsuarioEquipo}" onkeypress="return soloLetras(event)"/>
 								</div>
 						</div>
 
-						<div id="edificio" class="row col-md-4">
-								<label for="edificio" class="col-md-4">
+						<div id="edificio" class="col-md-4">
+								<label for="edificio">
 									<h5 class="lead">Edificio:</h5></label>
-								<div class="col-md-8">
-										<select class="form-control" id="tpSolicitud" name="tpSolicitud" 
+								<div>
+										<select class="form-control" id="edificios" name="edificios" 
 											th:field="*{iIDEdificio}">
 											<option th:each="dropDownItem : ${edificios}"
 													th:value="${dropDownItem.iIDEdificio}"
 													th:text="${dropDownItem.cAbreviatura} + '-' + ${dropDownItem.cEdificio}" />
 										</select>
-									</div>
+								</div>
 						</div>
 					
 					</div> <!-- row fila 2 final -->
 
-					<div class="row"> <!-- Row fila 3 inicio-->
-						<div id="piso" class="row col-md-4">
-								<label for="piso" class="col-md-4 col-form-label">
+					<div class="form-row"> <!-- Row fila 3 inicio-->
+						<div id="piso" class="form-group col-md-4">
+								<label for="piso">
 									<h5 class="lead">Piso:</h5></label>
-								<div class="col-md-8">
-									<input type="text" class="form-control"
+								<div>
+									<input type="text" class="form-control col-md-8"
 										id="piso" name="piso" th:field="*{cPiso}" th:value="${cPiso}" placeholder="Piso" />
 								</div>
 						</div>
 
-						<div id="oficina" class="row col-md-4">
-								<label for="oficina" class="col-md-4 col-form-label">
+						<div id="oficina" class="form-group col-md-4">
+								<label for="oficina" >
 									<h5 class="lead">Oficina:</h5></label>
-								<div class="col-md-8">
-									<input type="text" class="form-control"
+								<div >
+									<input type="text" class="form-control col-md-8"
 										id="oficina" name="oficina" th:field="*{cOficina}" th:value="${cOficina}" placeholder="Oficina" />
 								</div>
 						</div>
 						
-						<div id="resguardante" class="row col-md-4">
-								<label for="resguardante" class="col-md-5">
+						<div id="resguardante" class="form-group col-md-4">
+								<label for="resguardante">
 									<h5 class="lead">Resguardante:</h5></label>
-								<div class="col-md-7">
-									<input type="text" class="form-control"
+								<div>
+									<input type="text" class="form-control col-md-8"
 										id="resguardante" name="resguardante" placeholder="Resguardante" th:field="*{cResguardante}" th:value="${cResguardante}" onkeypress="return soloLetras(event)"/>
 								</div>
 						</div>
@@ -123,22 +122,22 @@
 
 				<br></br>
 
-				<div class="row">
+				<div class="form-row">
 
-					<div id="solicitante" class="row col-md-4">
-							<label for="solicitante" class="col-md-4 col-form-label">
+					<div id="solicitante" class="form-group col-md-4">
+							<label for="solicitante">
 								<h5 class="lead">Solicitante:</h5></label>
-							<div class="col-md-8">
-								<input type="text" class="form-control"
+							<div>
+								<input type="text" class="form-control col-md-8"
 									id="solicitante" name="solicitante" placeholder="" th:field="*{cUsuReporta}" th:value="${cUsuReporta}" onkeypress="return soloLetras(event)"/>
 							</div>
 					</div>
 
-					<div id="Nvlcriticidad" class="row col-md-4">
-							<label for="Nvlcriticidad" class="col-md-4 col-form-label">
+					<div id="Nvlcriticidad" class="form-group col-md-4">
+							<label for="Nvlcriticidad">
 								<h5 class="lead">Nivel de criticidad:</h5></label>
-							<div class="col-md-8">
-								<select class="form-control" id="Nvlcriticidad" name="Nvlcriticidad">
+							<div>
+								<select class="form-control col-md-8" id="Nvlcriticidad" name="Nvlcriticidad">
 									<option value="Red">Alto</option>
 									<option value="Red">Medio</option>
 									<option value="Red">Bajo</option>
@@ -146,10 +145,12 @@
 							</div>
 					</div>
 
-					<div class=" row col-md-4">
-                            <div class="custom-checkbox"> 
-									<input type="checkbox" class="custom-control-input" id="customCheck1"/>
-									<label class="custom-control-label" for="customCheck1"><h5 class="lead">Notificar</h5></label>
+					<div class="col-auto">
+							<div class="form-check mb-2 custom-checkbox">
+								<input class="custom-control-input" type="checkbox" id="gridCheck"/>
+								<label class="custom-control-label" for="gridCheck">
+									<h5 class="lead">Notificar</h5>
+								</label>
 							</div>
 					</div>
 		
@@ -265,21 +266,14 @@
 
 		<br></br>
 
-		<div class="row"> <!-- Row Botones-->
-			<div class="col-md-4"/>
-			<div class="col-md-2">
-					<button type="submit" class="btn btn-primary btn-lg btn-outline"
-						>Registrar</button>
-			</div>
-
-			<div class="col-md-2">
-				<button type="button" class="btn btn-outline-primary btn-lg">Resolver</button>
-			</div>
-
-			<div>
-					<button type="button" class="btn btn-outline-danger btn-lg">Cancelar</button>
-				</div>
-
+		<div class="form-row"> <!-- Row Botones-->
+				<div class="col-md-4"></div>
+					<div class="col-md-5">
+					  <button type="submit" class="btn btn-primary">Registrar</button>
+					  <button type="submit" class="btn btn-primary">Resolver</button>
+					  <button type="submit" class="btn btn-danger">Cancelar</button>
+					</div>
+			
 		</div>
 		</form>
 		<div class="col-12" style="display:none;"><span id="message" th:text="${error}"></span></div>
