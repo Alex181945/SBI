@@ -82,7 +82,8 @@ legend {
 /*Fin Formularios*/
 
 /*Tablas custom*/
-.table-custom{
+#Listas_wrapper{
+	padding-top: 5px;
 	background-color: #13131373 !important;
 	color: white !important;
 	
