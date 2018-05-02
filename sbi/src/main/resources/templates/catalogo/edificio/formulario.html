@@ -3,7 +3,7 @@
 	
 	<div class="container">
 	
-		<form id="formEdificio" th:action="@{/config/catalogos/edificio/inserta}"
+		<form id="form" th:action="@{/config/catalogos/edificio/inserta}"
 			th:object="${objEdificio}" method="POST">
 			<fieldset class="col-md-12">
 				<legend>Formulario de Registro</legend>
@@ -118,8 +118,8 @@
 		</form>
 		
 		<div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
-		  <button type="button" class="btn btn-success">Registrar</button>
-		  <button type="button" class="btn btn-danger">Cancelar</button>
+		  <button type="button" class="btn btn-success" onclick="submit();">Registrar</button>
+		  <button type="button" class="btn btn-danger"><a href="/config/catalogos/edificio/consulta">Cancelar</a></button>
 		</div>
 	</div>
 	

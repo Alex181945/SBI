@@ -120,21 +120,21 @@ public class EdificioM {
 	
 	public String toJson() {
 		return "{"
-				+ "iIDEdificio:"   + iIDEdificio  + ","
-				+ "cEdificio:"     + cEdificio    + ","
-				+ "cAbreviatura:"  + cAbreviatura + ","
-				+ "iPisos:"        + iPisos       + ","
-				+ "cPisoEsp:"      + cPisoEsp     + ","
-				+ "cCalle:"        + cCalle       + ","
-				+ "cNumExt:"       + cNumExt      + ","
-				+ "cColonia:"      + cColonia     + ","
-				+ "cMunicipio:"    + cMunicipio   + ","
-				+ "cEstado:"       + cEstado      + ","
-				+ "cCP:"           + cCP          + ","
-				+ "lActivo:"       + lActivo      + ","
-				+ "dtCreado:"      + dtCreado     + ","
-				+ "dtModificado:"  + dtModificado + ","
-				+ "cUsuario:"      + cUsuario 
+				+ "\"iIDEdificio\":"          + iIDEdificio  + ","
+				+ "\"cEdificio\":"     + "\"" + cEdificio    + "\"" + ","
+				+ "\"cAbreviatura\":"  + "\"" + cAbreviatura + "\"" + ","
+				+ "\"iPisos\":"               + iPisos              + ","
+				+ "\"cPisoEsp\":"      + "\"" + cPisoEsp     + "\"" + ","
+				+ "\"cCalle\":"        + "\"" + cCalle       + "\"" + ","
+				+ "\"cNumExt\":"       + "\"" + cNumExt      + "\"" + ","
+				+ "\"cColonia\":"      + "\"" + cColonia     + "\"" + ","
+				+ "\"cMunicipio\":"    + "\"" + cMunicipio   + "\"" + ","
+				+ "\"cEstado\":"       + "\"" + cEstado      + "\"" + ","
+				+ "\"cCP\":"           + "\"" + cCP          + "\"" + ","
+				+ "\"lActivo\":"              + lActivo      + ","
+				+ "\"dtCreado\":"      + "\"" + dtCreado     + "\"" + ","
+				+ "\"dtModificado\":"  + "\"" + dtModificado + "\"" + ","
+				+ "\"cUsuario\":"      + "\"" + cUsuario     + "\"" 
 				+ "}";
 	}
 	

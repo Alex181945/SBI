@@ -8,6 +8,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -86,6 +88,81 @@ public class ImpEdificioRest implements EdificioRest {
 	}
 
 	@Override
+	public EdificioM consultaEdificio(Integer iIDEdificio, String cToken) {
+		
+		return null;
+	}
+
+	@Override
+	public void actualizaEdificio(EdificioM objEdificio, String cToken) {
+		
+		
+	}
+
+	@Override
+	public void insertaEdificio(EdificioM objEdificio, String cToken) {
+		
+		RestTemplate restTemplate = new RestTemplate();		
+		
+		Validacion[] validacion   = null;
+		ObjectMapper mapper       = new ObjectMapper();
+		JsonNode     root         = null;
+		JsonNode     validacionJs = null;
+		JsonNode     datos        = null;
+		
+		try {
+			
+			HttpHeaders headers = new HttpHeaders();
+			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
+			
+			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
+			body.add("objEdificio", objEdificio.toJson());
+			
+			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
+			
+			/*JSON obtenido de forma plana*/
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/inserta",
+					HttpMethod.POST ,httpEntity, String.class);
+			
+			root = mapper.readTree(response.getBody());
+			
+			/*Maneja los errores del servicio rest*/
+			if(root.has("error")) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(MensajeError.getERROR1());
+				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
+				return;
+			}
+			
+			validacionJs = root.path("validacion");
+			datos = root.path("datos");
+			
+			validacion = mapper.convertValue(validacionJs, Validacion[].class);
+			
+			if(validacion[0].getlError() == 1) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+			} else {
+				this.setResultadoLocal(false);
+				this.setMensajeLocal("");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: Exception en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+		}
+		
+	}
+
+	@Override
+	public void borraEdificio(Integer iIDEdificio, String cToken) {
+
+		
+	}
+	
+	@Override
 	public boolean islResultado() {
 		return this.getResultadoLocal();
 	}
@@ -110,5 +187,6 @@ public class ImpEdificioRest implements EdificioRest {
 	public void setMensajeLocal(String mensajeLocal) {
 		this.mensajeLocal = mensajeLocal;
 	}
+
 	
 }

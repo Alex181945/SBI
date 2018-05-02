@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.senado.sbi.configuracion.MensajeExito;
 import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.modelo.ct.EdificioM;
 import com.senado.sbi.modelo.seg.login.ULogin;
@@ -46,6 +48,25 @@ public class Edificio {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getCtEdificioFormulario());
 		mav.addObject("objEdificio", new EdificioM());
+		return mav;
+	}
+	
+	@PostMapping(Vistas.CT_EDIFICIO_INSERTA_R)
+	public ModelAndView inserta(@ModelAttribute("Usuario") ULogin sessionUsu,
+			@ModelAttribute("objEdificio") EdificioM objEdificio) {
+		
+		edificioRest.insertaEdificio(objEdificio, sessionUsu.getcToken());
+		ModelAndView mav = new ModelAndView();
+		
+		if(edificioRest.islResultado()) {
+			mav.setViewName(Vistas.getCtEdificioFormulario());
+			mav.addObject("objEdificio", objEdificio);
+			mav.addObject("error", edificioRest.getMensaje());
+		} else {
+			mav.setViewName(Vistas.getRedirectCtEdificio());
+			mav.addObject("exito", MensajeExito.getExitoCtEdificioInserta());
+		}
+
 		return mav;
 	}
 
