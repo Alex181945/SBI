@@ -87,10 +87,62 @@ public class ImpEdificioRest implements EdificioRest {
 		return edificio;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public EdificioM consultaEdificio(Integer iIDEdificio, String cToken) {
 		
-		return null;
+		RestTemplate restTemplate = new RestTemplate();		
+		
+		EdificioM    edificio     = null;
+		Validacion[] validacion   = null;
+		ObjectMapper mapper       = new ObjectMapper();
+		JsonNode     root         = null;
+		JsonNode     validacionJs = null;
+		JsonNode     datos        = null;
+		
+		try {
+			HttpHeaders headers = new HttpHeaders();
+			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
+			
+			HttpEntity<?> httpEntity = new HttpEntity<Object>(headers);
+			
+			/*JSON obtenido de forma plana*/
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/consulta/uno?iIDEdificio=" + iIDEdificio,
+					HttpMethod.GET ,httpEntity, String.class);
+			
+			root = mapper.readTree(response.getBody());
+			
+			/*Maneja los errores del servicio rest*/
+			if(root.has("error")) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(MensajeError.getERROR1());
+				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
+				return EdificioM.edificioDefault()[0];
+			}
+			
+			validacionJs = root.path("validacion");
+			datos = root.path("datos");
+			
+			validacion = mapper.convertValue(validacionJs, Validacion[].class);
+			
+			if(validacion[0].getlError() == 1) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+				edificio = EdificioM.edificioDefault()[0];
+			} else {
+				EdificioM[] edificioTemp = mapper.convertValue(datos, EdificioM[].class);
+				edificio = edificioTemp[0]; 
+				this.setResultadoLocal(false);
+				this.setMensajeLocal("");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: Exception en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+		}
+		
+		return edificio;
 	}
 
 	@Override
@@ -99,6 +151,7 @@ public class ImpEdificioRest implements EdificioRest {
 		
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void insertaEdificio(EdificioM objEdificio, String cToken) {
 		
@@ -107,8 +160,7 @@ public class ImpEdificioRest implements EdificioRest {
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
-		JsonNode     validacionJs = null;
-		JsonNode     datos        = null;
+		JsonNode     validacionJs = null;		
 		
 		try {
 			
@@ -135,7 +187,6 @@ public class ImpEdificioRest implements EdificioRest {
 			}
 			
 			validacionJs = root.path("validacion");
-			datos = root.path("datos");
 			
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
 			

@@ -35,7 +35,7 @@ public class Edificio {
 	private EdificioRest edificioRest;
 	
 	@GetMapping(Vistas.CT_EDIFICIO_CONSULTA_R)
-	public ModelAndView consulta(@ModelAttribute("Usuario") ULogin sessionUsu) {
+	public ModelAndView consultaTodos(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getCtEdificioConsulta());
@@ -70,4 +70,22 @@ public class Edificio {
 		return mav;
 	}
 
+	@GetMapping(Vistas.CT_EDIFICIO_CONSULTA_UNO_R)
+	public ModelAndView consultaUno(@ModelAttribute("Usuario") ULogin sessionUsu,
+			@ModelAttribute("iIDEdificio") Integer iIDEdificio) {
+		ModelAndView mav = new ModelAndView();
+		
+		EdificioM edificio = edificioRest.consultaEdificio(iIDEdificio, sessionUsu.getcToken());
+		
+		if(edificioRest.islResultado()) {
+			mav.setViewName(Vistas.getCtEdificioConsulta());
+			mav.addObject("error", edificioRest.getMensaje());
+			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+		}else {
+			mav.setViewName(Vistas.getCtEdificioFormulario());
+			mav.addObject("objEdificio", edificio);
+		}
+
+		return mav;
+	}
 }

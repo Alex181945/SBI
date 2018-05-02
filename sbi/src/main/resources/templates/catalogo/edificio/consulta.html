@@ -37,7 +37,7 @@
 					<td><span th:text="${lista.cCalle}">Direccion</span></td>
 					<td><span th:text="${lista.lActivo} ? SI : NO">Activo</span></td>
 					<td>
-						<a href="#" th:href="@{/ope/ctEngomado/getEngomado?cEngomado=__${lista.iIDEdificio}__}">
+						<a href="#" th:href="@{/config/catalogos/edificio/consulta/uno?iIDEdificio=__${lista.iIDEdificio}__}">
 							<button type="button" class="btn btn-info">
 								<span class="fas fa-edit" aria-hidden="true"></span>
 							</button>

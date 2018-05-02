@@ -53,10 +53,11 @@ public class Vistas {
 	public static final String BI_R                     = "/bienesinformaticos";
 	public static final String CT_TODOS_R               = "/config/catalogos";
 	public static final String CT_EDIFICIO_CONSULTA_R   = "/config/catalogos/edificio/consulta";
-	public static final String CT_EDIFICIO_FORMULARIO_R = "/config/catalogos/edificio/form";
-	public static final String CT_EDIFICIO_INSERTA_R    = "/config/catalogos/edificio/inserta";
-	public static final String CT_EDIFICIO_EDITA_R      = "/config/catalogos/edificio/actualiza";
-	public static final String CT_EDIFICIO_BORRA_R      = "/config/catalogos/edificio/elimina";
+	public static final String CT_EDIFICIO_CONSULTA_UNO_R   = "/config/catalogos/edificio/consulta/uno";
+	public static final String CT_EDIFICIO_FORMULARIO_R     = "/config/catalogos/edificio/form";
+	public static final String CT_EDIFICIO_INSERTA_R        = "/config/catalogos/edificio/inserta";
+	public static final String CT_EDIFICIO_EDITA_R          = "/config/catalogos/edificio/actualiza";
+	public static final String CT_EDIFICIO_BORRA_R          = "/config/catalogos/edificio/elimina";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
