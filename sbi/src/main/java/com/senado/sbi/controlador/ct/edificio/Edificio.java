@@ -12,8 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.senado.sbi.configuracion.MensajeExito;
 import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.modelo.ct.EdificioM;
+import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.seg.login.ULogin;
 import com.senado.sbi.rest.ct.EdificioRest;
+import com.senado.sbi.rest.modulo.menu.MenuRest;
 
 /**
  * 
@@ -35,20 +37,34 @@ public class Edificio {
 	@Autowired
 	private EdificioRest edificioRest;
 	
+	@Autowired
+	private MenuRest menuRest;
+	
 	@GetMapping(Vistas.CT_EDIFICIO_CONSULTA_R)
 	public ModelAndView consultaTodos(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getCtEdificioConsulta());
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("edificios", edificioRest.consultaEdificios(2, sessionUsu.getcToken()));
 		return mav;
 	}
 	
 	@GetMapping(Vistas.CT_EDIFICIO_FORMULARIO_R)
 	public ModelAndView formulario(@ModelAttribute("Usuario") ULogin sessionUsu) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getCtEdificioFormulario());
 		mav.addObject("lInserta",true);
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("objEdificio", new EdificioM());
 		return mav;
 	}
@@ -57,6 +73,10 @@ public class Edificio {
 	public ModelAndView inserta(@ModelAttribute("Usuario") ULogin sessionUsu,
 			@ModelAttribute("objEdificio") EdificioM objEdificio) {
 		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
+		
 		objEdificio.setcUsuario(sessionUsu.getcUsuario());
 		edificioRest.insertaEdificio(objEdificio, sessionUsu.getcToken());
 		ModelAndView mav = new ModelAndView();
@@ -64,10 +84,12 @@ public class Edificio {
 		if(edificioRest.islResultado()) {
 			mav.setViewName(Vistas.getCtEdificioFormulario());
 			mav.addObject("objEdificio", objEdificio);
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 			mav.addObject("error", edificioRest.getMensaje());
 		} else {
 			mav.setViewName(Vistas.getCtEdificioConsulta());
 			mav.addObject("exito", MensajeExito.getExitoCtEdificioInserta());
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
 		}
 
@@ -79,15 +101,21 @@ public class Edificio {
 			@ModelAttribute("iIDEdificio") Integer iIDEdificio) {
 		ModelAndView mav = new ModelAndView();
 		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
+		
 		EdificioM edificio = edificioRest.consultaEdificio(iIDEdificio, sessionUsu.getcToken());
 		
 		if(edificioRest.islResultado()) {
 			mav.setViewName(Vistas.getCtEdificioConsulta());
 			mav.addObject("error", edificioRest.getMensaje());
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 			mav.addObject("edificios", edificioRest.consultaEdificios(2, sessionUsu.getcToken()));
 		}else {
 			mav.setViewName(Vistas.getCtEdificioFormulario());
 			mav.addObject("lInserta",false);
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 			mav.addObject("objEdificio", edificio);
 		}
 
@@ -98,6 +126,10 @@ public class Edificio {
 	public ModelAndView edita(@ModelAttribute("Usuario") ULogin sessionUsu,
 			@ModelAttribute("objEdificio") EdificioM objEdificio, 
 			@ModelAttribute("activo") String lActivo) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
 
 		objEdificio.setcUsuario(sessionUsu.getcUsuario());
 		objEdificio.setlActivo(lActivo.equals("on") ? 1 : 0);
@@ -107,10 +139,12 @@ public class Edificio {
 		if(edificioRest.islResultado()) {
 			mav.setViewName(Vistas.getCtEdificioFormulario());
 			mav.addObject("objEdificio", objEdificio);
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 			mav.addObject("error", edificioRest.getMensaje());
 		} else {
 			mav.setViewName(Vistas.getCtEdificioConsulta());
 			mav.addObject("exito", MensajeExito.getExitoCtEdificioEdita());
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 			mav.addObject("edificios", edificioRest.consultaEdificios(2, sessionUsu.getcToken()));
 		}
 		
