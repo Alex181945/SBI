@@ -49,7 +49,7 @@ public class Ticket {
 		mav.addObject("titulo", "Ticket");
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
-		mav.addObject("tiposervicio",tiposervicioRest.consultaTipoServicios1(1, sessionUsu.getcToken()));
+		mav.addObject("tpservicio",tiposervicioRest.consultaTipoServicios1(1, sessionUsu.getcToken()));
 		mav.addObject("formasolicitud", formasolicitudRest.consultaFormaSolicitudes(1, sessionUsu.getcToken()));
 		mav.addObject("srvsolicitado", srvsolicitadoRest.consultaSrvSolicitados(1, sessionUsu.getcToken()));
 		mav.addObject("Ticket", new TicketM());

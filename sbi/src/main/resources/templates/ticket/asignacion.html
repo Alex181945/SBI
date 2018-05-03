@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<div class="container">
+		
+			<h1 class="display-6">Asignación de Técnico</h1>
+				
+				<form id="form1" th:action="@{/ticket/inserta}" th:object="${Ticket}" method="POST">
+					
+				<fieldset class="col-md-12">
+					<legend >Elegir Técnico</legend>
+					<div class="panel panel-default"/>
+
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label><h5 class="lead">Grupo:</h5></label>
+									<div>
+										<select class="form-control col-md-8">
+											<option value="Red">Grupo 1</option>
+											<option value="Red">Grupo 2</option>
+											<option value="Red">Grupo 3</option>
+										</select>
+									</div>
+							</div>
+
+							<div class="form-group col-md-6">
+								<label><h5 class="lead">Nombre del Técnico:</h5></label>
+									<select class="form-control col-md-8" id="Nvlcriticidad" name="Nvlcriticidad">
+										<option value="Red">Técnico 1</option>
+										<option value="Red">Técnico 2</option>
+										<option value="Red">Bajo</option>
+									</select>
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label><h5 class="lead">Edificio:</h5></label>
+								<input type="text" class="form-control col-md-5" placeholder="Edificio Asignado" />
+							</div>
+							  
+						</div>
+
+						<div class="form-row"> <!-- Row Botones-->
+							<div class="col-md-4"></div>
+								<div class="col-md-5">
+								  <button type="submit" class="btn btn-primary">Modificar</button>
+								  <button type="submit" class="btn btn-success">Siguiente</button>
+								  <button type="submit" class="btn btn-danger">Cancelar</button>
+								</div>
+						
+						</div>
+						
+					</fieldset>
+				</form>
+	</div>
+</div>
