@@ -39,7 +39,7 @@ public class Edificio {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getCtEdificioConsulta());
-		mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+		mav.addObject("edificios", edificioRest.consultaEdificios(2, sessionUsu.getcToken()));
 		return mav;
 	}
 	
@@ -83,7 +83,7 @@ public class Edificio {
 		if(edificioRest.islResultado()) {
 			mav.setViewName(Vistas.getCtEdificioConsulta());
 			mav.addObject("error", edificioRest.getMensaje());
-			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+			mav.addObject("edificios", edificioRest.consultaEdificios(2, sessionUsu.getcToken()));
 		}else {
 			mav.setViewName(Vistas.getCtEdificioFormulario());
 			mav.addObject("lInserta",false);
@@ -95,9 +95,12 @@ public class Edificio {
 	
 	@PostMapping(Vistas.CT_EDIFICIO_EDITA_R)
 	public ModelAndView edita(@ModelAttribute("Usuario") ULogin sessionUsu,
-			@ModelAttribute("objEdificio") EdificioM objEdificio) {
+			@ModelAttribute("objEdificio") EdificioM objEdificio, 
+			@ModelAttribute("activo") Integer lActivo) {
 	
+		System.out.println(lActivo);
 		objEdificio.setcUsuario(sessionUsu.getcUsuario());
+		objEdificio.setlActivo(lActivo);
 		edificioRest.actualizaEdificio(objEdificio, sessionUsu.getcToken());
 		ModelAndView mav = new ModelAndView();
 		
@@ -108,7 +111,7 @@ public class Edificio {
 		} else {
 			mav.setViewName(Vistas.getCtEdificioConsulta());
 			mav.addObject("exito", MensajeExito.getExitoCtEdificioEdita());
-			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+			mav.addObject("edificios", edificioRest.consultaEdificios(2, sessionUsu.getcToken()));
 		}
 		
 		return mav;
