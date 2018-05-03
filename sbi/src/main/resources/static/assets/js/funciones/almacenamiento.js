@@ -9,11 +9,11 @@ function submit(){
 
 function eliminar(iTipo,ID){
 	
-	var url = '';
+	var urlLocal = '';
 	
 	switch (iTipo) {
 	case 1:
-		url = '/config/catalogos/edificio/elimina';
+		urlLocal = '/config/catalogos/edificio/elimina';
 		break;
 
 	default:
@@ -23,7 +23,7 @@ function eliminar(iTipo,ID){
 	$("#Listas").on('click', '#btnEliminar', function() {
 		var row = $(this).closest('tr');
 		swal({
-			title : 'eliminar',
+			title : 'Eliminar',
 			text : "¿Desea eliminar el registro seleccionado?",
 			type : 'warning',
 			showCancelButton: true,
@@ -35,7 +35,7 @@ function eliminar(iTipo,ID){
 		},function() {
 
 			$.ajax({
-				url : url,
+				url : urlLocal,
 				data : {
 					ID : ID
 				},

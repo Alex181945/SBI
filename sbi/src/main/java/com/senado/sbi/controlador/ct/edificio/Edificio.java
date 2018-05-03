@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -118,12 +119,16 @@ public class Edificio {
 	}
 
 	@PostMapping(Vistas.CT_EDIFICIO_BORRA_R)	
-	public ModelAndView borra(@ModelAttribute("Usuario") ULogin sessionUsu,
-			@ModelAttribute("iIDEdificio") Integer iIDEdificio) {
+	public @ResponseBody String borra(@ModelAttribute("Usuario") ULogin sessionUsu,
+			@ModelAttribute("ID") Integer iIDEdificio) {
 		
 		edificioRest.borraEdificio(iIDEdificio, sessionUsu.getcUsuario(), sessionUsu.getcToken());
-		ModelAndView mav = new ModelAndView();
 		
-		return mav;
+		if(edificioRest.islResultado()) {
+			return edificioRest.getMensaje();
+		} 
+		
+		return "success";
 	}
+
 }
