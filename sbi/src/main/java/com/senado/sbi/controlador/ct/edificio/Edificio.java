@@ -47,6 +47,7 @@ public class Edificio {
 	public ModelAndView formulario(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getCtEdificioFormulario());
+		mav.addObject("lInserta",true);
 		mav.addObject("objEdificio", new EdificioM());
 		return mav;
 	}
@@ -55,6 +56,7 @@ public class Edificio {
 	public ModelAndView inserta(@ModelAttribute("Usuario") ULogin sessionUsu,
 			@ModelAttribute("objEdificio") EdificioM objEdificio) {
 		
+		objEdificio.setcUsuario(sessionUsu.getcUsuario());
 		edificioRest.insertaEdificio(objEdificio, sessionUsu.getcToken());
 		ModelAndView mav = new ModelAndView();
 		
@@ -63,8 +65,9 @@ public class Edificio {
 			mav.addObject("objEdificio", objEdificio);
 			mav.addObject("error", edificioRest.getMensaje());
 		} else {
-			mav.setViewName(Vistas.getRedirectCtEdificio());
+			mav.setViewName(Vistas.getCtEdificioConsulta());
 			mav.addObject("exito", MensajeExito.getExitoCtEdificioInserta());
+			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
 		}
 
 		return mav;
@@ -83,9 +86,32 @@ public class Edificio {
 			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
 		}else {
 			mav.setViewName(Vistas.getCtEdificioFormulario());
+			mav.addObject("lInserta",false);
 			mav.addObject("objEdificio", edificio);
 		}
 
 		return mav;
+	}
+	
+	@PostMapping(Vistas.CT_EDIFICIO_EDITA_R)
+	public ModelAndView edita(@ModelAttribute("Usuario") ULogin sessionUsu,
+			@ModelAttribute("objEdificio") EdificioM objEdificio) {
+	
+		objEdificio.setcUsuario(sessionUsu.getcUsuario());
+		edificioRest.actualizaEdificio(objEdificio, sessionUsu.getcToken());
+		ModelAndView mav = new ModelAndView();
+		
+		if(edificioRest.islResultado()) {
+			mav.setViewName(Vistas.getCtEdificioFormulario());
+			mav.addObject("objEdificio", objEdificio);
+			mav.addObject("error", edificioRest.getMensaje());
+		} else {
+			mav.setViewName(Vistas.getCtEdificioConsulta());
+			mav.addObject("exito", MensajeExito.getExitoCtEdificioEdita());
+			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+		}
+		
+		return mav;
+		
 	}
 }
