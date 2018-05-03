@@ -96,11 +96,10 @@ public class Edificio {
 	@PostMapping(Vistas.CT_EDIFICIO_EDITA_R)
 	public ModelAndView edita(@ModelAttribute("Usuario") ULogin sessionUsu,
 			@ModelAttribute("objEdificio") EdificioM objEdificio, 
-			@ModelAttribute("activo") Integer lActivo) {
-	
-		System.out.println(lActivo);
+			@ModelAttribute("activo") String lActivo) {
+
 		objEdificio.setcUsuario(sessionUsu.getcUsuario());
-		objEdificio.setlActivo(lActivo);
+		objEdificio.setlActivo(lActivo.equals("on") ? 1 : 0);
 		edificioRest.actualizaEdificio(objEdificio, sessionUsu.getcToken());
 		ModelAndView mav = new ModelAndView();
 		

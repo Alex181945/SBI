@@ -113,7 +113,7 @@
 
 				<div th:if="!${lInserta}" class="d-flex justify-content-center">
 					<div class="custom-switch custom-switch-label-yesno">
-					  <input type="checkbox" class="custom-switch-input" id="activo" name="activo" onclick="isCheck();" />
+					  <input type="checkbox" class="custom-switch-input" id="activo" name="activo" th:checked="${objEdificio.lActivo} == 1 ? cheked" />
 					  <label class="custom-switch-btn" for="activo"></label>
 					  <div class="custom-switch-content-checked text-color-white text-center">Activo</div>
 					  <div class="custom-switch-content-unchecked text-color-white text-center">Inactivo</div>
@@ -131,30 +131,6 @@
 			<a class="btn btn-danger" href="/config/catalogos/edificio/consulta">Cancelar</a>
 		</div>
 	</div>
-	
-	<script th:inline="javascript">
-
-      /*<![CDATA[*/
-        var activo = /*[[${objEdificio.lActivo}]]*/;
-       /*]]>*/
-       
-       if(activo == 1) {
-    	   	document.getElementById("activo").checked = true;
-    	   	document.getElementById("activo").value = 1;
-		} else if(activo == 0){
-			document.getElementById("activo").checked = false;
-			document.getElementById("activo").value = 2;
-		}
-       
-       function isCheck(){
-	       if (document.getElementById("activo").checked == true){
-	    	   document.getElementById("activo").value = 1;
-	    	} else {
-	    		document.getElementById("activo").value = 2;
-	    	}
-       }
-       
-	</script>
 	
 </div>
  
