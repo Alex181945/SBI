@@ -116,4 +116,14 @@ public class Edificio {
 		return mav;
 		
 	}
+
+	@PostMapping(Vistas.CT_EDIFICIO_BORRA_R)	
+	public ModelAndView borra(@ModelAttribute("Usuario") ULogin sessionUsu,
+			@ModelAttribute("iIDEdificio") Integer iIDEdificio) {
+		
+		edificioRest.borraEdificio(iIDEdificio, sessionUsu.getcUsuario(), sessionUsu.getcToken());
+		ModelAndView mav = new ModelAndView();
+		
+		return mav;
+	}
 }

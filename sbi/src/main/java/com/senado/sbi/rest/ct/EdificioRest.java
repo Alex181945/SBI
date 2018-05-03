@@ -9,7 +9,7 @@ public interface EdificioRest {
 	public EdificioM consultaEdificio(Integer iIDEdificio, String cToken);
 	public void actualizaEdificio(EdificioM objEdificio, String cToken);
 	public void insertaEdificio(EdificioM objEdificio, String cToken);
-	public void borraEdificio(Integer iIDEdificio, String cToken);
+	public void borraEdificio(Integer iIDEdificio, String cUsuario, String cToken);
 
 	public boolean islResultado();
 	public String getMensaje();

@@ -149,7 +149,7 @@ public class ImpEdificioRest implements EdificioRest {
 	@Override
 	public void actualizaEdificio(EdificioM objEdificio, String cToken) {
 		
-RestTemplate restTemplate = new RestTemplate();		
+		RestTemplate restTemplate = new RestTemplate();		
 		
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
@@ -257,9 +257,60 @@ RestTemplate restTemplate = new RestTemplate();
 		
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
-	public void borraEdificio(Integer iIDEdificio, String cToken) {
-
+	public void borraEdificio(Integer iIDEdificio, String cUsuario, String cToken) {
+		
+		RestTemplate restTemplate = new RestTemplate();		
+		
+		Validacion[] validacion   = null;
+		ObjectMapper mapper       = new ObjectMapper();
+		JsonNode     root         = null;
+		JsonNode     validacionJs = null;		
+		
+		try {
+			
+			HttpHeaders headers = new HttpHeaders();
+			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
+			
+			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
+			body.add("iIDEdificio", iIDEdificio.toString());
+			body.add("cUsuario", cUsuario);
+			
+			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
+			
+			/*JSON obtenido de forma plana*/
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/borra",
+					HttpMethod.DELETE ,httpEntity, String.class);
+			
+			root = mapper.readTree(response.getBody());
+			
+			/*Maneja los errores del servicio rest*/
+			if(root.has("error")) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(MensajeError.getERROR1());
+				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
+				return;
+			}
+			
+			validacionJs = root.path("validacion");
+			
+			validacion = mapper.convertValue(validacionJs, Validacion[].class);
+			
+			if(validacion[0].getlError() == 1) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+			} else {
+				this.setResultadoLocal(false);
+				this.setMensajeLocal("");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: Exception en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+		}
 		
 	}
 	
