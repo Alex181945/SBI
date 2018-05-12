@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.modelo.seg.login.ULogin;
 
-public class bienesinformaticos {
+public class BienesInformaticos {
+	
 	@GetMapping(Vistas.BI_R)
 	public String Consulta(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
