@@ -46,7 +46,7 @@ public class Ticket {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getTicketIncidencia());
-		mav.addObject("titulo", "Ticket");
+		mav.addObject("titulo", "Registrar");
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
 		mav.addObject("tpservicio",tiposervicioRest.consultaTipoServicios1(1, sessionUsu.getcToken()));
@@ -65,9 +65,23 @@ public class Ticket {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getTicketAsignacion());
-		mav.addObject("titulo", "Ticket");
+		mav.addObject("titulo", "Asignación");
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("Ticket", new TicketM());
+		return mav;
+	}
+	
+	@GetMapping(Vistas.TICKET_DETALLE_R)
+	public ModelAndView detalle(@ModelAttribute("Usuario") ULogin sessionUsu) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getTicketDetalle());
+		mav.addObject("titulo", "Detalle");
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		return mav;
 	}
 	

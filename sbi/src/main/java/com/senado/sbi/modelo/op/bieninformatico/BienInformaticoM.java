@@ -4,16 +4,16 @@ public class BienInformaticoM
 {
 	private Integer iIDResguardo;
 	private Integer iIDEdificio;
-	private String cPiso;
-	private String cOficina;
+	private String 	cPiso;
+	private String 	cOficina;
 	private Integer iIDArea;
 	private Integer iIDSubArea;
-	private String cResguardante;
-	private String cResponsable;
-	private String cFactura;
-	private String cObs;
-	private String dtCreado;
-	private String cUsuarioR;
+	private String 	cResguardante;
+	private String 	cResponsable;
+	private String 	cFactura;
+	private String 	cObs;
+	private String 	dtCreado;
+	private String 	cUsuarioR;
 	
 	public Integer getiIDResguardo() {
 		return iIDResguardo;
