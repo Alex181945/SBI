@@ -1,6 +1,6 @@
 package com.senado.sbi.modelo.ct;
 
-public class Edificio {
+public class EdificioM {
 	
 	private Integer iIDEdificio;
 	private String cEdificio;
@@ -120,27 +120,27 @@ public class Edificio {
 	
 	public String toJson() {
 		return "{"
-				+ "iIDEdificio:"   + iIDEdificio  + ","
-				+ "cEdificio:"     + cEdificio    + ","
-				+ "cAbreviatura:"  + cAbreviatura + ","
-				+ "iPisos:"        + iPisos       + ","
-				+ "cPisoEsp:"      + cPisoEsp     + ","
-				+ "cCalle:"        + cCalle       + ","
-				+ "cNumExt:"       + cNumExt      + ","
-				+ "cColonia:"      + cColonia     + ","
-				+ "cMunicipio:"    + cMunicipio   + ","
-				+ "cEstado:"       + cEstado      + ","
-				+ "cCP:"           + cCP          + ","
-				+ "lActivo:"       + lActivo      + ","
-				+ "dtCreado:"      + dtCreado     + ","
-				+ "dtModificado:"  + dtModificado + ","
-				+ "cUsuario:"      + cUsuario 
+				+ "\"iIDEdificio\":"          + iIDEdificio  + ","
+				+ "\"cEdificio\":"     + "\"" + cEdificio    + "\"" + ","
+				+ "\"cAbreviatura\":"  + "\"" + cAbreviatura + "\"" + ","
+				+ "\"iPisos\":"               + iPisos              + ","
+				+ "\"cPisoEsp\":"      + "\"" + cPisoEsp     + "\"" + ","
+				+ "\"cCalle\":"        + "\"" + cCalle       + "\"" + ","
+				+ "\"cNumExt\":"       + "\"" + cNumExt      + "\"" + ","
+				+ "\"cColonia\":"      + "\"" + cColonia     + "\"" + ","
+				+ "\"cMunicipio\":"    + "\"" + cMunicipio   + "\"" + ","
+				+ "\"cEstado\":"       + "\"" + cEstado      + "\"" + ","
+				+ "\"cCP\":"           + "\"" + cCP          + "\"" + ","
+				+ "\"lActivo\":"              + lActivo      + ","
+				+ "\"dtCreado\":"      + "\"" + dtCreado     + "\"" + ","
+				+ "\"dtModificado\":"  + "\"" + dtModificado + "\"" + ","
+				+ "\"cUsuario\":"      + "\"" + cUsuario     + "\"" 
 				+ "}";
 	}
 	
-	public static Edificio[] edificioDefault() {
+	public static EdificioM[] edificioDefault() {
 		
-		Edificio edificio = new Edificio();
+		EdificioM edificio = new EdificioM();
 		
 		edificio.setiIDEdificio(0);
 		edificio.setcAbreviatura("ED");
@@ -158,7 +158,7 @@ public class Edificio {
 		edificio.setDtModificado("N/A");
 		edificio.setcUsuario("N/A");
 		
-		Edificio[] edificioDefault = {edificio};
+		EdificioM[] edificioDefault = {edificio};
 		
 		return edificioDefault;
 		

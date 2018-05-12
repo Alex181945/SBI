@@ -13,10 +13,27 @@
 		</button>
 
 		<div th:if="${menu != null}" class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul th:each="opcion : ${menu}" class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="#"
-					th:href="${opcion.cRuta}" th:text="${opcion.cPrograma}"></a></li>
+			<ul th:each="opcion : ${menu}" class="navbar-nav"><!-- mr-auto -->
+				
+				<li th:if="${opcion.cCExtra == null}" class="nav-item"><a class="nav-link" href="#"
+					th:href="${opcion.cRuta}" th:text="${opcion.cPrograma}"></a>
+				</li>
+				
+				<li th:if="${opcion.cCExtra != null}" class="nav-item dropdown">
+					<a th:if="${opcion.cCExtra == 'dropdown-menu'}"
+					class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+					th:href="${opcion.cRuta}" th:text="${opcion.cPrograma}"></a>
+					<div class="dropdown-menu"
+						aria-labelledby="navbarDropdownMenuLink">
+						<a th:each="subOpcion : ${menu}" th:if="${opcion.cPrograma == subOpcion.cCExtra}"
+							class="dropdown-item" href="#" th:href="${subOpcion.cRuta}"
+							th:text="${subOpcion.cPrograma}"></a>
+					</div>
+				</li>
+				
 			</ul>
 		</div>
+		
 	</nav>
 </div>

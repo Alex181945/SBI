@@ -8,6 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="#" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" href="#" th:href="@{/sweetalert/css/sweetalert.css}"/>
+    <link rel="stylesheet" href="#" th:href="@{/datatables/css/datatables.min.css}"/>
+    <link rel="stylesheet" href="#" th:href="@{/switch/css/component-custom-switch.css}"/>
     <link rel="stylesheet" href="#" th:href="@{/assets/css/tema.css}"/>
 
     <title th:if="${titulo != null}" th:text="${titulo}"></title>
@@ -17,7 +19,9 @@
   
   	<div th:replace="plantilla/fragments/encabezado :: encabezado"></div>
 	
+	<br/>
 	<div th:replace="${view} :: content"></div>
+	<br/>
 	
 	<div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
 	    <div class="modal-dialog modal-sm">
@@ -27,16 +31,21 @@
 	    </div>
 	</div>
 
+	<div class="col-12" style="display:none;"><span id="messageError" th:text="${error}"></span></div>
+	<div class="col-12" style="display:none;"><span id="messageExito" th:text="${exito}"></span></div>
+	
     <!-- Librerias -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="#" th:src="@{/assets/js/lib/jquery-3.3.1.min.js}"></script>
     <script src="#" th:src="@{/sweetalert/js/sweetalert.min.js}"></script>
     <script src="#" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
     <script src="#" th:src="@{/fontawesome/js/fontawesome-all.js}"></script>
+    <script src="#" th:src="@{/datatables/js/datatables.min.js}"></script>
     <!-- Fin Librerias -->
     <script src="#" th:src="@{/assets/js/login/login.js}"></script>
     <script src="#" th:src="@{/assets/js/funciones/texto.js}"></script>
+    <script src="#" th:src="@{/assets/js/funciones/tablas.js}"></script>
     <script src="#" th:src="@{/assets/js/funciones/visuales.js}"></script>
-    <script src="#" th:src="@{/assets/js/funciones/almacenamiento.js}"></script>
+    <script src="#" th:src="@{/assets/js/funciones/almacenamiento.js}"></script>    
   </body>
 </html>

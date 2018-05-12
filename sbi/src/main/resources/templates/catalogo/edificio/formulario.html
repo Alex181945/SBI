@@ -1,0 +1,136 @@
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+	
+	<div class="container">
+
+		<form id="form"
+			th:action="${lInserta} ? @{/config/catalogos/edificio/inserta} : @{/config/catalogos/edificio/actualiza}"
+			th:object="${objEdificio}" method="POST">
+
+			<fieldset class="col-md-12">
+				<legend>Formulario de Registro</legend>
+
+				<div class="form-group row">
+					<label for="iIDEdificio" class="col-md-2 col-form-label"><span
+						class="lead">ID</span></label>
+					<div class="col-md-5 .offset-md-6">
+						<input type="text" class="form-control" id="iIDEdificio"
+							name="iIDEdificio" th:field="*{iIDEdificio}"
+							th:value="${iIDEdificio}" placeholder="0" readonly="true" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="cEdificio" class="col-md-2 col-form-label"><span
+						class="lead">Edificio</span></label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="cEdificio"
+							name="cEdificio" th:field="*{cEdificio}" th:value="${cEdificio}"
+							placeholder="Nombre del edificio" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="cAbreviatura" class="col-md-2 col-form-label"><span
+						class="lead">Abreviatura</span></label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="cAbreviatura"
+							name="cAbreviatura" th:field="*{cAbreviatura}"
+							th:value="${cAbreviatura}" placeholder="Abreviatura del edificio" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="iPisos" class="col-md-2 col-form-label"><span
+						class="lead">Pisos</span></label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="iPisos" name="iPisos"
+							th:field="*{iPisos}" th:value="${iPisos}"
+							placeholder="N&deg; de pisos"
+							onkeypress="return soloNumeros(event)" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="cPisoEsp" class="col-md-2 col-form-label"><span
+						class="lead">Pisos Especiales</span></label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="cPisoEsp"
+							name="cPisoEsp" th:field="*{cPisoEsp}" th:value="${cPisoEsp}"
+							placeholder="Ejemplo: PB, ST1" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="cCalle"><span class="lead">Calle</span></label> <input
+						type="text" class="form-control" id="cCalle" name="cCalle"
+						th:field="*{cCalle}" th:value="${cCalle}"
+						placeholder="Ejemplo: Madrid" />
+				</div>
+
+				<div class="form-row">
+
+					<div class="form-group col-md-4">
+						<label for="cNumExt"><span class="lead">N&uacute;mero
+								Exterior</span></label> <input type="text" class="form-control" id="cNumExt"
+							name="cNumExt" th:field="*{cNumExt}" th:value="${cNumExt}"
+							placeholder="Ejemplo: 24" />
+					</div>
+
+					<div class="form-group col-md-8">
+						<label for="cColonia"><span class="lead">Colonia</span></label> <input
+							type="text" class="form-control" id="cColonia" name="cColonia"
+							th:field="*{cColonia}" th:value="${cColonia}"
+							placeholder="Ejemplo: Tabacalera" />
+					</div>
+
+				</div>
+
+				<div class="form-row">
+
+					<div class="form-group col-md-5">
+						<label for="cMunicipio"><span class="lead">Municipio</span></label>
+						<input type="text" class="form-control" id="cMunicipio"
+							name="cMunicipio" th:field="*{cMunicipio}"
+							th:value="${cMunicipio}" placeholder="Ejemplo: Cuauht&eacute;moc" />
+					</div>
+
+					<div class="form-group col-md-5">
+						<label for="cEstado"><span class="lead">Estado</span></label> <input
+							type="text" class="form-control" id="cEstado" name="cEstado"
+							th:field="*{cEstado}" th:value="${cEstado}"
+							placeholder="Ejemplo: Ciudad de M&eacute;xico" />
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="cCP"><span class="lead">C&oacute;digo
+								Postal</span></label> <input type="text" class="form-control"
+							id="cCP" name="cCP" th:field="*{cCP}" th:value="${cCP}"
+							placeholder="Ejemplo: 06605" />
+					</div>
+
+				</div>
+
+				<div th:if="!${lInserta}" class="d-flex justify-content-center">
+					<div class="custom-switch custom-switch-label-yesno">
+					  <input type="checkbox" class="custom-switch-input" id="activo" name="activo" th:checked="${objEdificio.lActivo} == 1 ? cheked" />
+					  <label class="custom-switch-btn" for="activo"></label>
+					  <div class="custom-switch-content-checked text-color-white text-center">Activo</div>
+					  <div class="custom-switch-content-unchecked text-color-white text-center">Inactivo</div>
+					</div>
+				</div>
+				
+
+			</fieldset>
+		</form>
+
+		<div class="btn-group d-flex justify-content-center" role="group"
+			aria-label="Basic example">
+			<button type="button" class="btn btn-success" onclick="submit();"
+				th:text="${lInserta} ? Registrar : Actualizar "></button>
+			<a class="btn btn-danger" href="/config/catalogos/edificio/consulta">Cancelar</a>
+		</div>
+	</div>
+	
+</div>
+ 

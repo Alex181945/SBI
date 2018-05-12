@@ -77,10 +77,6 @@ function enviaInfo(){
 }
 
 $(document).ready(function() {
-    if(document.getElementById("message").innerHTML != ""){
-		swal('Oops...',document.getElementById("message").innerHTML,'error');
-	}
-    
     $("input[type=text]").on("keypress", function () {
     	segValidaForm();
     });

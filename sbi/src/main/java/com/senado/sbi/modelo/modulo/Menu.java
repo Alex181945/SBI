@@ -21,41 +21,61 @@ public class Menu {
 	private Integer iPartida;
 	private String  cPrograma;
 	private String  cRuta;
+	private String  cCExtra;
 	private Integer lActivo;
-	
+
 	public Integer getiIDModulo() {
 		return iIDModulo;
 	}
+
 	public void setiIDModulo(Integer iIDModulo) {
 		this.iIDModulo = iIDModulo;
 	}
+
 	public String getcModulo() {
 		return cModulo;
 	}
+
 	public void setcModulo(String cModulo) {
 		this.cModulo = cModulo;
 	}
+
 	public Integer getiPartida() {
 		return iPartida;
 	}
+
 	public void setiPartida(Integer iPartida) {
 		this.iPartida = iPartida;
 	}
+
 	public String getcPrograma() {
 		return cPrograma;
 	}
+
 	public void setcPrograma(String cPrograma) {
 		this.cPrograma = cPrograma;
 	}
+
 	public String getcRuta() {
 		return cRuta;
 	}
+
 	public void setcRuta(String cRuta) {
 		this.cRuta = cRuta;
 	}
+
+	public String getcCExtra() {
+		return cCExtra;
+	}
+
+	public void setcCExtra(String cCExtra) {
+		this.cCExtra = cCExtra;
+	}
+
 	public Integer getlActivo() {
 		return lActivo;
 	}
+
 	public void setlActivo(Integer lActivo) {
 		this.lActivo = lActivo;
 	}
@@ -63,7 +83,7 @@ public class Menu {
 	@Override
 	public String toString() {
 		return "Menu [iIDModulo=" + iIDModulo + ", cModulo=" + cModulo + ", iPartida=" + iPartida + ", cPrograma="
-				+ cPrograma + ", cRuta=" + cRuta + ", lActivo=" + lActivo + "]";
+				+ cPrograma + ", cRuta=" + cRuta + ", cCExtra=" + cCExtra + ", lActivo=" + lActivo + "]";
 	}
 	
 	public String toJson() {
@@ -72,6 +92,7 @@ public class Menu {
 				+ "cModulo:"   + cModulo   + ","
 				+ "iPartida:"  + iPartida  + ","
 				+ "cRuta:"     + cRuta     + ","
+				+ "cCExtra:"   + cCExtra   + ","
 				+ "lActivo:"   + lActivo     
 				+ "}";
 	}
