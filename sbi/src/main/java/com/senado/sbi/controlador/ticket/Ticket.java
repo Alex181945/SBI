@@ -80,10 +80,21 @@ public class Ticket {
 		ticketRest.insertaTicket(ticket, sessionUsu.getcToken());
 		
 		ModelAndView mav = new ModelAndView();
+		/*Consulta del menu*/
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
 		
 		if(ticketRest.islResultado()) {
 			mav.setViewName(Vistas.getTicketIncidencia());
+			mav.addObject("titulo", "Ticket");
 			mav.addObject("error", ticketRest.getMensaje());
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));			
+			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+			mav.addObject("tpservicio",tiposervicioRest.consultaTipoServicios1(1, sessionUsu.getcToken()));
+			mav.addObject("formasolicitud", formasolicitudRest.consultaFormaSolicitudes(1, sessionUsu.getcToken()));
+			mav.addObject("srvsolicitado", srvsolicitadoRest.consultaSrvSolicitados(1, sessionUsu.getcToken()));
+			mav.addObject("Ticket", ticket);
 		} else {
 			mav.setViewName(Vistas.getMenu());
 			mav.addObject("exito", MensajeExito.getExitoCtEdificioInserta());
