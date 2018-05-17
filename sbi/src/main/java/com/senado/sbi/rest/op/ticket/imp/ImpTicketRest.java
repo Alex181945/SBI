@@ -47,6 +47,7 @@ public class ImpTicketRest implements TicketRest {
 			
 			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
 			body.add("objTicket", objTicket.toJson());
+			body.add("iTipoAsignacionTecnico", VariablesEntorno.getTipoasignaciontecnico());
 
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
