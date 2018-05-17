@@ -68,6 +68,7 @@ public class ImpTipoServicioRest implements TipoServicioRest {
 			if(validacion[0].getlError() == 1) {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+				tiposervicio = TipoServicio.tiposervicioDefault();
 			} else {
 				tiposervicio = mapper.convertValue(datos, TipoServicio[].class);
 				this.setResultadoLocal(false);
