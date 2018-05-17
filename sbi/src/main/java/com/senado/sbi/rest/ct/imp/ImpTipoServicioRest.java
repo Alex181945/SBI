@@ -17,12 +17,11 @@ import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.ct.TipoServicio;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.rest.ct.TipoServicioRest;
-import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
 
 @Component
 public class ImpTipoServicioRest implements TipoServicioRest {
 	
-	private final static Logger LOGGER = Logger.getLogger(ImpMenuRest.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(ImpTipoServicioRest.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 
@@ -57,7 +56,8 @@ public class ImpTipoServicioRest implements TipoServicioRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(MensajeError.getERROR1());
 				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
-				return TipoServicio.tiposervicioDefault();
+				tiposervicio = TipoServicio.tiposervicioDefault();
+				return tiposervicio;
 			}
 			
 			validacionJs = root.path("validacion");

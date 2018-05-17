@@ -19,12 +19,11 @@ import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.ct.EdificioM;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.rest.ct.EdificioRest;
-import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
 
 @Component
 public class ImpEdificioRest implements EdificioRest {
 	
-	private final static Logger LOGGER = Logger.getLogger(ImpMenuRest.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(ImpEdificioRest.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 

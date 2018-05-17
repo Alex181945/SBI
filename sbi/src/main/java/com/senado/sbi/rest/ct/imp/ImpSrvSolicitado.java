@@ -17,12 +17,11 @@ import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.ct.SrvSolicitado;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.rest.ct.SrvSolicitadoRest;
-import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
 
 @Component
 public class ImpSrvSolicitado implements SrvSolicitadoRest {
 	
-	private final static Logger LOGGER = Logger.getLogger(ImpMenuRest.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(ImpSrvSolicitado.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 
