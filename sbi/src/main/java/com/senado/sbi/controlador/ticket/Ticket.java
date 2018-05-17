@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.senado.sbi.configuracion.MensajeExito;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
@@ -76,10 +77,19 @@ public class Ticket {
 	public ModelAndView creaTicket(@ModelAttribute("Usuario") ULogin sessionUsu, @ModelAttribute("Ticket") TicketM ticket) {
 		
 		ticket.setiIDCreaTicket(VariablesEntorno.getMediosolicitud());
-		System.out.println(ticket.toString());
 		ticketRest.insertaTicket(ticket, sessionUsu.getcToken());
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(ticketRest.islResultado()) {
+			mav.setViewName(Vistas.getTicketIncidencia());
+			mav.addObject("error", ticketRest.getMensaje());
+		} else {
+			mav.setViewName(Vistas.getMenu());
+			mav.addObject("exito", MensajeExito.getExitoCtEdificioInserta());
+		}
 
-		return null;
+		return mav;
 	}
 	
 
