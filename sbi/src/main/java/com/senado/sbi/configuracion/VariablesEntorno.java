@@ -2,11 +2,12 @@ package com.senado.sbi.configuracion;
 
 public class VariablesEntorno {
 	
-	private static final String URLWSD = "http://localhost:3000/";
-	private static final String URLWSP = "https://restmysql.herokuapp.com/";
-	private static final String TOKEN_PREFIX = "Bearer ";
-    private static final String HEADER_STRING = "Authorization";
-    private static final String TIPOASIGNACIONTECNICO = "1";
+	private static final String  URLWSD = "http://localhost:3000/";
+	private static final String  URLWSP = "https://restmysql.herokuapp.com/";
+	private static final String  TOKEN_PREFIX = "Bearer ";
+    private static final String  HEADER_STRING = "Authorization";
+    private static final String  TIPOASIGNACIONTECNICO = "1";
+    private static final Integer MEDIOSOLICITUD = 1;
 	
 	public static String getUrlwsd() {
 		return URLWSD;
@@ -22,6 +23,9 @@ public class VariablesEntorno {
 	}
 	public static String getTipoasignaciontecnico() {
 		return TIPOASIGNACIONTECNICO;
+	}
+	public static Integer getMediosolicitud() {
+		return MEDIOSOLICITUD;
 	}	
 	
 }
