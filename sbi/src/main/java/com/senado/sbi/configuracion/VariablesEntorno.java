@@ -8,6 +8,7 @@ public class VariablesEntorno {
     private static final String  HEADER_STRING = "Authorization";
     private static final String  TIPOASIGNACIONTECNICO = "1";
     private static final Integer MEDIOSOLICITUD = 1;
+    private static final Integer MEDIOSOLICITUDAUTOSERVICIO = 2;
 	
 	public static String getUrlwsd() {
 		return URLWSD;
@@ -26,6 +27,9 @@ public class VariablesEntorno {
 	}
 	public static Integer getMediosolicitud() {
 		return MEDIOSOLICITUD;
+	}
+	public static Integer getMediosolicitudautoservicio() {
+		return MEDIOSOLICITUDAUTOSERVICIO;
 	}	
 	
 }

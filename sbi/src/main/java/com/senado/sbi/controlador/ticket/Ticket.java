@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.op.ticket.TicketM;
@@ -74,6 +75,7 @@ public class Ticket {
 	@PostMapping(Vistas.TICKET_INSERTA_R)
 	public ModelAndView creaTicket(@ModelAttribute("Usuario") ULogin sessionUsu, @ModelAttribute("Ticket") TicketM ticket) {
 		
+		ticket.setiIDCreaTicket(VariablesEntorno.getMediosolicitud());
 		System.out.println(ticket.toString());
 		ticketRest.insertaTicket(ticket, sessionUsu.getcToken());
 
