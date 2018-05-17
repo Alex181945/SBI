@@ -76,6 +76,9 @@ public class ImpTicketRest implements TicketRest {
 			} else {
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
+				/*Si sale exitosamente correr procedimiento que mande un email
+				 *y te diga que tu ticket fue dado de alta y te manda la informacion del mismo
+				 */
 			}
 			
 		} catch (Exception e) {

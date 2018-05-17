@@ -10,8 +10,10 @@
 		<fieldset class="col-md-12">
 			<legend >Información básica</legend>
 				<div class="panel panel-default"/>
+				
 					<div class="form-row">
-						<div id="prue" class="form-group col-md-4">
+					
+						<!-- <div id="prue" class="form-group col-md-4">
 							<label id="Uno" for="frmSolicitud">
 								<h5  class="lead" >Tipo de Solicitud:</h5></label>
 							<div>
@@ -22,10 +24,10 @@
 										th:text="${dropDownItem.cCreaTicket}"/>
 								</select>
 							</div>
-						</div>
+						</div> -->
 
 
-						<div id="solicitud" class="form-group col-md-4">
+						<div id="solicitud" class="form-group col-md-6">
 							<label for="solicitud">
 								<h5 class="lead">Tipo de Servicio:</h5></label>
 							<div>
@@ -38,14 +40,14 @@
 							</div>
 						</div>
 					
-						<div id="Servc" class="form-group col-md-4">
+						<div id="Servc" class="form-group col-md-6">
 							<label for="Servc">
 								<h5 class="lead">Servicio solicitado:</h5></label>
 							<div>
 								<select class="form-control" id="srvSolicitado" name="srvSolicitado" 
 								th:field="*{iIDTipoServicio}">
 								<option th:each="dropDownItem : ${srvsolicitado}"
-									th:value="${dropDownItem.iIDTipoServicio}"
+									th:value="${dropDownItem.iPartida}"
 									th:text="${dropDownItem.cServicioSolicitado}"/>
 							</select>
 							</div>
@@ -277,4 +279,16 @@
 		</div>
 		</form>
 	</div>
+	
+	
+	<!-- Script especifico -->
+	<script th:inline="javascript">
+
+      /*<![CDATA[*/	    
+         var srvsolicitado = /*[[${srvsolicitado}]]*/ ;
+       /*]]>*/
+       
+       console.log(srvsolicitado);
+	</script>
+	
 </div>
