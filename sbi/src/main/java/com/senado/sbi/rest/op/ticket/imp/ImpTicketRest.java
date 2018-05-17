@@ -88,7 +88,7 @@ public class ImpTicketRest implements TicketRest {
 	
 	@Override
 	public boolean islResultado() {
-
+		
 		return this.getResultadoLocal();
 	}
 
