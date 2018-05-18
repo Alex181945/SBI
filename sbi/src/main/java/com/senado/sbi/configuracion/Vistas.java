@@ -39,7 +39,7 @@ public class Vistas {
 	private static final String CT_EDIFICIO_CONSULTA   = "catalogo/edificio/consulta";
 	private static final String CT_EDIFICIO_FORMULARIO = "catalogo/edificio/formulario";
 	private static final String CT_ESTATUS_TICKET_CONSULTA   = "catalogo/estatus_ticket/consulta";
-	private static final String CT_ESTATUS_TICKET_FORMULARIO = "catalago/estatus_ticket/formulario";
+	private static final String CT_ESTATUS_TICKET_FORMULARIO = "catalogo/estatus_ticket/formulario";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/

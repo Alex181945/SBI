@@ -63,6 +63,7 @@ public class EstatusTicket {
 		mav.addObject("objEstatusTicket", new EstatusTicketM());
 		mav.addObject("lInserta", true);
 		mav.addObject("estatusTicketInserta", Vistas.CT_ESTATUS_TICKET_INSERTA_R);
+		mav.addObject("estatusTicketConsulta", Vistas.CT_ESTATUS_TICKET_CONSULTA_R);
 		
 		return mav;
 	}
