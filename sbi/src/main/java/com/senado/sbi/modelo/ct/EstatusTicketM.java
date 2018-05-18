@@ -50,6 +50,34 @@ public class EstatusTicketM {
 	public String toString() {
 		return "EstatusTicketM [iIDEstado=" + iIDEstado + ", cEstado=" + cEstado + ", lActivo=" + lActivo
 				+ ", dtCreado=" + dtCreado + ", dtModificado=" + dtModificado + ", cUsuario=" + cUsuario + "]";
-	}	
+	}
+	
+	public String toJson() {
+		return "{"
+				+ "\"iIDEstado\":"            + iIDEstado           + ","
+				+ "\"cEstado\":"       + "\"" + cEstado      + "\"" + ","
+				+ "\"lActivo\":"              + lActivo      + ","
+				+ "\"dtCreado\":"      + "\"" + dtCreado     + "\"" + ","
+				+ "\"dtModificado\":"  + "\"" + dtModificado + "\"" + ","
+				+ "\"cUsuario\":"      + "\"" + cUsuario     + "\"" 
+				+ "}";
+	}
+	
+	public static EstatusTicketM[] estatusTicketDefault() {
+		
+		EstatusTicketM estatusTicket = new EstatusTicketM();
+		
+		estatusTicket.setiIDEstado(0);
+		estatusTicket.setcEstado("N/A");
+		estatusTicket.setlActivo(0);
+		estatusTicket.setDtCreado("N/A");
+		estatusTicket.setDtModificado("N/A");
+		estatusTicket.setcUsuario("N/A");
+		
+		EstatusTicketM[] estatusTicketDefault = {estatusTicket};
+		
+		return estatusTicketDefault;
+		
+	}
 	
 }

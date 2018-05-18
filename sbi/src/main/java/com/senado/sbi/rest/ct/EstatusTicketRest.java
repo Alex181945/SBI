@@ -4,11 +4,11 @@ import com.senado.sbi.modelo.ct.EstatusTicketM;
 
 public interface EstatusTicketRest {
 	
-	public EstatusTicketM[] consultaEdificios(Integer iTipoConsulta, String cToken);
-	public EstatusTicketM consultaEdificio(Integer iIDEdificio, String cToken);
-	public void actualizaEdificio(EstatusTicketM objEdificio, String cToken);
-	public void insertaEdificio(EstatusTicketM objEdificio, String cToken);
-	public void borraEdificio(Integer iIDEdificio, String cUsuario, String cToken);
+	public EstatusTicketM[] consultaEstatusTicketes(Integer iTipoConsulta, String cToken);
+	public EstatusTicketM consultaEstatusTicket(Integer iIDEstado, String cToken);
+	public void actualizaEstatusTicket(EstatusTicketM objEstatusTicket, String cToken);
+	public void insertaEstatusTicket(EstatusTicketM objEstatusTicket, String cToken);
+	public void borraEstatusTicket(Integer iIDEstado, String cUsuario, String cToken);
 
 	public boolean islResultado();
 	public String getMensaje();
