@@ -283,8 +283,9 @@
 	
 		window.onload = function(){cargaComboSecundario();}
 		
-		function cargaComboSecundario(lPrimera){
+		function cargaComboSecundario(){
 			var elemToBind = document.getElementById("tpSolicitud1");
+			limpaComboSecundario();
 
 	        /*<![CDATA[*/	    
 	         var srvsolicitado = /*[[${srvsolicitado}]]*/ ;
@@ -300,6 +301,10 @@
 	    	   }	    	   
 	       }
 	       
+		}
+		
+		function limpaComboSecundario(){
+			document.getElementById("srvSolicitado").options.length = 0;			
 		}
 
 	</script>
