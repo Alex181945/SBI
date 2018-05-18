@@ -38,6 +38,8 @@ public class Vistas {
 	private static final String CT_TODOS               = "catalogo/catalogos";
 	private static final String CT_EDIFICIO_CONSULTA   = "catalogo/edificio/consulta";
 	private static final String CT_EDIFICIO_FORMULARIO = "catalogo/edificio/formulario";
+	private static final String CT_ESTATUS_TICKET_CONSULTA   = "catalogo/estatus_ticket/consulta";
+	private static final String CT_ESTATUS_TICKET_FORMULARIO = "catalago/estatus_ticket/formulario";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -58,6 +60,8 @@ public class Vistas {
 	public static final String CT_EDIFICIO_INSERTA_R        = "/config/catalogos/edificio/inserta";
 	public static final String CT_EDIFICIO_EDITA_R          = "/config/catalogos/edificio/actualiza";
 	public static final String CT_EDIFICIO_BORRA_R          = "/config/catalogos/edificio/elimina";
+	public static final String CT_ESTATUS_TICKET_CONSULTA_R = "/config/catalogos/estatus-ticket/consulta";
+	public static final String CT_ESTATUS_TICKET_CONSULTA_UNO_R = "/config/catalogos/estatus-ticket/consulta/uno";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
