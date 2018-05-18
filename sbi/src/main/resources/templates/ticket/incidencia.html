@@ -32,7 +32,7 @@
 								<h5 class="lead">Tipo de Servicio:</h5></label>
 							<div>
 								<select class="form-control col-md-8" id="tpSolicitud1" name="tpSolicitud1" 
-									th:field="*{iIDTipoServicio}">
+									th:field="*{iIDTipoServicio}" onchange="cargaComboSecundario();">
 									<option th:each="dropDownItem : ${tpservicio}"
 										th:value="${dropDownItem.iIDTipoServicio}"
 										th:text="${dropDownItem.cTipoServicio}"/>
@@ -45,10 +45,7 @@
 								<h5 class="lead">Servicio solicitado:</h5></label>
 							<div>
 								<select class="form-control" id="srvSolicitado" name="srvSolicitado" 
-								th:field="*{iIDTipoServicio}">
-								<option th:each="dropDownItem : ${srvsolicitado}"
-									th:value="${dropDownItem.iPartida}"
-									th:text="${dropDownItem.cServicioSolicitado}"/>
+								th:field="*{iPartida}">
 							</select>
 							</div>
 						</div>
@@ -283,12 +280,28 @@
 	
 	<!-- Script especifico -->
 	<script th:inline="javascript">
+	
+		window.onload = function(){cargaComboSecundario();}
+		
+		function cargaComboSecundario(lPrimera){
+			var elemToBind = document.getElementById("tpSolicitud1");
 
-      /*<![CDATA[*/	    
-         var srvsolicitado = /*[[${srvsolicitado}]]*/ ;
-       /*]]>*/
-       
-       console.log(srvsolicitado);
+	        /*<![CDATA[*/	    
+	         var srvsolicitado = /*[[${srvsolicitado}]]*/ ;
+	       /*]]>*/
+	       
+	       var comboSecundario = document.getElementById("srvSolicitado");
+	       for(valor in srvsolicitado){
+	    	   var option   = document.createElement("option");
+	    	   option.text  = srvsolicitado[valor].cServicioSolicitado;
+	    	   option.value = srvsolicitado[valor].iPartida;
+	    	   if(srvsolicitado[valor].iIDTipoServicio == elemToBind.value){
+	    		   comboSecundario.add(option);
+	    	   }	    	   
+	       }
+	       
+		}
+
 	</script>
 	
 </div>

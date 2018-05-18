@@ -12,6 +12,7 @@ public class TicketM {
 	private String  cPiso;
 	private String  cOficina;
 	private Integer iIDTipoServicio;
+	private Integer iPartida; // Este campo tiene como id el iIDTipoServicio
 	private String  cUsuReporta;
 	private String  cObs;
 	private Integer iIDCreaTicket;
@@ -103,6 +104,14 @@ public class TicketM {
 		this.iIDTipoServicio = iIDTipoServicio;
 	}
 
+	public Integer getiPartida() {
+		return iPartida;
+	}
+
+	public void setiPartida(Integer iPartida) {
+		this.iPartida = iPartida;
+	}
+
 	public String getcUsuReporta() {
 		return cUsuReporta;
 	}
@@ -188,10 +197,11 @@ public class TicketM {
 		return "TicketM [iIDTicket=" + iIDTicket + ", iIDEstado=" + iIDEstado + ", cNumInventario=" + cNumInventario
 				+ ", cResguardante=" + cResguardante + ", cUsuarioEquipo=" + cUsuarioEquipo + ", cExtension="
 				+ cExtension + ", iIDEdificio=" + iIDEdificio + ", cPiso=" + cPiso + ", cOficina=" + cOficina
-				+ ", iIDTipoServicio=" + iIDTipoServicio + ", cUsuReporta=" + cUsuReporta + ", cObs=" + cObs
-				+ ", iIDCreaTicket=" + iIDCreaTicket + ", iIDCriticidad=" + iIDCriticidad + ", iIDTecnico=" + iIDTecnico
-				+ ", lTecnicoAcepta=" + lTecnicoAcepta + ", lNotificacion=" + lNotificacion + ", lArrendado="
-				+ lArrendado + ", cUsuarioR=" + cUsuarioR + ", dtFecha=" + dtFecha + "]";
+				+ ", iIDTipoServicio=" + iIDTipoServicio + ", iPartida=" + iPartida + ", cUsuReporta=" + cUsuReporta
+				+ ", cObs=" + cObs + ", iIDCreaTicket=" + iIDCreaTicket + ", iIDCriticidad=" + iIDCriticidad
+				+ ", iIDTecnico=" + iIDTecnico + ", lTecnicoAcepta=" + lTecnicoAcepta + ", lNotificacion="
+				+ lNotificacion + ", lArrendado=" + lArrendado + ", cUsuarioR=" + cUsuarioR + ", dtFecha=" + dtFecha
+				+ "]";
 	}
 	
 	public String toJson() {
@@ -206,6 +216,7 @@ public class TicketM {
                 + "\"cPiso\":"           + "\""+ cPiso             + "\""+ ","
                 + "\"cOficina\":"        + "\""+ cOficina          + "\""+ ","
                 + "\"iIDTipoServicio\":" +       iIDTipoServicio   +       ","
+                + "\"iIDTipoServicio\":" +       iPartida          +       ","
                 + "\"cUsuReporta\":"     + "\""+ cUsuReporta       + "\""+ ","
                 + "\"cObs\":"            + "\""+ cObs              + "\""+ ","
                 + "\"iIDCreaTicket\":"   +       iIDCreaTicket     +       ","
@@ -218,6 +229,6 @@ public class TicketM {
                 + "\"dtFecha\":"         + "\""+ dtFecha           + "\""
                 + "}";
 
-	}	
+	}
 	
 }
