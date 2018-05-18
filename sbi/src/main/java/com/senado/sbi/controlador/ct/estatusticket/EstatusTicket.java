@@ -48,7 +48,7 @@ public class EstatusTicket {
 			mav.addObject("error", estatusTicketRest.getMensaje());
 		}
 		
-		mav.addObject("formInsertaEstatusTicket", Vistas.CT_ESTATUS_TICKET_INSERTA_R);
+		mav.addObject("formInsertaEstatusTicket", Vistas.CT_ESTATUS_TICKET_FORMULARIO_R);
 		mav.addObject("formActualizaEstatusTicket", Vistas.CT_ESTATUS_TICKET_EDITA_R);
 		
 		return mav;
@@ -58,6 +58,11 @@ public class EstatusTicket {
 	public ModelAndView formulario(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
 		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName(Vistas.getCtEstatusTicketFormulario());
+		mav.addObject("objEstatusTicket", new EstatusTicketM());
+		mav.addObject("lInserta", true);
+		mav.addObject("estatusTicketInserta", Vistas.CT_ESTATUS_TICKET_INSERTA_R);
 		
 		return mav;
 	}

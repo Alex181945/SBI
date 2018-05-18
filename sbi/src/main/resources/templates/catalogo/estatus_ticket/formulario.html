@@ -4,8 +4,8 @@
 	<div class="container">
 
 		<form id="form"
-			th:action="${lInserta} ? @{/config/catalogos/edificio/inserta} : @{/config/catalogos/edificio/actualiza}"
-			th:object="${objEdificio}" method="POST">
+			th:action="${lInserta} ? ${estatusTicketInserta} : ${estatusTicketActualiza}"
+			th:object="${objEstatusTicket}" method="POST">
 
 			<fieldset class="col-md-12">
 				<legend>Formulario de Registro</legend>
