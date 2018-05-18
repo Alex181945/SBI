@@ -48,7 +48,7 @@ public class ImpEstatusTicketRest implements EstatusTicketRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/consulta?iTipoConsulta=" + iTipoConsulta,
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/estatus-ticket/consulta?iTipoConsulta=" + iTipoConsulta,
 					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -107,7 +107,7 @@ public class ImpEstatusTicketRest implements EstatusTicketRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/consulta/uno?iIDEdificio=" + iIDEstado,
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/estatus-ticket/consulta/uno?iIDEstado=" + iIDEstado,
 					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -168,7 +168,7 @@ public class ImpEstatusTicketRest implements EstatusTicketRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/actualiza",
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/estatus-ticket/actualiza",
 					HttpMethod.PUT ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -224,7 +224,7 @@ public class ImpEstatusTicketRest implements EstatusTicketRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/inserta",
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/estatus-ticket/inserta",
 					HttpMethod.POST ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -281,7 +281,7 @@ public class ImpEstatusTicketRest implements EstatusTicketRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/borra",
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/estatus-ticket/borra",
 					HttpMethod.DELETE ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
