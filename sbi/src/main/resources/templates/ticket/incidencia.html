@@ -303,7 +303,7 @@
 	<!-- Script especifico -->
 	<script th:inline="javascript">
 	
-		window.onload = function(){cargaComboSecundario();}
+		window.onload = function(){cargaComboSecundario(); soloLectura();}
 		
 		function cargaComboSecundario(){
 			var elemToBind = document.getElementById("tpSolicitud1");
@@ -327,6 +327,14 @@
 		
 		function limpaComboSecundario(){
 			document.getElementById("srvSolicitado").options.length = 0;			
+		}
+		
+		function soloLectura(){
+			document.getElementById("user").readOnly = true;
+			document.getElementById("edificio").readOnly = true;
+			document.getElementById("piso").readOnly = true;
+			document.getElementById("oficina").readOnly = true;
+			document.getElementById("resguardante").readOnly = true;
 		}
 
 	</script>
