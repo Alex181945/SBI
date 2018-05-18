@@ -42,7 +42,14 @@ public class EstatusTicket {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName(Vistas.getCtEstatusTicketConsulta());
-		mav.addObject("", estatusTicketRest.consultaEstatusTicketes(2, sessionUsu.getcToken()));
+		
+		mav.addObject("estatusTicket", estatusTicketRest.consultaEstatusTicketes(2, sessionUsu.getcToken()));
+		if(estatusTicketRest.islResultado()) {
+			mav.addObject("error", estatusTicketRest.getMensaje());
+		}
+		
+		mav.addObject("formInsertaEstatusTicket", Vistas.CT_ESTATUS_TICKET_INSERTA_R);
+		mav.addObject("formActualizaEstatusTicket", Vistas.CT_ESTATUS_TICKET_EDITA_R);
 		
 		return mav;
 	}
@@ -60,13 +67,15 @@ public class EstatusTicket {
 			@ModelAttribute("objEstatusTicket") EstatusTicketM objEstatusTicketM) {
 		
 		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getCtEstatusTicketFormulario());
+		//mav.addObject("estatusTicket", attributeValue)
 
 		return mav;
 	}
 
 	@GetMapping(Vistas.CT_ESTATUS_TICKET_CONSULTA_UNO_R)
 	public ModelAndView consultaUno(@ModelAttribute("Usuario") ULogin sessionUsu,
-			@ModelAttribute("iIDEdificio") Integer iIDEdificio) {
+			@ModelAttribute("iIDEstado") Integer iIDEstado) {
 		
 		ModelAndView mav = new ModelAndView();
 
