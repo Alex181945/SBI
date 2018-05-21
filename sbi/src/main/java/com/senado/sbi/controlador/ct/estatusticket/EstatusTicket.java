@@ -118,7 +118,7 @@ public class EstatusTicket {
 
 	@PostMapping(Vistas.CT_ESTATUS_TICKET_BORRA_R)	
 	public @ResponseBody String borra(@ModelAttribute("Usuario") ULogin sessionUsu,
-			@ModelAttribute("iIDEstado") Integer iIDEdificio) {
+			@ModelAttribute("ID") Integer iIDEdificio) {
 		
 		estatusTicketRest.borraEstatusTicket(iIDEdificio, sessionUsu.getcUsuario(), sessionUsu.getcToken());
 		
