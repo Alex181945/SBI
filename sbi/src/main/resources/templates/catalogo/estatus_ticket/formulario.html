@@ -32,7 +32,7 @@
 
 				<div th:if="!${lInserta}" class="d-flex justify-content-center">
 					<div class="custom-switch custom-switch-label-yesno">
-					  <input type="checkbox" class="custom-switch-input" id="activo" name="activo" th:checked="${objEdificio.lActivo} == 1 ? cheked" />
+					  <input type="checkbox" class="custom-switch-input" id="activo" name="activo" th:checked="${objEstatusTicket.lActivo} == 1 ? cheked" />
 					  <label class="custom-switch-btn" for="activo"></label>
 					  <div class="custom-switch-content-checked text-color-white text-center">Activo</div>
 					  <div class="custom-switch-content-unchecked text-color-white text-center">Inactivo</div>
