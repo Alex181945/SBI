@@ -118,10 +118,15 @@ public class EstatusTicket {
 
 	@PostMapping(Vistas.CT_ESTATUS_TICKET_BORRA_R)	
 	public @ResponseBody String borra(@ModelAttribute("Usuario") ULogin sessionUsu,
-			@ModelAttribute("ID") Integer iIDEdificio) {
+			@ModelAttribute("iIDEstado") Integer iIDEdificio) {
 		
+		estatusTicketRest.borraEstatusTicket(iIDEdificio, sessionUsu.getcUsuario(), sessionUsu.getcToken());
 		
-		return null;
+		if(estatusTicketRest.islResultado()) {
+			return estatusTicketRest.getMensaje();
+		} 
+		
+		return "success";
 	}
 	
 	/*Metodo para evitar los redirect y poder cargar los mensajes de exito*/
@@ -147,9 +152,10 @@ public class EstatusTicket {
 			mav.addObject("error", mensajeError);
 		}
 
-		/*Manda las ligas para acceder a los formularios de inseta y edita registro*/
+		/*Manda las ligas para acceder a los formularios de inseta, edita y eliminar registro*/
 		mav.addObject("formInsertaEstatusTicket", Vistas.CT_ESTATUS_TICKET_FORMULARIO_R);
 		mav.addObject("formActualizaEstatusTicket", Vistas.CT_ESTATUS_TICKET_CONSULTA_UNO_R);
+		mav.addObject("eliminarEstatusTicket", Vistas.CT_ESTATUS_TICKET_BORRA_R);
 
 		return mav;
 	}
