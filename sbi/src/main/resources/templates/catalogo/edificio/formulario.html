@@ -4,7 +4,7 @@
 	<div class="container">
 
 		<form id="form"
-			th:action="${lInserta} ? @{/config/catalogos/edificio/inserta} : @{/config/catalogos/edificio/actualiza}"
+			th:action="${lInserta} ? ${estatusEdificioInserta} : ${estatusEdificioActualiza}"
 			th:object="${objEdificio}" method="POST">
 
 			<fieldset class="col-md-12">
@@ -128,7 +128,7 @@
 			aria-label="Basic example">
 			<button type="button" class="btn btn-success" onclick="submit();"
 				th:text="${lInserta} ? Registrar : Actualizar "></button>
-			<a class="btn btn-danger" href="/config/catalogos/edificio/consulta">Cancelar</a>
+			<a class="btn btn-danger" href="#" th:href="${estatusEdificioConsulta}">Cancelar</a>
 		</div>
 	</div>
 	

@@ -41,17 +41,8 @@ public class Edificio {
 	private MenuRest menuRest;
 	
 	@GetMapping(Vistas.CT_EDIFICIO_CONSULTA_R)
-	public ModelAndView consultaTodos(@ModelAttribute("Usuario") ULogin sessionUsu) {
-		
-		DosParametrosEnteros consulta = new DosParametrosEnteros();
-		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
-		consulta.setParametro2(sessionUsu.getiPerfil());
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(Vistas.getCtEdificioConsulta());
-		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
-		mav.addObject("edificios", edificioRest.consultaEdificios(2, sessionUsu.getcToken()));
-		return mav;
+	public ModelAndView consultaTodos(@ModelAttribute("Usuario") ULogin sessionUsu) {		
+		return cargaDatos(sessionUsu, "", "");
 	}
 	
 	@GetMapping(Vistas.CT_EDIFICIO_FORMULARIO_R)
@@ -66,6 +57,8 @@ public class Edificio {
 		mav.addObject("lInserta",true);
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 		mav.addObject("objEdificio", new EdificioM());
+		mav.addObject("estatusEdificioInserta", Vistas.CT_EDIFICIO_INSERTA_R);
+		mav.addObject("estatusEdificioConsulta", Vistas.CT_EDIFICIO_CONSULTA_R);
 		return mav;
 	}
 	
@@ -75,22 +68,21 @@ public class Edificio {
 		
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
 		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
-		consulta.setParametro2(sessionUsu.getiPerfil());
+		consulta.setParametro2(sessionUsu.getiPerfil());		
+		
+		ModelAndView mav = new ModelAndView();
 		
 		objEdificio.setcUsuario(sessionUsu.getcUsuario());
 		edificioRest.insertaEdificio(objEdificio, sessionUsu.getcToken());
-		ModelAndView mav = new ModelAndView();
 		
 		if(edificioRest.islResultado()) {
 			mav.setViewName(Vistas.getCtEdificioFormulario());
 			mav.addObject("objEdificio", objEdificio);
 			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 			mav.addObject("error", edificioRest.getMensaje());
+			mav.addObject("estatusEdificioConsulta", Vistas.CT_EDIFICIO_CONSULTA_R);
 		} else {
-			mav.setViewName(Vistas.getCtEdificioConsulta());
-			mav.addObject("exito", MensajeExito.getExitoCtEdificioInserta());
-			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
-			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+			mav = cargaDatos(sessionUsu, MensajeExito.getExitoCtEdificioInserta(), "");
 		}
 
 		return mav;
@@ -108,15 +100,14 @@ public class Edificio {
 		EdificioM edificio = edificioRest.consultaEdificio(iIDEdificio, sessionUsu.getcToken());
 		
 		if(edificioRest.islResultado()) {
-			mav.setViewName(Vistas.getCtEdificioConsulta());
-			mav.addObject("error", edificioRest.getMensaje());
-			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
-			mav.addObject("edificios", edificioRest.consultaEdificios(2, sessionUsu.getcToken()));
+			cargaDatos(sessionUsu, "", edificioRest.getMensaje());
 		}else {
 			mav.setViewName(Vistas.getCtEdificioFormulario());
 			mav.addObject("lInserta",false);
 			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 			mav.addObject("objEdificio", edificio);
+			mav.addObject("estatusEdificioActualiza", Vistas.CT_EDIFICIO_EDITA_R);
+			mav.addObject("estatusEdificioConsulta", Vistas.CT_EDIFICIO_CONSULTA_R);
 		}
 
 		return mav;
@@ -163,6 +154,40 @@ public class Edificio {
 		} 
 		
 		return "success";
+	}
+	
+	public ModelAndView cargaDatos(@ModelAttribute("Usuario") ULogin sessionUsu, String mensajeExito,
+			String mensajeError) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getCtEdificioConsulta());
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
+		mav.addObject("edificios", edificioRest.consultaEdificios(2, sessionUsu.getcToken()));
+		
+		/*Consulta los registros de catalogo*/
+		if (edificioRest.islResultado()) {
+			mav.addObject("error", edificioRest.getMensaje());
+		}
+				
+		/*Captura y manda en caso de existir los mensajes de exito o erro*/
+		if(mensajeExito != "" || mensajeExito != null) {
+			mav.addObject("exito", mensajeExito);
+		}
+		if(mensajeError != "" || mensajeError != null) {
+			mav.addObject("error", mensajeError);
+		}
+
+		/*Manda las ligas para acceder a los formularios de inseta, edita y eliminar registro*/
+		mav.addObject("formInsertaEdificio", Vistas.CT_EDIFICIO_FORMULARIO_R);
+		mav.addObject("formActualizaEdificio", Vistas.CT_EDIFICIO_CONSULTA_UNO_R);
+		mav.addObject("eliminarEdificio", Vistas.CT_EDIFICIO_BORRA_R);
+		
+		return mav;
+		
 	}
 
 }

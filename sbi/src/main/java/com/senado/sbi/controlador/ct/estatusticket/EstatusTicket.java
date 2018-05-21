@@ -129,7 +129,7 @@ public class EstatusTicket {
 		return "success";
 	}
 	
-	/*Metodo para evitar los redirect y poder cargar los mensajes de exito*/
+	/*Metodo para evitar los redirect y poder cargar los mensajes de exito o error*/
 	public ModelAndView cargaDatos(@ModelAttribute("Usuario") ULogin sessionUsu, String mensajeExito,
 			String mensajeError) {
 
