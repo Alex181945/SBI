@@ -87,6 +87,7 @@ public class EstatusTicket {
 		}else {
 			mav.setViewName(Vistas.getCtEstatusTicketFormulario());
 			mav.addObject("lInserta", false);
+			mav.addObject("estatusTicketActualiza", Vistas.CT_ESTATUS_TICKET_EDITA_R);
 			mav.addObject("estatusTicketConsulta", Vistas.CT_ESTATUS_TICKET_CONSULTA_R);
 		}
 
@@ -99,6 +100,17 @@ public class EstatusTicket {
 			@ModelAttribute("activo") String lActivo) {
 		
 		ModelAndView mav = new ModelAndView();
+		
+		objEstatusTicketM.setcUsuario(sessionUsu.getcUsuario());
+		objEstatusTicketM.setlActivo(lActivo.equals("on") ? 1 : 0);
+		estatusTicketRest.actualizaEstatusTicket(objEstatusTicketM, sessionUsu.getcToken());
+		if(estatusTicketRest.islResultado()) {
+			mav.setViewName(Vistas.getCtEstatusTicketFormulario());
+			mav.addObject("objEstatusTicket", objEstatusTicketM);
+			mav.addObject("error", estatusTicketRest.getMensaje());
+		} else {
+			mav = cargaDatos(sessionUsu, MensajeExito.getExitoCtEstatusticketsEdita(), "");
+		}
 		
 		return mav;
 		
