@@ -7,13 +7,91 @@
 		
 		<form id="form1" th:action="@{/ticket/inserta}" th:object="${Ticket}" method="POST">
 
-		<fieldset class="col-md-12">
+		<fieldset class="col-md-12" disabled="true">
 
-						  <div class="form-group">
-							<label for="disabledTextInput">Disabled input</label>
-							<input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input"/>
-						  </div>
-		</fieldset>			
+				<legend >Información básica</legend>
+				<div class="panel panel-default"/>
+
+				<!-- row fila 1 inicio  -->
+				<div class="form-row">
+
+					<!-- <div id="prue" class="form-group col-md-4">
+							<label id="Uno" for="frmSolicitud">
+								<h5  class="lead" >Tipo de Solicitud:</h5></label>
+							<div>
+								<select class="form-control col-md-8" id="fmsolicitud" name="fmsolicitud" 
+									th:field="*{iIDCreaTicket}">
+									<option th:each="dropDownItem : ${formasolicitud}"
+										th:value="${dropDownItem.iIDCreaTicket}"
+										th:text="${dropDownItem.cCreaTicket}"/>
+								</select>
+							</div>
+						</div> -->
+
+
+					<div id="solicitud" class="form-group col-md-6">
+						<label for="solicitud">
+							<h5 class="lead">Tipo de Servicio:</h5>
+						</label>
+						<div>
+								<input type="text" class="form-control" id="tpServicio"
+								name="tpServicio"/>
+							
+						</div>
+					</div>
+
+					<div id="Servc" class="form-group col-md-6">
+						<label for="Servc">
+							<h5 class="lead">Servicio solicitado:</h5>
+						</label>
+						<div>
+								<input type="text" class="form-control" id="ServicioSolic"
+								name="ServicioSolic"/>
+						</div>
+					</div>
+
+				</div>
+				<!-- row fila 1 final  -->
+
+				<div class="form-row">
+						
+					<div id="inventario" class="form-group col-md-4">
+							<label for="inventario">
+								<h5 class="lead">Numero de Inventario:</h5>
+							</label>
+						<div>
+							<input type="text" class="form-control col-md-8" id="inventario"
+										name="inventario" />
+						</div>
+					</div>
+						
+					<div id="user" class="form-group col-md-4">
+							<label for="user">
+								<h5 class="lead">Usuario:</h5>
+							</label>
+								<div>
+									<input type="text" class="form-control col-md-8" id="user"
+										name="user" placeholder="Usuario" />
+								</div>
+					</div>
+						
+					<div id="edificio" class="col-md-4">
+							<label for="edificio">
+								<h5 class="lead">Edificio:</h5>
+							</label>
+							<div>
+									<input type="text" class="form-control col-md-8" id="edificios"
+									name="edificios" placeholder="edificios" />
+							</div>
+					</div>
+						
+				</div>
+
+
+		</fieldset>
+			
+
+			
 		</form>
 	</div>
 </div>
