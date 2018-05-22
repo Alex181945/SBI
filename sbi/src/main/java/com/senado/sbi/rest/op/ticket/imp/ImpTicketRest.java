@@ -38,7 +38,7 @@ public class ImpTicketRest implements TicketRest {
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
 		JsonNode     validacionJs = null;
-		JsonNode     datos        = null;
+		//JsonNode     datos        = null;
 		
 		try {
 			
@@ -66,7 +66,7 @@ public class ImpTicketRest implements TicketRest {
 			}
 			
 			validacionJs = root.path("validacion");
-			datos = root.path("datos");
+			//datos = root.path("datos");
 			
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
 			
