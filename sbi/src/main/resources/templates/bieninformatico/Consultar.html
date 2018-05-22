@@ -1,92 +1,75 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 	
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-            <nav class="navbar ">
-					<div class="container-fluid">
-							<div class="navbar-header">
-								<ul class="nav navbar-nav navbar-center">
-									<li class="active"><a href="Consultar.html">Consultar</a></li>
-									<li class="active"><a href="Editar.html">Editar</a></li>
-									<li class="active"><a href="Nuevo.html">Nuevo</a></li>
-									<li class="active"><a href="Deshabilitar.html">Deshabilitar</a></li></ul>
-								</ul>
-                            </div>
-                    </div>
-            </nav>
-            
-            
-			<div class="container">
-                <h1>SISTEMA DE ADMINISTRACIÓN DE BIENES INFORMÁTICOS</h1>
-                <h1 class="display-6">Editar</h1>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<div class="container">
 		
-		<form id="form1" th:action="@{/bienInformatico/consulta}" th:object="${bienInformatico}" method="POST">
-
-		<div class="row">
-				<div class="signup-form-container">
-						<div class="form-header">
-								<center> <h1 class="form-title"><i class="fa fa-user"></i> CONSULTA SABI</h1></center>
-						</div>
-					 <!-- form para consultar el resguardo -->
-					<div class = text-right>
-						<form class="form-inline">
+			<h1 class="display-6">SISTEMA DE ADMINISTRACIÓN DE BIENES INFORMATICOS</h1>
+				
+				<form "form-inline" id="form1"  th:action="@{/bienesinformaticos/consultar}" th:object="${BienesInformaticos}" method="POST">
+					
+				<fieldset class="col-md-12">
+					<legend >Consulta Resguardo</legend>
+					<div class="panel panel-default"/>
+         
+         <div class = text-right>
+						<div id="inventario" class="row col-md-4">
 							<label for="inventario" class="col-md-4">
-                                    <h5 class="lead">Numero de Inventario:</h5></label>
-                            </label>
-								<div class="input-group mb-2 mr-sm-2">
-                                        <input type="text" class="form-control form-control-lg"
-                                        id="resguardo" name="Resguardo" placeholder="N° Inventario" th:field="*{cNumInventario}"
-                                        th:value="${cNumInventario}"  onkeypress="return soloNumeros(event)"/>
-								    <!--input type="text" class="form-control" id="iIDBienesInformaticos" placeholder="Resguardo"-->
-								</div>
-                                <div class="row"> <!-- Row Botones-->
-                                    <div class="col-md-4"/>
-                                    <div class="col-md-2">
-                                            <button type="submit" class="btn btn-primary btn-lg btn-outline"
-                                                >Consultar</button>
-                                    </div>
-						</form>
-                    </div>
-                    
-					<div class="container">
-                            <h2><b>Bienes Informáticos</b></h2>
-                            
-							<p>Consulta la información del resguardo:</p>            
-							<table class="table table-hover">
-							  <thead>
-								<tr>
-								  <th>Partida</th>
-								  <th>Equipo</th>
-								  <th>Modelo</th>
-								  <th>Num Serie</th>
-								  <th>Observaciones</th>
-								  <th>Resguardante</th>
-								  <th>Responsable</th>
-								  <th>Adscripción</th>
+								<h5  class="lead" >Número de Resguardo:</h5></label>
+									<div class="col-md-8">
+											<input type="text" class="form-control"
+												id="inventario" name="inventario" 
+									  placeholder="N° Inventario" th:field="*{iIDResguardo}" th:value="${iIDResguardo}"  onkeypress="return soloNumeros(event)"/>
+								    </div>
+						<div>
+                        <div class="form-row"> <!-- Row Botones-->
+							<div class="col-md-4"></div>
+								<div class="col-md-5">
+								  <button type="submit" class="btn btn-primary">Consultar</button>
+                            </div>
+                        </div>
+        </div>
+        </form>
 
-								</tr>
-							  </thead>
-							  <tbody>
-								<tr>
-								  <td>1</td>
-								  <td>Impresora Laser Jet 1024</td>
-								  <td>#</td>
-								  <td>24en34u92u5</td>
-								  <td>#</td>
-								  <td>Adolfo Pinto Santiago</td>
-								  <td>Alejandro Camargo Nava</td>
-								  <td>Dirección de Informática</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Impresora Laser Jet 1024</td>
-									<td>#</td>
-									<td>24en34u92u5</td>
-									<td>#</td>
-									<td>Adolfo Pinto Santiago</td>
-									<td>Alejandro Camargo Nava</td>
-									<td>Dirección de Informática</td>
-									  </tr>
-								</tbody>
-							</table>
-                          </div>
-    <div class="col-12" style="display:none;"><span id="message" th:text="${error}"></span></div>
+        <!-- Fin de form> 
+										
+          
+            <table class="table table-striped table-hover dataTable no-footer table-custom"  id="Listas">
+			<thead >
+				<tr>
+					<th>ID</th>
+					<th>Resguardante</th>
+					<th>Responsable</th>
+					<th>Oficina</th>
+					<th>Factura</th>
+					<th>Observaciones</th>
+					<th>Activo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lista : ${resguardo}">
+					<td><span th:text="${lista.iIDResguardo}">ID</span></td>
+					<td><span th:text="${lista.cResguardante}">Resguardante</span></td>
+					<td><span th:text="${lista.cResponsable}">Responsable</span></td>
+					<td><span th:text="${lista.cOficina}">Oficina</span></td>
+					<td><span th:text="${lista.cFactura}">Factura</span></td>
+					<td><span th:text="${lista.cObs}">Observaciones</span></td>
+					<td><span th:text="${lista.lActivo} ? SI : NO">Activo</span></td>
+				</tr>
+			</tbody>
+		</table>
+    <div class="form-row"> <!-- Row Botones-->
+							<div class="col-md-4"></div>
+								<div class="col-md-5">
+								  <button type="submit" class="btn btn-primary">Modificar</button>
+								  <button type="button" id="btnEliminar" class="btn btn-danger"
+									th:onclick=  "'eliminar(1 , \''+ ${lista.iIDResguardo} + '\' );'">						
+										<span class="fas fa-trash"  aria-hidden="true"></span>
+									</button>
+								  <button type="submit" class="btn btn-danger">Cerrar</button>
+								</div>
+						
+						</div>
+						
+					</fieldset>
+	           </div>
+        </div>

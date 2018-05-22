@@ -1,139 +1,144 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 	
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-          <nav class="navbar ">
-        <div class="container-fluid">
-            <div class="navbar-header">
-              <ul class="nav navbar-nav navbar-center">
-                <li class="active"><a href="Consultar.html">Consultar</a></li>
-                <li class="active"><a href="Editar.html">Editar</a></li>
-                <li class="active"><a href="Nuevo.html">Nuevo</a></li>
-                <li class="active"><a href="Deshabilitar.html">Deshabilitar</a></li>
-              </ul>
-            </div>
-                  </div>
-          </nav>
-
-		<h1 class="display-6">SISTEMA DE ADMINISTRACIÓN DE BIENES INFORMÁTICOS</h1>
-                <h1 class="display-6">Editar</h1>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<div class="container">
 		
-		<form id="form1" th:action="@{/bieninformatico/Editar}" th:object="${bienesinformaticos}" method="POST">
-        <nav class="navbar ">
-                <div class="container-fluid">
-                        <div class="navbar-header">
-                            <div class="form-row">
-                        <div class="form-group col-md-5">
-                                <label for="ctBienesInformáticos">Resguardante: </label>
-                                <select id="cUsuario" class="form-control">
-                                  <option selected>Ing. Dino Adán Venegas Zárate</option>
-                                  <option>Alejandro Camargo Nava</option>
-                                  <option>Josue Arrona Martínez</option>
-                                </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                                <label for="ctBienesInformáticos">Edificio: </label>
-                                <select id="cEdificio" class="form-control">
-                                  <option selected>TCO</option>
-                                  <option>TAZ</option>
-                                  <option>HEM</option>
-                                  <option>M68</option>
-                                  <option>DCL</option>
-                                </select>
-                        </div>
-                        <div class="form-group col-md-3">
-                                <label for="Piso">Piso: </label>
-                                <select id="ctPiso" class="form-control">
-                                  <option selected>S1</option>
-                                  <option>S2</option>
-                                  <option>S3</option>
-                                  <option>S4</option>
-                                  <option>PB</option>
-                                </select>
-                        </div>
+			<h1 class="display-6">SISTEMA DE ADMINISTRACIÓN DE BIENES INFORMATICOS</h1>
+				
+				<form id="form1"  th:action="@{/bienesinformaticos/editar}" th:object="${BienesInformaticos}" method="POST">
+					
+				<fieldset class="col-md-12">
+					<legend >Modifica Resguardo</legend>
+					<div class="panel panel-default"/>
+         
+            <div class="form-row">
+                <div id="resguardante" class="form-group col-md-4">
+								<label for="resguardante">
+									<h5 class="lead">Resguardante</h5></label>
+								<div>
+								<select class="form-control col-md-8" id="rsg" name="rsg" 
+									th:field="*{iIDResguardo}">
+									<option th:each="dropDownItem : ${elementoResguardo}"
+										th:value="${dropDownItem.iIDResguardo}"
+										th:text="${dropDownItem.cResguardante}"/>
+								</select>
+							    </div>
                 </div>
-                <br><br><br>
+
+                <div id="responsable" class="form-group col-md-4">
+								<label for="responsable">
+									<h5 class="lead">Responsable</h5></label>
+								<div>
+								<select class="form-control col-md-8" id="resp" name="resp" 
+									th:field="*{iIDResguardo}">
+									<option th:each="dropDownItem : ${elementoResguardo}"
+										th:value="${dropDownItem.iIDResguardo}"
+										th:text="${dropDownItem.cResponsable}"/>
+								</select>
+							    </div>
+				</div>
+
+                <div id="piso" class="form-group col-md-4">
+								<label for="piso">
+									<h5 class="lead">Piso</h5></label>
+								<div>
+									<input type="text" class="form-control col-md-8"
+										id="piso" name="piso" placeholder="Piso" th:field="*{cPiso}" th:value="${cPiso}"/>
+								</div>
+				</div>
+
+                <div id="oficina" class="form-group col-md-4">
+								<label for="oficina">
+									<h5 class="lead">Oficina</h5></label>
+								<div>
+									<input type="text" class="form-control col-md-8"
+										id="oficina" name="oficina" placeholder="oficina" th:field="*{cOficina}" th:value="${cOficina}"/>
+								</div>
+				</div>
+        </div> <!-- row fila 1 final  -->
+
                 <div class="form-row">
-                        <div class="form-group col-md-5">
-                                <label for="ctBienesInformáticos">Responsable: </label>
-                                <select id="cUsuario" class="form-control">
-                                  <option selected>Adolfo Pinto</option>
-                                  <option>Ángel Garibay</option>
-                                  </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                                <label for="ctBienesInformáticos">Adscripción: </label>
-                                <select id="iIDAreas" class="form-control">
-                                  <option selected>Dirección de Informática</option>
-                                  <option>IBD</option>
-                                  </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                          <label for="ctBienesInformáticos">Sub Adscripción: </label>
-                          <select id="iIDAreas" class="form-control">
-                            <option selected>Dirección de Informática</option>
-                            <option>IBD</option>
-                            </select>
-                  </div>
+                       
+                <div id="area" class="form-group col-md-4">
+								<label for="area">
+									<h5 class="lead">Area</h5></label>
+								<div>
+									<select class="form-control col-md-8" id="area" name="area" 
+									th:field="*{iIDResguardo}">
+									<option th:each="dropDownItem : ${elementoResguardo}"
+										th:value="${dropDownItem.iIDResguardo}"
+										th:text="${dropDownItem.iIDArea}"/>
+								</select>
+								</div>
+				</div>
+
+                <div id="subarea" class="form-group col-md-4">
+								<label for="subarea">
+									<h5 class="lead">SubArea</h5></label>
+								<div>
+									<select class="form-control col-md-8" id="subar" name="subar" 
+									th:field="*{iIDResguardo}">
+									<option th:each="dropDownItem : ${elementoResguardo}"
+										th:value="${dropDownItem.iIDResguardo}"
+										th:text="${dropDownItem.iIDSubArea}"/>
+								</select>
+								</div>
+				</div>
+                
+                <div id="factura" class="form-group col-md-4">
+								<label for="factura">
+									<h5 class="lead">Oficina</h5></label>
+								<div>
+									<input type="text" class="form-control col-md-8"
+										id="factura" name="factura" placeholder="Factura" th:field="*{cFactura}" th:value="${cFactura}"/>
+								</div>
+				</div>
+
+                
+        </div> <!-- row fila 2 final  -->
+
+        <div class="row">
+
+            <div id="observns" class="row col-md-12">
+                <label for="observns" class="col-md-2 col-form-label">
+                    <h5 class="lead">Observaciones:</h5></label>
+                                            
+                    <div class="col-md-6">
+                        <textarea class="form-control" th:field="*{cObs}" th:value="${cObs}" rows="2" id="comment"></textarea>
                     </div>
-                    <div class="row">
-                      <div id="observns" class="row col-md-12">
-                          <label for="observns" class="col-md-2 col-form-label">
-                            <h5 class="lead">Observaciones:</h5></label>
-                            
-                          <div class="col-md-6">
-                              <textarea class="form-control" th:field="*{cObs}" th:value="${cObs}" rows="2" id="comment"></textarea>
-                          </div>
-                      </div>			
-                    </div>
-                <br>
-                <div class="row"> <!-- Row Botones-->
-                  <div class="col-md-4"/>
-                  <div class="col-md-2">
-                      <button type="submit" class="btn btn-primary btn-lg btn-outline"
-                        >Registrar</button>
-                  </div>
-                    </form>
-                    <br><br>
-                    <div class="container">
-                        <table class="table table-hover">
-							  <thead>
-								<tr>
-                                  <th>Partida</th>
-                                  <th>Resguardante</th>
-								  <th>Resguardante</th>
-								  <th>Edificio</th>
-								  <th>Piso</th>
-								  <th>Ádscripción</th>
-								  <th>Subadscripción</th>
-								  <th>Responsable</th>
-								  <th>Observación</th>
-								</tr>
-							  </thead>
-							  <tbody>
-								<tr>
-                                  <td>1</td>
-								  <td>Ing. Dino Adán Venegas Zárate</td>
-								  <td>TCO</td>
-								  <td>PB</td>
-								  <td>Dirección de Informática</td>
-								  <td>Dirección de Soporte Técnico</td>
-								  <td>Adolfo Pinto Santiago</td>
-								  <td>Impresora HP 1024</td>
-								</tr>
-								<tr>
-                                    <td>2</td>
-									<td>Alejandro Camargo</td>
-									<td>M68</td>
-									<td>PB</td>
-									<td>Dirección de Informática</td>
-									<td>Dirección de Presupuestos</td>
-									<td>Ángel Garibay</td>
-									<td>Impresora HP 1024</td>
-								</tr>
-								</tbody>
-							</table>
-						  </div>
-                </div>
-      
-       
-       
+            </div>			
+        </div>
+
+    <table class="table table-striped table-hover dataTable no-footer table-custom"  id="Listas">
+			<thead >
+				<tr>
+					<th>ID</th>
+					<th>Resguardante</th>
+					<th>Responsable</th>
+					<th>Oficina</th>
+					<th>Factura</th>
+                    <th>Activo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lista : ${resguardo}">
+					<td><span th:text="${lista.iIDResguardo}">ID</span></td>
+					<td><span th:text="${lista.cResguardante}">Resguardante</span></td>
+					<td><span th:text="${lista.cResponsable}">Responsable</span></td>
+					<td><span th:text="${lista.cOficina}">Oficina</span></td>
+					<td><span th:text="${lista.cFactura}">Factura</span></td>
+					<td><span th:text="${lista.lActivo} ? SI : NO">Activo</span></td>
+				</tr>
+			</tbody>
+		</table>
+    <div class="form-row"> <!-- Row Botones-->
+							<div class="col-md-4"></div>
+								<div class="col-md-5">
+								  <button type="submit" class="btn btn-danger">Guardar</button>
+								</div>
+						
+						</div>
+					</fieldset>
+                </form>
+	           </div>
+        </div>
