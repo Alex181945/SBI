@@ -17,12 +17,11 @@ import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.ct.FormaSolicitud;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.rest.ct.FormaSolicitudRest;
-import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
 
 @Component
 public class ImpFormaSolicitd implements FormaSolicitudRest {
 	
-	private final static Logger LOGGER = Logger.getLogger(ImpMenuRest.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(ImpFormaSolicitd.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 

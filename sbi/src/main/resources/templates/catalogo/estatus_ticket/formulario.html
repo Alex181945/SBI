@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+	
+	<div class="container">
+
+		<form id="form"
+			th:action="${lInserta} ? ${estatusTicketInserta} : ${estatusTicketActualiza}"
+			th:object="${objEstatusTicket}" method="POST">
+
+			<fieldset class="col-md-12">
+				<legend>Formulario de Registro</legend>
+
+				<div class="form-group row">
+					<label for="iIDEstado" class="col-md-2 col-form-label"><span
+						class="lead">ID</span></label>
+					<div class="col-md-5 .offset-md-6">
+						<input type="text" class="form-control" id="iIDEstado"
+							name="iIDEstado" th:field="*{iIDEstado}"
+							th:value="${iIDEstado}" placeholder="0" readonly="true" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="cEstado" class="col-md-2 col-form-label"><span
+						class="lead">Estatus</span></label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="cEstado"
+							name="cEstado" th:field="*{cEstado}" th:value="${cEstado}"
+							placeholder="Nombre del estatus" />
+					</div>
+				</div>
+
+				<div th:if="!${lInserta}" class="d-flex justify-content-center">
+					<div class="custom-switch custom-switch-label-yesno">
+					  <input type="checkbox" class="custom-switch-input" id="activo" name="activo" th:checked="${objEdificio.lActivo} == 1 ? cheked" />
+					  <label class="custom-switch-btn" for="activo"></label>
+					  <div class="custom-switch-content-checked text-color-white text-center">Activo</div>
+					  <div class="custom-switch-content-unchecked text-color-white text-center">Inactivo</div>
+					</div>
+				</div>
+				
+
+			</fieldset>
+		</form>
+
+		<div class="btn-group d-flex justify-content-center" role="group"
+			aria-label="Basic example">
+			<button type="button" class="btn btn-success" onclick="submit();"
+				th:text="${lInserta} ? Registrar : Actualizar "></button>
+			<a class="btn btn-danger" href="#" th:href="${estatusTicketConsulta}">Cancelar</a>
+		</div>
+	</div>
+	
+</div>
+ 

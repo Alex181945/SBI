@@ -69,7 +69,7 @@ public class TipoServicio {
 		TipoServicio tiposervicio = new TipoServicio();
 		
 		tiposervicio.setiIDTipoServicio(0);
-		tiposervicio.setcTipoServicio("Tipo Servicio Default");
+		tiposervicio.setcTipoServicio("N/A");
 		tiposervicio.setlActivo(0);
 		tiposervicio.setDtCreado("N/A");
 		tiposervicio.setDtModificado("N/A");

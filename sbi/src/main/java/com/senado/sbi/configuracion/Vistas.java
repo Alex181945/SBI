@@ -39,6 +39,8 @@ public class Vistas {
 	private static final String CT_TODOS               = "catalogo/catalogos";
 	private static final String CT_EDIFICIO_CONSULTA   = "catalogo/edificio/consulta";
 	private static final String CT_EDIFICIO_FORMULARIO = "catalogo/edificio/formulario";
+	private static final String CT_ESTATUS_TICKET_CONSULTA   = "catalogo/estatus_ticket/consulta";
+	private static final String CT_ESTATUS_TICKET_FORMULARIO = "catalogo/estatus_ticket/formulario";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -60,6 +62,12 @@ public class Vistas {
 	public static final String CT_EDIFICIO_INSERTA_R        = "/config/catalogos/edificio/inserta";
 	public static final String CT_EDIFICIO_EDITA_R          = "/config/catalogos/edificio/actualiza";
 	public static final String CT_EDIFICIO_BORRA_R          = "/config/catalogos/edificio/elimina";
+	public static final String CT_ESTATUS_TICKET_CONSULTA_R = "/config/catalogos/estatus-ticket/consulta";
+	public static final String CT_ESTATUS_TICKET_CONSULTA_UNO_R = "/config/catalogos/estatus-ticket/consulta/uno";
+	public static final String CT_ESTATUS_TICKET_FORMULARIO_R   = "/config/catalogos/estatus-ticket/form";
+	public static final String CT_ESTATUS_TICKET_INSERTA_R      = "/config/catalogos/estatus-ticket/inserta";
+	public static final String CT_ESTATUS_TICKET_EDITA_R        = "/config/catalogos/estatus-ticket/actualiza";
+	public static final String CT_ESTATUS_TICKET_BORRA_R        = "/config/catalogos/estatus-ticket/elimina";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -187,6 +195,34 @@ public class Vistas {
 	}
 	public static String getTicketDetalle() {
 		return TICKET_DETALLE;
+	}
+	
+	public static String getCtEstatusTicketConsulta() {
+		return CT_ESTATUS_TICKET_CONSULTA;
+	}
+	public static String getCtEstatusTicketFormulario() {
+		return CT_ESTATUS_TICKET_FORMULARIO;
+	}
+	public static String getCtEdificioConsultaUnoR() {
+		return CT_EDIFICIO_CONSULTA_UNO_R;
+	}
+	public static String getCtEstatusTicketConsultaR() {
+		return CT_ESTATUS_TICKET_CONSULTA_R;
+	}
+	public static String getCtEstatusTicketConsultaUnoR() {
+		return CT_ESTATUS_TICKET_CONSULTA_UNO_R;
+	}
+	public static String getCtEstatusTicketFormularioR() {
+		return CT_ESTATUS_TICKET_FORMULARIO_R;
+	}
+	public static String getCtEstatusTicketInsertaR() {
+		return CT_ESTATUS_TICKET_INSERTA_R;
+	}
+	public static String getCtEstatusTicketEditaR() {
+		return CT_ESTATUS_TICKET_EDITA_R;
+	}
+	public static String getCtEstatusTicketBorraR() {
+		return CT_ESTATUS_TICKET_BORRA_R;
 	}
 	public static String getRedirectTicketDetalle() {
 		return REDIRECT_TICKET_DETALLE;

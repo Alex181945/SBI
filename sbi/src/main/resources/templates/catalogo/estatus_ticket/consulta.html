@@ -3,9 +3,9 @@
 	
 	<div class="container">
 		
-		<h1 class="display-6 text-color-white">Cat&aacute;logo de edificios</h1>
+		<h1 class="display-6 text-color-white">Cat&aacute;logo de Estatus del Ticket</h1>
 
-		<a href="#" th:href="@{/config/catalogos/edificio/form}" >
+		<a href="#" th:href="${formInsertaEstatusTicket}" >
 			<button type="button" class="btn btn-secondary btn-lg btn-block">
 				<i class="fas fa-plus-circle"></i>Nuevo
 			</button>
@@ -17,27 +17,19 @@
 			<thead >
 				<tr>
 					<th>ID</th>
-					<th>Edificio</th>
-					<th>Abreviatura</th>
-					<th>N&deg; Pisos</th>
-					<th>Pisos Especiales</th>
-					<th>Direcci&oacute;n</th>
+					<th>Estatus</th>
 					<th>Activo</th>
 					<th>Editar</th>
 					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="lista : ${edificios}">
-					<td><span th:text="${lista.iIDEdificio}">ID</span></td>
-					<td><span th:text="${lista.cEdificio}">Edificio</span></td>
-					<td><span th:text="${lista.cAbreviatura}">Abreviatura</span></td>
-					<td><span th:text="${lista.iPisos}">N° Pisos</span></td>
-					<td><span th:text="${lista.cPisoEsp}">Pisos Especiales</span></td>
-					<td><span th:text="${lista.cCalle}">Direccion</span></td>
+				<tr th:each="lista : ${estatusTicket}">
+					<td><span th:text="${lista.iIDEstado}">ID</span></td>
+					<td><span th:text="${lista.cEstado}">Edificio</span></td>
 					<td><span th:text="${lista.lActivo} ? SI : NO">Activo</span></td>
 					<td>
-						<a href="#" th:href="@{/config/catalogos/edificio/consulta/uno?iIDEdificio=__${lista.iIDEdificio}__}">
+						<a href="#" th:href="@{${formActualizaEstatusTicket}?iIDEstado=__${lista.iIDEstado}__}">
 							<button type="button" class="btn btn-info">
 								<span class="fas fa-edit" aria-hidden="true"></span>
 							</button>
@@ -45,7 +37,7 @@
 					</td>
 					<td>
 						<button type="button" id="btnEliminar" class="btn btn-danger"
-						th:onclick=  "'eliminar(1 , \''+ ${lista.iIDEdificio} + '\' );'">						
+						th:onclick=  "'eliminar(1 , \''+ ${lista.iIDEstado} + '\' );'">						
 							<span class="fas fa-trash"  aria-hidden="true"></span>
 						</button>
 					</td>
