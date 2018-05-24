@@ -70,6 +70,7 @@ public class FormaSolicitud {
 		FormaSolicitud formasolicitud = new FormaSolicitud();
 		
 		formasolicitud.setiIDCreaTicket(0);
+		formasolicitud.setcCreaTicket("N/A");
 		formasolicitud.setlActivo(0);
 		formasolicitud.setDtCreado("N/A");
 		formasolicitud.setDtModificado("N/A");

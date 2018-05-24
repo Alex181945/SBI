@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.senado.sbi.configuracion.MensajeExito;
+import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.configuracion.Vistas;
 import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.op.ticket.TicketM;
@@ -74,10 +76,31 @@ public class Ticket {
 	@PostMapping(Vistas.TICKET_INSERTA_R)
 	public ModelAndView creaTicket(@ModelAttribute("Usuario") ULogin sessionUsu, @ModelAttribute("Ticket") TicketM ticket) {
 		
-		System.out.println(ticket.toString());
+		ticket.setiIDCreaTicket(VariablesEntorno.getMediosolicitud());
 		ticketRest.insertaTicket(ticket, sessionUsu.getcToken());
+		
+		ModelAndView mav = new ModelAndView();
+		/*Consulta del menu*/
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
+		
+		if(ticketRest.islResultado()) {
+			mav.setViewName(Vistas.getTicketIncidencia());
+			mav.addObject("titulo", "Ticket");
+			mav.addObject("error", ticketRest.getMensaje());
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));			
+			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
+			mav.addObject("tpservicio",tiposervicioRest.consultaTipoServicios1(1, sessionUsu.getcToken()));
+			mav.addObject("formasolicitud", formasolicitudRest.consultaFormaSolicitudes(1, sessionUsu.getcToken()));
+			mav.addObject("srvsolicitado", srvsolicitadoRest.consultaSrvSolicitados(1, sessionUsu.getcToken()));
+			mav.addObject("Ticket", ticket);
+		} else {
+			mav.setViewName(Vistas.getMenu());
+			mav.addObject("exito", MensajeExito.getExitoCtEdificioInserta());
+		}
 
-		return null;
+		return mav;
 	}
 	
 

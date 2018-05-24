@@ -7,18 +7,7 @@ function submit(){
 	$('#form').submit();
 }
 
-function eliminar(iTipo,ID){
-	
-	var urlLocal = '';
-	
-	switch (iTipo) {
-	case 1:
-		urlLocal = '/config/catalogos/edificio/elimina';
-		break;
-
-	default:
-		break;
-	}
+function eliminar(urlLocal,ID){
 	
 	$("#Listas").on('click', '#btnEliminar', function() {
 		var row = $(this).closest('tr');
