@@ -15,8 +15,7 @@ public class SrvSolicitado{
 	}
 	public void setiIDTipoServicio(Integer iIDTipoServicio) {
 		this.iIDTipoServicio = iIDTipoServicio;
-	}
-	
+	}	
 	public Integer getiPartida() {
 		return iPartida;
 	}
