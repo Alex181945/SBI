@@ -5,7 +5,7 @@
 		
 			<h1 class="display-6">SISTEMA DE ADMINISTRACIÓN DE BIENES INFORMATICOS</h1>
 				
-				<form id="form1" th:action="@{/bienesinformaticos/nuevo}" th:object="${BienesInformativos}" method="POST">
+				<form id="form1" th:action="@{/bienesinformaticos/nuevo}" th:object="${BienesInformaticos}" method="POST">
 					
 				<fieldset class="col-md-12">
 					<legend >Nuevo Resguardo</legend>
@@ -138,6 +138,19 @@
 					<td><span th:text="${lista.cMAC1}">MAC del Equipo</span></td>
 					<td><span th:text="${lista.cClaveActivacion}">Clave de Activación</span></td>
 					<td><span th:text="${lista.lActivo} ? SI : NO">Activo</span></td>
+					<td>
+					<button type="button" id="btnEliminar" class="btn btn-danger"
+					th:onclick=  "'eliminar(\''+ ${eliminarrsguardo} + '\' , \''+ ${lista.iIDResguardo} + '\' );'">						
+						<span class="fas fa-trash"  aria-hidden="true"></span>
+					</button>
+				</td>
+				<td>
+				<a href="#" th:href="@{__${formActualizaEdificio}__?iIDEdificio=__${lista.iIDEdificio}__}">
+					<button type="button" class="btn btn-info">
+						<span class="fas fa-edit" aria-hidden="true"></span>
+					</button>
+				</a>					
+			</td>
 				</tr>
 			</tbody>
 		</table>
