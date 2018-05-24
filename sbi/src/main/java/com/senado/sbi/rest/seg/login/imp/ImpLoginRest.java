@@ -120,19 +120,16 @@ public class ImpLoginRest implements LoginRest {
 	
 	@Override
 	public boolean islResultado() {
-		// TODO Auto-generated method stub
 		return this.getResultadoLocal();
 	}
 
 	@Override
 	public String getMensaje() {
-		// TODO Auto-generated method stub
 		return this.getMensajeLocal();
 	}
 
 	@Override
 	public ULogin getUsuario() {
-		// TODO Auto-generated method stub
 		return this.getuLogin();
 	}
 

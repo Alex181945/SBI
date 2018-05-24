@@ -16,29 +16,29 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.senado.sbi.configuracion.MensajeError;
 import com.senado.sbi.configuracion.VariablesEntorno;
-import com.senado.sbi.modelo.ct.EdificioM;
+import com.senado.sbi.modelo.ct.EstatusTicketM;
 import com.senado.sbi.modelo.datos.Validacion;
-import com.senado.sbi.rest.ct.EdificioRest;
+import com.senado.sbi.rest.ct.EstatusTicketRest;
 
 @Component
-public class ImpEdificioRest implements EdificioRest {
+public class ImpEstatusTicketRest implements EstatusTicketRest {
 	
-	private final static Logger LOGGER = Logger.getLogger(ImpEdificioRest.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(ImpEstatusTicketRest.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 
 	@SuppressWarnings("static-access")
 	@Override
-	public EdificioM[] consultaEdificios(Integer iTipoConsulta, String cToken) {
+	public EstatusTicketM[] consultaEstatusTicketes(Integer iTipoConsulta, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
-		EdificioM[]   edificio     = null;
-		Validacion[] validacion   = null;
-		ObjectMapper mapper       = new ObjectMapper();
-		JsonNode     root         = null;
-		JsonNode     validacionJs = null;
-		JsonNode     datos        = null;
+		EstatusTicketM[]   estatusTicket = null;
+		Validacion[] validacion   		 = null;
+		ObjectMapper mapper       		 = new ObjectMapper();
+		JsonNode     root         		 = null;
+		JsonNode     validacionJs 		 = null;
+		JsonNode     datos        		 = null;
 		
 		try {
 			
@@ -48,7 +48,7 @@ public class ImpEdificioRest implements EdificioRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/consulta?iTipoConsulta=" + iTipoConsulta,
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/estatus-ticket/consulta?iTipoConsulta=" + iTipoConsulta,
 					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -58,7 +58,7 @@ public class ImpEdificioRest implements EdificioRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(MensajeError.getERROR1());
 				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
-				return EdificioM.edificioDefault();
+				return EstatusTicketM.estatusTicketDefault();
 			}
 			
 			validacionJs = root.path("validacion");
@@ -69,9 +69,9 @@ public class ImpEdificioRest implements EdificioRest {
 			if(validacion[0].getlError() == 1) {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
-				edificio = EdificioM.edificioDefault();
+				estatusTicket = EstatusTicketM.estatusTicketDefault();
 			} else {
-				edificio = mapper.convertValue(datos, EdificioM[].class);
+				estatusTicket = mapper.convertValue(datos, EstatusTicketM[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}
@@ -83,30 +83,31 @@ public class ImpEdificioRest implements EdificioRest {
 			}.getClass().getEnclosingMethod().getName());
 		}
 		
-		return edificio;
+		return estatusTicket;
 	}
 
 	@SuppressWarnings("static-access")
 	@Override
-	public EdificioM consultaEdificio(Integer iIDEdificio, String cToken) {
-		
+	public EstatusTicketM consultaEstatusTicket(Integer iIDEstado, String cToken) {
+
 		RestTemplate restTemplate = new RestTemplate();		
 		
-		EdificioM    edificio     = null;
-		Validacion[] validacion   = null;
-		ObjectMapper mapper       = new ObjectMapper();
-		JsonNode     root         = null;
-		JsonNode     validacionJs = null;
-		JsonNode     datos        = null;
+		EstatusTicketM   estatusTicket = null;
+		Validacion[] validacion   	   = null;
+		ObjectMapper mapper       	   = new ObjectMapper();
+		JsonNode     root         	   = null;
+		JsonNode     validacionJs 	   = null;
+		JsonNode     datos        	   = null;
 		
 		try {
+			
 			HttpHeaders headers = new HttpHeaders();
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/consulta/uno?iIDEdificio=" + iIDEdificio,
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/estatus-ticket/consulta/uno?iIDEstado=" + iIDEstado,
 					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -116,7 +117,7 @@ public class ImpEdificioRest implements EdificioRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(MensajeError.getERROR1());
 				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
-				return EdificioM.edificioDefault()[0];
+				return EstatusTicketM.estatusTicketDefault()[0];
 			}
 			
 			validacionJs = root.path("validacion");
@@ -127,13 +128,14 @@ public class ImpEdificioRest implements EdificioRest {
 			if(validacion[0].getlError() == 1) {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
-				edificio = EdificioM.edificioDefault()[0];
+				estatusTicket = EstatusTicketM.estatusTicketDefault()[0];
 			} else {
-				EdificioM[] edificioTemp = mapper.convertValue(datos, EdificioM[].class);
-				edificio = edificioTemp[0]; 
+				EstatusTicketM[] ticketTemp = mapper.convertValue(datos, EstatusTicketM[].class);
+				estatusTicket = ticketTemp[0]; 
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.setResultadoLocal(true);
@@ -141,19 +143,19 @@ public class ImpEdificioRest implements EdificioRest {
 			}.getClass().getEnclosingMethod().getName());
 		}
 		
-		return edificio;
+		return estatusTicket;
 	}
 
 	@SuppressWarnings("static-access")
 	@Override
-	public void actualizaEdificio(EdificioM objEdificio, String cToken) {
+	public void actualizaEstatusTicket(EstatusTicketM objEstatusTicket, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
-		JsonNode     validacionJs = null;		
+		JsonNode     validacionJs = null;
 		
 		try {
 			
@@ -161,12 +163,12 @@ public class ImpEdificioRest implements EdificioRest {
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			
 			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
-			body.add("objEdificio", objEdificio.toJson());
+			body.add("objEstatusTicket", objEstatusTicket.toJson());
 			
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/actualiza",
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/estatus-ticket/actualiza",
 					HttpMethod.PUT ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -190,7 +192,7 @@ public class ImpEdificioRest implements EdificioRest {
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}
-			
+						
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.setResultadoLocal(true);
@@ -202,14 +204,14 @@ public class ImpEdificioRest implements EdificioRest {
 
 	@SuppressWarnings("static-access")
 	@Override
-	public void insertaEdificio(EdificioM objEdificio, String cToken) {
+	public void insertaEstatusTicket(EstatusTicketM objEstatusTicket, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
-		JsonNode     validacionJs = null;		
+		JsonNode     validacionJs = null;
 		
 		try {
 			
@@ -217,12 +219,12 @@ public class ImpEdificioRest implements EdificioRest {
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			
 			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
-			body.add("objEdificio", objEdificio.toJson());
+			body.add("objEstatusTicket", objEstatusTicket.toJson());
 			
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/inserta",
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/estatus-ticket/inserta",
 					HttpMethod.POST ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -258,14 +260,14 @@ public class ImpEdificioRest implements EdificioRest {
 
 	@SuppressWarnings("static-access")
 	@Override
-	public void borraEdificio(Integer iIDEdificio, String cUsuario, String cToken) {
+	public void borraEstatusTicket(Integer iIDEstado, String cUsuario, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
-		JsonNode     validacionJs = null;		
+		JsonNode     validacionJs = null;
 		
 		try {
 			
@@ -273,13 +275,13 @@ public class ImpEdificioRest implements EdificioRest {
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			
 			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
-			body.add("iIDEdificio", iIDEdificio.toString());
+			body.add("iIDEstado", iIDEstado.toString());
 			body.add("cUsuario", cUsuario);
 			
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/edificios/borra",
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/estatus-ticket/borra",
 					HttpMethod.DELETE ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -310,9 +312,8 @@ public class ImpEdificioRest implements EdificioRest {
 			this.setMensajeLocal("Error: Exception en " + new Object() {
 			}.getClass().getEnclosingMethod().getName());
 		}
-		
 	}
-	
+
 	@Override
 	public boolean islResultado() {
 		return this.getResultadoLocal();
@@ -339,5 +340,4 @@ public class ImpEdificioRest implements EdificioRest {
 		this.mensajeLocal = mensajeLocal;
 	}
 
-	
 }

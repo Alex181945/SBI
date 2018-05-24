@@ -38,7 +38,7 @@ public class ImpTicketRest implements TicketRest {
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
 		JsonNode     validacionJs = null;
-		JsonNode     datos        = null;
+		//JsonNode     datos        = null;
 		
 		try {
 			
@@ -47,6 +47,7 @@ public class ImpTicketRest implements TicketRest {
 			
 			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
 			body.add("objTicket", objTicket.toJson());
+			body.add("iTipoAsignacionTecnico", VariablesEntorno.getTipoasignaciontecnico());
 
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
@@ -65,7 +66,7 @@ public class ImpTicketRest implements TicketRest {
 			}
 			
 			validacionJs = root.path("validacion");
-			datos = root.path("datos");
+			//datos = root.path("datos");
 			
 			validacion = mapper.convertValue(validacionJs, Validacion[].class);
 			
@@ -75,6 +76,9 @@ public class ImpTicketRest implements TicketRest {
 			} else {
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
+				/*Si sale exitosamente correr procedimiento que mande un email
+				 *y te diga que tu ticket fue dado de alta y te manda la informacion del mismo
+				 */
 			}
 			
 		} catch (Exception e) {
@@ -88,7 +92,7 @@ public class ImpTicketRest implements TicketRest {
 	
 	@Override
 	public boolean islResultado() {
-
+		
 		return this.getResultadoLocal();
 	}
 
