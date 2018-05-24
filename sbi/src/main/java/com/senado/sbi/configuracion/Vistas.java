@@ -31,6 +31,7 @@ public class Vistas {
 	private static final String MENU              = "menu/menu";
 	private static final String TICKET_INCIDENCIA = "ticket/incidencia";
 	private static final String TICKET_ASIGNACION = "ticket/asignacion";
+	private static final String TICKET_ALL		  = "ticket/ticketall";
 	private static final String TICKET_DETALLE	  = "ticket/detalle";
 	private static final String BI_CONSULTAR      = "bieninformatico/Consultar";
 	private static final String BI_EDITAR         = "bieninformatico/Editar";
@@ -54,6 +55,7 @@ public class Vistas {
 	public static final String TICKET_ASIGNACION_R      = "/ticket/asignacion";
 	public static final String TICKET_INSERTA_R         = "/ticket/inserta";
 	public static final String TICKET_DETALLE_R			= "/ticket/detalle";
+	public static final String TICKET_ALL_R				= "/ticket/all";
 	public static final String BI_R                     = "/bienesinformaticos";
 	public static final String CT_TODOS_R               = "/config/catalogos";
 	public static final String CT_EDIFICIO_CONSULTA_R   = "/config/catalogos/edificio/consulta";
@@ -79,6 +81,7 @@ public class Vistas {
 	private static final String REDIRECT_MENUPRINCIPAL     = "redirect:/menu/inicio";
 	private static final String REDIRECT_TICKET            = "redirect:/ticket";
 	private static final String REDIRECT_TICKET_ASIGNACION = "redirect:/ticket/asignacion";
+	private static final String REDIRECT_TICKET_ALL		   = "redirect:/ticket/ticketall";
 	private static final String REDIRECT_TICKET_DETALLE	   = "redirect:/ticket/detalle";
 	private static final String REDIRECT_BI                = "redirect:/bienesinformaticos";
 	private static final String REDIRECT_CT                = "redirect:/config/catalogos";
@@ -226,6 +229,15 @@ public class Vistas {
 	}
 	public static String getRedirectTicketDetalle() {
 		return REDIRECT_TICKET_DETALLE;
-	}	
+	}
+	public static String getRedirectTicketAll() {
+		return REDIRECT_TICKET_ALL;
+	}
+	public static String getTicketAll() {
+		return TICKET_ALL;
+	}
+
+	
+		
 
 }

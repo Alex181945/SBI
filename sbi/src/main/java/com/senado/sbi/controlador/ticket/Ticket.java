@@ -73,6 +73,20 @@ public class Ticket {
 		return mav;
 	}
 	
+	@GetMapping(Vistas.TICKET_ALL_R)
+	public ModelAndView ticketall(@ModelAttribute("Usuario") ULogin sessionUsu) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiPerfil());
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getTicketAll());
+		mav.addObject("titulo", "Tickets");
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
+		return mav;
+	}
+	
 	@GetMapping(Vistas.TICKET_DETALLE_R)
 	public ModelAndView detalle(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
