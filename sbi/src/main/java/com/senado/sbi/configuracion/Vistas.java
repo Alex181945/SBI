@@ -42,6 +42,7 @@ public class Vistas {
 	private static final String CT_EDIFICIO_FORMULARIO = "catalogo/edificio/formulario";
 	private static final String CT_ESTATUS_TICKET_CONSULTA   = "catalogo/estatus_ticket/consulta";
 	private static final String CT_ESTATUS_TICKET_FORMULARIO = "catalogo/estatus_ticket/formulario";
+	private static final String ERROR_404					 = "/plantilla/error404";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -70,6 +71,7 @@ public class Vistas {
 	public static final String CT_ESTATUS_TICKET_INSERTA_R      = "/config/catalogos/estatus-ticket/inserta";
 	public static final String CT_ESTATUS_TICKET_EDITA_R        = "/config/catalogos/estatus-ticket/actualiza";
 	public static final String CT_ESTATUS_TICKET_BORRA_R        = "/config/catalogos/estatus-ticket/elimina";
+	public static final String ERROR_404_R						= "/error404";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -86,6 +88,7 @@ public class Vistas {
 	private static final String REDIRECT_BI                = "redirect:/bienesinformaticos";
 	private static final String REDIRECT_CT                = "redirect:/config/catalogos";
 	private static final String REDIRECT_CT_EDIFICIO       = "redirect:/config/catalogos/edificio/consulta";
+	private static final String REDIRECT_ERROR404		   = "redirect:/plantilla/error404";
 	/********************************* Fin ***********************************/
 	
 	public static String getDefaultLayout() {
@@ -235,6 +238,12 @@ public class Vistas {
 	}
 	public static String getTicketAll() {
 		return TICKET_ALL;
+	}
+	public static String getError404() {
+		return ERROR_404;
+	}
+	public static String getRedirectError404() {
+		return REDIRECT_ERROR404;
 	}
 
 	
