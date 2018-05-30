@@ -33,4 +33,131 @@ style="min-height: 75%; min-height: 75vh;" th:fragment="content">
     
 </div>
 
+<div class="container">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Detalle
+              </button>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="background-color: rgba(0, 0, 0, 0.219)" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+            <form id="form1" >
+                
+                <div class="panel panel-default"/>
+                
+                    <div class="form-row">
+
+                        <div id="solicitud" class="form-group col-md-6">
+                            <label for="solicitud">
+                                <h5 class="lead">Tipo de Servicio:</h5>
+                                </label>
+                            <div>
+                                <input type="text" class="form-control" id="tpServicio"
+                                                name="tpServicio"/>
+                             </div>
+                        </div>
+                
+                        <div id="Servc" class="form-group col-md-6">
+                            <label for="Servc">
+                                <h5 class="lead">Servicio solicitado:</h5>
+                            </label>
+                            <div>
+                                <input type="text" class="form-control" id="ServicioSolic"
+                                                name="ServicioSolic"/>
+                            </div>
+                        </div>
+                
+                    </div>
+
+                    <div class="form-row">
+                            
+                        <div id="inventario" class="form-group col-md-4">
+                                <label for="inventario">
+                                    <h5 class="lead">Numero de Inventario:</h5>
+                                </label>
+                            <div>
+                                <input type="text" class="form-control" id="inventario"
+                                            name="inventario" />
+                            </div>
+                        </div>
+                            
+                        <div id="user" class="form-group col-md-4">
+                                <label for="user">
+                                    <h5 class="lead">Usuario:</h5>
+                                </label>
+                                    <div>
+                                        <input type="text" class="form-control" id="user"
+                                            name="user" placeholder="Usuario" />
+                                    </div>
+                        </div>
+                            
+                        <div id="edificio" class="col-md-4">
+                                <label for="edificio">
+                                    <h5 class="lead">Edificio:</h5>
+                                </label>
+                                <div>
+                                        <input type="text" class="form-control" id="edificios"
+                                        name="edificios" placeholder="edificios" />
+                                </div>
+                        </div>
+                            
+                    </div>
+
+                    <div class="form-row">
+                            
+                        <div id="piso" class="form-group col-md-4">
+                             <label for="piso">
+                                    <h5 class="lead">Piso:</h5>
+                            </label>
+                            <div>
+                                <input type="text" class="form-control" id="piso" />
+                            </div>
+                        </div>
+            
+                        <div id="oficina" class="form-group col-md-4">
+                            <label for="oficina">
+                                <h5 class="lead">Oficina:</h5>
+                            </label>
+                            <div>
+                                <input type="text" class="form-control" id="oficina"
+                                            name="oficina" />
+                            </div>
+                        </div>
+            
+                        <div id="resguardante" class="form-group col-md-4">
+                            <label for="resguardante">
+                                <h5 class="lead">Resguardante:</h5>
+                            </label>
+                            <div>
+                            <input type="text" class="form-control"
+                                            id="resguardante" name="resguardante" placeholder="Resguardante"/>
+                            </div>
+                        </div>
+                    </div>
+                            
+            </form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
