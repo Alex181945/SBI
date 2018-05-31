@@ -161,16 +161,16 @@
 								<h5 class="lead">Nivel de criticidad:</h5></label>
 							<div>
 								<select class="form-control col-md-8" id="Nvlcriticidad" name="Nvlcriticidad">
-									<option value="Red">Alto</option>
-									<option value="Red">Medio</option>
-									<option value="Red">Bajo</option>
+									<option value="1">Alto</option>
+									<option value="2">Medio</option>
+									<option value="3">Bajo</option>
 								</select>
 							</div>
 					</div>
 
 					<div class="col-auto">
 							<div class="form-check mb-2 custom-checkbox">
-								<input class="custom-control-input" type="checkbox" id="gridCheck"/>
+								<input class="custom-control-input" type="checkbox" id="gridCheck" th:field="*{lNotificacion}" th:value="${lNotificacion}" />
 								<label class="custom-control-label" for="gridCheck">
 									<h5 class="lead">Notificar</h5>
 								</label>
@@ -287,6 +287,8 @@
 					</div>
 			</div>
 		</div>
+		
+		<input type="hidden" value="1" th:field="*{iIDCreaTicket}" th:value="1" />
 
 		<br></br>
 

@@ -18,7 +18,6 @@ import com.senado.sbi.configuracion.MensajeError;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.modelo.op.ticket.TicketM;
-import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
 import com.senado.sbi.rest.op.ticket.TicketRest;
 
 @Component
