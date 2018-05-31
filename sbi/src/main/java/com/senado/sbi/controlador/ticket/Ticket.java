@@ -77,6 +77,7 @@ public class Ticket {
 	public ModelAndView creaTicket(@ModelAttribute("Usuario") ULogin sessionUsu, @ModelAttribute("Ticket") TicketM ticket) {
 		
 		ticket.setiIDCreaTicket(VariablesEntorno.getMediosolicitud());
+		ticket.setcUsuarioR(sessionUsu.getcUsuario());
 		ticketRest.insertaTicket(ticket, sessionUsu.getcToken());
 		
 		ModelAndView mav = new ModelAndView();
