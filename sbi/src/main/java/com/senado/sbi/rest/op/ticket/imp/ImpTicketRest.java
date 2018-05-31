@@ -24,7 +24,7 @@ import com.senado.sbi.rest.op.ticket.TicketRest;
 @Component
 public class ImpTicketRest implements TicketRest {
 	
-	private final static Logger LOGGER = Logger.getLogger(ImpMenuRest.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(ImpTicketRest.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 
