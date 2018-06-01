@@ -12,7 +12,9 @@ public class BienInformaticoM {
 	private String cFactura;
 	private String cObs;
 	private String dtCreado;
-	private String cUsuarioR;
+	private String dtModificado;
+	private Integer lActivo;
+	private String cUsuario;
 
 	public Integer getiIDResguardo() {
 		return iIDResguardo;
@@ -93,22 +95,39 @@ public class BienInformaticoM {
 	public void setcObs(String cObs) {
 		this.cObs = cObs;
 	}
-
-	public String getcUsuarioR() {
-		return cUsuarioR;
+	
+	public Integer getlActivo() {
+		return lActivo;
 	}
 
-	public void setcUsuarioR(String cUsuarioR) {
-		this.cUsuarioR = cUsuarioR;
+	public void setlActivo(Integer lActivo) {
+		this.lActivo = lActivo;
+	}
+
+	public String getcUsuario() {
+		return cUsuario;
+	}
+
+	public void setcUsuario(String cUsuarioR, String cUsuario) {
+		this.cUsuario = cUsuario;
 	}
 
 	public String getdtCreado() {
 		return dtCreado;
 	}
-
 	public void setdtCreado(String dtCreado) {
 		this.dtCreado = dtCreado;
 	}
+
+	public void setdtModificado(String dtModificado) {
+		this.dtModificado = dtModificado;
+	}
+	
+	public String getdtModificado() {
+		return dtModificado;
+	}
+
+	
 
 	@Override
 	public String toString() {
@@ -117,13 +136,13 @@ public class BienInformaticoM {
 				+ " cPiso="
 				+ cPiso + ", cOficina=" + cOficina + "" + ", iIDArea=" + iIDArea + ", " + "iIDSubArea=" + iIDSubArea
 				+ "," + " cResguardante=" + cResguardante + ", " + "cResponsable=" + cResponsable + ", " + "cFactura="
-				+ cFactura + ", cObs=" + cObs + "" + ", dtCreado=" + dtCreado + "," + " cUsuarioR=" + cUsuarioR + "]";
+				+ cFactura + ", cObs=" + cObs + "" + ", dtCreado=" + dtCreado + "," + ", dtModificado=" + dtModificado + "," + " cUsuario=" + cUsuario + "]";
 	}
 
 	public String toJson() {
 		return "{" + "iIDResguardo:" + iIDResguardo + "," + "iIDEdificio:" + iIDEdificio + "," + "cPiso:" + cPiso + ","
 				+ "cOficina:" + cOficina + "," + "iIDArea:" + iIDArea + "," + "iIDSubArea:" + iIDSubArea + ","
 				+ "cResguardante:" + cResguardante + "," + "cResponsable:" + cResponsable + "," + "cFactura:" + cFactura
-				+ "," + "cObs:" + cObs + "," + "dtCreado:" + dtCreado + "," + "cUsuarioR:" + cUsuarioR + "}";
+				+ "," + "cObs:" + cObs + "," + "dtCreado:" + dtCreado + "," + dtModificado + "cUsuario:" + cUsuario + "}";
 	}
 }
