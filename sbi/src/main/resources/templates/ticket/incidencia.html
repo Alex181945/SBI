@@ -111,9 +111,11 @@
 							<h5 class="lead">Piso:</h5>
 						</label>
 						<div>
-							<input type="text" class="form-control col-md-8" id="piso"
-								name="piso" th:field="*{cPiso}" th:value="${cPiso}"
-								placeholder="Piso" />
+							<select class="form-control col-md-8" id="piso" th:field="*{iIDEdificio}" name="piso" >
+								<option th:each="dropDownItem : ${edificios}"
+								th:value="${dropDownItem.iIDEdificio}"
+								th:text="${dropDownItem.cPisoEsp}" />
+							</select>
 						</div>
 					</div>
 
@@ -160,10 +162,10 @@
 							<label for="Nvlcriticidad">
 								<h5 class="lead">Nivel de criticidad:</h5></label>
 							<div>
-								<select class="form-control col-md-8" id="Nvlcriticidad" name="Nvlcriticidad">
-									<option value="Red">Alto</option>
-									<option value="Red">Medio</option>
-									<option value="Red">Bajo</option>
+								<select class="form-control col-md-8" id="criticidad" th:field="*{iIDCriticidad}" name="criticidad" >
+									<option th:each="dropDownItem : ${criticidad}"
+									th:value="${dropDownItem.iIDCriticidad}"
+									th:text="${dropDownItem.cCriticidad}" />
 								</select>
 							</div>
 					</div>

@@ -11,9 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.senado.sbi.configuracion.MensajeExito;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.configuracion.Vistas;
+import com.senado.sbi.modelo.ct.Criticidad;
 import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.op.ticket.TicketM;
 import com.senado.sbi.modelo.seg.login.ULogin;
+import com.senado.sbi.rest.ct.CriticidadRest;
 import com.senado.sbi.rest.ct.EdificioRest;
 import com.senado.sbi.rest.ct.FormaSolicitudRest;
 import com.senado.sbi.rest.ct.SrvSolicitadoRest;
@@ -37,7 +39,9 @@ public class Ticket {
 	private FormaSolicitudRest formasolicitudRest;
 	@Autowired
 	private SrvSolicitadoRest srvsolicitadoRest;
-	
+	@Autowired
+	private CriticidadRest criticidadRest;
+
 	@GetMapping(Vistas.TICKET_R)
 	public ModelAndView inicio(@ModelAttribute("Usuario") ULogin sessionUsu) {
 		
@@ -54,6 +58,7 @@ public class Ticket {
 		mav.addObject("tpservicio",tiposervicioRest.consultaTipoServicios1(1, sessionUsu.getcToken()));
 		mav.addObject("formasolicitud", formasolicitudRest.consultaFormaSolicitudes(1, sessionUsu.getcToken()));
 		mav.addObject("srvsolicitado", srvsolicitadoRest.consultaSrvSolicitados(1, sessionUsu.getcToken()));
+		mav.addObject("criticidad", criticidadRest.consultaCriticidad(1, sessionUsu.getcToken()));
 		mav.addObject("Ticket", new TicketM());
 		return mav;
 	}
