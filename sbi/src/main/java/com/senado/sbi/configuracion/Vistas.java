@@ -14,6 +14,7 @@ package com.senado.sbi.configuracion;
  * 
  */
 
+
 public class Vistas {
 	
 	
@@ -217,5 +218,8 @@ public class Vistas {
 	public static String getCtEstatusTicketBorraR() {
 		return CT_ESTATUS_TICKET_BORRA_R;
 	}	
-
 }
+
+	
+	
+	
