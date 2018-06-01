@@ -151,7 +151,7 @@ style="min-height: 75%; min-height: 75vh;" th:fragment="content">
                     
                     <div class="form-row">
                         
-                        <div id="solicitante" class="form-group">
+                        <div id="solicitante" class="form-group col-md-4">
                             <label for="solicitante">
                                 <h5 class="lead">Solicitante:</h5></label>
                             <div>
@@ -160,7 +160,7 @@ style="min-height: 75%; min-height: 75vh;" th:fragment="content">
                             </div>
 
                         </div>
-                        <div id="Nvlcriticidad" class="form-control">
+                        <div id="Nvlcriticidad" class="form-group col-md-4">
                             <label for="Nvlcriticidad">
                                     <h5 class="lead">Nivel de criticidad:</h5></label>
                             <div>
@@ -169,6 +169,17 @@ style="min-height: 75%; min-height: 75vh;" th:fragment="content">
                             </div>
                         </div>
                     </div> 
+
+                    <div class="form-row">
+                            <div id="Tecnico" class="form-group col-md-6">
+                                    <label for="Tecnico">
+                                            <h5 class="lead">Técnico asignado:</h5></label>
+                                    <div>
+                                        <input type="text" class="form-control"
+                                            id="Tecnico" name="Tecnico"  />
+                                    </div>
+                            </div>
+                    </div>
                             
             </form>
         
