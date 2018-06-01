@@ -1,0 +1,121 @@
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+	
+	<div class="container">
+
+		<form id="form"
+			th:action="${lInserta} ? ${estatusDocumentoInserta} : ${estatusDocumentoActualiza}"
+			th:object="${objDocumento}" method="POST">
+
+			<fieldset class="col-md-12">
+				<legend>Formulario de Registro</legend>
+
+				<div class="form-group row">
+					<label for="iIDBienesMateriales" class="col-md-2 col-form-label"><span
+						class="lead">ID</span></label>
+					<div class="col-md-5 .offset-md-6">
+						<input type="text" class="form-control" id="iIDBienesMateriales"
+							name="iIDBienesMateriales" th:field="*{iIDBienesMateriales}"
+							th:value="${iIDBienesMateriales}" placeholder="0" readonly="true" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+				
+				<label for="cResguardante" class="col-md-4 col-form-label"><span
+					class="lead">Resguardante:</span></label>
+                <div>
+                    <select class="form-control col-md-8" id="TipEqu" name="TipEqu" 
+                        th:field="*{iIDBienesMateriales}">
+                        <option th:each="dropDownItem : ${elementoDocumento}"
+                            th:value="${dropDownItem.iIDBienesMateriales}"
+                            th:text="${dropDownItem.cResguardante}"/>
+                    </select>
+                </div>
+			</div>
+			
+			<div class="form-group row">
+			<label for="cResponsable" class="col-md-4 col-form-label"><span
+			class="lead">Responsable></label>
+		        <div>
+		            <select class="form-control col-md-8" id="cResponsable" name="cResponsable" 
+		                th:field="*{iIDBienesMateriales}">
+		                <option th:each="dropDownItem : ${elementoDocumento}"
+		                    th:value="${dropDownItem.iIDBienesMateriales}"
+		                    th:text="${dropDownItem.cResponsable}"/>
+		            </select>
+		        </div>
+			</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="cModelo" class="col-md-2 col-form-label"><span
+						class="lead">Modelo:</span></label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="cModelo"
+							name="cModelo" th:field="*{cModelo}"
+							th:value="${cModelo}" placeholder="Modelo" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="cFactura" class="col-md-2 col-form-label"><span
+						class="lead">Factura: </span></label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="cFactura" name="cFactura"
+							th:field="*{cFactura}" th:value="${cFactura}"
+							placeholder="cFactura" />
+					</div>
+                </div>
+                
+                <div class="form-group row">
+				
+                    <label for="cUsuario" class="col-md-4 col-form-label"><span
+                        class="lead">Usuario</span></label>
+                    <div>
+                        <select class="form-control col-md-8" id="cUsuario" name="cUsuario" 
+                            th:field="*{iIDBienesMateriales}">
+                            <option th:each="dropDownItem : ${elementoDocumento}"
+                                th:value="${dropDownItem.iIDBienesMateriales}"
+                                th:text="${dropDownItem.cUsuario}"/>
+                        </select>
+                    </div>
+                </div>
+
+				<div class="row">
+
+                        <div id="observns" class="row col-md-12">
+                                <label for="observns" class="col-md-2 col-form-label">
+                                    <h5 class="lead">Observaciones:</h5></label>
+                                    
+                                <div class="col-md-6">
+                                        <textarea class="form-control" th:field="*{cObs}" th:value="${cObs}" rows="2" id="comment"></textarea>
+                                </div>
+                        </div>			
+                    </div>
+
+				</div>
+
+				<div th:if="!${lInserta}" class="d-flex justify-content-center">
+					<div class="custom-switch custom-switch-label-yesno">
+					  <input type="checkbox" class="custom-switch-input" id="activo" name="activo" th:checked="${objDocumento.lActivo} == 1 ? cheked" />
+					  <label class="custom-switch-btn" for="activo"></label>
+					  <div class="custom-switch-content-checked text-color-white text-center">Activo</div>
+					  <div class="custom-switch-content-unchecked text-color-white text-center">Inactivo</div>
+					</div>
+				</div>
+				
+
+			</fieldset>
+		</form>
+
+		<div class="btn-group d-flex justify-content-center" role="group"
+			aria-label="Basic example">
+			<button type="button" class="btn btn-success" onclick="submit();"
+				th:text="${lInserta} ? Registrar : Actualizar "></button>
+			<a class="btn btn-danger" href="#" th:href="${estatusDocumentoConsulta}">Cancelar</a>
+		</div>
+	</div>
+	
+</div>
+ 
