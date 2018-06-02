@@ -13,8 +13,8 @@ public class ServAdmonM {
 	private String  cObs;
 	private String  cTipoRecibo; // Este campo tiene como id el iIDTipoServicio
 	private String  dtCreado;
+	private String  dtModificado;
 	private String  lActivo;
-	private Integer iIDCreaTicket;
 	private String  cUsuario;
 	
 	public Integer getiIDServAdministrados() {
@@ -95,17 +95,38 @@ public class ServAdmonM {
 	public void setlActivo(String lActivo) {
 		this.lActivo = lActivo;
 	}
-	public Integer getiIDCreaTicket() {
-		return iIDCreaTicket;
+	
+	public String getdtModificado() {
+		return dtModificado;
 	}
-	public void setiIDCreaTicket(Integer iIDCreaTicket) {
-		this.iIDCreaTicket = iIDCreaTicket;
+	public void setdtModificado(String dtModificado) {
+		this.dtModificado = dtModificado;
 	}
+	
 	public String getcUsuario() {
 		return cUsuario;
 	}
 	public void setcUsuario(String cUsuario) {
 		this.cUsuario = cUsuario;
+	}
+	
+	@Override
+	public String toString() {
+		return "ServAdmonoM [iIDServAdministrados=" + iIDServAdministrados + ","
+	+ " iIDEdificio=" + iIDEdificio + "," 
+	+ " cPiso="+ cPiso + ", cOficina=" + cOficina + "" 
+	+ ", iIDArea=" + iIDArea + ", " + "iIDSubArea=" + iIDSubArea
+	+ "," + " cResguardante=" + cResguardante + ", " + "cResponsable=" + cResponsable 
+	+ ", " + "cFactura=" + cFactura + ", cObs=" + cObs + "" 
+	+ ", " + "dtCreado=" + dtCreado + ", dtModificado=" + dtModificado + ""
+	+ " cUsuario=" + cUsuario + "]";
+	}
+
+	public String toJson() {
+		return "{" + "iIDServAdministrados:" + iIDServAdministrados + "," + "iIDEdificio:" + iIDEdificio + "," + "cPiso:" + cPiso + ","
+				+ "cOficina:" + cOficina + "," + "iIDArea:" + iIDArea + "," + "iIDSubArea:" + iIDSubArea + ","
+				+ "cResguardante:" + cResguardante + "," + "cResponsable:" + cResponsable + "," + "cFactura:" + cFactura
+				+ "," + "cObs:" + cObs + "," + "dtCreado:" + dtCreado + "," + "dtModificado: "+ dtModificado + "cUsuario:" + cUsuario + "}";
 	}
 	
 }
