@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<div class="container">
+
+		<h1 class="display-6">SISTEMA DE ADMINISTRACI�N DE BIENES
+			INFORMATICOS</h1>
+
+		<form class="form-inline" id="form1"
+			th:action="@{/bienesMateriales/consultar}"
+			th:object="${BienesMateriales}" method="POST">
+
+			<fieldset class="col-md-12">
+				<legend>Consulta Documento</legend>
+				<div class="panel panel-default" />
+
+				<div class="text-right">
+					<div id="Documento" class="row col-md-4">
+						<label for="Documento" class="col-md-4">
+							<h5 class="lead">N�mero de Documento:</h5>
+						</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="Documento"
+								name="Documento" placeholder="N� Documento"
+								th:field="*{iIDBienesMateriales}" th:value="${iIDBienesMateriales}"
+								onkeypress="return soloNumeros(event)" />
+						</div>
+						<div>
+							<div class="form-row">
+								<!-- Row Botones-->
+								<div class="col-md-4"></div>
+								<div class="col-md-5">
+									<button type="submit" class="btn btn-primary">Consultar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+		<!-- Fin de form-->
+
+
+		<table
+			class="table table-striped table-hover dataTable no-footer table-custom"
+			id="Listas">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Resguardante</th>
+					<th>Responsable</th>
+					<th>Oficina</th>
+					<th>Factura</th>
+					<th>Observaciones</th>
+					<th>Activo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lista : ${Documento}">
+					<td><span th:text="${lista.iIDBienesMateriales}">ID</span></td>
+					<td><span th:text="${lista.cResguardante}">Resguardante</span></td>
+					<td><span th:text="${lista.cResponsable}">Responsable</span></td>
+					<td><span th:text="${lista.cOficina}">Oficina</span></td>
+					<td><span th:text="${lista.cFactura}">Factura</span></td>
+					<td><span th:text="${lista.cObs}">Observaciones</span></td>
+					<td><span th:text="${lista.lActivo} ? SI : NO">Activo</span></td>
+					<td><a href="#"
+						th:href="@{__${formActualizaDocumento}__?iIDBienesMateriales=__${lista.iIDBienesMateriales}__}">
+							<button type="button" class="btn btn-info">
+								<span class="fas fa-edit" aria-hidden="true"></span>
+							</button>
+					</a></td>
+					<td>
+						<button type="button" id="btnEliminar" class="btn btn-danger"
+							th:onclick="'eliminar(\''+ ${eliminaDocumento} + '\' , \''+ ${lista.iIDBienesMateriales} + '\' );'">
+							<span class="fas fa-trash" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="#" th:href="${formInsertaDocumento}">
+			<button type="button" class="btn btn-secondary btn-lg btn-block">
+				<i class="fas fa-plus-circle"></i>Nuevo
+			</button>
+		</a>
+
+		<div class="form-row">
+			<!-- Row Botones-->
+			<div class="col-md-4"></div>
+			<div class="col-md-5">
+				<button type="submit" class="btn btn-primary">Modificar</button>
+				<button type="submit" class="btn btn-danger">Cancelar</button>
+				<a href="#" th:href="${formInsertaDocumento">
+					<button type="button" class="btn btn-secondary btn-lg btn-block">
+						<i class="fas fa-plus-circle"></i>Nuevo
+					</button>
+				</a>
+			</div>
+
+		</div>
+
+	</div>
+</div>

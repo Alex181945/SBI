@@ -110,6 +110,7 @@ public class Ticket {
 	public ModelAndView creaTicket(@ModelAttribute("Usuario") ULogin sessionUsu, @ModelAttribute("Ticket") TicketM ticket) {
 		
 		ticket.setiIDCreaTicket(VariablesEntorno.getMediosolicitud());
+		ticket.setcUsuarioR(sessionUsu.getcUsuario());
 		ticketRest.insertaTicket(ticket, sessionUsu.getcToken());
 		
 		ModelAndView mav = new ModelAndView();
@@ -122,7 +123,7 @@ public class Ticket {
 			mav.setViewName(Vistas.getTicketIncidencia());
 			mav.addObject("titulo", "Ticket");
 			mav.addObject("error", ticketRest.getMensaje());
-			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));			
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 			mav.addObject("edificios", edificioRest.consultaEdificios(1, sessionUsu.getcToken()));
 			mav.addObject("tpservicio",tiposervicioRest.consultaTipoServicios1(1, sessionUsu.getcToken()));
 			mav.addObject("formasolicitud", formasolicitudRest.consultaFormaSolicitudes(1, sessionUsu.getcToken()));
@@ -130,6 +131,8 @@ public class Ticket {
 			mav.addObject("Ticket", ticket);
 		} else {
 			mav.setViewName(Vistas.getMenu());
+			mav.addObject("titulo", "Ticket");
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
 			mav.addObject("exito", MensajeExito.getExitoCtEdificioInserta());
 		}
 

@@ -14,6 +14,7 @@ package com.senado.sbi.configuracion;
  * 
  */
 
+
 public class Vistas {
 	
 	
@@ -229,6 +230,7 @@ public class Vistas {
 	}
 	public static String getCtEstatusTicketBorraR() {
 		return CT_ESTATUS_TICKET_BORRA_R;
+
 	}
 	public static String getRedirectTicketDetalle() {
 		return REDIRECT_TICKET_DETALLE;
@@ -246,7 +248,10 @@ public class Vistas {
 		return REDIRECT_ERROR404;
 	}
 
-	
-		
+	}	
 
-}
+
+
+	
+	
+	

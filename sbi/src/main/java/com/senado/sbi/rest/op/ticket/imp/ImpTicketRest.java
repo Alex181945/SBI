@@ -18,13 +18,12 @@ import com.senado.sbi.configuracion.MensajeError;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.modelo.datos.Validacion;
 import com.senado.sbi.modelo.op.ticket.TicketM;
-import com.senado.sbi.rest.modulo.menu.imp.ImpMenuRest;
 import com.senado.sbi.rest.op.ticket.TicketRest;
 
 @Component
 public class ImpTicketRest implements TicketRest {
 	
-	private final static Logger LOGGER = Logger.getLogger(ImpMenuRest.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(ImpTicketRest.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 

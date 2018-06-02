@@ -1,192 +1,211 @@
-<div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 	
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-            <nav class="navbar ">
-          <div class="container-fluid">
-              <div class="navbar-header">
-                <ul class="nav navbar-nav navbar-center">
-                  <li class="active"><a href="Consultar.html">Consultar</a></li>
-                  <li class="active"><a href="Editar.html">Editar</a></li>
-                  <li class="active"><a href="Nuevo.html">Nuevo</a></li>
-                  <li class="active"><a href="Deshabilitar.html">Deshabilitar</a></li>
-                </ul>
-              </div>
-                    </div>
-            </nav>
-  
-          <h1 class="display-6">SISTEMA DE ADMINISTRACIÓN DE BIENES INFORMÁTICOS</h1>
-                  <h1 class="display-6">Nuevo Resguardo</h1>
-          <!-- form para consultar el resguardo -->
-      <div class = text-right>
-        <form class="form-inline" id="form1" th:action="@{/bieninformatico/Consultar}" th:object="${bienesinformaticos}" method="POST">
-          <label for="inventario" class="col-md-4">
-                                <h5 class="lead">Numero de Inventario:</h5></label>
-                        </label>
-            <div class="input-group mb-2 mr-sm-2">
-                                    <input type="text" class="form-control form-control-lg"
-                                    id="resguardo" name="Resguardo" placeholder="N° Inventario" th:field="*{cNumInventario}"
-                                    th:value="${cNumInventario}"  onkeypress="return soloNumeros(event)"/>
-                <!--input type="text" class="form-control" id="iIDBienesInformaticos" placeholder="Resguardo"-->
-            </div>
-                            <div class="row"> <!-- Row Botones-->
-                                <div class="col-md-4"/>
-                                <div class="col-md-2">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-outline"
-                                            >Consultar</button>
-                                </div>
-        </form>
-  
-              <form id="form2" th:action="@{/bieninformatico/Insertar}" th:object="${bienesinformaticos}" method="POST">
-                <div class="row">
-                    <div id="tiporesguardo" class="row col-md-4">
-                      <label for="tiporesguardo" class="col-md-5">
-                        <h5 class="lead">Tipo de :</h5></label>
-                        <div class="col-md-8">
-                          <select class="form-control form-control-lg">
-                            <option value="Resguardante">Ing. Dino Adán Venegas Zárate</option>
-                          </select>
-                      </div>
-                    </div>
-                    
-                  <div id="edificio" class="row col-md-4">
-                    <label for="edificio" class="col-md-5">
-                      <h5 class="lead">Tipo de Equipo:</h5></label>
-                      <div class="col-md-8">
-                        <select class="form-control form-control-lg">
-                          <option value="edificio">Impresora</option>
+	<div class="container">
+
+		<form id="form"
+			th:action="${lInserta} ? ${estatusResguardoInserta} : ${estatusResguardoActualiza}"
+			th:object="${objResguardo}" method="POST">
+
+			<fieldset class="col-md-12">
+				<legend>Formulario de Registro</legend>
+
+				<div class="form-group row">
+					<label for="iIDResguardo" class="col-md-2 col-form-label"><span
+						class="lead">ID</span></label>
+					<div class="col-md-5 .offset-md-6">
+						<input type="text" class="form-control" id="iIDResguardo"
+							name="iIDResguardo" th:field="*{iIDResguardo}"
+							th:value="${iIDResguardo}" placeholder="0" readonly="true" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+				
+				<label for="cResguardante" class="col-md-4 col-form-label"><span
+					class="lead">Resguardante:</span></label>
+                <div>
+                    <select class="form-control col-md-8" id="TipEqu" name="TipEqu" 
+                        th:field="*{iIDResguardo}">
+                        <option th:each="dropDownItem : ${elementoResguardo}"
+                            th:value="${dropDownItem.iIDResguardo}"
+                            th:text="${dropDownItem.cResguardante}"/>
+                    </select>
+                </div>
+			</div>
+			
+			<div class="form-group row">
+			<label for="cResponsable" class="col-md-4 col-form-label"><span
+			class="lead">Responsable></label>
+		        <div>
+		            <select class="form-control col-md-8" id="cResponsable" name="cResponsable" 
+		                th:field="*{iIDResguardo}">
+		                <option th:each="dropDownItem : ${elementoResguardo}"
+		                    th:value="${dropDownItem.iIDResguardo}"
+		                    th:text="${dropDownItem.cResponsable}"/>
+		            </select>
+		        </div>
+			</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="cNombreEquipo" class="col-md-2 col-form-label"><span
+						class="lead">Nombre del equipo:</span></label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="cNombreEquipo"
+							name="cNombreEquipo" th:field="*{cNombreEquipo}"
+							th:value="${cNombreEquipo}" placeholder="Nombre del Equipo" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="cNumSerie" class="col-md-2 col-form-label"><span
+						class="lead">N&uacute; de Serie: </span></label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="cNumSerie" name="cNumSerie"
+							th:field="*{cNumSerie}" th:value="${cNumSerie}"
+							placeholder="N&deg; de serie"
+							onkeypress="return soloNumeros(event)" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="cMAC1" class="col-md-2 col-form-label"><span
+						class="lead">MAC del Equipo</span></label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="cMAC1"
+							name="cMAC1" th:field="*{cMAC1}" th:value="${cMAC1}"
+							placeholder="MAC del equipo" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="cMAC2"><span class="lead">MAC del Equipo 2</span></label> <input
+						type="text" class="form-control" id="cMAC2" name="cMAC2"
+						th:field="*{cMAC2}" th:value="${cMAC2}"
+						placeholder="MAC 2 del equipo" />
+				</div>
+
+				<div class="form-row">
+
+					<div class="form-group col-md-4">
+                        <label for="dtFechaInicioG"><span class="lead">Año de Ingreso</span></label> 
+                        <input type="date" class="form-control" id="dtFechaInicioG"
+							name="dtFechaInicioG" th:field="*{dtFechaInicioG}" th:value="${dtFechaInicioG}" />
+					</div>
+
+					<div class="form-group col-md-4">
+                        <label for="dtFechaFinG"><span class="lead">Fin de Garantía</span></label> 
+                        <input type="date" class="form-control" id="dtFechaFinG"
+							name="dtFechaFinG" th:field="*{dtFechaFinG}" th:value="${dtFechaFinG}" />
+					</div>
+
+				</div>
+
+				<div class="form-row">
+
+					<div class="form-group col-md-5">
+						<label for="cHostName"><span class="lead">HostName</span></label>
+						<input type="text" class="form-control" id="cHostName"
+							name="cHostName" th:field="*{cHostName}"
+							th:value="${cHostName}" placeholder="HostName del equipo" />
+					</div>
+
+					<div class="form-group col-md-5">
+						<label for="cClaveActivacion"><span class="lead">Clave de Activaci&oacute;n</span></label> <input
+							type="text" class="form-control" id="cClaveActivacion" name="cClaveActivacion"
+							th:field="*{cClaveActivacion}" th:value="${cClaveActivacion}"
+							placeholder="Ejemplo: Licencia de Activación" />
+					</div>
+					
+					<div class="form-group row">
+					<label for="cTipoEquipo" class="col-md-4 col-form-label"><span
+					class="lead">Tipo de Equipo></label>
+				        <div>
+				            <select class="form-control col-md-8" id="cTipoEquipo" name="cTipoEquipo" 
+				                th:field="*{iIDResguardo}">
+				                <option th:each="dropDownItem : ${elementoResguardo}"
+				                    th:value="${dropDownItem.iIDResguardo}"
+				                    th:text="${dropDownItem.cTipoEquipo}"/>
+				            </select>
+				        </div>
+					</div>
+					
+					<div class="form-group row">
+					
+                    <label for="cUsuario" class="col-md-4 col-form-label"><span
+                        class="lead">Usuario:</span></label>
+                    <div>
+                        <select class="form-control col-md-8" id="cUsuario" name="cUsuario" 
+                            th:field="*{iIDResguardo}">
+                            <option th:each="dropDownItem : ${elementoResguardo}"
+                                th:value="${dropDownItem.iIDResguardo}"
+                                th:text="${dropDownItem.cUsuario}"/>
                         </select>
                     </div>
                 </div>
-  
-                <div id="piso" class="row col-md-4">
-                  <label for="piso" class="col-md-5">
-                    <h5 class="lead">Modelo del equipo:</h5></label>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control form-control-lg"
-						 name="Extension" placeholder="" th:field="*{cExtension}" th:value="${cExtension}" onkeypress="return soloNumeros(event)"/>
-				</div>
-            </div>	
-            <div id="piso" class="row col-md-4">
-                <label for="piso" class="col-md-5">
-                  <h5 class="lead">MAC del equipo:</h5></label>
-                  <div class="col-md-8">
-                      <input type="text" class="form-control form-control-lg"
-                       name="Extension" placeholder="" th:field="*{cExtension}" th:value="${cExtension}" onkeypress="return soloNumeros(event)"/>
-              </div>
-          </div>	
-        </div>
-        <div id="piso" class="row col-md-4">
-            <label for=mac2 class="col-md-5">
-              <h5 class="lead">MAC 2 del equipo:</h5></label>
-              <div class="col-md-8">
-                  <input type="text" class="form-control form-control-lg"
-                   name="MAC" placeholder="" th:field="*{cExtension}" th:value="${CP}">
-          </div>
-      </div>
-      <div id="piso" class="row col-md-4">
-        <label for=mac2 class="col-md-5">
-          <h5 class="lead">Ingreso de  resguardo:</h5></label>
-          <div class="col-md-8">
-            <input type="date" class="form-control" id="fecha" name="fecha">
-      </div>
-  </div>	
 
-    </div>
-                  </div>
-              </div>
-              <br></br>
-              
-              <div id="responsable" class="row col-md-4">
-                <label for="responsable" class="col-md-5">
-                  <h5 class="lead">Responsable:</h5></label>
-                <div class="col-md-8">
-                  <select class="form-control form-control-lg">
-                    <option value="responsable">Ing. Dino Adán Venegas Zárate </option>
-                  </select>
-                </div>
-            </div>
-  
-            <div id="adscripcion" class="row col-md-4">
-              <label for="adscripcion" class="col-md-5">
-                <h5 class="lead">Adscripción:</h5></label>
-              <div class="col-md-8">
-                <select class="form-control form-control-lg">
-                  <option value="adscripcion"> Dirección de Informática</option>
-                </select>
-              </div>
-          </div>             
-                         
-          <div id="subadscripcion" class="row col-md-4">
-            <label for="subadscripcion" class="col-md-5">
-              <h5 class="lead">Sub-Adscripción:</h5></label>
-            <div class="col-md-8">
-              <select class="form-control form-control-lg">
-                <option value="subadscripcion"> Dirección de soporte Técnico </option>
-              </select>
-            </div>
-        </div>  
-  
-        <div class="row">
-          <div id="observns" class="row col-md-12">
-              <label for="observns" class="col-md-2 col-form-label">
-                <h5 class="lead">Observaciones:</h5></label>
-                
-              <div class="col-md-6">
-                  <textarea class="form-control" th:field="*{cObs}" th:value="${cObs}" rows="2" id="comment"></textarea>
-              </div>
-          </div>			
-        </div>
-    
-        <br></br>
-            <div class="row"> <!-- Row Botones-->
-                    <div class="col-md-4"/>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-primary btn-lg btn-outline"
-                          >Actualizar</button>
-            </div>
-        </form>
-        <br></br>          
-              <div class="container">
-                <table class="table table-hover">
-                                <thead>
-                                  <tr>
-                                    <th>Partida</th>
-                                    <th>Resguardante</th>
-                                    <th>Resguardante</th>
-                                    <th>Edificio</th>
-                                    <th>Piso</th>
-                                    <th>Ádscripción</th>
-                                    <th>Subadscripción</th>
-                                    <th>Responsable</th>
-                                    <th>Observación</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>Ing. Dino Adán Venegas Zárate</td>
-                                    <td>TCO</td>
-                                    <td>PB</td>
-                                    <td>Dirección de Informática</td>
-                                    <td>Dirección de Soporte Técnico</td>
-                                    <td>Adolfo Pinto Santiago</td>
-                                    <td>Impresora HP 1024</td>
-                                  </tr>
-                                  <tr>
-                                      <td>2</td>
-                                      <td>Alejandro Camargo</td>
-                                      <td>M68</td>
-                                      <td>PB</td>
-                                      <td>Dirección de Informática</td>
-                                      <td>Dirección de Presupuestos</td>
-                                      <td>Ángel Garibay</td>
-                                      <td>Impresora HP 1024</td>
-                                  </tr>
-                                  </tbody>
-                              </table>
-                            </div>
-             </div>
-        
-         
-         
-  
+					<div class="row">
+
+                        <div id="observns" class="row col-md-12">
+                                <label for="observns" class="col-md-2 col-form-label">
+                                    <h5 class="lead">Observaciones:</h5></label>
+                                    
+                                <div class="col-md-6">
+                                        <textarea class="form-control" th:field="*{cObs}" th:value="${cObs}" rows="2" id="comment"></textarea>
+                                </div>
+                        </div>			
+                    </div>
+
+				</div>
+
+				<div th:if="!${lInserta}" class="d-flex justify-content-center">
+					<div class="custom-switch custom-switch-label-yesno">
+					  <input type="checkbox" class="custom-switch-input" id="activo" name="activo" th:checked="${objResguardo.lActivo} == 1 ? cheked" />
+					  <label class="custom-switch-btn" for="activo"></label>
+					  <div class="custom-switch-content-checked text-color-white text-center">Activo</div>
+					  <div class="custom-switch-content-unchecked text-color-white text-center">Inactivo</div>
+					</div>
+				</div>
+				
+
+			</fieldset>
+		</form>
+		
+		<table class="table table-striped table-hover dataTable no-footer table-custom"  id="Listas">
+		<thead >
+			<tr>
+				<th>ID</th>
+				<th>Partida</th>
+				<th>Tipo de Equipo</th>
+				<th>Resguardante</th>
+				<th>Responsable</th>
+				<th>Clave de Activación</th>
+				<th>Hostname</th>
+                <th>Activo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="lista : ${resguardo}">
+				<td><span th:text="${lista.iIDResguardo}">ID</span></td>
+				<td><span th:text="${lista.iPartida}">Partida</span></td>
+				<td><span th:text="${lista.cTipoEquipo}">Tipo de Equipo</span></td>
+				<td><span th:text="${lista.cResguardante}">Resguardante</span></td>
+				<td><span th:text="${lista.cResponsable}">Responsable</span></td>
+				<td><span th:text="${lista.cClaveActivacion}">Clave de Activación</span></td>
+				<td><span th:text="${lista.cHostName}">Hostname</span></td>
+				<td><span th:text="${lista.lActivo} ? SI : NO">Activo</span></td>
+			</tr>
+		</tbody>
+	</table>
+
+		<div class="btn-group d-flex justify-content-center" role="group"
+			aria-label="Basic example">
+			<button type="button" class="btn btn-success" onclick="submit();"
+				th:text="${lInserta} ? Registrar : Actualizar "></button>
+			<a class="btn btn-danger" href="#" th:href="${estatusResguardoConsulta}">Cancelar</a>
+		</div>
+	</div>
+	
+</div>
+ 
