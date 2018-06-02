@@ -1,4 +1,5 @@
-package com.senado.sbi.controlador.bienesInformaticos;
+package com.senado.sbi.controlador.bienesinformaticos;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
