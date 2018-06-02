@@ -34,9 +34,10 @@ public class Vistas {
 	private static final String TICKET_ASIGNACION = "ticket/asignacion";
 	private static final String TICKET_ALL		  = "ticket/ticketall";
 	private static final String TICKET_DETALLE	  = "ticket/detalle";
+	private static final String SERVICIOSADM	  = "serviciosAdministrados/Consultar";
 	private static final String BI_CONSULTAR      = "bieninformatico/Consultar";
 	private static final String BI_EDITAR         = "bieninformatico/Editar";
-	private static final String BI_INSERTAR       = "bieninformatico/Nuevo";
+	private static final String BI_INSERTAR       = "bieninformatico/Insertar";
 	private static final String BI_DESHABILITAR   = "bieninformatico/Deshabilitar";
 	private static final String CT_TODOS               = "catalogo/catalogos";
 	private static final String CT_EDIFICIO_CONSULTA   = "catalogo/edificio/consulta";
@@ -58,7 +59,11 @@ public class Vistas {
 	public static final String TICKET_INSERTA_R         = "/ticket/inserta";
 	public static final String TICKET_DETALLE_R			= "/ticket/detalle";
 	public static final String TICKET_ALL_R				= "/ticket/all";
-	public static final String BI_R                     = "/bienesinformaticos";
+	public static final String BI_EDITA_R                = "/bienesinformaticos/edita";
+	public static final String BI_CONSULTAR_R             = "/bienesinformaticos/consulta";
+	public static final String BI_INSERTAR_R              = "/bienesinformaticos/inserta";
+	public static final String BI_DESHABILITAR_R         = "/bienesinformaticos/deshabilita";
+	public static final String SERVICIOSADM_R			= "/serviciosAdm/Consultar";
 	public static final String CT_TODOS_R               = "/config/catalogos";
 	public static final String CT_EDIFICIO_CONSULTA_R   = "/config/catalogos/edificio/consulta";
 	public static final String CT_EDIFICIO_CONSULTA_UNO_R   = "/config/catalogos/edificio/consulta/uno";
@@ -86,7 +91,8 @@ public class Vistas {
 	private static final String REDIRECT_TICKET_ASIGNACION = "redirect:/ticket/asignacion";
 	private static final String REDIRECT_TICKET_ALL		   = "redirect:/ticket/ticketall";
 	private static final String REDIRECT_TICKET_DETALLE	   = "redirect:/ticket/detalle";
-	private static final String REDIRECT_BI                = "redirect:/bienesinformaticos";
+	private static final String REDIRECT_BI_CONSULTA        = "redirect:/bieninformatico/Consultar";
+	private static final String REDIRECT_SERVICIOSADM	   = "redirect:/serviciosAdministrados";
 	private static final String REDIRECT_CT                = "redirect:/config/catalogos";
 	private static final String REDIRECT_CT_EDIFICIO       = "redirect:/config/catalogos/edificio/consulta";
 	private static final String REDIRECT_ERROR404		   = "redirect:/plantilla/error404";
@@ -143,9 +149,7 @@ public class Vistas {
 	public static String getTicketInsertaR() {
 		return TICKET_INSERTA_R;
 	}
-	public static String getBiR() {
-		return BI_R;
-	}
+	
 	public static String getRedirectLogin() {
 		return REDIRECT_LOGIN;
 	}
@@ -163,9 +167,6 @@ public class Vistas {
 	}
 	public static String getRedirectTicketAsignacion() {
 		return REDIRECT_TICKET_ASIGNACION;
-	}
-	public static String getRedirectBi() {
-		return REDIRECT_BI;
 	}
 	public static String getCtEdificioConsulta() {
 		return CT_EDIFICIO_CONSULTA;
@@ -247,6 +248,16 @@ public class Vistas {
 	public static String getRedirectError404() {
 		return REDIRECT_ERROR404;
 	}
+	public static String getServiciosadm() {
+		return SERVICIOSADM;
+	}
+	public static String getRedirectServiciosadm() {
+		return REDIRECT_SERVICIOSADM;
+	}
+	public static String getRedirectBiConsulta() {
+		return REDIRECT_BI_CONSULTA;
+	}
+	
 
 	}	
 
