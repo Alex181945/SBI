@@ -1,15 +1,13 @@
 <div class="d-flex justify-content-center align-items-center"
 	style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<div class="container">
 
-		<h1 class="display-6">SISTEMA DE ADMINISTRACI�N DE BIENES
+		<h1 class="display-6 text-color-white">SISTEMA DE ADMINISTRACI&Oacute;N DE BIENES
 			INFORMATICOS</h1>
 
 		<form class="form-inline" id="form1"
-			th:action="@{/bienesinformaticos/consultar}"
-			th:object="${BienesInformaticos}" method="POST">
+			th:action="@{/bienesinformaticos/consultar}" method="POST">
 
 			<fieldset class="col-md-12">
 				<legend>Consulta Resguardo</legend>
@@ -18,12 +16,12 @@
 				<div class="text-right">
 					<div id="inventario" class="row col-md-4">
 						<label for="inventario" class="col-md-4">
-							<h5 class="lead">N�mero de Resguardo:</h5>
+							<h5 class="lead">N&uacute;mero de Resguardo:</h5>
 						</label>
 						<div class="col-md-8">
 							<input type="text" class="form-control" id="inventario"
-								name="inventario" placeholder="N� Inventario"
-								th:field="*{iIDResguardo}" th:value="${iIDResguardo}"
+								name="inventario" placeholder="N&deg; Inventario"
+								
 								onkeypress="return soloNumeros(event)" />
 						</div>
 						<div>
@@ -93,11 +91,6 @@
 			<div class="col-md-5">
 				<button type="submit" class="btn btn-primary">Modificar</button>
 				<button type="submit" class="btn btn-danger">Cancelar</button>
-				<a href="#" th:href="${formInsertaResguardo">
-					<button type="button" class="btn btn-secondary btn-lg btn-block">
-						<i class="fas fa-plus-circle"></i>Nuevo
-					</button>
-				</a>
 			</div>
 
 		</div>
