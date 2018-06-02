@@ -8,6 +8,16 @@ body {
 	min-height: 100vh;
 }
 
+.imgcontainer {
+    text-align: center !important;
+
+}
+
+.img-fluir {
+	width: 10% !important; 
+	height: 10% !important;
+}
+
 /*Menu*/
 .bg-light {
 	background-color: #646569 !important;
