@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.senado.sbi.configuracion.MensajeExito;
 import com.senado.sbi.configuracion.VariablesEntorno;
 import com.senado.sbi.configuracion.Vistas;
-import com.senado.sbi.modelo.ct.Criticidad;
 import com.senado.sbi.modelo.datos.consulta.DosParametrosEnteros;
 import com.senado.sbi.modelo.op.ticket.TicketM;
 import com.senado.sbi.modelo.seg.login.ULogin;
